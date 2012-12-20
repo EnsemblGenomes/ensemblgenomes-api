@@ -186,6 +186,11 @@ sub count_leaves {
 	return $n;
 }
 
+sub distance_to_node {
+	my ($self,$node) = @_;
+	return $self->adaptor()->distance_between_nodes($self,$node);
+}
+
 sub to_string {
 	my ( $self, $name_class ) = @_;
 	$name_class ||= 'scientific name';
@@ -316,8 +321,13 @@ Argument        : (Optional) closure checking whether to count a node or not
 Return type     : Int
   
 =head2 traverse_tree
-Description : Walk the tree recursively, invoking the supplied subroutine on each node
-Argument : Subroutine reference, accepting current node and depth
+Description 	: Walk the tree recursively, invoking the supplied subroutine on each node
+Argument 		: Subroutine reference, accepting current node and depth
+
+=head2 distance_to_node
+Description 	: Calculate the distance between this and the supplied node in steps via the closest common ancestor
+Argument 		: Bio::EnsEMBL::TaxonomyNode
+Return type		: Int
 
 =head2 to_string
 Description : Return simple string representation of node
