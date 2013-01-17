@@ -17,7 +17,103 @@
 
   Questions may also be sent to the Ensembl help desk at
   <helpdesk@ensembl.org>.
- 
+
+=head1 NAME
+
+Bio::EnsEMBL::LookUp
+
+=head1 SYNOPSIS
+
+# creation from a database server
+Bio::EnsEMBL::LookUp->register_all_dbs( $conf->{host},
+	   $conf->{port}, $conf->{user}, $conf->{pass}, $conf->{db});
+my $lookup = Bio::EnsEMBL::LookUp->new();
+my $dbas = $lookup->registry()->get_all();
+$dbas = $lookup->get_all_by_taxon_id(388919);
+$dbas = $lookup->get_by_name_pattern("Escherichia.*");
+
+# creation from a URL
+my $lookup = Bio::EnsEMBL::LookUp->new(-URL=>'http://bacteria.ensembl.org/registry.json');
+
+=head1 DESCRIPTION
+
+This module is a helper that provides additional methods to aid navigating a registry of >6000 species across >25 databases. 
+It does not replace the Registry but provides some additional methods for finding species e.g. by searching for species that 
+have an alias that match a regular expression, or species which are derived from a specific ENA/INSDC accession, or species
+that belong to a particular part of the bacterial taxonomy. 
+
+There are a number of ways of creating a lookup. The simplest and fastest is to supply a URL for a JSON resource that contains all the details
+needed to connect to the public Ensembl Genomes bacterial databases e.g.
+
+	my $lookup = Bio::EnsEMBL::LookUp->new(-URL=>'http://bacteria.ensembl.org/registry.json');
+
+Alternatively, a local file containing the required JSON can be specified instead:
+
+	my $lookup = Bio::EnsEMBL::LookUp->new(-FILE=>"/path/to/reg.json");
+
+Finally, a Registry already loaded with the ENA core databases can be supplied:
+
+	my $lookup = Bio::EnsEMBL::LookUp->new(-REGISTRY=>'Bio::EnsEMBL::Registry');
+
+If the standard Registry is used, the argument can be omitted completely:
+
+	my $lookup = Bio::EnsEMBL::LookUp->new();
+
+To populate the registry with just the Ensembl Bacteria databases for the current software release on a specified server, the following method can be used:
+
+	Bio::EnsEMBL::LookUp->register_all_dbs( $host,
+	   $port, $user, $pass);
+
+Once a lookup has been created, there are various methods to retreive DBAdaptors for species of interest:
+
+1. To find species by name - all DBAdaptors for species with a name or alias matching the supplied string:
+
+	$dbas = $lookup->get_by_name_exact('Escherichia coli str. K-12 substr. MG1655');
+
+2. To find species by name pattern - all DBAdaptors for species with a name or alias matching the supplied regexp:
+
+	$dbas = $lookup->get_by_name_exact('Escherichia coli .*);
+
+3. To find species with the supplied taxonomy ID:
+
+	$dbas = $lookup->get_all_by_taxon_id(388919);
+	
+4. In coordination with a taxonomy node adaptor to get DBAs for all descendants of a node:
+
+	my $node = $node_adaptor->fetch_by_taxon_id(511145);
+	for my $child (@{$node_adaptor->fetch_descendants($node)}) {
+		my $dbas = $lookup->get_all_by_taxon_id($node->taxon_id())
+		if(defined $dbas) {
+			for my $dba (@{$dbas}) {
+				# do something with the $dba
+			}
+		}
+	}
+
+The retrieved DBAdaptors can then be used as normal e.g.
+
+	for my $gene (@{$dba->get_GeneAdaptor()->fetch_all_by_biotype('protein_coding')}) {
+		print $gene->external_name."\n";
+	}
+
+Once retrieved, the arguments needed for constructing a DBAdaptor directly can be dumped for later use e.g.
+
+	my $args = $lookup->dba_to_args($dba);
+	... store and retrieve $args for use in another script ... 
+	my $resurrected_dba = Bio::EnsEMBL::DBSQL::DBAdaptor->new(@$args);
+  
+=head1 AUTHOR
+
+dstaines
+
+=head1 MAINTANER
+
+$Author$
+
+=head1 VERSION
+
+$Revision$
+
 =cut
 
 package Bio::EnsEMBL::LookUp;
@@ -38,6 +134,28 @@ use LWP::Simple;
 use Carp;
 use Data::Dumper;
 my $default_cache_file = qw/lookup_cache.json/;
+
+=head1 SUBROUTINES/METHODS
+
+=head2 new
+
+  Description       : Creates a new instance of this object. 
+  Arg [-REGISTRY]   : (optional) Registry module to use (default is Bio::EnsEMBL::Registry)
+  Arg [-NO_CACHE]   : (optional) int 1
+               This option will turn off the use of a local cache file for storing species details
+  Arg [-CACHE_FILE] : (optional) String (default .ena_registry_cache.json)
+  				This option allows use of a user specified local cache file
+  Arg [-URL]		: (optional) 
+              This option allows the use of a remote resource supplying species details in JSON format. This is not used if a local cache exists and -NO_CACHE is not set
+  Arg [-FILE]		: (optional) 
+              This option allows the use of a file supplying species details in JSON format. This is not used if a local cache exists and -NO_CACHE is not set
+  Returntype        : Instance of lookup
+  Status            : Stable
+
+  Example       	: 
+  my $lookup = Bio::EnsEMBL::LookUp->new(
+                                        -REGISTRY => $reg);
+=cut
 
 sub new {
   my ($class, @args) = @_;
@@ -75,6 +193,15 @@ sub new {
   return $self;
 } ## end sub new
 
+=head2 registry
+
+  Arg [1]     : Registry module to use (default is Bio::EnsEMBL::Registry)
+  Description : Sets and retrieves the Registry 
+  Returntype  : Registry if set; otherwise undef
+  Exceptions  : if an attempt is made to set the value more than once
+  Status      : Stable
+=cut
+
 sub registry {
   my ($self, $registry) = @_;
   if (defined $registry) {
@@ -87,6 +214,13 @@ sub registry {
   return $self->{registry};
 }
 
+=head2 cache_file
+  Arg [1]     : File to use for local caching
+  Description : Sets and retrieves the local cache file 
+  Returntype  : File name if set; otherwise undef
+  Status      : Stable
+=cut
+
 sub cache_file {
   my ($self, $cache_file) = @_;
   if (defined $cache_file) {
@@ -94,6 +228,11 @@ sub cache_file {
   }
   return $self->{cache_file};
 }
+
+=head2  update_from_registry
+	Description : Update internal hashes of database adaptors by name/taxids from the registry. Invoke when registry has been updated independently.
+	Exceptions  : None
+=cut
 
 sub update_from_registry {
   my ($self) = @_;
@@ -103,6 +242,12 @@ sub update_from_registry {
   }
   return;
 }
+
+=head2 _register_dba
+	Description	: Add a single DBAdaptor to the registry and the internal hashes of details
+	Argument	: Bio::EnsEMBL::DBAdaptor
+	Return		: None
+=cut
 
 sub _register_dba {
   my ($self, $species, $dba) = @_;
@@ -159,6 +304,11 @@ sub _get_dbc_meta {
   return $self->{dbc_meta}{$name};
 } ## end sub _get_dbc_meta
 
+=head2 _hash_dba
+	Description : Add details from a DBAdaptor to the internal hashes of details
+	Argument	: Bio::EnsEMBL::DBAdaptor
+=cut
+
 sub _hash_dba {
   my ($self, $dba) = @_;
   my $dbc_meta = $self->_get_dbc_meta($dba->dbc());
@@ -166,6 +316,14 @@ sub _hash_dba {
   $self->_hash_dba_from_values($dba, [$dba_meta->{taxid}], $dba_meta->{aliases}, $dba_meta->{accessions}, $dba_meta->{assembly_accession});
   return;
 }
+
+=head2 _hash_dba_from_values
+	Description : Add supplied details to the internal hashes of details
+	Argument	: Bio::EnsEMBL::DBAdaptor to hash
+	Argument	: Arrayref of taxonomy IDs to use as keys
+	Argument	: Arrayref of aliases to use as keys
+	Argument	: Arrayref of ENA accessions to use as keys
+=cut
 
 sub _hash_dba_from_values {
   my ($self, $dba, $taxids, $aliases, $accessions, $vgc) = @_;
@@ -210,6 +368,11 @@ sub _invert_dba_hash {
   }
   return $inv_hash;
 }
+
+=head2 _registry_to_hash
+	Description	: Generate a hash array structure for the current registry and species details for turning to JSON
+	Returns		: Arrayref of hashes
+=cut
 
 sub _registry_to_hash {
   my ($self) = @_;
@@ -267,6 +430,12 @@ sub _registry_to_json {
   return $json;
 }
 
+=head2 write_registry_to_file
+	Description	: Write the contents of the registry and species lists to a JSON file
+	Argument	: File name
+	Return		: None
+=cut
+
 sub write_registry_to_file {
   my ($self, $file) = @_;
   my $json = $self->_registry_to_json();
@@ -286,6 +455,11 @@ sub clear_cache {
   }
   return;
 }
+
+=head2 _load_registry_from_json
+	Description	: load the registry from the supplied JSON string
+	Argument	: JSON string
+=cut
 
 sub _load_registry_from_json {
   my ($self, $json) = @_;
@@ -332,6 +506,12 @@ sub load_registry_from_url {
   return;
 }
 
+=head2 dba_to_args
+	Description	: Dump the arguments needed for contructing a DBA
+	Argument	: Bio::EnsEMBL::DBAdaptor
+	Return		: Arrayref of args
+=cut
+
 sub dba_to_args {
   my ($self, $dba) = @_;
   my $dbc = $dba->dbc();
@@ -348,6 +528,11 @@ sub dba_to_args {
   return $args;
 }
 
+=head2 _dba_to_locator
+	Description : return a hash key for a DBAdaptor
+	Argument	: Bio::EnsEMBL::DBAdaptor
+=cut
+
 sub _dba_to_locator {
   my ($dba) = @_;
   confess("Argument must be Bio::EnsEMBL::DBSQL::DBAdaptor not " . ref($dba))
@@ -356,11 +541,23 @@ sub _dba_to_locator {
   return $locator;
 }
 
+=head2 _dbc_to_locator
+	Description : return a hash key for a DBConnection
+	Argument	: Bio::EnsEMBL::DBConnection
+=cut
+
 sub _dbc_to_locator {
   my ($dbc) = @_;
   my $locator = join(q{!-!}, $dbc->host(), $dbc->dbname(), $dbc->driver(), $dbc->port(), $dbc->username());
   return $locator;
 }
+
+=head2 _intern_db_connections()
+  Description : Go through all available DBAdaptors of registry and ensure they use the same
+                DBConnection instance.
+  Exceptions  : None
+  Status      : At Risk
+=cut
 
 sub _intern_db_connections {
   my ($self) = @_;
@@ -378,6 +575,13 @@ sub _intern_db_connections {
   return;
 }
 
+=head2 get_all_DBConnections
+	Description : Return all database connections used by the DBAs retrieved from the registry
+	Argument    : None
+	Exceptions  : None
+	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DBConnection
+=cut
+
 sub get_all_DBConnections {
   my ($self) = @_;
   my $adaptors = $self->registry()->get_all_DBAdaptors();
@@ -388,6 +592,13 @@ sub get_all_DBConnections {
   }
   return [values %dbcs];
 }
+
+=head2 get_all
+	Description : Return all database adaptors that have been retrieved from registry
+	Argument    : None
+	Exceptions  : None
+	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
+=cut
 
 sub get_all {
   my ($self) = @_;
@@ -403,17 +614,38 @@ sub get_all_by_taxon_branch {
   return \@genomes;
 }
 
+=head2 get_all_by_taxon_id
+	Description : Returns all database adaptors that have the supplied taxonomy ID
+	Argument    : Int
+	Exceptions  : None
+	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
+=cut
+
 sub get_all_by_taxon_id {
   my ($self, $id) = @_;
   return $self->{dbas_by_taxid}{$id} || [];
 }
+
+=head2 get_by_name_exact
+	Description : Return all database adaptors that have the supplied string as an alias/name
+	Argument    : String
+	Exceptions  : None
+	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
+=cut
 
 sub get_by_name_exact {
   my ($self, $name) = @_;
   return $self->{dbas_by_name}{$name};
 }
 
-sub get_by_accession {
+=head2 get_all_by_accession
+	Description : Returns the database adaptor(s) that contains a seq_region with the supplied INSDC accession (or other seq_region name)
+	Argument    : Int
+	Exceptions  : None
+	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
+=cut	
+
+sub get_all_by_accession {
   my ($self, $acc) = @_;
   my $dba = $self->{dbas_by_vacc}{$acc};
   if (!defined $dba) {
@@ -422,6 +654,13 @@ sub get_by_accession {
   }
   return $dba;
 }
+
+=head2 get_by_assembly_accession
+	Description : Returns the database adaptor that contains the assembly with the supplied INSDC assembly accession
+	Argument    : Int
+	Exceptions  : None
+	Return type : Bio::EnsEMBL::DBSQL::DatabaseAdaptor
+=cut
 
 sub get_by_assembly_accession {
   my ($self, $acc) = @_;
@@ -432,6 +671,13 @@ sub get_by_assembly_accession {
   }
   return $dba;
 }
+
+=head2 get_all_by_name_pattern
+	Description : Return all database adaptors that have an alias/name that match the supplied regexp
+	Argument    : String
+	Exceptions  : None
+	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
+=cut	
 
 sub get_all_by_name_pattern {
   my ($self, $pattern) = @_;
@@ -447,40 +693,87 @@ sub get_all_by_name_pattern {
   return [values(%dbas)];
 }
 
+=head2 get_all_taxon_ids
+	Description : Return list of all taxon IDs registered with the helper
+	Exceptions  : None
+	Return type : Arrayref of integers
+=cut
+
 sub get_all_taxon_ids {
   my ($self) = @_;
   return [keys(%{$self->{dbas_by_taxid}})];
 }
+
+=head2 get_all_names
+	Description : Return list of all species names registered with the helper
+	Exceptions  : None
+	Return type : Arrayref of strings
+=cut
 
 sub get_all_names {
   my ($self) = @_;
   return [keys(%{$self->{dbas_by_name}})];
 }
 
+=head2 get_all_accessions
+	Description : Return list of all INSDC sequence accessions (or other seq_region names) registered with the helper
+	Exceptions  : None
+	Return type : Arrayref of strings
+=cut
+
 sub get_all_accessions {
   my ($self) = @_;
   return [keys(%{$self->{dbas_by_acc}})];
 }
+
+=head2 get_all_versioned_accessions
+	Description : Return list of all versioned INSDC sequence accessions (or other seq_region names) registered with the helper
+	Exceptions  : None
+	Return type : Arrayref of strings
+=cut
 
 sub get_all_versioned_accessions {
   my ($self) = @_;
   return [keys(%{$self->{dbas_by_vacc}})];
 }
 
+=head2 get_all_assemblies
+	Description : Return list of all INSDC assembly accessions registered with the helper
+	Exceptions  : None
+	Return type : Arrayref of strings
+=cut
+
 sub get_all_assemblies {
   my ($self) = @_;
   return [keys(%{$self->{dbas_by_gc}})];
 }
+
+=head2 get_all_versioned_assemblies
+	Description : Return list of all versioned INSDC assembly accessions registered with the helper
+	Exceptions  : None
+	Return type : Arrayref of strings
+=cut
 
 sub get_all_versioned_assemblies {
   my ($self) = @_;
   return [keys(%{$self->{dbas_by_vgc}})];
 }
 
+=head2 register_all_dbs
+	Description : Helper method to load the registry with all multispecies core databases on the supplied server
+	Argument    : Host
+	Argument    : Port
+	Argument    : User
+	Argument    : Password
+	Argument    : (optional) String with database regexp (default is _collection_core_[0-9]_eVersion_[0-9]+)
+	Exceptions  : None
+	Return type : None
+=cut
+
 sub register_all_dbs {
   my ($class, $host, $port, $user, $pass, $regexp) = @_;
   if (!$regexp) {
-	$regexp = '_core_[0-9]+_' . software_version() . '_[0-9]+';
+	$regexp = '_collection_core_[0-9]+_' . software_version() . '_[0-9]+';
   }
   my $str = "DBI:mysql:host=$host;port=$port";
   my $dbh = DBI->connect($str, $user, $pass);
@@ -495,6 +788,10 @@ sub register_all_dbs {
   return;
 }
 
+=head2 _register_multispecies_core
+	Description : Register core dbas for all species in the supplied database
+=cut
+
 sub _register_multispecies_core {
   return _register_multispecies_x(
 	'Bio::EnsEMBL::DBSQL::DBAdaptor',
@@ -504,6 +801,10 @@ sub _register_multispecies_core {
 	},
 	@_);
 }
+
+=head2 _register_multispecies_x
+	Description : Register specified dba type for all species in the supplied database
+=cut
 
 sub _register_multispecies_x {
 
@@ -525,6 +826,10 @@ sub _register_multispecies_x {
   }
   return \@dbas;
 }
+
+=head2 _query_multispecies_db
+	Description : Find all species in the multispecies database
+=cut
 
 sub _query_multispecies_db {
   my ($species, %db_args) = @_;
@@ -554,6 +859,12 @@ sub _query_multispecies_db {
   return \@species_array;
 } ## end sub _query_multispecies_db
 
+=head2 _add_aliases
+	Description : Registry all aliases
+	Argument	: Species name
+	Argument	: Arrayref of alias strings
+=cut
+
 sub _add_aliases {
   my ($species_name, $alias_ref) = @_;
   if (defined $alias_ref) {
@@ -569,6 +880,11 @@ sub _add_aliases {
   return;
 }
 
+=head2 _runtime_include
+	Description : Load the specified module (usually a DatabaseAdaptor)
+	Argument 	: Module name
+=cut
+
 sub _runtime_include {
   my ($full_module) = @_;
   ## no critic (ProhibitStringyEval)
@@ -578,13 +894,27 @@ sub _runtime_include {
   ## use critic
   return;
 }
-#Throws a wobbly if the db name is longer than 64 characters
+
+=head2 _check_name
+	Description : Check that the name is not longer than 64 characters
+	Argument	: Name to check
+=cut
+
 sub _check_name {
+  #Throws a wobbly if the db name is longer than 64 characters
   my ($name) = @_;
   my $length = length($name);
   throw("Invalid length for database name used. Max is 64. The name ${name}- was ${length}") if $length > 64;
   return;
 }
+
+=head2 _login_hash
+	Description : Generate dbadaptor login hash from supplied arguments
+	Argument	: Host
+	Argument	: Port
+	Argument	: User
+	Argument	: Password
+=cut
 
 sub _login_hash {
   my ($host, $port, $user, $pass) = @_;
@@ -595,306 +925,3 @@ sub _login_hash {
 
 1;
 
-__END__
-
-=pod
-
-=head1 NAME
-
-Bio::EnsEMBL::LookUp
-
-=head1 SYNOPSIS
-
-# creation from a database server
-Bio::EnsEMBL::LookUp->register_all_dbs( $conf->{host},
-	   $conf->{port}, $conf->{user}, $conf->{pass}, $conf->{db});
-my $helper = Bio::EnsEMBL::LookUp->new();
-my $dbas = $helper->registry()->get_all();
-$dbas = $helper->get_all_by_taxon_id(388919);
-$dbas = $helper->get_by_name_pattern("Escherichia.*");
-
-# creation from a URL
-my $helper = Bio::EnsEMBL::LookUp->new(-URL=>'http://www.ebi.ac.uk/ena/ena_genomes_registry.json');
-
-=head1 DESCRIPTION
-
-This module is a helper that provides additional methods to aid navigating a registry of >2000 species across >10 databases. 
-It does not replace the Registry but provides some additional methods for finding species e.g. by searching for species that 
-have an alias that match a regular expression, or species which are derived from a specific ENA/INSDC accession, or species
-that belong to a particular part of the bacterial taxonomy. 
-
-There are a number of ways of creating a helper. The simplest and fastest is to supply a URL for a JSON resource that contains all the details
-needed to connect to the public ENA databases e.g.
-
-	my $helper = Bio::EnsEMBL::LookUp->new(-URL=>'http://www.ebi.ac.uk/ena/ena_genomes_registry.json');
-
-Alternatively, a local file containing the required JSON can be specified instead:
-
-	my $helper = Bio::EnsEMBL::LookUp->new(-FILE=>"/path/to/reg.json");
-
-Finally, a Registry already loaded with the ENA core databases can be supplied:
-
-	my $helper = Bio::EnsEMBL::LookUp->new(-REGISTRY=>'Bio::EnsEMBL::Registry');
-
-If the standard Registry is used, the argument can be omitted completely:
-
-	my $helper = Bio::EnsEMBL::LookUp->new();
-
-To populate the registry with just the ENA databases for the current software release on a specified server, the following method can be used:
-
-	Bio::EnsEMBL::LookUp->register_all_dbs( $host,
-	   $port, $user, $pass);
-
-Once a helper has been created, there are various methods to retreive DBAdaptors for species of interest:
-
-1. To find species by name - all DBAdaptors for species with a name or alias matching the supplied string:
-
-	$dbas = $helper->get_by_name_exact('Escherichia coli str. K-12 substr. MG1655');
-
-2. To find species by name pattern - all DBAdaptors for species with a name or alias matching the supplied regexp:
-
-	$dbas = $helper->get_by_name_exact('Escherichia coli .*);
-
-3. To find species with the supplied taxonomy ID:
-
-	$dbas = $helper->get_all_by_taxon_id(388919);
-	
-4. In coordination with a taxonomy node adaptor to get DBAs for all descendants of a node:
-
-	my $node = $node_adaptor->fetch_by_taxon_id(511145);
-	for my $child (@{$node_adaptor->fetch_descendants($node)}) {
-		my $dbas = $helper->get_all_by_taxon_id($node->taxon_id())
-		if(defined $dbas) {
-			for my $dba (@{$dbas}) {
-				# do something with the $dba
-			}
-		}
-	}
-
-The retrieved DBAdaptors can then be used as normal e.g.
-
-	for my $gene (@{$dba->get_GeneAdaptor()->fetch_all_by_biotype('protein_coding')}) {
-		print $gene->external_name."\n";
-	}
-
-Once retrieved, the arguments needed for constructing a DBAdaptor directly can be dumped for later use e.g.
-
-	my $args = $helper->dba_to_args($dba);
-	... store and retrieve $args for use in another script ... 
-	my $resurrected_dba = Bio::EnsEMBL::DBSQL::DBAdaptor->new(@$args);
-
-=head1 ATTRIBUTES
-
-=head2 registry
-
-  Arg [1]     : Registry module to use (default is Bio::EnsEMBL::Registry)
-  Description : Sets and retrieves the Registry 
-  Returntype  : Registry if set; otherwise undef
-  Exceptions  : if an attempt is made to set the value more than once
-  Status      : Stable
-
-=head2 cache_file
-  Arg [1]     : File to use for local caching
-  Description : Sets and retrieves the local cache file 
-  Returntype  : File name if set; otherwise undef
-  Status      : Stable
-
-=head1 SUBROUTINES/METHODS
-
-=head2 new
-
-  Description       : Creates a new instance of this object. 
-  Arg [-REGISTRY]   : (optional) Registry module to use (default is Bio::EnsEMBL::Registry)
-  Arg [-NO_CACHE]   : (optional) int 1
-               This option will turn off the use of a local cache file for storing species details
-  Arg [-CACHE_FILE] : (optional) String (default .ena_registry_cache.json)
-  				This option allows use of a user specified local cache file
-  Arg [-URL]		: (optional) 
-              This option allows the use of a remote resource supplying species details in JSON format. This is not used if a local cache exists and -NO_CACHE is not set
-  Arg [-FILE]		: (optional) 
-              This option allows the use of a file supplying species details in JSON format. This is not used if a local cache exists and -NO_CACHE is not set
-  Returntype        : Instance of helper
-  Status            : Stable
-
-  Example       	: 
-  my $helper = Bio::EnsEMBL::LookUp->new(
-                                        -REGISTRY => $reg);
-
-=head2 get_all
-	Description : Return all database adaptors that have been retrieved from registry
-	Argument    : None
-	Exceptions  : None
-	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
-
-=head2 get_all_DBConnections
-	Description : Return all database connections used by the DBAs retrieved from the registry
-	Argument    : None
-	Exceptions  : None
-	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DBConnection
-
-=head2 get_by_accession
-	Description : Returns the database adaptor that contains a seq_region with the supplied INSDC accession
-	Argument    : Int
-	Exceptions  : None
-	Return type : Bio::EnsEMBL::DBSQL::DatabaseAdaptor
-	
-=head2 get_by_assembly_accession
-	Description : Returns the database adaptor that contains the assembly with the supplied INSDC assembly accession
-	Argument    : Int
-	Exceptions  : None
-	Return type : Bio::EnsEMBL::DBSQL::DatabaseAdaptor
-
-=head2 get_all_by_taxon_id
-	Description : Returns all database adaptors that have the supplied taxonomy ID
-	Argument    : Int
-	Exceptions  : None
-	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
-
-=head2 get_by_name_exact
-	Description : Return all database adaptors that have the supplied string as an alias/name
-	Argument    : String
-	Exceptions  : None
-	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
-
-=head2 get_by_name_pattern
-	Description : Return all database adaptors that have an alias/name that match the supplied regexp
-	Argument    : String
-	Exceptions  : None
-	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
-	
-=head2 get_all_taxon_ids
-	Description : Return list of all taxon IDs registered with the helper
-	Exceptions  : None
-	Return type : Arrayref of integers
-
-=head2 get_all_names
-	Description : Return list of all species names registered with the helper
-	Exceptions  : None
-	Return type : Arrayref of strings
-
-=head2 get_all_accessions
-	Description : Return list of all INSDC sequence accessions registered with the helper
-	Exceptions  : None
-	Return type : Arrayref of strings
-
-=head2 get_all_versioned_accessions
-	Description : Return list of all versioned INSDC sequence accessions registered with the helper
-	Exceptions  : None
-	Return type : Arrayref of strings
-
-=head2 get_all_assemblies
-	Description : Return list of all INSDC assembly accessions registered with the helper
-	Exceptions  : None
-	Return type : Arrayref of strings
-
-=head2 get_all_versioned_assemblies
-	Description : Return list of all versioned INSDC assembly accessions registered with the helper
-	Exceptions  : None
-	Return type : Arrayref of strings
-	
-=head2 register_all_dbs
-	Description : Helper method to load the registry with all ENA databases on the supplied server
-	Argument    : Host
-	Argument    : Port
-	Argument    : User
-	Argument    : Password
-	Argument    : (optional) String with ENA database regexp (default is ena_[0-9]+_collection_core_.*)
-	Exceptions  : None
-	Return type : None
-
-=head2  update_from_registry
-	Description : Update internal hashes of database adaptors by name/taxids from the registry. Invoke when registry has been updated independently.
-	Exceptions  : None
-
-=head2 register_dba
-	Description	: Add a single DBAdaptor to the registry and the internal hashes of details
-	Argument	: Bio::EnsEMBL::DBAdaptor
-	Return		: None
-
-=head2 write_registry_to_file
-	Description	: Write the contents of the registry and species lists to a JSON file
-	Argument	: File name
-	Return		: None
-
-=head2 dba_to_args
-	Description	: Dump the arguments needed for contructing a DBA
-	Argument	: Bio::EnsEMBL::DBAdaptor
-	Return		: Arrayref of args
-
-=head1 INTERNAL METHODS
-
-=head2 _hash_dba
-	Description : Add details from a DBAdaptor to the internal hashes of details
-	Argument	: Bio::EnsEMBL::DBAdaptor
-
-=head2 _hash_dba_from_values
-	Description : Add supplied details to the internal hashes of details
-	Argument	: Bio::EnsEMBL::DBAdaptor to hash
-	Argument	: Arrayref of taxonomy IDs to use as keys
-	Argument	: Arrayref of aliases to use as keys
-	Argument	: Arrayref of ENA accessions to use as keys
-
-=head2 _registry_to_hash
-	Description	: Generate a hash array structure for the current registry and species details for turning to JSON
-	Returns		: Arrayref of hashes
-
-=head2 _load_registry_from_json
-	Description	: load the registry from the supplied JSON string
-	Argument	: JSON string
-
-=head2 _dba_to_locator
-	Description : return a hash key for a DBAdaptor
-	Argument	: Bio::EnsEMBL::DBAdaptor
-
-=head2 _dbc_to_locator
-	Description : return a hash key for a DBConnection
-	Argument	: Bio::EnsEMBL::DBConnection
-
-=head2 _register_multispecies_core
-	Description : Register core dbas for all species in the supplied database
-
-=head2 _register_multispecies_x
-	Description : Register specified dba type for all species in the supplied database
-
-=head2 _query_multispecies_db
-	Description : Find all species in the multispecies database
-
-=head2 _add_aliases
-	Description : Registry all aliases
-	Argument	: Species name
-	Argument	: Arrayref of alias strings
-
-=head2 _runtime_include
-	Description : Load the specified module (usually a DatabaseAdaptor)
-	Argument 	: Module name
-
-=head2 _check_name
-	Description : Check that the name is not longer than 64 characters
-	Argument	: Name to check
-
-=head2 _login_hash
-	Description : Generate dbadaptor login hash from supplied arguments
-	Argument	: Host
-	Argument	: Port
-	Argument	: User
-	Argument	: Password
-
-=head2 _intern_db_connections()
-  Description : Go through all available DBAdaptors of registry and ensure they use the same
-                DBConnection instance.
-  Exceptions  : None
-  Status      : At Risk
-  
-=head1 AUTHOR
-
-dstaines
-
-=head1 MAINTANER
-
-$Author$
-
-=head1 VERSION
-
-$Revision$
-
-=cut
