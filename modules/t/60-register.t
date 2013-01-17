@@ -10,7 +10,7 @@ my $conf = do $conf_file
   || die "Could not load configuration from " . $conf_file;
 
 $conf = $conf->{ena};
-diag("Loading ENA dbs into registry");
+diag("Loading dbs into registry");
 Bio::EnsEMBL::LookUp->register_all_dbs( $conf->{host},
 	   $conf->{port}, $conf->{user}, $conf->{pass}, $conf->{db});
 	   
@@ -60,7 +60,7 @@ diag("Found ".scalar @$dbas);
 ok($dbas->[0]->species()=~m/$pattern/i,"Name $pattern match");
 
 my $acc = "U00096";
-my $dba = $helper->get_by_accession($acc);
+my ($dba) = $helper->get_by_accession($acc);
 ok(defined $dba,"Accession $acc match");
 
 $acc = "GCA_000005845";
