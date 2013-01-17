@@ -27,37 +27,6 @@ Bio::EnsEMBL::DBSQL::TaxonomyDBAdaptor
 
 Specialised DBAdaptor for connecting to the ncbi_taxonomy MySQL database
 
-=cut
-
-package Bio::EnsEMBL::DBSQL::TaxonomyDBAdaptor;
-
-use strict;
-use warnings;
-
-use base qw ( Bio::EnsEMBL::DBSQL::DBAdaptor );
-
-sub get_available_adaptors {
-    return {'TaxonomyNode' => 'Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor' };
-}
-
-sub new_public {
-    return Bio::EnsEMBL::DBSQL::TaxonomyDBAdaptor->new(
-                  -user   => 'anonymous',
-                  -dbname => 'ncbi_taxonomy',
-                  -host   => 'mysql-eg-ena-publicsql.ebi.ac.uk',
-                  -port   => 4364 );
-}
-
-1;
-
-__END__
-
-=pod
-
-=head1 NAME
-
-Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor
-
 =head1 SYNOPSIS
 
 #create an adaptor (Registry cannot be used currently)
@@ -74,19 +43,6 @@ my $node_adaptor = $tax_dba->get_TaxonomyNodeAdaptor();
 A specialised DBAdaptor allowing connection to an ncbi_taxonomy database. 
 Can be used to retrieve an instance of Bio::EnsEMBL::DBSQL::TaxonomyAdaptor.
 
-=head1 SUBROUTINES/METHODS
-
-=head2 get_available_adaptors	
-
-	Description	: Retrieve all adaptors supported by this database
-	Returns		: Hash of adaptor modules by name
-	
-=head2 get_TaxonomyNodeAdaptor
-	
-	Description	: Retrieve an adaptor for working with the taxonomy database referred to by this instance. 
-	Returns		: Instance of Bio::EnsEMBL::DBSQL::TaxonomyAdaptor
-	Note		: Method invoked by AUTOLOAD method on Bio::EnsEMBL::DBSQL::DBAdaptor
-
 =head1 AUTHOR
 
 dstaines
@@ -98,4 +54,40 @@ $Author$
 =head1 VERSION
 
 $Revision$
-=cut							  
+=cut		
+
+package Bio::EnsEMBL::DBSQL::TaxonomyDBAdaptor;
+
+use strict;
+use warnings;
+
+use base qw ( Bio::EnsEMBL::DBSQL::DBAdaptor );
+
+=head1 SUBROUTINES/METHODS
+
+=head2 get_available_adaptors	
+
+	Description	: Retrieve all adaptors supported by this database
+	Returns		: Hash of adaptor modules by name
+=cut
+
+sub get_available_adaptors {
+  return {'TaxonomyNode' => 'Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor'};
+}
+
+=head2 new_public	
+
+	Description	: Build a new adaptor from the public database
+	Returns		: Bio::EnsEMBL::DBSQL::TaxonomyDBAdaptor
+=cut
+
+sub new_public {
+  return
+	Bio::EnsEMBL::DBSQL::TaxonomyDBAdaptor->new(-user   => 'anonymous',
+												-dbname => 'ncbi_taxonomy',
+												-host   => 'mysql.ebi.ebi.ac.uk',
+												-port   => 4157);
+}
+
+1;
+
