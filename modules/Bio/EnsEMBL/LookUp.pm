@@ -522,7 +522,7 @@ sub dba_to_args {
 			  -host            => $dbc->host(),
 			  -port            => $dbc->port(),
 			  -user            => $dbc->username(),
-			  -password        => $dbc->password(),
+			  -pass	           => $dbc->password(),
 			  -driver          => $dbc->driver(),
 			  -dbname          => $dbc->dbname()];
   return $args;
