@@ -469,7 +469,7 @@ sub _load_registry_from_json {
 													 -host     => $dbc_h->{host},
 													 -port     => $dbc_h->{port},
 													 -user     => $dbc_h->{username},
-													 -password => $dbc_h->{password},
+													 -pass	   => $dbc_h->{password},
 													 -dbname   => $dbc_h->{dbname});
 	for my $species (@{$dbc_h->{species}}) {
 	  my $dba = Bio::EnsEMBL::DBSQL::DBAdaptor->new(-DBCONN          => $dbc,
