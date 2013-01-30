@@ -85,7 +85,7 @@ sub new_public {
   return
 	Bio::EnsEMBL::DBSQL::TaxonomyDBAdaptor->new(-user   => 'anonymous',
 												-dbname => 'ncbi_taxonomy',
-												-host   => 'mysql.ebi.ebi.ac.uk',
+												-host   => 'mysql.ebi.ac.uk',
 												-port   => 4157);
 }
 
