@@ -143,7 +143,7 @@ my $default_cache_file = qw/lookup_cache.json/;
   Arg [-REGISTRY]   : (optional) Registry module to use (default is Bio::EnsEMBL::Registry)
   Arg [-NO_CACHE]   : (optional) int 1
                This option will turn off the use of a local cache file for storing species details
-  Arg [-CACHE_FILE] : (optional) String (default .ena_registry_cache.json)
+  Arg [-CACHE_FILE] : (optional) String (default lookup_cache.json)
   				This option allows use of a user specified local cache file
   Arg [-URL]		: (optional) 
               This option allows the use of a remote resource supplying species details in JSON format. This is not used if a local cache exists and -NO_CACHE is not set
