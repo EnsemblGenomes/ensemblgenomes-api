@@ -13,7 +13,7 @@ my $helper = Bio::EnsEMBL::LookUp->new(-URL=>$conf->{ena_url},-NO_CACHE=>1);
 
 ok(defined $helper, "Helper object from url exists");
 
-my $dbas = $helper->registry()->get_all();
+my $dbas = $helper->get_all();
 diag("Found ".scalar @$dbas);
 my $taxid= 388919;
 $dbas = $helper->get_all_by_taxon_id($taxid);
