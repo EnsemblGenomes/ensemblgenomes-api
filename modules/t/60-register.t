@@ -22,7 +22,8 @@ print localtime."\n";
 ok(defined $helper, "Helper object exists");
 ok(-e $helper->cache_file(),"Checking for cache");
 print localtime."\n";
-my $dbas = $helper->registry()->get_all_DBAdaptors();
+#my $dbas = $helper->registry()->get_all_DBAdaptors();
+my $dbas = $helper->get_all();
 diag("Found ".scalar @$dbas);
 
 my $taxid= 511145;
@@ -60,7 +61,7 @@ diag("Found ".scalar @$dbas);
 ok($dbas->[0]->species()=~m/$pattern/i,"Name $pattern match");
 
 my $acc = "U00096";
-my ($dba) = $helper->get_by_accession($acc);
+my ($dba) = $helper->get_all_by_accession($acc);
 ok(defined $dba,"Accession $acc match");
 
 $acc = "GCA_000005845";

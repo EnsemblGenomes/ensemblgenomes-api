@@ -8,6 +8,7 @@ my $helper = Bio::EnsEMBL::LookUp->new(-FILE=>"reg.json",-NO_CACHE=>1);
 ok(defined $helper, "Helper object from file exists");
 
 my $dbas = $helper->get_all();
+diag("Found ".scalar @$dbas);
 my $dbas2 = $helper->registry()->get_all_DBAdaptors();
 ok(scalar @$dbas == scalar @$dbas2,"Expected number of DBAs in registry and helper");
 my $taxid= 388919;
