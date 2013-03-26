@@ -169,7 +169,7 @@ sub new {
   $self->{dbas_by_vacc}  = {};
   $self->{dbas_by_gc}    = {};
   $self->{dbas_by_vgc}   = {};
-  $self->{dbas}          = [];
+  $self->{dbas}          = {};
   $self->{dbc_meta}      = {};
   $cache_file ||= $default_cache_file;
   $self->cache_file($cache_file);
@@ -231,14 +231,15 @@ sub cache_file {
 
 =head2  update_from_registry
 	Description : Update internal hashes of database adaptors by name/taxids from the registry. Invoke when registry has been updated independently.
+	Argument 	: (optional) If set to 1, do not update from a DBAdaptor if already processed (allows updates of an existing LookUp instance)
 	Exceptions  : None
 =cut
 
 sub update_from_registry {
-  my ($self) = @_;
+  my ($self, $update_only) = @_;
   $self->_intern_db_connections();
   for my $dba (@{$self->registry()->get_all_DBAdaptors(-group => 'core')}) {
-	$self->_hash_dba($dba);
+	$self->_hash_dba($dba, $update_only);
   }
   return;
 }
@@ -254,6 +255,11 @@ sub _register_dba {
   $self->registry()->add_DBAdaptor($species, "core", $dba);
   $self->_hash_dba($dba);
   return;
+}
+
+sub _dba_id {
+  my ($self, $dba) = @_;
+  return $dba->dbc()->dbname() . '/' . $dba->species_id();
 }
 
 sub _get_dbc_meta {
@@ -307,13 +313,17 @@ sub _get_dbc_meta {
 =head2 _hash_dba
 	Description : Add details from a DBAdaptor to the internal hashes of details
 	Argument	: Bio::EnsEMBL::DBAdaptor
+	Argument 	: (optional) If set to 1, do not update from a DBAdaptor if already processed (allows updates of an existing LookUp instance)
 =cut
 
 sub _hash_dba {
-  my ($self, $dba) = @_;
-  my $dbc_meta = $self->_get_dbc_meta($dba->dbc());
-  my $dba_meta = $dbc_meta->{$dba->species_id()};
-  $self->_hash_dba_from_values($dba, [$dba_meta->{taxid}], $dba_meta->{aliases}, $dba_meta->{accessions}, $dba_meta->{assembly_accession});
+  my ($self, $dba, $update_only) = @_;
+  my $nom = $self->_dba_id($dba);
+  if (!defined $update_only || !defined $self->{dbas}{$nom}) {
+	my $dbc_meta = $self->_get_dbc_meta($dba->dbc());
+	my $dba_meta = $dbc_meta->{$dba->species_id()};
+	$self->_hash_dba_from_values($dba, [$dba_meta->{taxid}], $dba_meta->{aliases}, $dba_meta->{accessions}, $dba_meta->{assembly_accession});
+  }
   return;
 }
 
@@ -329,7 +339,9 @@ sub _hash_dba_from_values {
   my ($self, $dba, $taxids, $aliases, $accessions, $vgc) = @_;
 
   for my $taxid (@{$taxids}) {
-	push @{$self->{dbas_by_taxid}{$taxid}}, $dba;
+      if(defined $taxid) {
+	  push @{$self->{dbas_by_taxid}{$taxid}}, $dba;
+      }
   }
   for my $name (uniq(@{$aliases})) {
 	push @{$self->{dbas_by_name}{$name}}, $dba;
@@ -350,7 +362,7 @@ sub _hash_dba_from_values {
 	}
 	$self->{dbas_by_gc}{$vgc} = $dba;
   }
-  push @{$self->{dbas}}, $dba;
+  $self->{dbas}{$self->_dba_id($dba)} = $dba;
   return;
 } ## end sub _hash_dba_from_values
 
@@ -379,7 +391,7 @@ sub _registry_to_hash {
   # hash dbcs and dbas by locators
   my $dbc_hash;
   my $dba_hash;
-  for my $dba (@{$self->{dbas}}) {
+  for my $dba (values %{$self->{dbas}}) {
 	my $dbc_loc = _dbc_to_locator($dba->dbc());
 	$dbc_hash->{$dbc_loc} = $dba->dbc();
 	push @{$dba_hash->{$dbc_loc}}, $dba;
@@ -465,12 +477,12 @@ sub _load_registry_from_json {
   my ($self, $json) = @_;
   my $reg_arr = decode_json($json);
   for my $dbc_h (@{$reg_arr}) {
-	my $dbc = Bio::EnsEMBL::DBSQL::DBConnection->new(-driver   => $dbc_h->{driver},
-													 -host     => $dbc_h->{host},
-													 -port     => $dbc_h->{port},
-													 -user     => $dbc_h->{username},
-													 -pass	   => $dbc_h->{password},
-													 -dbname   => $dbc_h->{dbname});
+	my $dbc = Bio::EnsEMBL::DBSQL::DBConnection->new(-driver => $dbc_h->{driver},
+													 -host   => $dbc_h->{host},
+													 -port   => $dbc_h->{port},
+													 -user   => $dbc_h->{username},
+													 -pass   => $dbc_h->{password},
+													 -dbname => $dbc_h->{dbname});
 	for my $species (@{$dbc_h->{species}}) {
 	  my $dba = Bio::EnsEMBL::DBSQL::DBAdaptor->new(-DBCONN          => $dbc,
 													-species         => $species->{species},
@@ -522,7 +534,7 @@ sub dba_to_args {
 			  -host            => $dbc->host(),
 			  -port            => $dbc->port(),
 			  -user            => $dbc->username(),
-			  -pass	           => $dbc->password(),
+			  -pass            => $dbc->password(),
 			  -driver          => $dbc->driver(),
 			  -dbname          => $dbc->dbname()];
   return $args;
@@ -602,7 +614,7 @@ sub get_all_DBConnections {
 
 sub get_all {
   my ($self) = @_;
-  return $self->{dbas};
+  return [values %{$self->{dbas}}];
 }
 
 sub get_all_by_taxon_branch {
