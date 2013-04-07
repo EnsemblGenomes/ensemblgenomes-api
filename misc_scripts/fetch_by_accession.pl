@@ -44,10 +44,10 @@ use Bio::EnsEMBL::LookUp;
 print "Building helper\n";
 my $helper =
   Bio::EnsEMBL::LookUp->new(
-						-URL => "http://demo2.ensemblgenomes.org/registry.json",
+						-URL => "http://bacteria.ensembl.org/registry.json",
 						-NO_CACHE => 1 );
 my $acc = 'U00096';
 print "Getting DBA for $acc\n";
-my $dba   = $helper->get_by_accession($acc);
+my ($dba)   = @{$helper->get_all_by_accession($acc)};
 my $genes = $dba->get_GeneAdaptor()->fetch_all();
 print "Found " . scalar @$genes . " genes for " . $dba->species() . "\n";

@@ -42,10 +42,10 @@ use strict;
 use warnings;
 use Bio::EnsEMBL::LookUp;
 print "Building helper\n";
-my $helper = Bio::EnsEMBL::LookUp->new(-URL=>"http://demo2.ensemblgenomes.org/registry.json",-NO_CACHE=>1);
+my $helper = Bio::EnsEMBL::LookUp->new(-URL=>"http://bacteria.ensembl.org/registry.json",-NO_CACHE=>1);
 
 print "Getting DBAs for escherichia_coli_.*\n";
-my @dbas = @{$helper->get_by_name_pattern('escherichia_coli.*')};   
+my @dbas = @{$helper->get_all_by_name_pattern('escherichia_coli.*')};   
 for my $dba (@dbas) {
 	# work with DBA as normal
 	my $genes = $dba->get_GeneAdaptor()->fetch_all();

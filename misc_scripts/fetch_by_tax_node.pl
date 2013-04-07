@@ -46,14 +46,14 @@ use Bio::EnsEMBL::DBSQL::DBAdaptor;
 use Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor;
 
 print "Building helper\n";
-my $helper = Bio::EnsEMBL::LookUp->new(-URL=>"http://demo2.ensemblgenomes.org/registry.json",-NO_CACHE=>1);
+my $helper = Bio::EnsEMBL::LookUp->new(-URL=>"http://bacteria.ensembl.org/registry.json",-NO_CACHE=>1);
 
 print "Connecting to taxonomy DB\n";
 my $tax_dba =
   Bio::EnsEMBL::DBSQL::DBAdaptor->new( -user    => 'anonymous',
 									   -dbname  => 'ncbi_taxonomy',
-									   -host    => 'mysql-eg-ena-publicsql.ebi.ac.uk',
-									   -port    => 4364,
+									   -host    => 'mysql.ebi.ac.uk',
+									   -port    => 4157,
 									   -group   => 'taxonomy',
 									   -species => 'ena' );
 

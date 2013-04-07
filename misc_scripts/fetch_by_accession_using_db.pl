@@ -43,12 +43,12 @@ use strict;
 use warnings;
 use Bio::EnsEMBL::LookUp;
 print "Loading registry\n";
-Bio::EnsEMBL::LookUp->register_all_dbs( "mysql-eg-ena-publicsql.ebi.ac.uk", 4364, "anonymous","",'ena_[0-9]+_collection_core_112_67_1');
+Bio::EnsEMBL::LookUp->register_all_dbs( "mysql.ebi.ac.uk", 4157, "anonymous","",'bacteria_[0-9]+_collection_core_17_70_1');
 print "Building helper\n";
 my $helper =
   Bio::EnsEMBL::LookUp->new();
 my $acc = 'U00096';
 print "Getting DBA for $acc\n";
-my $dba   = $helper->get_by_accession($acc);
+my $dba   = $helper->fetch_all_by_accession($acc);
 my $genes = $dba->get_GeneAdaptor()->fetch_all();
 print "Found " . scalar @$genes . " genes for " . $dba->species() . "\n";

@@ -41,7 +41,7 @@ use strict;
 use warnings;
 use Bio::EnsEMBL::LookUp;
 print "Building helper\n";
-my $helper = Bio::EnsEMBL::LookUp->new(-URL=>"http://demo2.ensemblgenomes.org/registry.json",-NO_CACHE=>1);
+my $helper = Bio::EnsEMBL::LookUp->new(-URL=>"http://bacteria.ensembl.org/registry.json",-NO_CACHE=>1);
 
 my $nom = 'escherichia_coli_str_k_12_substr_mg1655';
 print "Getting DBA for $nom\n";

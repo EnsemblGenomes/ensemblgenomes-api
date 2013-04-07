@@ -43,7 +43,7 @@ use Bio::EnsEMBL::LookUp;
 print "Building helper\n";
 my $helper =
   Bio::EnsEMBL::LookUp->new(
-						-URL => "http://demo2.ensemblgenomes.org/registry.json",
+						-URL => "http://bacteria.ensembl.org/registry.json",
 						-NO_CACHE => 1 );
 
 my $acc = 'GCA_000005845';
