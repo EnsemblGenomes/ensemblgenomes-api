@@ -598,11 +598,28 @@ sub get_all_DBConnections {
   my ($self) = @_;
   my $adaptors = $self->registry()->get_all_DBAdaptors();
   my %dbcs;
-  foreach my $dba (@{$adaptors}) {
+  foreach my $dba (values %{$self->{dbas}}) {
 	my $dbc = $dba->dbc();
 	$dbcs{_dbc_to_locator($dbc)} = $dbc;
   }
   return [values %dbcs];
+}
+
+=head2 get_all_dbnames
+	Description : Return all database names used by the DBAs retrieved from the registry
+	Argument    : None
+	Exceptions  : None
+	Return type : Arrayref of strings
+=cut
+
+sub get_all_dbnames {
+  my ($self) = @_;
+  my %dbnames;
+  foreach my $dba (values %{$self->{dbas}}) {
+	my $dbc = $dba->dbc();
+	$dbnames{$dbc->dbname}++;
+  }
+  return [keys %dbnames];
 }
 
 =head2 get_all
@@ -703,6 +720,28 @@ sub get_all_by_name_pattern {
 	}
   }
   return [values(%dbas)];
+}
+
+=head2 get_all_by_dbname
+	Description : Returns all database adaptors that have the supplied dbname
+	Argument    : String
+	Exceptions  : None
+	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
+=cut
+
+sub get_all_by_dbname {
+  my ($self, $dbname) = @_;
+  
+  my @filtered_dbas;
+  
+  my $all = $self->get_all();
+  foreach my $dba (values %{$self->{dbas}}) {
+    if($dba->dbc->dbname eq $dbname) {
+      push @filtered_dbas, $dba;
+    }
+  }
+  
+  return \@filtered_dbas;
 }
 
 =head2 get_all_taxon_ids
