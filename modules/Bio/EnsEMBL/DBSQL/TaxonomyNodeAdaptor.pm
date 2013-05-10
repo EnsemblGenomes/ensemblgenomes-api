@@ -163,7 +163,7 @@ my $base_sql = q{select n.taxon_id, n.parent_id, n.rank, n.root_id, n.left_index
 
 =head2 fetch_by_coredbadaptor
 
-Description : Fetch a single node corresponding to the taxonomy ID found in the supplied Ensembl DBAdaptor
+Description : Fetch a single node corresponding to the taxonomy ID found in the supplied Ensembl DBAdaptor. Warning: Passing 2 different DBAs with the same taxid will yield two distinct Node objects which will need merging! COnsider using fetch_by_coredbadaptors instead.
 Argument    : Bio::EnsEMBL::DBSQL::DBAdaptor
 Return type : Bio::EnsEMBL::TaxonomyNode
 =cut
@@ -182,12 +182,43 @@ sub fetch_by_coredbadaptor {
   return $node;
 }
 
+=head2 fetch_by_coredbadaptors
+
+Description : Fetch an array of nodes corresponding to the taxonomy IDs found in the supplied Ensembl DBAdaptors.
+Argument    : Bio::EnsEMBL::DBSQL::DBAdaptor
+Return type : Arrayref of Bio::EnsEMBL::TaxonomyNode
+=cut
+
+sub fetch_by_coredbadaptors {
+  my ($self, $core_dbas) = @_;
+  my $nodes_by_taxa = {};
+  for my $core_dba (@$core_dbas) {
+	my $taxid = $core_dba->get_MetaContainer()->get_taxonomy_id();
+	if (!defined $taxid) {
+	  throw("Could not find taxonomy ID for database " . $core_dba->species());
+	}
+	my $node = $nodes_by_taxa->{$taxid};
+	if (!defined $node) {
+	  $node = $self->fetch_by_taxon_id($taxid);
+	  if (!$node) {
+		warn "Could not find taxonomy node for " . $core_dba->species() . " with taxonomy ID $taxid";
+		$nodes_by_taxa->{$taxid} = $node;
+	  }
+	}
+	if (defined $node) {
+	  push @{$node->dba()}, $core_dba;
+	}
+  }
+  return values(%$nodes_by_taxa);
+}
+
 =head2 fetch_by_taxon_id
 
 Description : Fetch a single node corresponding to the supplied taxon ID.
 Argument    : Int
 Return type : Bio::EnsEMBL::TaxonomyNode
 =cut
+
 sub fetch_by_taxon_id {
   my ($self, $taxon_id) = @_;
   my $node = $self->helper()->execute_into_hash(-SQL      => $base_sql . q{ where taxon_id = ?},
