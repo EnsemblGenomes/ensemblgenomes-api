@@ -200,8 +200,9 @@ sub fetch_by_coredbadaptors {
 	my $node = $nodes_by_taxa->{$taxid};
 	if (!defined $node) {
 	  $node = $self->fetch_by_taxon_id($taxid);
-	  if (!$node) {
+	  if (!defined $node) {
 		warn "Could not find taxonomy node for " . $core_dba->species() . " with taxonomy ID $taxid";
+	  } else {
 		$nodes_by_taxa->{$taxid} = $node;
 	  }
 	}
@@ -209,7 +210,7 @@ sub fetch_by_coredbadaptors {
 	  push @{$node->dba()}, $core_dba;
 	}
   }
-  return values(%$nodes_by_taxa);
+  return [values(%$nodes_by_taxa)];
 }
 
 =head2 fetch_by_taxon_id
