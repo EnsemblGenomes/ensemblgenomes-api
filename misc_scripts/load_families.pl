@@ -141,7 +141,7 @@ my $compara_dba =
   Bio::EnsEMBL::Compara::DBSQL::DBAdaptor->new( -url     => $compara_url,
                                                 -species => 'Multi' );
 my $genome_dba = $compara_dba->get_GenomeDBAdaptor();
-my $member_dba = $compara_dba->get_MemberAdaptor();
+my $member_dba = $compara_dba->get_GeneMemberAdaptor();
 my $family_dba = $compara_dba->get_FamilyAdaptor();
 
 my $genome_dbs;  # arrayref
