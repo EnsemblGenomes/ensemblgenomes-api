@@ -293,6 +293,7 @@ sub _get_dbc_meta {
 		my @row = @{shift @_};
 		$self->{dbc_meta}{$name}{$row[0]}{assembly_accession} = $row[1];
 	  });
+	  
 	# seq_region_names and synonyms
 	$dbc->sql_helper()->execute(
 	  -SQL => q/select cs.species_id,sr.name,ss.synonym from coord_system cs 
@@ -826,8 +827,17 @@ sub register_all_dbs {
   if (!$regexp) {
 	$regexp = '_collection_core_[0-9]+_' . software_version() . '_[0-9]+';
   }
+
+  if(!defined $host) {
+      croak "Host must be supplied for registration of databases";
+  }
+  
+  if(!defined $port) {
+      croak "Port must be supplied for registration of databases on host $host";
+  }
+  
   my $str = "DBI:mysql:host=$host;port=$port";
-  my $dbh = DBI->connect($str, $user, $pass);
+  my $dbh = DBI->connect($str, $user, $pass) || croak "Could not connect to database $str (user=$user, pass=$pass)";      
 
   my @dbnames =
 	grep { m/$regexp/xi }
