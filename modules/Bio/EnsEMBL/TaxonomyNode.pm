@@ -356,6 +356,27 @@ sub distance_to_node {
   return $self->adaptor()->distance_between_nodes($self, $node);
 }
 
+=head2 has_ancestor
+Description : Test if the ancestors of this node include the supplied node
+Argument : Putative ancestor
+Return: 1 if the supplied node is an ancestor of this node
+=cut
+
+sub has_ancestor {
+  my ($self,$node) = @_;
+	my $has_ancestor = 0;
+	if(!defined $self->{ancestors}) {
+		$self->{ancestors} = $self->adaptor()->fetch_ancestors($self);
+	}
+	for my $ancestor (@{$self->{ancestors}}) {
+		if($ancestor->taxon_id eq $node->taxon_id()) {
+			$has_ancestor = 1;
+			last;
+		}
+	}
+  return $has_ancestor;
+}
+
 =head2 to_string
 Description : Return simple string representation of node
 Argument : (Optional) name_class to display (default is 'scientific name')
@@ -382,6 +403,7 @@ sub to_tree_string {
 	});
   return $str;
 }
+
 
 1;
 
