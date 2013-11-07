@@ -497,6 +497,24 @@ sub fetch_ancestors {
 		  values %{$nodes}];
 }
 
+=head2 node_has_ancestor
+
+Description : Find if one node has another as an ancestor
+Argument    : Bio::EnsEMBL::TaxonomyNode or ID of desired node
+Argument    : Bio::EnsEMBL::TaxonomyNode or ID of ancestor
+Return type : 1 if ancestor 
+=cut
+
+sub node_has_ancestor {
+  my ($self, $node, $ancestor) = @_;
+ return $self->helper()->execute_single_result(
+	-SQL =>
+	  q/select count(*) from ncbi_taxa_node n join ncbi_taxa_node child
+									 		on (child.left_index between n.left_index and n.right_index and n.taxon_id<>child.taxon_id)
+											where child.taxon_id=? and n.taxon_id=?/,
+	-PARAMS => [_get_node_id($node), _get_node_id($ancestor)]);
+}
+
 =head2 fetch_descendants_offset
 
 Description : Fetch an array of nodes below the node the specified number of levels on the tree above the specified node

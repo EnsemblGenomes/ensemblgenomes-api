@@ -364,17 +364,19 @@ Return: 1 if the supplied node is an ancestor of this node
 
 sub has_ancestor {
   my ($self,$node) = @_;
-	my $has_ancestor = 0;
-	if(!defined $self->{ancestors}) {
-		$self->{ancestors} = $self->adaptor()->fetch_ancestors($self);
-	}
-	for my $ancestor (@{$self->{ancestors}}) {
-		if($ancestor->taxon_id eq $node->taxon_id()) {
-			$has_ancestor = 1;
-			last;
-		}
-	}
-  return $has_ancestor;
+#	my $has_ancestor = 0;
+#	if(!defined $self->{ancestors}) {
+#		$self->{ancestors} = $self->adaptor()->fetch_ancestors($self);
+#	}
+#	for my $ancestor (@{$self->{ancestors}}) {
+#		if($ancestor->taxon_id eq $node->taxon_id()) {
+#			$has_ancestor = 1;
+#			last;
+#		}
+#	}
+#  return $has_ancestor;
+#  
+  return $self->adaptor()->node_has_ancestor($self,$node);
 }
 
 =head2 to_string
