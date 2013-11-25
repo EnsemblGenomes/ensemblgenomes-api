@@ -824,6 +824,7 @@ sub get_all_versioned_assemblies {
 
 sub register_all_dbs {
   my ($class, $host, $port, $user, $pass, $regexp) = @_;
+  
   if (!$regexp) {
 	$regexp = '_collection_core_[0-9]+_' . software_version() . '_[0-9]+';
   }
@@ -844,10 +845,41 @@ sub register_all_dbs {
 	map  { $_->[0] } @{$dbh->selectall_arrayref('SHOW DATABASES')};
 
   for my $db (@dbnames) {
-	_register_multispecies_core($host, $port, $user, $pass, $db);
+  	if($db=~m/.*_collection_core_.*/) {
+		_register_multispecies_core($host, $port, $user, $pass, $db);
+  	} else {
+  		_register_singlespecies_core($host, $port, $user, $pass, $db);
+  	}
   }
   return;
 }
+
+
+=head2 _register_singlespecies_core
+	Description : Register core dbas for all species in the supplied database
+=cut
+
+sub _register_singlespecies_core {
+	my ($host,$port,$user,$pass,$db) = @_;
+	 my ( $species, $num ) =
+        ( $db =~ /(^[a-z]+_[a-z0-9]+(?:_[a-z0-9]+)?)  # species name
+                     _
+                     core                   # type
+                     _
+                     (?:\d+_)?               # optional endbit for ensembl genomes
+                     (\d+)                   # databases release
+                     _
+                      /x );
+	return Bio::EnsEMBL::DBSQL::DBAdaptor->new(
+	-HOST=>$host,
+	-PORT=>$port,
+	-USER=>$user,
+	-PASS=>$pass,
+	-DBNAME=>$db,
+	-SPECIES=>$species
+	);
+}
+
 
 =head2 _register_multispecies_core
 	Description : Register core dbas for all species in the supplied database
@@ -875,7 +907,6 @@ sub _register_multispecies_x {
   my %args = (_login_hash($host, $port, $user, $pass), '-DBNAME', $instance);
   my @species_array = @{_query_multispecies_db($species, %args)};
   my @dbas;
-
   foreach my $species_args (@species_array) {
 	my %new_args = (%args, %{$species_args}, '-MULTISPECIES_DB' => 1);
 	$new_args{-DISCONNECT_WHEN_INACTIVE} = 1 if $disconnect_when_idle;
