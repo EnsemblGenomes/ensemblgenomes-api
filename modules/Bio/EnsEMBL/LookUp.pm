@@ -122,12 +122,14 @@ use warnings;
 use strict;
 use Bio::EnsEMBL::ApiVersion;
 use Bio::EnsEMBL::Utils::ConfigRegistry;
+use Bio::EnsEMBL::DBSQL::TaxonomyDBAdaptor;
 use Bio::EnsEMBL::DBSQL::DBAdaptor;
 use Bio::EnsEMBL::Utils::Argument qw(rearrange);
 use Bio::EnsEMBL::Utils::Scalar qw(assert_ref check_ref);
 use Bio::EnsEMBL::Utils::Exception qw(throw warning);
 use List::MoreUtils qw(uniq);
-use Scalar::Util qw(weaken);    #Used to not hold a strong ref to DBConnection
+use Scalar::Util qw(weaken)
+  ;    #Used to not hold a strong ref to DBConnection
 use DBI;
 use JSON;
 use LWP::Simple;
@@ -149,6 +151,8 @@ my $default_cache_file = qw/lookup_cache.json/;
               This option allows the use of a remote resource supplying species details in JSON format. This is not used if a local cache exists and -NO_CACHE is not set
   Arg [-FILE]		: (optional) 
               This option allows the use of a file supplying species details in JSON format. This is not used if a local cache exists and -NO_CACHE is not set
+  Arg [-TAXONOMY_ADAPTOR]		: (optional) 
+              This option allows a taxonomy node adaptor to passed in for use with get_all_by_parent_taxon_id
   Returntype        : Instance of lookup
   Status            : Stable
 
@@ -159,7 +163,12 @@ my $default_cache_file = qw/lookup_cache.json/;
 
 sub new {
   my ($class, @args) = @_;
-  my ($reg, $url, $file, $nocache, $cache_file, $clear_cache) = rearrange([qw(registry url file no_cache cache_file clear_cache)], @args);
+  my ($reg, $url, $file, $nocache, $cache_file, $clear_cache,
+	  $taxonomy_dba)
+	= rearrange(
+	 [qw(registry url file no_cache cache_file clear_cache taxonomy_dba)
+	 ],
+	 @args);
   if (!defined $reg) { $reg = 'Bio::EnsEMBL::Registry' }
   my $self = bless({}, ref($class) || $class);
   $self->{registry}      = $reg;
@@ -171,6 +180,7 @@ sub new {
   $self->{dbas_by_vgc}   = {};
   $self->{dbas}          = {};
   $self->{dbc_meta}      = {};
+  $self->taxonomy_adaptor($taxonomy_dba);
   $cache_file ||= $default_cache_file;
   $self->cache_file($cache_file);
 
@@ -182,9 +192,11 @@ sub new {
   }
   if (defined $file) {
 	$self->load_registry_from_file($file);
-  } elsif (defined $url) {
+  }
+  elsif (defined $url) {
 	$self->load_registry_from_url($url);
-  } else {
+  }
+  else {
 	$self->update_from_registry();
   }
   if (!$nocache && !-e $cache_file) {
@@ -192,6 +204,29 @@ sub new {
   }
   return $self;
 } ## end sub new
+
+=head2 taxonomy_adaptor
+
+  Arg [1]     : Registry module to use (default is Bio::EnsEMBL::Registry)
+  Description : Sets and retrieves the Registry 
+  Returntype  : Registry if set; otherwise undef
+  Exceptions  : if an attempt is made to set the value more than once
+  Status      : Stable
+=cut
+
+sub taxonomy_adaptor {
+  my ($self, $taxonomy_dba) = @_;
+  if (defined $taxonomy_dba) {
+	assert_ref($taxonomy_dba,
+			   "Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor");
+	$self->{taxonomy_dba} = $taxonomy_dba;
+  }
+  if (!defined $self->{taxonomy_dba}) {
+	my $tax_dba = Bio::EnsEMBL::DBSQL::TaxonomyDBAdaptor->new_public();
+	$self->{taxonomy_dba} = $tax_dba->get_TaxonomyNodeAdaptor();
+  }
+  return $self->{taxonomy_dba};
+}
 
 =head2 registry
 
@@ -238,7 +273,9 @@ sub cache_file {
 sub update_from_registry {
   my ($self, $update_only) = @_;
   $self->_intern_db_connections();
-  for my $dba (@{$self->registry()->get_all_DBAdaptors(-group => 'core')}) {
+  for
+	my $dba (grep {$_->dbc()->dbname() =~ /_core_/} @{$self->registry()->get_all_DBAdaptors(-group => 'core')})
+  {
 	$self->_hash_dba($dba, $update_only);
   }
   return;
@@ -271,7 +308,8 @@ sub _get_dbc_meta {
 	# taxid
 
 	$dbc->sql_helper()->execute(
-	  -SQL      => q/select species_id,meta_value from meta where meta_key='species.taxonomy_id'/,
+	  -SQL =>
+q/select species_id,meta_value from meta where meta_key='species.taxonomy_id'/,
 	  -PARAMS   => [],
 	  -CALLBACK => sub {
 		my $row = shift @_;
@@ -279,7 +317,8 @@ sub _get_dbc_meta {
 	  });
 	# aliases
 	$dbc->sql_helper()->execute(
-	  -SQL      => 'select species_id,meta_value from meta where meta_key=\'species.alias\'',
+	  -SQL =>
+'select species_id,meta_value from meta where meta_key=\'species.alias\'',
 	  -PARAMS   => [],
 	  -CALLBACK => sub {
 		my @row = @{shift @_};
@@ -287,16 +326,18 @@ sub _get_dbc_meta {
 	  });
 	# assembly.accession
 	$dbc->sql_helper()->execute(
-	  -SQL      => 'select species_id,meta_value from meta where meta_key=\'assembly.accession\'',
+	  -SQL =>
+'select species_id,meta_value from meta where meta_key=\'assembly.accession\'',
 	  -PARAMS   => [],
 	  -CALLBACK => sub {
 		my @row = @{shift @_};
 		$self->{dbc_meta}{$name}{$row[0]}{assembly_accession} = $row[1];
 	  });
-	  
+
 	# seq_region_names and synonyms
 	$dbc->sql_helper()->execute(
-	  -SQL => q/select cs.species_id,sr.name,ss.synonym from coord_system cs 
+	  -SQL =>
+		q/select cs.species_id,sr.name,ss.synonym from coord_system cs 
 	  join seq_region sr using (coord_system_id) 
 	  left join seq_region_synonym ss using (seq_region_id)/,
 	  -PARAMS   => [],
@@ -304,7 +345,8 @@ sub _get_dbc_meta {
 		my @row = @{shift @_};
 		push @{$self->{dbc_meta}{$name}{$row[0]}{accessions}}, $row[1];
 		if (defined $row[2]) {
-		  push @{$self->{dbc_meta}{$name}{$row[0]}{accessions}}, $row[2];
+		  push @{$self->{dbc_meta}{$name}{$row[0]}{accessions}},
+			$row[2];
 		}
 	  });
   } ## end if (!defined $self->{dbc_meta...})
@@ -323,7 +365,11 @@ sub _hash_dba {
   if (!defined $update_only || !defined $self->{dbas}{$nom}) {
 	my $dbc_meta = $self->_get_dbc_meta($dba->dbc());
 	my $dba_meta = $dbc_meta->{$dba->species_id()};
-	$self->_hash_dba_from_values($dba, [$dba_meta->{taxid}], $dba_meta->{aliases}, $dba_meta->{accessions}, $dba_meta->{assembly_accession});
+	$self->_hash_dba_from_values($dba,
+								 [$dba_meta->{taxid}],
+								 $dba_meta->{aliases},
+								 $dba_meta->{accessions},
+								 $dba_meta->{assembly_accession});
   }
   return;
 }
@@ -340,9 +386,9 @@ sub _hash_dba_from_values {
   my ($self, $dba, $taxids, $aliases, $accessions, $vgc) = @_;
 
   for my $taxid (@{$taxids}) {
-      if(defined $taxid) {
+	if (defined $taxid) {
 	  push @{$self->{dbas_by_taxid}{$taxid}}, $dba;
-      }
+	}
   }
   for my $name (uniq(@{$aliases})) {
 	push @{$self->{dbas_by_name}{$name}}, $dba;
@@ -418,8 +464,8 @@ sub _registry_to_hash {
 	  if (ref $gc eq 'ARRAY') {
 		$gc = $gc->[0];
 	  }
-	  push @{$dbc_h->{species}}, {
-		 species_id => $dba->species_id(),
+	  push @{$dbc_h->{species}},
+		{species_id => $dba->species_id(),
 		 species    => $dba->species(),
 		 taxids     => $taxid_hash->{$dba_loc},
 		 aliases    => $name_hash->{$dba_loc},
@@ -437,7 +483,8 @@ sub _registry_to_json {
   my $json;
   if ($out_arr) {
 	$json = encode_json($out_arr);
-  } else {
+  }
+  else {
 	carp('No DBAs found');
   }
   return $json;
@@ -453,8 +500,8 @@ sub write_registry_to_file {
   my ($self, $file) = @_;
   my $json = $self->_registry_to_json();
   if ($json) {
-	open(my $fh, '>', $file)
-	  || croak "Cannot open '${file}' for writing: $!";
+	open(my $fh, '>', $file) ||
+	  croak "Cannot open '${file}' for writing: $!";
 	print $fh $json;
 	close($fh);
   }
@@ -478,24 +525,33 @@ sub _load_registry_from_json {
   my ($self, $json) = @_;
   my $reg_arr = decode_json($json);
   for my $dbc_h (@{$reg_arr}) {
-	my $dbc = Bio::EnsEMBL::DBSQL::DBConnection->new(-driver => $dbc_h->{driver},
-													 -host   => $dbc_h->{host},
-													 -port   => $dbc_h->{port},
-													 -user   => $dbc_h->{username},
-													 -pass   => $dbc_h->{password},
-													 -dbname => $dbc_h->{dbname});
+	my $dbc =
+	  Bio::EnsEMBL::DBSQL::DBConnection->new(
+											-driver => $dbc_h->{driver},
+											-host   => $dbc_h->{host},
+											-port   => $dbc_h->{port},
+											-user => $dbc_h->{username},
+											-pass => $dbc_h->{password},
+											-dbname => $dbc_h->{dbname}
+	  );
 	for my $species (@{$dbc_h->{species}}) {
-	  my $dba = Bio::EnsEMBL::DBSQL::DBAdaptor->new(-DBCONN          => $dbc,
-													-species         => $species->{species},
-													-species_id      => $species->{species_id},
-													-multispecies_db => 1,
-													-group           => 'core',);
+	  my $dba =
+		Bio::EnsEMBL::DBSQL::DBAdaptor->new(
+								  -DBCONN     => $dbc,
+								  -species    => $species->{species},
+								  -species_id => $species->{species_id},
+								  -multispecies_db => 1,
+								  -group           => 'core',);
 	  # no need to register - found automagically
 	  my $gc = $species->{gc};
 	  if (ref $gc eq 'ARRAY') { $gc = $gc->[0]; }
-	  $self->_hash_dba_from_values($dba, $species->{taxids}, $species->{aliases}, $species->{accessions}, $species->{gc});
+	  $self->_hash_dba_from_values($dba,
+								   $species->{taxids},
+								   $species->{aliases},
+								   $species->{accessions},
+								   $species->{gc});
 	}
-  }
+  } ## end for my $dbc_h (@{$reg_arr...})
   $self->_intern_db_connections();
   return;
 } ## end sub _load_registry_from_json
@@ -548,9 +604,11 @@ sub dba_to_args {
 
 sub _dba_to_locator {
   my ($dba) = @_;
-  confess("Argument must be Bio::EnsEMBL::DBSQL::DBAdaptor not " . ref($dba))
+  confess(
+	 "Argument must be Bio::EnsEMBL::DBSQL::DBAdaptor not " . ref($dba))
 	unless ref($dba) eq "Bio::EnsEMBL::DBSQL::DBAdaptor";
-  my $locator = join(q{!-!}, $dba->species_id(), _dbc_to_locator($dba->dbc()));
+  my $locator =
+	join(q{!-!}, $dba->species_id(), _dbc_to_locator($dba->dbc()));
   return $locator;
 }
 
@@ -561,7 +619,10 @@ sub _dba_to_locator {
 
 sub _dbc_to_locator {
   my ($dbc) = @_;
-  my $locator = join(q{!-!}, $dbc->host(), $dbc->dbname(), $dbc->driver(), $dbc->port(), $dbc->username());
+  my $locator = join(q{!-!},
+					 $dbc->host(),   $dbc->dbname(),
+					 $dbc->driver(), $dbc->port(),
+					 $dbc->username());
   return $locator;
 }
 
@@ -581,7 +642,8 @@ sub _intern_db_connections {
 	my $locator = _dbc_to_locator($dbc);
 	if (exists $dbc_intern{$locator}) {
 	  $dba->dbc($dbc_intern{$locator});
-	} else {
+	}
+	else {
 	  $dbc_intern{$locator} = $dba->dbc();
 	}
   }
@@ -639,21 +701,46 @@ sub get_all_by_taxon_branch {
   my ($self, $root) = @_;
   my @genomes = @{$self->get_all_by_taxon_id($root->taxon_id())};
   for my $node (@{$root->adaptor()->fetch_descendants($root)}) {
-	@genomes = (@genomes, @{$self->get_all_by_taxon_id($node->taxon_id())});
+	@genomes =
+	  (@genomes, @{$self->get_all_by_taxon_id($node->taxon_id())});
   }
   return \@genomes;
 }
 
 =head2 get_all_by_taxon_id
 	Description : Returns all database adaptors that have the supplied taxonomy ID
-	Argument    : Int
+	Argument    : Int (or instance of Bio::EnsEMBL::TaxonomyNode)
 	Exceptions  : None
 	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
 =cut
 
 sub get_all_by_taxon_id {
   my ($self, $id) = @_;
+  if (ref($id) eq 'Bio::EnsEMBL::TaxonomyNode') {
+	$id = $id->taxon_id();
+  }
   return $self->{dbas_by_taxid}{$id} || [];
+}
+
+=head2 get_all_by_parent_taxon_id
+	Description : Returns all database adaptors belonging to children of the supplied taxonomy ID
+	Argument    : Int (or instance of Bio::EnsEMBL::TaxonomyNode)
+	Argument    : Int - if set to 1, include the supplied node itself in the search
+	Exceptions  : None
+	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
+=cut
+
+sub get_all_by_parent_taxon_id {
+  my ($self, $node, $inc_parent) = @_;
+  my $nodes = $self->taxonomy_adaptor()->fetch_descendants($node);
+  if (defined $inc_parent && $inc_parent == 1) {
+	push @$nodes, $node;
+  }
+  my $dbas = [];
+  for my $n (@$nodes) {
+	push @$dbas, @{$self->get_all_by_taxon_id($n)};
+  }
+  return $dbas;
 }
 
 =head2 get_by_name_exact
@@ -732,16 +819,16 @@ sub get_all_by_name_pattern {
 
 sub get_all_by_dbname {
   my ($self, $dbname) = @_;
-  
+
   my @filtered_dbas;
-  
+
   my $all = $self->get_all();
   foreach my $dba (values %{$self->{dbas}}) {
-    if($dba->dbc->dbname eq $dbname) {
-      push @filtered_dbas, $dba;
-    }
+	if ($dba->dbc->dbname eq $dbname) {
+	  push @filtered_dbas, $dba;
+	}
   }
-  
+
   return \@filtered_dbas;
 }
 
@@ -824,62 +911,63 @@ sub get_all_versioned_assemblies {
 
 sub register_all_dbs {
   my ($class, $host, $port, $user, $pass, $regexp) = @_;
-  
+
   if (!$regexp) {
-	$regexp = '_collection_core_[0-9]+_' . software_version() . '_[0-9]+';
+	$regexp =
+	  '_collection_core_[0-9]+_' . software_version() . '_[0-9]+';
   }
 
-  if(!defined $host) {
-      croak "Host must be supplied for registration of databases";
+  if (!defined $host) {
+	croak "Host must be supplied for registration of databases";
   }
-  
-  if(!defined $port) {
-      croak "Port must be supplied for registration of databases on host $host";
+
+  if (!defined $port) {
+	croak
+"Port must be supplied for registration of databases on host $host";
   }
-  
+
   my $str = "DBI:mysql:host=$host;port=$port";
-  my $dbh = DBI->connect($str, $user, $pass) || croak "Could not connect to database $str (user=$user, pass=$pass)";      
+  my $dbh = DBI->connect($str, $user, $pass) ||
+	croak "Could not connect to database $str (user=$user, pass=$pass)";
 
   my @dbnames =
 	grep { m/$regexp/xi }
 	map  { $_->[0] } @{$dbh->selectall_arrayref('SHOW DATABASES')};
 
   for my $db (@dbnames) {
-  	if($db=~m/.*_collection_core_.*/) {
-		_register_multispecies_core($host, $port, $user, $pass, $db);
-  	} else {
-  		_register_singlespecies_core($host, $port, $user, $pass, $db);
-  	}
+	if ($db =~ m/.*_collection_core_.*/) {
+	  _register_multispecies_core($host, $port, $user, $pass, $db);
+	}
+	else {
+	  _register_singlespecies_core($host, $port, $user, $pass, $db);
+	}
   }
   return;
-}
-
+} ## end sub register_all_dbs
 
 =head2 _register_singlespecies_core
 	Description : Register core dbas for all species in the supplied database
 =cut
 
 sub _register_singlespecies_core {
-	my ($host,$port,$user,$pass,$db) = @_;
-	 my ( $species, $num ) =
-        ( $db =~ /(^[a-z]+_[a-z0-9]+(?:_[a-z0-9]+)?)  # species name
+  my ($host, $port, $user, $pass, $db) = @_;
+  my ($species, $num) = (
+	$db =~ /(^[a-z]+_[a-z0-9]+(?:_[a-z0-9]+)?)  # species name
                      _
                      core                   # type
                      _
                      (?:\d+_)?               # optional endbit for ensembl genomes
                      (\d+)                   # databases release
                      _
-                      /x );
-	return Bio::EnsEMBL::DBSQL::DBAdaptor->new(
-	-HOST=>$host,
-	-PORT=>$port,
-	-USER=>$user,
-	-PASS=>$pass,
-	-DBNAME=>$db,
-	-SPECIES=>$species
-	);
+                      /x);
+  return
+	Bio::EnsEMBL::DBSQL::DBAdaptor->new(-HOST    => $host,
+										-PORT    => $port,
+										-USER    => $user,
+										-PASS    => $pass,
+										-DBNAME  => $db,
+										-SPECIES => $species);
 }
-
 
 =head2 _register_multispecies_core
 	Description : Register core dbas for all species in the supplied database
@@ -901,10 +989,13 @@ sub _register_multispecies_core {
 
 sub _register_multispecies_x {
 
-  my ($adaptor, $closure, $host, $port, $user, $pass, $instance, $species, $alias_arr_ref, $disconnect_when_idle) = @_;
+  my ($adaptor, $closure, $host, $port, $user, $pass, $instance,
+	  $species, $alias_arr_ref, $disconnect_when_idle)
+	= @_;
   _runtime_include($adaptor);
   _check_name($instance);
-  my %args = (_login_hash($host, $port, $user, $pass), '-DBNAME', $instance);
+  my %args =
+	(_login_hash($host, $port, $user, $pass), '-DBNAME', $instance);
   my @species_array = @{_query_multispecies_db($species, %args)};
   my @dbas;
   foreach my $species_args (@species_array) {
@@ -932,18 +1023,20 @@ sub _query_multispecies_db {
 	my @params = ('species.db_name');
 
 	if (defined $species) {
-	  $sql = 'select meta_value, species_id from meta where meta_key =? and meta_value =?';
+	  $sql =
+'select meta_value, species_id from meta where meta_key =? and meta_value =?';
 	  push(@params, $species);
-	} else {
-	  $sql = 'select distinct meta_value, species_id from meta where meta_key =? and species_id is not null';
+	}
+	else {
+	  $sql =
+'select distinct meta_value, species_id from meta where meta_key =? and species_id is not null';
 	}
 	my $sth = $dbh->prepare($sql);
 	$sth->execute(@params);
 	while (my $row = $sth->fetchrow_arrayref()) {
 	  my ($species_name, $species_id) = @{$row};
-	  push(@species_array, {
-			'-SPECIES'    => $species_name,
-			'-SPECIES_ID' => $species_id});
+	  push(@species_array,
+		   {'-SPECIES' => $species_name, '-SPECIES_ID' => $species_id});
 	}
 	$sth->finish();
   };
@@ -965,8 +1058,9 @@ sub _add_aliases {
 	}
 
 	if (scalar(@{$alias_ref}) > 0) {
-	  Bio::EnsEMBL::Utils::ConfigRegistry->add_alias(-species => $species_name,
-													 -alias   => $alias_ref);
+	  Bio::EnsEMBL::Utils::ConfigRegistry->add_alias(
+											  -species => $species_name,
+											  -alias   => $alias_ref);
 	}
   }
   return;
@@ -980,8 +1074,8 @@ sub _add_aliases {
 sub _runtime_include {
   my ($full_module) = @_;
   ## no critic (ProhibitStringyEval)
-  eval "use ${full_module}"
-	|| throw("Cannot import module '${full_module}': $@")
+  eval "use ${full_module}" ||
+	throw("Cannot import module '${full_module}': $@")
 	if $@;
   ## use critic
   return;
@@ -996,7 +1090,9 @@ sub _check_name {
   #Throws a wobbly if the db name is longer than 64 characters
   my ($name) = @_;
   my $length = length($name);
-  throw("Invalid length for database name used. Max is 64. The name ${name}- was ${length}") if $length > 64;
+  throw(
+"Invalid length for database name used. Max is 64. The name ${name}- was ${length}"
+  ) if $length > 64;
   return;
 }
 
