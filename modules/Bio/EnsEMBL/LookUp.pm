@@ -136,9 +136,7 @@ use Bio::EnsEMBL::DBSQL::DBAdaptor;
 use Bio::EnsEMBL::Utils::Argument qw(rearrange);
 use Bio::EnsEMBL::Utils::Scalar qw(assert_ref check_ref);
 use Bio::EnsEMBL::Utils::Exception qw(throw warning);
-use List::MoreUtils qw(uniq);
-use Scalar::Util qw(weaken)
-  ;    #Used to not hold a strong ref to DBConnection
+use Scalar::Util qw(weaken);    #Used to not hold a strong ref to DBConnection
 use DBI;
 use JSON;
 use LWP::Simple;
@@ -1118,6 +1116,18 @@ sub _login_hash {
   my %details = (-HOST => $host, -PORT => $port, -USER => $user);
   $details{-PASS} = $pass if defined $pass;
   return %details;
+}
+
+sub uniq {
+    my @out = ();
+    my $keys = {};
+    for my $v (@_) {
+        if(!exists $keys->{$v}) {
+            push @out,$v;
+            $keys->{$v} = 1;
+        } 
+    }
+    return @out;
 }
 
 1;
