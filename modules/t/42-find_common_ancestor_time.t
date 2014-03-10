@@ -19,7 +19,6 @@ use Test::More;
 use Bio::EnsEMBL::TaxonomyNode;
 use Bio::EnsEMBL::DBSQL::TaxonomyDBAdaptor;
 use Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor;
-use Bio::EnsEMBL::DBSQL::TimeTreeAdaptor;
 
 my $conf_file = 'db.conf';
 
@@ -56,9 +55,5 @@ is ($n2->taxon_id(),11,'Checking node ID is as expected');
 diag($n2->to_string());
 $n2 = $node_adaptor->fetch_ancestor_by_rank($n2,"species");
 diag($n2->to_string());
-
-my $time_tree = Bio::EnsEMBL::DBSQL::TimeTreeAdaptor->new();
-my $x = $time_tree->get_time($n1,$n2);
-diag $x;
 
 done_testing;
