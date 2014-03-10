@@ -379,6 +379,41 @@ sub fetch_by_assembly_id {
 		  $self->_fetch_generic_with_args({'assembly_id', $id}, $keen));
 }
 
+=head2 fetch_by_taxonomy_id
+  Arg	     : Taxonomy ID
+  Arg        : (optional) if 1, expand children of genome info
+  Description: Fetch genome info for specified taxonomy node
+  Returntype : arrayref of Bio::EnsEMBL::Utils::MetaData::GenomeInfo
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub fetch_by_taxonomy_id {
+  my ($self, $id, $keen) = @_;
+  return 
+		  $self->_fetch_generic_with_args({'taxonomy_id', $id}, $keen);
+}
+
+=head2 fetch_by_taxonomy_branch
+  Arg	     : Bio::EnsEMBL::TaxonomyNode
+  Arg        : (optional) if 1, expand children of genome info
+  Description: Fetch genome info for specified taxonomy node and its children
+  Returntype : arrayref of Bio::EnsEMBL::Utils::MetaData::GenomeInfo
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+sub fetch_by_taxonomy_branch {
+  my ($self, $root, $keen) = @_;
+  my @genomes = @{$self->fetch_by_taxonomy_id($root->taxon_id())};
+  for my $node (@{$root->adaptor()->fetch_descendants($root)}) {
+	@genomes = (@genomes, @{$self->fetch_by_taxonomy_id($node->taxon_id(), $keen)});
+  }
+  return \@genomes;
+}
+
+
 =head2 fetch_by_division
   Arg	     : Name of division
   Arg        : (optional) if 1, expand children of genome info
@@ -440,8 +475,8 @@ sub fetch_by_name {
 sub fetch_by_name_pattern {
   my ($self, $name, $keen) = @_;
   return
-	$self->_fetch_generic($base_fetch_sql . q/ where name REGEXP ?/,
-						  [$name], $keen);
+	$self->_fetch_generic($base_fetch_sql . q/ where species REGEXP ? or name REGEXP ? /,
+						  [$name, $name], $keen);
 }
 
 =head2 fetch_by_alias
