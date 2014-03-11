@@ -391,8 +391,7 @@ sub fetch_by_assembly_id {
 
 sub fetch_by_taxonomy_id {
   my ($self, $id, $keen) = @_;
-  return 
-		  $self->_fetch_generic_with_args({'taxonomy_id', $id}, $keen);
+  return $self->_fetch_generic_with_args({'taxonomy_id', $id}, $keen);
 }
 
 =head2 fetch_by_taxonomy_branch
@@ -404,15 +403,17 @@ sub fetch_by_taxonomy_id {
   Caller     : general
   Status     : Stable
 =cut
+
 sub fetch_by_taxonomy_branch {
   my ($self, $root, $keen) = @_;
   my @genomes = @{$self->fetch_by_taxonomy_id($root->taxon_id())};
   for my $node (@{$root->adaptor()->fetch_descendants($root)}) {
-	@genomes = (@genomes, @{$self->fetch_by_taxonomy_id($node->taxon_id(), $keen)});
+	@genomes = (@genomes,
+				@{$self->fetch_by_taxonomy_id($node->taxon_id(), $keen)}
+	);
   }
   return \@genomes;
 }
-
 
 =head2 fetch_by_division
   Arg	     : Name of division
@@ -475,8 +476,9 @@ sub fetch_by_name {
 sub fetch_by_name_pattern {
   my ($self, $name, $keen) = @_;
   return
-	$self->_fetch_generic($base_fetch_sql . q/ where species REGEXP ? or name REGEXP ? /,
-						  [$name,$name], $keen);
+	$self->_fetch_generic(
+		 $base_fetch_sql . q/ where species REGEXP ? or name REGEXP ? /,
+		 [$name, $name], $keen);
 }
 
 =head2 fetch_by_alias
@@ -779,7 +781,7 @@ sub _fetch_comparas {
   where genome_id=? and method in ('BLASTZ_NET','LASTZ_NET','TRANSLATED_BLAT_NET', 'PROTEIN_TREES')/,
 		-PARAMS => [$genome->dbID()])})
   {
-	push @$comparas, $self->_fetch_compara($id);
+	push @$comparas, $self->fetch_compara_by_dbID($id);
   }
   $genome->compara($comparas);
   $genome->has_pan_compara();
@@ -788,61 +790,141 @@ sub _fetch_comparas {
   return;
 }
 
-=head2 _fetch_compara
-  Arg	     : ID of GenomeComparaInfo 
-  Description: Fetch compara analyses by ID
+=head2 fetch_all_comparas
+  Description: Fetch all compara analyses
+  Returntype : array ref of Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub fetch_all_comparas {
+  my ($self, $id) = @_;
+  return $self->_fetch_compara_with_args();
+}
+
+=head2 fetch_compara_by_dbID
+  Arg	     : ID of compara analysis to retrieve
+  Description: Fetch compara specified compara analysis
   Returntype : Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub fetch_compara_by_dbID {
+  my ($self, $id) = @_;
+  return _first_element(
+		 $self->_fetch_compara_with_args({compara_analysis_id => $id}));
+}
+
+=head2 fetch_compara_by_division
+  Arg	     : Division of compara analyses to retrieve
+  Description: Fetch compara specified compara analysis
+  Returntype : array ref of Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub fetch_compara_by_division {
+  my ($self, $division) = @_;
+  return $self->_fetch_compara_with_args({division => $division});
+}
+
+=head2 fetch_compara_by_method
+  Arg	     : Method of compara analyses to retrieve
+  Description: Fetch compara specified compara analysis
+  Returntype : array ref of  Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub fetch_compara_by_method {
+  my ($self, $method) = @_;
+  return $self->_fetch_compara_with_args({method => $method});
+}
+
+my $base_compara_fetch_sql =
+q/select compara_analysis_id, division, method, dbname from compara_analysis/;
+
+=head2 _fetch_compara_with_args
+  Arg	     : hashref of arguments by column
+  Description: Fetch compara analyses by column value pairs
+  Returntype : arrayref of Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo
   Exceptions : none
   Caller     : internal
   Status     : Stable
 =cut
 
-sub _fetch_compara {
-  my ($self, $id) = @_;
+sub _fetch_compara_with_args {
+  my ($self, $args) = @_;
+  my $sql    = $base_compara_fetch_sql;
+  my $params = [values %$args];
+  my $clause = join(',', map { $_ . '=?' } keys %$args);
+  if ($clause ne '') {
+	$sql .= ' where ' . $clause;
+  }
+  return $self->_fetch_compara_generic($sql, $params);
+}
+
+=head2 _fetch_compara_generic
+  Arg	     : SQL
+  Arg	     : array ref of bind params
+  Description: Fetch compara analyses using supplied SQL
+  Returntype : arrayref of Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo
+  Exceptions : none
+  Caller     : internal
+  Status     : Stable
+=cut
+
+sub _fetch_compara_generic {
+  my ($self, $sql, $params) = @_;
   # check to see if we've cached this already
-  my $compara =
-	$self->_get_cached_obj(
+
+  # build the main object first
+  my $comparas = $self->{dbc}->sql_helper()->execute(
+	-SQL      => $sql,
+	-PARAMS   => $params,
+	-CALLBACK => sub {
+	  my @row = @{shift @_};
+	  my $id = $row[0];
+	  my $c = $self->_get_cached_obj(
 					 'Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo',
 					 $id);
-  if (!defined $compara) {
-	# generate from a query
-	# build the main object first
-	($compara) = @{
-	  $self->{dbc}->sql_helper()->execute(
-		-SQL =>
-q/select compara_analysis_id, division, method, dbname from compara_analysis where compara_analysis_id=?/,
-		-PARAMS   => [$id],
-		-CALLBACK => sub {
-		  my @row = @{shift @_};
-		  my $c =
-			Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo->new();
-		  $c->dbID($row[0]);
-		  $c->division($row[1]);
-		  $c->method($row[2]);
-		  $c->dbname($row[3]);
-		  return $c;
-		});
-	};
-	$compara->adaptor($self);
-# add genomes on one by one (don't nest the fetch here as could run of connections)
-	my $genomes = [];
-	for my $genome_id (
-	  @{$self->{dbc}->sql_helper()->execute_simple(
-		  -SQL =>
-q/select distinct(genome_id) from genome_compara_analysis where compara_analysis_id=?/,
-		  -PARAMS => [$id]);
-	  })
-	{
-	  push @$genomes, $self->fetch_by_dbID($genome_id);
-	}
-	$compara->genomes($genomes);
-	# cache the completed compara object
-	$self->_store_cached_obj(
+	  if (!defined $c) {
+		$c = Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo->new();
+		$c->dbID($id);
+		$c->division($row[1]);
+		$c->method($row[2]);
+		$c->dbname($row[3]);
+		# cache the completed compara object
+		$c->adaptor($self);
+		$self->_store_cached_obj(
 					 'Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo',
-					 $compara);
-  } ## end if (!defined $compara)
-  return $compara;
-} ## end sub _fetch_compara
+					 $c);
+	  }
+	  return $c;
+	});
+  for my $compara (@$comparas) {
+# add genomes on one by one (don't nest the fetch here as could run of connections)
+	if (!defined $compara->{genomes}) {
+	  my $genomes = [];
+	  for my $genome_id (
+		@{$self->{dbc}->sql_helper()->execute_simple(
+			-SQL =>
+q/select distinct(genome_id) from genome_compara_analysis where compara_analysis_id=?/,
+			-PARAMS => [$compara->dbID()]);
+		})
+	  {
+		push @$genomes, $self->fetch_by_dbID($genome_id);
+	  }
+	  $compara->genomes($genomes);
+	}
+  }
+  return $comparas;
+} ## end sub _fetch_compara_generic
 
 =head2 _fetch_children
   Arg	     : Arrayref of Bio::EnsEMBL::Utils::MetaData::GenomeInfo
