@@ -1,4 +1,4 @@
-/has-- Copyright [1999-2014] EMBL-European Bioinformatics Institute
+-- Copyright [1999-2014] EMBL-European Bioinformatics Institute
 -- 
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -36,7 +36,7 @@ CREATE TABLE `compara_analysis` (
   `method` varchar(50) NOT NULL,
   `dbname` varchar(64) NOT NULL,
   PRIMARY KEY (`compara_analysis_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +62,7 @@ CREATE TABLE `genome` (
   `dbname` varchar(64) NOT NULL,
   `species_id` int(10) unsigned NOT NULL,
   `has_pan_compara` tinyint(3) unsigned DEFAULT '0',
-  `has_variation` tinyint(3) unsigned DEFAULT '0',
+  `has_variations` tinyint(3) unsigned DEFAULT '0',
   `has_peptide_compara` tinyint(3) unsigned DEFAULT '0',
   `has_genome_alignments` tinyint(3) unsigned DEFAULT '0',
   `has_other_alignments` tinyint(3) unsigned DEFAULT '0',
@@ -70,7 +70,7 @@ CREATE TABLE `genome` (
   UNIQUE KEY `name` (`name`),
   UNIQUE KEY `dbname_species_id` (`dbname`,`species_id`),
   UNIQUE KEY `assembly_id` (`assembly_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9922 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,4 +203,4 @@ CREATE TABLE `genome_variation` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-04 12:48:44
+-- Dump completed on 2014-03-11 13:13:39
