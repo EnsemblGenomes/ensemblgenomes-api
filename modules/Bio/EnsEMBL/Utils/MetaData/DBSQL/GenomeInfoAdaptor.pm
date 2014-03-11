@@ -98,7 +98,7 @@ sub store {
 	-SQL =>
 q/insert into genome(name,species,strain,serotype,division,taxonomy_id,
 assembly_id,assembly_name,assembly_level,base_count,
-genebuild,dbname,species_id,has_pan_compara,has_variation,has_peptide_compara,
+genebuild,dbname,species_id,has_pan_compara,has_variations,has_peptide_compara,
 has_genome_alignments,has_other_alignments)
 		values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)/,
 	-PARAMS => [$genome->name(),
@@ -327,7 +327,7 @@ select
 genome_id as dbID,species,name,strain,serotype,division,taxonomy_id,
 assembly_id,assembly_name,assembly_level,base_count,
 genebuild,dbname,species_id,
-has_pan_compara,has_variation,has_peptide_compara,
+has_pan_compara,has_variations,has_peptide_compara,
 has_genome_alignments,has_other_alignments
 from genome
 /;
@@ -476,7 +476,7 @@ sub fetch_by_name_pattern {
   my ($self, $name, $keen) = @_;
   return
 	$self->_fetch_generic($base_fetch_sql . q/ where species REGEXP ? or name REGEXP ? /,
-						  [$name, $name], $keen);
+						  [$name,$name], $keen);
 }
 
 =head2 fetch_by_alias
@@ -510,7 +510,7 @@ sub fetch_by_alias {
 
 sub fetch_with_variation {
   my ($self, $keen) = @_;
-  return $self->_fetch_generic_with_args({'has_variation' => '1'},
+  return $self->_fetch_generic_with_args({'has_variations' => '1'},
 										 $keen);
 }
 
