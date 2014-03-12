@@ -26,9 +26,10 @@ Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo
 
 	  my $compara_info =
 		Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo->new(
-								   -DBNAME => $compara->dbc()->dbname(),
+								   -DBNAME   => $compara->dbc()->dbname(),
 								   -DIVISION => $division,
 								   -METHOD   => $method,
+								   -SET_NAME => $set_name,
 								   -GENOMES  => [$genome1, $genome2]);
 
 =head1 DESCRIPTION
@@ -54,6 +55,8 @@ use warnings;
        string - compara method e.g. PROTEIN_TREES, LASTZ_NET
   Arg [-DBNAME] : 
        string - name of the compara database in which the analysis can be found
+  Arg [-SET_NAME] : 
+       string - optional name for the analysis
   Arg [-GENOMES]  : 
        arrayref - list of genomes involved in analysis
 
@@ -70,8 +73,9 @@ sub new {
   my $class = ref($proto) || $proto;
   my $self = bless({}, $class);
   ($self->{division}, $self->{method},
-   $self->{dbname},   $self->{genomes}
-  ) = rearrange(['DIVISION', 'METHOD', 'DBNAME', 'GENOMES'], @args);
+   $self->{dbname},   $self->{set_name},
+   $self->{genomes}
+  ) = rearrange(['DIVISION', 'METHOD', 'DBNAME', 'SET_NAME', 'GENOMES'], @args);
   return $self;
 }
 
@@ -104,6 +108,20 @@ sub method {
   my ($self, $arg) = @_;
   $self->{method} = $arg if (defined $arg);
   return $self->{method};
+}
+
+=head2 set_name
+  Arg        : (optional) species set name to set
+  Description: Gets/sets name of species set used in compara analysis
+  Returntype : string
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+sub set_name {
+  my ($self, $arg) = @_;
+  $self->{set_name} = $arg if (defined $arg);
+  return $self->{set_name};
 }
 
 =head2 division

@@ -152,10 +152,10 @@ sub _store_compara {
   my ($self, $compara) = @_;
   return if !defined $compara || defined $compara->dbID();
   $self->{dbc}->sql_helper()->execute_update(
-	-SQL => q/insert into compara_analysis(method,division,dbname)
-		values(?,?,?)/,
+	-SQL => q/insert into compara_analysis(method,division,set_name,dbname)
+		values(?,?,?,?)/,
 	-PARAMS =>
-	  [$compara->method(), $compara->division(), $compara->dbname()],
+	  [$compara->method(), $compara->division(), $compara->set_name(), $compara->dbname()],
 	-CALLBACK => sub {
 	  my ($sth, $dbh, $rv) = @_;
 	  $compara->dbID($dbh->{mysql_insertid});
@@ -898,7 +898,8 @@ sub _fetch_compara_generic {
 		$c->dbID($id);
 		$c->division($row[1]);
 		$c->method($row[2]);
-		$c->dbname($row[3]);
+		$c->set_name($row[3]);
+		$c->dbname($row[4]);
 		# cache the completed compara object
 		$c->adaptor($self);
 		$self->_store_cached_obj(

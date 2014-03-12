@@ -1,4 +1,4 @@
--- Copyright [1999-2014] EMBL-European Bioinformatics Institute
+-- Cdeopyright [1999-2014] EMBL-European Bioinformatics Institute
 -- 
 -- Licensed under the Apache License, Version 2.0 (the "License");
 -- you may not use this file except in compliance with the License.
@@ -34,9 +34,10 @@ CREATE TABLE `compara_analysis` (
   `compara_analysis_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `division` varchar(64) NOT NULL,
   `method` varchar(50) NOT NULL,
+  `set_name` varchar(64) DEFAULT NULL,
   `dbname` varchar(64) NOT NULL,
   PRIMARY KEY (`compara_analysis_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,7 +71,7 @@ CREATE TABLE `genome` (
   UNIQUE KEY `name` (`name`),
   UNIQUE KEY `dbname_species_id` (`dbname`,`species_id`),
   UNIQUE KEY `assembly_id` (`assembly_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9922 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,7 +85,7 @@ CREATE TABLE `genome_alias` (
   `genome_id` int(10) unsigned NOT NULL,
   `alias` varchar(255) CHARACTER SET latin1 COLLATE latin1_bin DEFAULT NULL,
   UNIQUE KEY `id_alias` (`genome_id`,`alias`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,7 +101,7 @@ CREATE TABLE `genome_alignment` (
   `name` varchar(128) NOT NULL,
   `count` int(10) unsigned NOT NULL,
   UNIQUE KEY `id_type_key` (`genome_id`,`type`,`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -115,7 +116,7 @@ CREATE TABLE `genome_annotation` (
   `type` varchar(32) NOT NULL,
   `count` int(10) unsigned NOT NULL,
   UNIQUE KEY `id_type` (`genome_id`,`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -129,7 +130,7 @@ CREATE TABLE `genome_compara_analysis` (
   `genome_id` int(10) unsigned NOT NULL,
   `compara_analysis_id` int(10) unsigned NOT NULL,
   UNIQUE KEY `genome_compara_analysis_key` (`genome_id`,`compara_analysis_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,7 +146,7 @@ CREATE TABLE `genome_feature` (
   `analysis` varchar(128) NOT NULL,
   `count` int(10) unsigned NOT NULL,
   UNIQUE KEY `id_type_analysis` (`genome_id`,`type`,`analysis`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -159,7 +160,7 @@ CREATE TABLE `genome_publication` (
   `genome_id` int(10) unsigned NOT NULL,
   `publication` varchar(64) DEFAULT NULL,
   UNIQUE KEY `id_publication` (`genome_id`,`publication`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,7 +176,7 @@ CREATE TABLE `genome_sequence` (
   `acc` varchar(24) DEFAULT NULL,
   UNIQUE KEY `id_alias` (`genome_id`,`name`,`acc`),
   KEY `acc` (`acc`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -191,7 +192,7 @@ CREATE TABLE `genome_variation` (
   `name` varchar(128) NOT NULL,
   `count` int(10) unsigned NOT NULL,
   UNIQUE KEY `id_type_key` (`genome_id`,`type`,`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
