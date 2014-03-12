@@ -38,7 +38,7 @@ my $gdba = Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->new($dba);
 ok(defined $gdba, "GenomeInfoAdaptor exists");
 
 diag("Fetching all genome info");
-my $mds = $gdba->fetch_with_variation();
+my $mds = $gdba->fetch_all_with_variation();
 my $nAll = scalar @$mds;
 diag("Fetched $nAll GenomeInfo");
 ok($nAll>0, "At least 1 GenomeInfo found");

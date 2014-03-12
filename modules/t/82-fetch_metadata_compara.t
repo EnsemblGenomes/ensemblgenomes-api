@@ -39,7 +39,7 @@ my $gdba =
 ok(defined $gdba, "GenomeInfoAdaptor exists");
 
 diag("Fetching all genome info with peptide compara");
-my $mds  = $gdba->fetch_with_peptide_compara();
+my $mds  = $gdba->fetch_all_with_peptide_compara();
 my $nAll = scalar @$mds;
 diag("Fetched $nAll GenomeInfo");
 ok($nAll > 0, "At least 1 GenomeInfo found");
@@ -77,7 +77,7 @@ is($compara->dbID(), $comparas[0]->dbID(), "Retrieval by dbID worked");
 my $division = $compara->division();
 my $method   = $compara->method();
 $is_found = 0;
-for my $c (@{$gdba->fetch_compara_by_division($division)}) {
+for my $c (@{$gdba->fetch_all_compara_by_division($division)}) {
   is($c->division(), $division, "Division $division retrieval correct");
   if ($c->dbID() == $compara->dbID()) {
 	$is_found = 1;
@@ -87,7 +87,7 @@ is($is_found, 1,
    "Retrieval by division $division found original entry");
 
 $is_found = 0;
-for my $c (@{$gdba->fetch_compara_by_method($method)}) {
+for my $c (@{$gdba->fetch_all_compara_by_method($method)}) {
   is($c->method(), $method, "Method $method retrieval correct");
   if ($c->dbID() == $compara->dbID()) {
 	$is_found = 1;
@@ -97,7 +97,7 @@ is($is_found, 1, "Retrieval by method $method found original entry");
 
 diag("Fetching all genome info with pan compara");
 my @mds = grep { $_->division() ne 'Ensembl' }
-  @{$gdba->fetch_with_pan_compara()};
+  @{$gdba->fetch_all_with_pan_compara()};
 $nAll = scalar @mds;
 diag("Fetched $nAll GenomeInfo");
 ok($nAll > 0, "At least 1 GenomeInfo found");

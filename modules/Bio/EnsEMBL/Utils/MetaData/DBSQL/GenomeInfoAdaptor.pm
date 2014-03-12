@@ -389,12 +389,12 @@ sub fetch_by_assembly_id {
   Status     : Stable
 =cut
 
-sub fetch_by_taxonomy_id {
+sub fetch_all_by_taxonomy_id {
   my ($self, $id, $keen) = @_;
   return $self->_fetch_generic_with_args({'taxonomy_id', $id}, $keen);
 }
 
-=head2 fetch_by_taxonomy_branch
+=head2 fetch_all_by_taxonomy_branch
   Arg	     : Bio::EnsEMBL::TaxonomyNode
   Arg        : (optional) if 1, expand children of genome info
   Description: Fetch genome info for specified taxonomy node and its children
@@ -404,7 +404,7 @@ sub fetch_by_taxonomy_id {
   Status     : Stable
 =cut
 
-sub fetch_by_taxonomy_branch {
+sub fetch_all_by_taxonomy_branch {
   my ($self, $root, $keen) = @_;
   my @genomes = @{$self->fetch_by_taxonomy_id($root->taxon_id())};
   for my $node (@{$root->adaptor()->fetch_descendants($root)}) {
@@ -415,7 +415,7 @@ sub fetch_by_taxonomy_branch {
   return \@genomes;
 }
 
-=head2 fetch_by_division
+=head2 fetch_all_by_division
   Arg	     : Name of division
   Arg        : (optional) if 1, expand children of genome info
   Description: Fetch genome infos for specified division
@@ -425,7 +425,7 @@ sub fetch_by_taxonomy_branch {
   Status     : Stable
 =cut
 
-sub fetch_by_division {
+sub fetch_all_by_division {
   my ($self, $division, $keen) = @_;
   return $self->_fetch_generic_with_args({'division', $division},
 										 $keen);
@@ -463,7 +463,7 @@ sub fetch_by_name {
 			   $self->_fetch_generic_with_args({'name', $name}, $keen));
 }
 
-=head2 fetch_by_name_pattern
+=head2 fetch_all_by_name_pattern
   Arg	     : Regular expression matching of genome
   Arg        : (optional) if 1, expand children of genome info
   Description: Fetch genome info for specified species
@@ -473,7 +473,7 @@ sub fetch_by_name {
   Status     : Stable
 =cut
 
-sub fetch_by_name_pattern {
+sub fetch_all_by_name_pattern {
   my ($self, $name, $keen) = @_;
   return
 	$self->_fetch_generic(
@@ -510,7 +510,7 @@ sub fetch_by_alias {
   Status     : Stable
 =cut
 
-sub fetch_with_variation {
+sub fetch_all_with_variation {
   my ($self, $keen) = @_;
   return $self->_fetch_generic_with_args({'has_variations' => '1'},
 										 $keen);
@@ -525,7 +525,7 @@ sub fetch_with_variation {
   Status     : Stable
 =cut
 
-sub fetch_with_peptide_compara {
+sub fetch_all_with_peptide_compara {
   my ($self, $keen) = @_;
   return
 	$self->_fetch_generic_with_args({'has_peptide_compara' => '1'},
@@ -541,7 +541,7 @@ sub fetch_with_peptide_compara {
   Status     : Stable
 =cut
 
-sub fetch_with_pan_compara {
+sub fetch_all_with_pan_compara {
   my ($self, $keen) = @_;
   return $self->_fetch_generic_with_args({'has_pan_compara' => '1'},
 										 $keen);
@@ -556,7 +556,7 @@ sub fetch_with_pan_compara {
   Status     : Stable
 =cut
 
-sub fetch_with_genome_alignments {
+sub fetch_all_with_genome_alignments {
   my ($self, $keen) = @_;
   return
 	$self->_fetch_generic_with_args({'has_genome_alignments' => '1'},
@@ -572,7 +572,7 @@ sub fetch_with_genome_alignments {
   Status     : Stable
 =cut
 
-sub fetch_with_other_alignments {
+sub fetch_all_with_other_alignments {
   my ($self, $keen) = @_;
   return
 	$self->_fetch_generic_with_args({'has_other_alignments' => '1'},
@@ -818,7 +818,7 @@ sub fetch_compara_by_dbID {
 		 $self->_fetch_compara_with_args({compara_analysis_id => $id}));
 }
 
-=head2 fetch_compara_by_division
+=head2 fetch_all_compara_by_division
   Arg	     : Division of compara analyses to retrieve
   Description: Fetch compara specified compara analysis
   Returntype : array ref of Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo
@@ -827,12 +827,12 @@ sub fetch_compara_by_dbID {
   Status     : Stable
 =cut
 
-sub fetch_compara_by_division {
+sub fetch_all_compara_by_division {
   my ($self, $division) = @_;
   return $self->_fetch_compara_with_args({division => $division});
 }
 
-=head2 fetch_compara_by_method
+=head2 fetch_all_compara_by_method
   Arg	     : Method of compara analyses to retrieve
   Description: Fetch compara specified compara analysis
   Returntype : array ref of  Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo
@@ -841,7 +841,7 @@ sub fetch_compara_by_division {
   Status     : Stable
 =cut
 
-sub fetch_compara_by_method {
+sub fetch_all_compara_by_method {
   my ($self, $method) = @_;
   return $self->_fetch_compara_with_args({method => $method});
 }

@@ -45,7 +45,7 @@ ok($nAll>0, "At least 1 GenomeInfo found");
 # get first division
 my $division = $mds->[0]->division();
 diag("Fetching division $division");
-$mds = $gdba->fetch_by_division($division);
+$mds = $gdba->fetch_all_by_division($division);
 my $nDiv = scalar @$mds;
 diag("Fetched $nDiv GenomeInfo for $division");
 ok($nDiv>0, "At least 1 GenomeInfo found for $division");
@@ -60,7 +60,7 @@ is($md->species(), $species, "Species matches $species");
 # retrieve by taxid
 my $taxid = $mds->[0]->taxonomy_id();
 diag("Fetching taxonomy id $taxid");
-$mds = $gdba->fetch_by_taxonomy_id($taxid);
+$mds = $gdba->fetch_all_by_taxonomy_id($taxid);
 is($mds->[0]->taxonomy_id(), $taxid, "Taxonomy id matches $taxid");
 
 # retrieve by assembly ID
