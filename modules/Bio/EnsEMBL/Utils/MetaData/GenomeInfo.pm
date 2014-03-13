@@ -351,6 +351,7 @@ sub compara {
   if (defined $compara) {
 	$self->{compara}               = $compara;
 	$self->{has_peptide_compara}   = undef;
+	$self->{has_synteny}   = undef;
 	$self->{has_genome_alignments} = undef;
 	$self->{has_pan_compara}       = undef;
   }
@@ -537,6 +538,35 @@ sub has_genome_alignments {
   }
   return $self->{has_genome_alignments};
 }
+
+=head2 has_synteny
+  Arg        : (optional) 1/0 to set if genome has synteny
+  Description: Boolean-style method, returns 1 if genome has synteny, 0 if not
+  Returntype : 1 or 0
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub has_synteny {
+  my ($self, $arg) = @_;
+  if (defined $arg) {
+	$self->{has_synteny} = $arg;
+  }
+  elsif (!defined($self->{has_synteny}) &&
+		 defined $self->compara())
+  {
+	$self->{has_synteny} = 0;
+	for my $compara (@{$self->compara()}) {
+	  if ($compara->is_synteny()) {
+		$self->{has_synteny} = 1;
+		last;
+	  }
+	}
+  }
+  return $self->{has_synteny};
+}
+
 
 =head2 has_peptide_compara
   Arg        : (optional) 1/0 to set if genome has peptide compara

@@ -192,7 +192,21 @@ sub is_dna_compara {
   my ($self) = @_;
   return ($self->{method} eq 'TRANSLATED_BLAT_NET' ||
 	$self->{method} eq 'LASTZ_NET' ||
+		$self->{method} eq 'TBLAT' ||
 	$self->{method} eq 'BLASTZ_NET')?1:0;
+}
+
+=head2 is_synteny
+  Arg        : (optional) 1/0 to set 
+  Description: Boolean-style method, returns 1 if analysis is part of a synteny compara, 0 if not
+  Returntype : 1 or 0
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+sub is_synteny {
+  my ($self) = @_;
+  return ($self->{method} eq 'SYNTENY')?1:0;
 }
 
 =head2 to_hash

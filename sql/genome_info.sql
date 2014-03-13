@@ -66,6 +66,7 @@ CREATE TABLE `genome` (
   `has_variations` tinyint(3) unsigned DEFAULT '0',
   `has_peptide_compara` tinyint(3) unsigned DEFAULT '0',
   `has_genome_alignments` tinyint(3) unsigned DEFAULT '0',
+  `has_synteny` tinyint(3) unsigned DEFAULT '0',
   `has_other_alignments` tinyint(3) unsigned DEFAULT '0',
   PRIMARY KEY (`genome_id`),
   UNIQUE KEY `name` (`name`),

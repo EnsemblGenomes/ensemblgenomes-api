@@ -99,8 +99,8 @@ sub store {
 q/insert into genome(name,species,strain,serotype,division,taxonomy_id,
 assembly_id,assembly_name,assembly_level,base_count,
 genebuild,dbname,species_id,has_pan_compara,has_variations,has_peptide_compara,
-has_genome_alignments,has_other_alignments)
-		values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)/,
+has_genome_alignments,has_synteny,has_other_alignments)
+		values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)/,
 	-PARAMS => [$genome->name(),
 				$genome->species(),
 				$genome->strain(),
@@ -118,6 +118,7 @@ has_genome_alignments,has_other_alignments)
 				$genome->has_variations(),
 				$genome->has_peptide_compara(),
 				$genome->has_genome_alignments(),
+				$genome->has_synteny(),
 				$genome->has_other_alignments()],
 	-CALLBACK => sub {
 	  my ($sth, $dbh, $rv) = @_;
