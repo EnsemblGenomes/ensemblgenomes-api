@@ -51,23 +51,20 @@ use Carp qw(cluck croak);
 use Bio::EnsEMBL::Utils::Argument qw( rearrange );
 use Bio::EnsEMBL::Utils::MetaData::GenomeInfo;
 use Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo;
+use Bio::EnsEMBL::DBSQL::DBConnection;
 use Data::Dumper;
 use List::MoreUtils qw/natatime/;
+use Bio::EnsEMBL::Utils::EGPublicMySQLServer
+  qw/eg_user eg_host eg_pass eg_port/;
 
-=head1 CONSTRUCTOR
+use constant PUBLIC_DBNAME => 'ensemblgenomes_info_';
+
+=head1 CONSTRUCTORS
 =head2 new
-  Arg [-DIVISION]  : 
-       string - Compara division e.g. plants, pan_homology
-  Arg [-METHOD]    : 
-       string - compara method e.g. PROTEIN_TREES, LASTZ_NET
-  Arg [-DBNAME] : 
-       string - name of the compara database in which the analysis can be found
-  Arg [-GENOMES]  : 
-       arrayref - list of genomes involved in analysis
-
-  Example    : $info = Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo->new(...);
-  Description: Creates a new info object
-  Returntype : Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo
+  Arg        : Bio::EnsEMBL::DBSQL::DBConnection - info database to use
+  Example    : $adaptor = Bio::EnsEMBL::Utils::MetaData::GenomeInfoAdaptor->new(...);
+  Description: Creates a new adaptor object
+  Returntype : Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor
   Exceptions : none
   Caller     : general
   Status     : Stable
@@ -81,7 +78,58 @@ sub new {
   return $self;
 }
 
+=head2 build_adaptor
+  Arg  : (optional) Ensembl Genomes release (e.g. 21)
+  Example    : $info = Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo->build_adaptor();
+  Description: Creates a new adaptor using the Ensembl Genomes public MySQL instance (using the latest release if specified)
+  Returntype : Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor
+  Exceptions : croaks if suitable database cannot be found
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub build_adaptor {
+  my ($release) = @_;
+  my $dbname;
+  if (defined $release) {
+	$dbname = PUBLIC_DBNAME . $release;
+  }
+  else {
+	# get the latest release
+	my $dbc =
+	  Bio::EnsEMBL::DBConnection->new(-user => eg_user(),
+									  -host => eg_host(),
+									  -port => eg_port());
+
+	my $dbs = $dbc->sql_helper()->execute(
+	  -SQL => q/select schema_name, 
+      cast(replace(schema_name,'ensemblgenomes_info_','') as rel) as unsigned int 
+      from information_schema.SCHEMATA 
+      where schema_name like 'ensemblgenomes_info_%' order by rel/
+	);
+	$dbc->close();
+
+	if (scalar(@$dbs) == 0) {
+	  croak(
+		"No suitable database found on " . eg_host() . ":" . eg_port());
+	}
+
+	$dbname = $dbs->[0][0];
+
+  }
+
+  return
+	Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo->new(
+										Bio::EnsEMBL::DBConnection->new(
+													 -user => eg_user(),
+													 -host => eg_host(),
+													 -port => eg_port(),
+													 -dbname => $dbname)
+	);
+} ## end sub build_adaptor
+
 =head1 METHODS
+
 =head2 store
   Arg	     : Bio::EnsEMBL::Utils::MetaData::GenomeInfo
   Description: Stores the supplied object and all associated child objects (includes other genomes attached by compara if not already stored)
@@ -153,10 +201,11 @@ sub _store_compara {
   my ($self, $compara) = @_;
   return if !defined $compara || defined $compara->dbID();
   $self->{dbc}->sql_helper()->execute_update(
-	-SQL => q/insert into compara_analysis(method,division,set_name,dbname)
+	-SQL =>
+	  q/insert into compara_analysis(method,division,set_name,dbname)
 		values(?,?,?,?)/,
-	-PARAMS =>
-	  [$compara->method(), $compara->division(), $compara->set_name(), $compara->dbname()],
+	-PARAMS => [$compara->method(),   $compara->division(),
+				$compara->set_name(), $compara->dbname()],
 	-CALLBACK => sub {
 	  my ($sth, $dbh, $rv) = @_;
 	  $compara->dbID($dbh->{mysql_insertid});
@@ -364,10 +413,49 @@ sub fetch_by_dbID {
 				   $keen);
 }
 
-=head2 fetch_by_species
-  Arg	     : Name of species
+=head2 fetch_all_by_sequence_accession
+  Arg	     : INSDC sequence accession e.g. U00096.1
   Arg        : (optional) if 1, expand children of genome info
-  Description: Fetch genome info for specified species
+  Description: Fetch genome info for specified sequence accession
+  Returntype : Bio::EnsEMBL::Utils::MetaData::GenomeInfo
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub fetch_all_by_sequence_accession {
+  my ($self, $id, $keen) = @_;
+  return
+	$self->_fetch_generic_with_args(
+	$base_fetch_sql .
+' where genome_id in (select distinct(genome_id) from genome_sequence where acc=? or name=?)',
+	[$id, $id], $keen);
+}
+
+=head2 fetch_all_by_sequence_accession_unversioned
+  Arg	     : INSDC sequence accession e.g. U00096
+  Arg        : (optional) if 1, expand children of genome info
+  Description: Fetch genome info for specified sequence accession
+  Returntype : Bio::EnsEMBL::Utils::MetaData::GenomeInfo
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub fetch_all_by_sequence_accession_unversioned {
+  my ($self, $id, $keen) = @_;
+  return
+	$self->_fetch_generic_with_args(
+	$base_fetch_sql .
+' where genome_id in (select distinct(genome_id) from genome_sequence where acc like ? or name like ?)',
+	[$id . '.%', $id . '.%'],
+	$keen);
+}
+
+=head2 fetch_by_assembly_id
+  Arg	     : INSDC assembly accession
+  Arg        : (optional) if 1, expand children of genome info
+  Description: Fetch genome info for specified assembly ID
   Returntype : Bio::EnsEMBL::Utils::MetaData::GenomeInfo
   Exceptions : none
   Caller     : general
@@ -378,6 +466,24 @@ sub fetch_by_assembly_id {
   my ($self, $id, $keen) = @_;
   return _first_element(
 		  $self->_fetch_generic_with_args({'assembly_id', $id}, $keen));
+}
+
+=head2 fetch_by_assembly_unversioned
+  Arg	     : INSDC assembly set chain (unversioned accession)
+  Arg        : (optional) if 1, expand children of genome info
+  Description: Fetch genome info for specified assembly set chain
+  Returntype : Bio::EnsEMBL::Utils::MetaData::GenomeInfo
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub fetch_by_assembly_unversioned {
+  my ($self, $id, $keen) = @_;
+  return
+	_first_element($self->_fetch_generic(
+						  $base_fetch_sql . ' where assembly_id like ?',
+						  [$id . '.%'], $keen));
 }
 
 =head2 fetch_by_taxonomy_id
@@ -464,6 +570,22 @@ sub fetch_by_name {
 			   $self->_fetch_generic_with_args({'name', $name}, $keen));
 }
 
+=head2 fetch_all_by_dbname
+  Arg	     : Name of database
+  Arg        : (optional) if 1, expand children of genome info
+  Description: Fetch genome info for specified database
+  Returntype : arrayref of Bio::EnsEMBL::Utils::MetaData::GenomeInfo
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub fetch_all_by_dbname {
+  my ($self, $name, $keen) = @_;
+  return 
+			   $self->_fetch_generic_with_args({'dbname', $name}, $keen);
+}
+
 =head2 fetch_all_by_name_pattern
   Arg	     : Regular expression matching of genome
   Arg        : (optional) if 1, expand children of genome info
@@ -481,6 +603,8 @@ sub fetch_all_by_name_pattern {
 		 $base_fetch_sql . q/ where species REGEXP ? or name REGEXP ? /,
 		 [$name, $name], $keen);
 }
+
+
 
 =head2 fetch_by_alias
   Arg	     : Alias of genome
@@ -890,7 +1014,7 @@ sub _fetch_compara_generic {
 	-PARAMS   => $params,
 	-CALLBACK => sub {
 	  my @row = @{shift @_};
-	  my $id = $row[0];
+	  my $id  = $row[0];
 	  my $c = $self->_get_cached_obj(
 					 'Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo',
 					 $id);
