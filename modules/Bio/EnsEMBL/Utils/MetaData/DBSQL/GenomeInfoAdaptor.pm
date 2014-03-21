@@ -426,10 +426,11 @@ sub fetch_by_dbID {
 sub fetch_all_by_sequence_accession {
   my ($self, $id, $keen) = @_;
   return
-	$self->_fetch_generic_with_args(
+	$self->_fetch_generic(
 	$base_fetch_sql .
 ' where genome_id in (select distinct(genome_id) from genome_sequence where acc=? or name=?)',
-	[$id, $id], $keen);
+	[$id, $id],
+	$keen);
 }
 
 =head2 fetch_all_by_sequence_accession_unversioned
@@ -445,7 +446,7 @@ sub fetch_all_by_sequence_accession {
 sub fetch_all_by_sequence_accession_unversioned {
   my ($self, $id, $keen) = @_;
   return
-	$self->_fetch_generic_with_args(
+	$self->_fetch_generic(
 	$base_fetch_sql .
 ' where genome_id in (select distinct(genome_id) from genome_sequence where acc like ? or name like ?)',
 	[$id . '.%', $id . '.%'],
@@ -468,7 +469,7 @@ sub fetch_by_assembly_id {
 		  $self->_fetch_generic_with_args({'assembly_id', $id}, $keen));
 }
 
-=head2 fetch_by_assembly_unversioned
+=head2 fetch_by_assembly_id_unversioned
   Arg	     : INSDC assembly set chain (unversioned accession)
   Arg        : (optional) if 1, expand children of genome info
   Description: Fetch genome info for specified assembly set chain
@@ -478,7 +479,7 @@ sub fetch_by_assembly_id {
   Status     : Stable
 =cut
 
-sub fetch_by_assembly_unversioned {
+sub fetch_by_assembly_id_unversioned {
   my ($self, $id, $keen) = @_;
   return
 	_first_element($self->_fetch_generic(
@@ -555,7 +556,7 @@ sub fetch_by_species {
 }
 
 =head2 fetch_by_name
-  Arg	     : Name of genome
+  Arg	     : Display name of genome 
   Arg        : (optional) if 1, expand children of genome info
   Description: Fetch genome info for specified species
   Returntype : Bio::EnsEMBL::Utils::MetaData::GenomeInfo
@@ -570,6 +571,28 @@ sub fetch_by_name {
 			   $self->_fetch_generic_with_args({'name', $name}, $keen));
 }
 
+=head2 fetch_any_by_name
+  Arg	     : Name of genome (display, species, alias etc)
+  Arg        : (optional) if 1, expand children of genome info
+  Description: Fetch genome info for specified species
+  Returntype : Bio::EnsEMBL::Utils::MetaData::GenomeInfo
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub fetch_by_any_name {
+  my ($self, $name, $keen) = @_;
+  my $dba = $self->fetch_by_name($name, $keen);
+  if (!defined $dba) {
+	$dba = $self->fetch_by_species($name, $keen);
+  }
+  if (!defined $dba) {
+	$dba = $self->fetch_by_alias($name, $keen);
+  }
+  return $dba;
+}
+
 =head2 fetch_all_by_dbname
   Arg	     : Name of database
   Arg        : (optional) if 1, expand children of genome info
@@ -582,8 +605,7 @@ sub fetch_by_name {
 
 sub fetch_all_by_dbname {
   my ($self, $name, $keen) = @_;
-  return 
-			   $self->_fetch_generic_with_args({'dbname', $name}, $keen);
+  return $self->_fetch_generic_with_args({'dbname', $name}, $keen);
 }
 
 =head2 fetch_all_by_name_pattern
@@ -604,13 +626,11 @@ sub fetch_all_by_name_pattern {
 		 [$name, $name], $keen);
 }
 
-
-
 =head2 fetch_by_alias
   Arg	     : Alias of genome
   Arg        : (optional) if 1, expand children of genome info
   Description: Fetch genome info for specified species
-  Returntype : Arrayref of Bio::EnsEMBL::Utils::MetaData::GenomeInfo
+  Returntype : Bio::EnsEMBL::Utils::MetaData::GenomeInfo
   Exceptions : none
   Caller     : general
   Status     : Stable
@@ -619,11 +639,12 @@ sub fetch_all_by_name_pattern {
 sub fetch_by_alias {
   my ($self, $name, $keen) = @_;
   return
-	$self->_fetch_generic(
+	_first_element(
+			  $self->_fetch_generic(
 				$base_fetch_sql .
 				  q/ join genome_alias using (genome_id) where alias=?/,
 				[$name],
-				$keen);
+				$keen));
 }
 
 =head2 fetch_with_variation
