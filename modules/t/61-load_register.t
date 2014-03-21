@@ -16,9 +16,9 @@ use strict;
 use warnings;
 
 use Test::More;
-use Bio::EnsEMBL::LookUp;
+use Bio::EnsEMBL::LookUp::LocalLookUp;
 
-my $helper = Bio::EnsEMBL::LookUp->new(-FILE=>"reg.json",-NO_CACHE=>1);
+my $helper = Bio::EnsEMBL::LookUp::LocalLookUp->new(-FILE=>"reg.json",-NO_CACHE=>1);
 ok(defined $helper, "Helper object from file exists");
 
 my $dbas = $helper->get_all();
