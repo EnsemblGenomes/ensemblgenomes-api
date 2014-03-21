@@ -34,9 +34,8 @@ Bio::EnsEMBL::LookUp
 =head1 SYNOPSIS
 
 # creation from a database server
-Bio::EnsEMBL::LookUp->register_all_dbs( $conf->{host},
-	   $conf->{port}, $conf->{user}, $conf->{pass}, $conf->{db});
-my $lookup = Bio::EnsEMBL::LookUp->new();
+
+my $lookup = Bio::EnsEMBL::RemoteLookUp->new();
 my $dbas = $lookup->registry()->get_all();
 $dbas = $lookup->get_all_by_taxon_id(388919);
 $dbas = $lookup->get_by_name_pattern("Escherichia.*");
@@ -129,6 +128,7 @@ package Bio::EnsEMBL::LookUp::RemoteLookUp;
 
 use warnings;
 use strict;
+use Bio::EnsEMBL::DBSQL::DBAdaptor;
 use Bio::EnsEMBL::Utils::Argument qw(rearrange);
 use Bio::EnsEMBL::Utils::Exception qw(throw warning);
 use Bio::EnsEMBL::Utils::Scalar qw(assert_ref check_ref);
@@ -136,7 +136,7 @@ use Bio::EnsEMBL::Utils::EGPublicMySQLServer
   qw/eg_user eg_host eg_pass eg_port/;
 use Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor;
 use Carp;
-use Data::Dumper;
+use List::MoreUtils qw(uniq);
 
 =head1 SUBROUTINES/METHODS
 
@@ -153,9 +153,8 @@ use Data::Dumper;
 sub new {
   my ($class, @args) = @_;
   my $self = bless({}, ref($class) || $class);
-  ($self->{genome_info_adaptor},
-   $self->{registry}, $self->{user}, $self->{pass}, $self->{host},
-   $self->{port})
+  ($self->{_adaptor}, $self->{registry}, $self->{user},
+   $self->{pass},     $self->{host},     $self->{port})
 	= rearrange(['ADAPTOR', 'REGISTRY', 'USER', 'PASS', 'HOST', 'PORT'],
 				@args);
   $self->{dba_cache} = {};
@@ -165,9 +164,10 @@ sub new {
   $self->{port}     ||= eg_port();
   $self->{registry} ||= q/Bio::EnsEMBL::Registry/;
 
-  if (!defined $self->{adaptor}) {
-	$self->{adaptor} =
-	  Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->build();
+  if (!defined $self->{_adaptor}) {
+	$self->{_adaptor} =
+	  Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor
+	  ->build_adaptor();
   }
   return $self;
 }
@@ -179,7 +179,7 @@ sub _cache {
 
 sub _adaptor {
   my ($self) = @_;
-  return $self->{genome_info_adaptor};
+  return $self->{_adaptor};
 }
 
 sub genome_to_dba {
@@ -188,17 +188,18 @@ sub genome_to_dba {
   if (defined $genome_info) {
 	assert_ref($genome_info,
 			   'Bio::EnsEMBL::Utils::MetaData::GenomeInfo');
-	$dba = $self->_cache($genome_info->dbname());
+	$dba = $self->_cache()->{$genome_info->dbname()};
 	if (!defined $dba) {
-	  $dba =
-		Bio::EnsEMBL::DBSQL::DBAdaptor->new(
-									-USER    => $self->{user},
-									-PASS    => $self->{pass},
-									-HOST    => $self->{host},
-									-PORT    => $self->{port},
-									-DBNAME  => $genome_info->dbname(),
-									-SPECIES => $genome_info->species(),
-									-GROUP   => 'core');
+	  $dba = Bio::EnsEMBL::DBSQL::DBAdaptor->new(
+			 -USER       => $self->{user},
+			 -PASS       => $self->{pass},
+			 -HOST       => $self->{host},
+			 -PORT       => $self->{port},
+			 -DBNAME     => $genome_info->dbname(),
+			 -SPECIES    => $genome_info->species(),
+			 -SPECIES_ID => $genome_info->species_id(),
+			 -GROUP      => 'core');
+	  $self->_cache()->{$genome_info->dbname()} = $dba;
 	}
   }
   return $dba;
@@ -278,7 +279,7 @@ sub get_all_by_taxon_id {
 }
 
 =head2 get_by_name_exact
-	Description : Return all database adaptors that have the supplied string as an alias/name
+	Description : Return database adaptor that has the supplied string as an alias/name
 	Argument    : String
 	Exceptions  : None
 	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
@@ -286,7 +287,7 @@ sub get_all_by_taxon_id {
 
 sub get_by_name_exact {
   my ($self, $name) = @_;
-  return $self->genome_to_dba($self->{_adaptor}->fetch_by_name($name));
+  return $self->genome_to_dba($self->{_adaptor}->fetch_by_any_name($name));
 }
 
 =head2 get_all_by_accession
@@ -357,7 +358,7 @@ sub get_all_by_dbname {
 
 sub get_all_taxon_ids {
   my ($self) = @_;
-  return [uniq(map { $_->taxon_id() } @{$self->{_adaptor}->fetch_all()})
+  return [uniq(map { $_->taxonomy_id() } @{$self->{_adaptor}->fetch_all()})
   ];
 }
 
@@ -413,7 +414,7 @@ sub get_all_assemblies {
 sub get_all_versioned_assemblies {
   my ($self) = @_;
   return [
-	   uniq(map { $_->assembly_id() } @{$self->{_adaptor}->fetch_all()})
+	   uniq(map { $_->assembly_id()||'' } @{$self->{_adaptor}->fetch_all()})
   ];
 }
 
