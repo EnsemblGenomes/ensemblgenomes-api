@@ -221,6 +221,7 @@ sub to_hash {
   my $out = {method             => $in->{method},
 			 division           => $in->{division},
 			 dbname             => $in->{dbname},
+			 set_name           => $in->{set_name},
 			 is_pan_compara     => $in->is_pan_compara(),
 			 is_peptide_compara => $in->is_peptide_compara(),
 			 is_dna_compara     => $in->is_dna_compara(),};
