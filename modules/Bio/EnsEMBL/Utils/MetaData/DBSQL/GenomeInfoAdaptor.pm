@@ -50,12 +50,15 @@ use warnings;
 use Carp qw(cluck croak);
 use Bio::EnsEMBL::Utils::Argument qw( rearrange );
 use Bio::EnsEMBL::Utils::MetaData::GenomeInfo;
+use Scalar::Util qw(looks_like_number);
 use Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo;
 use Bio::EnsEMBL::DBSQL::DBConnection;
 use Data::Dumper;
 use List::MoreUtils qw/natatime/;
+use Scalar::Util qw(looks_like_number);
 use Bio::EnsEMBL::Utils::EGPublicMySQLServer
   qw/eg_user eg_host eg_pass eg_port/;
+use Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor;
 
 use constant PUBLIC_DBNAME => 'ensemblgenomes_info_';
 
@@ -74,7 +77,8 @@ use constant PUBLIC_DBNAME => 'ensemblgenomes_info_';
 sub new {
   my ($proto, @args) = @_;
   my $self = bless {}, $proto;
-  ($self->{dbc}) = rearrange(['DBC'], @args);
+  ($self->{dbc}, $self->{taxonomy_adaptor}) =
+	rearrange(['DBC', 'TAXONOMY_ADAPTOR'], @args);
   return $self;
 }
 
@@ -89,7 +93,7 @@ sub new {
 =cut
 
 sub build_adaptor {
-  my ($release) = @_;
+  my ($self, $release) = @_;
   my $dbname;
   if (defined $release) {
 	$dbname = PUBLIC_DBNAME . $release;
@@ -97,17 +101,17 @@ sub build_adaptor {
   else {
 	# get the latest release
 	my $dbc =
-	  Bio::EnsEMBL::DBConnection->new(-user => eg_user(),
-									  -host => eg_host(),
-									  -port => eg_port());
+	  Bio::EnsEMBL::DBSQL::DBConnection->new(-user => eg_user(),
+											 -host => eg_host(),
+											 -port => eg_port());
 
 	my $dbs = $dbc->sql_helper()->execute(
 	  -SQL => q/select schema_name, 
-      cast(replace(schema_name,'ensemblgenomes_info_','') as rel) as unsigned int 
+      cast(replace(schema_name,'ensemblgenomes_info_','') as unsigned int ) as rel
       from information_schema.SCHEMATA 
       where schema_name like 'ensemblgenomes_info_%' order by rel/
 	);
-	$dbc->close();
+	$dbc->disconnect_if_idle();
 
 	if (scalar(@$dbs) == 0) {
 	  croak(
@@ -119,8 +123,8 @@ sub build_adaptor {
   }
 
   return
-	Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo->new(
-										Bio::EnsEMBL::DBConnection->new(
+	Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->new(
+								 Bio::EnsEMBL::DBSQL::DBConnection->new(
 													 -user => eg_user(),
 													 -host => eg_host(),
 													 -port => eg_port(),
@@ -356,6 +360,18 @@ sub _store_alignments {
   return;
 }
 
+sub taxonomy_adaptor {
+  my ($self, $adaptor) = @_;
+  if (defined $adaptor) {
+	$self->{taxonomy_adaptor} = $adaptor;
+  }
+  elsif (!defined $self->{taxonomy_adaptor}) {
+	$self->{taxonomy_adaptor} =
+	  Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor->new_public();
+  }
+  return $self->{taxonomy_adaptor};
+}
+
 =head2 list_divisions
   Description: Get list of all Ensembl Genomes divisions for which information is available
   Returntype : Arrayref of strings
@@ -514,10 +530,18 @@ sub fetch_all_by_taxonomy_id {
 
 sub fetch_all_by_taxonomy_branch {
   my ($self, $root, $keen) = @_;
-  my @genomes = @{$self->fetch_by_taxonomy_id($root->taxon_id())};
+  if (ref($root) ne 'Bio::EnsEMBL::TaxonomyNode') {
+	if (looks_like_number($root)) {
+	  $root = $self->taxonomy_adaptor()->fetch_by_taxon_id($root);
+	}
+	else {
+	  $root = $self->taxonomy_adaptor()->fetch_by_name($root);
+	}
+  }
+  my @genomes = @{$self->fetch_all_by_taxonomy_id($root->taxon_id())};
   for my $node (@{$root->adaptor()->fetch_descendants($root)}) {
 	@genomes = (@genomes,
-				@{$self->fetch_by_taxonomy_id($node->taxon_id(), $keen)}
+				@{$self->fetch_all_by_taxonomy_id($node->taxon_id(), $keen)}
 	);
   }
   return \@genomes;
@@ -993,7 +1017,7 @@ sub fetch_all_compara_by_method {
 }
 
 my $base_compara_fetch_sql =
-q/select compara_analysis_id, division, method, dbname from compara_analysis/;
+q/select compara_analysis_id, division, method, set_name, dbname from compara_analysis/;
 
 =head2 _fetch_compara_with_args
   Arg	     : hashref of arguments by column
