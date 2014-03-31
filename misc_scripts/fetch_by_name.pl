@@ -26,7 +26,7 @@
 
 This script is an example of how to use 
 Bio::EnsEMBL::LookUp::get_by_assembly_accession to retrieve all 
-DBAdaptor instances for ENA Bacteria genomes which have the supplied name (can be production_name or a unique alias)
+DBAdaptor instances for genomes which have the supplied name (can be production_name or a unique alias)
 
 =head1 AUTHOR
 
@@ -45,11 +45,11 @@ use strict;
 use warnings;
 use Bio::EnsEMBL::LookUp;
 print "Building helper\n";
-my $helper = Bio::EnsEMBL::LookUp->new(-URL=>"http://bacteria.ensembl.org/registry.json",-NO_CACHE=>1);
+my $helper = Bio::EnsEMBL::LookUp->new();
 
 my $nom = 'escherichia_coli_str_k_12_substr_mg1655';
 print "Getting DBA for $nom\n";
-my ($dba) = @{$helper->get_by_name_exact($nom)};   
+my $dba = $helper->get_by_name_exact($nom);   
 
 # work with DBA as normal
 my $genes = $dba->get_GeneAdaptor()->fetch_all();

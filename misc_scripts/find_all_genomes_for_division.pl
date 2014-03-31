@@ -58,6 +58,6 @@ my $dbc =
 my $gdba = Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->new($dbc);
 
 # find and iterate over all genomes
-for my $genome (@{$gdba->fetch_by_division('EnsemblPlants')}) {
+for my $genome (@{$gdba->fetch_all_by_division('EnsemblPlants')}) {
 	print $genome->name()."\n";
 }

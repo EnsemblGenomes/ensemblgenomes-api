@@ -59,9 +59,10 @@ my $dbc =
 my $gdba = Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->new($dbc);
 
 # find all comparas for the division of interest
-my $comparas = $gdba->fetch_compara_by_division('EnsemblPlants');
+my $comparas = $gdba->fetch_all_compara_by_division('EnsemblPlants');
 # find the peptide compara
 my ($compara) = grep {$_->is_peptide_compara()} @$comparas;
+print $compara->division()." ".$compara->method()."(".$compara->dbname().")\n";
 
 # print out all the genomes in this compara
 for my $genome (@{$compara->genomes()}) {

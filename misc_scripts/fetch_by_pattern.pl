@@ -26,7 +26,7 @@
 
 This script is an example of how to use 
 Bio::EnsEMBL::LookUp::get_by_name_pattern to retrieve all 
-DBAdaptor instances for ENA Bacteria genomes which have a name matching the supplied
+DBAdaptor instances for genomes which have a name matching the supplied
 regexp (can be production_name or a unique alias)
 
 =head1 AUTHOR
@@ -46,7 +46,7 @@ use strict;
 use warnings;
 use Bio::EnsEMBL::LookUp;
 print "Building helper\n";
-my $helper = Bio::EnsEMBL::LookUp->new(-URL=>"http://bacteria.ensembl.org/registry.json",-NO_CACHE=>1);
+my $helper = Bio::EnsEMBL::LookUp->new();
 
 print "Getting DBAs for escherichia_coli_.*\n";
 my @dbas = @{$helper->get_all_by_name_pattern('escherichia_coli.*')};   
