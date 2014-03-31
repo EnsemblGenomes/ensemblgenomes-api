@@ -29,7 +29,7 @@ limitations under the License.
 
 =head1 NAME
 
-Bio::EnsEMBL::LookUp
+Bio::EnsEMBL::LookUp::LocalLookUp
 
 =head1 SYNOPSIS
 
@@ -46,13 +46,10 @@ my $lookup = Bio::EnsEMBL::LookUp::::LocalLookUp->new(-URL=>'http://bacteria.ens
 
 =head1 DESCRIPTION
 
-This module is a helper that provides additional methods to aid navigating a registry of >6000 species across >25 databases. 
-It does not replace the Registry but provides some additional methods for finding species e.g. by searching for species that 
-have an alias that match a regular expression, or species which are derived from a specific ENA/INSDC accession, or species
-that belong to a particular part of the bacterial taxonomy. 
+This module is an implementation of Bio::EnsEMBL::LookUp that uses a local hash to store information about available Ensembl Genomes data. 
+It can be constructed in a number of different ways:
 
-There are a number of ways of creating a lookup. The simplest and fastest is to supply a URL for a JSON resource that contains all the details
-needed to connect to the public Ensembl Genomes bacterial databases e.g.
+A remote cache file containing a JSON representation of the hash can be supplied:
 
 	my $lookup = Bio::EnsEMBL::LookUp::LocalLookUp->new(-URL=>'http://bacteria.ensembl.org/registry.json');
 
@@ -60,7 +57,7 @@ Alternatively, a local file containing the required JSON can be specified instea
 
 	my $lookup = Bio::EnsEMBL::LookUp::LocalLookUp->new(-FILE=>"/path/to/reg.json");
 
-Finally, a Registry already loaded with the ENA core databases can be supplied:
+Finally, a Registry already loaded with core databases can be supplied:
 
 	my $lookup = Bio::EnsEMBL::LookUp::LocalLookUp->new(-REGISTRY=>'Bio::EnsEMBL::Registry');
 
@@ -68,49 +65,14 @@ If the standard Registry is used, the argument can be omitted completely:
 
 	my $lookup = Bio::EnsEMBL::LookUp::LocalLookUp->new();
 
-To populate the registry with just the Ensembl Bacteria databases for the current software release on a specified server, the following method can be used:
+To populate the registry with just the Ensembl Genomes databases for the current software 
+release on a specified server, the following method can be used:
 
-	Bio::EnsEMBL::LookUp->register_all_dbs( $host,
+	Bio::EnsEMBL::LookUp::LocalLookUp->register_all_dbs( $host,
 	   $port, $user, $pass);
 
-Once a lookup has been created, there are various methods to retreive DBAdaptors for species of interest:
+Once a lookup has been created, it can be used as specified in Bio::EnsEMBL::LookUp
 
-1. To find species by name - all DBAdaptors for species with a name or alias matching the supplied string:
-
-	$dbas = $lookup->get_by_name_exact('Escherichia coli str. K-12 substr. MG1655');
-
-2. To find species by name pattern - all DBAdaptors for species with a name or alias matching the supplied regexp:
-
-	$dbas = $lookup->get_by_name_exact('Escherichia coli .*);
-
-3. To find species with the supplied taxonomy ID:
-
-	$dbas = $lookup->get_all_by_taxon_id(388919);
-	
-4. In coordination with a taxonomy node adaptor to get DBAs for all descendants of a node:
-
-	my $node = $node_adaptor->fetch_by_taxon_id(511145);
-	for my $child (@{$node_adaptor->fetch_descendants($node)}) {
-		my $dbas = $lookup->get_all_by_taxon_id($node->taxon_id())
-		if(defined $dbas) {
-			for my $dba (@{$dbas}) {
-				# do something with the $dba
-			}
-		}
-	}
-
-The retrieved DBAdaptors can then be used as normal e.g.
-
-	for my $gene (@{$dba->get_GeneAdaptor()->fetch_all_by_biotype('protein_coding')}) {
-		print $gene->external_name."\n";
-	}
-
-Once retrieved, the arguments needed for constructing a DBAdaptor directly can be dumped for later use e.g.
-
-	my $args = $lookup->dba_to_args($dba);
-	... store and retrieve $args for use in another script ... 
-	my $resurrected_dba = Bio::EnsEMBL::DBSQL::DBAdaptor->new(@$args);
-  
 =head1 AUTHOR
 
 dstaines
@@ -142,8 +104,6 @@ use JSON;
 use LWP::Simple;
 use Carp;
 
-use base qw/Bio::EnsEMBL::LookUp/;
-
 my $default_cache_file = qw/lookup_cache.json/;
 
 =head1 SUBROUTINES/METHODS
@@ -164,15 +124,15 @@ my $default_cache_file = qw/lookup_cache.json/;
   Status            : Stable
 
   Example       	: 
-  my $lookup = Bio::EnsEMBL::LookUp->new(
+  my $lookup = Bio::EnsEMBL::LookUp::LocalLookUp->new(
                                         -REGISTRY => $reg);
 =cut
 
 sub new {
   my ($class, @args) = @_;
+  my $self = bless({}, ref($class) || $class);
   my ($reg, $url, $file, $nocache, $cache_file, $clear_cache) = rearrange([qw(registry url file no_cache cache_file clear_cache)], @args);
   if (!defined $reg) { $reg = 'Bio::EnsEMBL::Registry' }
-  my $self = bless({}, ref($class) || $class);
   $self->{registry}      = $reg;
   $self->{dbas_by_taxid} = {};
   $self->{dbas_by_name}  = {};
@@ -837,7 +797,7 @@ sub register_all_dbs {
   my ($class, $host, $port, $user, $pass, $regexp) = @_;
   
   if (!$regexp) {
-	$regexp = '_collection_core_[0-9]+_' . software_version() . '_[0-9]+';
+	$regexp = '_core_[0-9]+_' . software_version() . '_[0-9]+';
   }
 
   if(!defined $host) {

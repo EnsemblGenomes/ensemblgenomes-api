@@ -33,82 +33,27 @@ Bio::EnsEMBL::LookUp
 
 =head1 SYNOPSIS
 
-# creation from a database server
+# creation of default implementation
 
 my $lookup = Bio::EnsEMBL::RemoteLookUp->new();
 my $dbas = $lookup->registry()->get_all();
 $dbas = $lookup->get_all_by_taxon_id(388919);
 $dbas = $lookup->get_by_name_pattern("Escherichia.*");
 
-# creation from a URL
-my $lookup = Bio::EnsEMBL::LookUp->new(-URL=>'http://bacteria.ensembl.org/registry.json');
-
 =head1 DESCRIPTION
 
-This module is a helper that provides additional methods to aid navigating a registry of >6000 species across >25 databases. 
-It does not replace the Registry but provides some additional methods for finding species e.g. by searching for species that 
-have an alias that match a regular expression, or species which are derived from a specific ENA/INSDC accession, or species
-that belong to a particular part of the bacterial taxonomy. 
+This module is an implementation of Bio::EnsEMBL::LookUp that uses Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor to
+access a MySQL database containing information about Ensembl Genomes contents.
 
-There are a number of ways of creating a lookup. The simplest and fastest is to supply a URL for a JSON resource that contains all the details
-needed to connect to the public Ensembl Genomes bacterial databases e.g.
+The default constructor uses the public MySQL server and creates an info adaptor using the latest Ensembl Genomes release
 
-	my $lookup = Bio::EnsEMBL::LookUp->new(-URL=>'http://bacteria.ensembl.org/registry.json');
-
-Alternatively, a local file containing the required JSON can be specified instead:
-
-	my $lookup = Bio::EnsEMBL::LookUp->new(-FILE=>"/path/to/reg.json");
-
-Finally, a Registry already loaded with the ENA core databases can be supplied:
-
-	my $lookup = Bio::EnsEMBL::LookUp->new(-REGISTRY=>'Bio::EnsEMBL::Registry');
-
-If the standard Registry is used, the argument can be omitted completely:
-
-	my $lookup = Bio::EnsEMBL::LookUp->new();
-
-To populate the registry with just the Ensembl Bacteria databases for the current software release on a specified server, the following method can be used:
-
-	Bio::EnsEMBL::LookUp->register_all_dbs( $host,
-	   $port, $user, $pass);
-
-Once a lookup has been created, there are various methods to retreive DBAdaptors for species of interest:
-
-1. To find species by name - all DBAdaptors for species with a name or alias matching the supplied string:
-
-	$dbas = $lookup->get_by_name_exact('Escherichia coli str. K-12 substr. MG1655');
-
-2. To find species by name pattern - all DBAdaptors for species with a name or alias matching the supplied regexp:
-
-	$dbas = $lookup->get_by_name_exact('Escherichia coli .*);
-
-3. To find species with the supplied taxonomy ID:
-
-	$dbas = $lookup->get_all_by_taxon_id(388919);
+	my $lookup = Bio::EnsEMBL::LookUp::RemoteLookUp->new();
 	
-4. In coordination with a taxonomy node adaptor to get DBAs for all descendants of a node:
+Alternatively, a different server and adaptor can be specified:
 
-	my $node = $node_adaptor->fetch_by_taxon_id(511145);
-	for my $child (@{$node_adaptor->fetch_descendants($node)}) {
-		my $dbas = $lookup->get_all_by_taxon_id($node->taxon_id())
-		if(defined $dbas) {
-			for my $dba (@{$dbas}) {
-				# do something with the $dba
-			}
-		}
-	}
+	my $lookup = Bio::EnsEMBL::LookUp::RemoteLookUp->new(-USER=>$user, -HOST=>$host, -PORT=>$port, -ADAPTOR=>$adaptor);
 
-The retrieved DBAdaptors can then be used as normal e.g.
-
-	for my $gene (@{$dba->get_GeneAdaptor()->fetch_all_by_biotype('protein_coding')}) {
-		print $gene->external_name."\n";
-	}
-
-Once retrieved, the arguments needed for constructing a DBAdaptor directly can be dumped for later use e.g.
-
-	my $args = $lookup->dba_to_args($dba);
-	... store and retrieve $args for use in another script ... 
-	my $resurrected_dba = Bio::EnsEMBL::DBSQL::DBAdaptor->new(@$args);
+Once constructed, the LookUp instance can be used as documented in Bio::EnsEMBL::LookUp.
   
 =head1 AUTHOR
 
@@ -147,7 +92,7 @@ use List::MoreUtils qw(uniq);
   Status            : Stable
 
   Example       	: 
-  my $lookup = Bio::EnsEMBL::LookUp->new();
+  my $lookup = Bio::EnsEMBL::RemoteLookUp->new();
 =cut
 
 sub new {
@@ -182,6 +127,13 @@ sub _adaptor {
   return $self->{_adaptor};
 }
 
+=head2 genome_to_dba
+	Description : Build a Bio::EnsEMBL::DBSQL::DBAdaptor instance with the supplied info object
+	Argument    : Bio::EnsEMBL::Utils::MetaData::GenomeInfo
+	Exceptions  : None
+	Return type : Bio::EnsEMBL::DBSQL::DBAdaptor
+=cut
+
 sub genome_to_dba {
   my ($self, $genome_info) = @_;
   my $dba;
@@ -191,19 +143,29 @@ sub genome_to_dba {
 	$dba = $self->_cache()->{$genome_info->dbname()};
 	if (!defined $dba) {
 	  $dba = Bio::EnsEMBL::DBSQL::DBAdaptor->new(
-			 -USER       => $self->{user},
-			 -PASS       => $self->{pass},
-			 -HOST       => $self->{host},
-			 -PORT       => $self->{port},
-			 -DBNAME     => $genome_info->dbname(),
-			 -SPECIES    => $genome_info->species(),
-			 -SPECIES_ID => $genome_info->species_id(),
-			 -GROUP      => 'core');
+		-USER       => $self->{user},
+		-PASS       => $self->{pass},
+		-HOST       => $self->{host},
+		-PORT       => $self->{port},
+		-DBNAME     => $genome_info->dbname(),
+		-SPECIES    => $genome_info->species(),
+		-SPECIES_ID => $genome_info->species_id(),
+		-MULTISPECIES_DB => $genome_info->dbname() =~ m/_collection_/ ?
+		  1 :
+		  0,
+		-GROUP => 'core');
 	  $self->_cache()->{$genome_info->dbname()} = $dba;
 	}
   }
   return $dba;
-}
+} ## end sub genome_to_dba
+
+=head2 genomes_to_dbas
+	Description : Build a set of Bio::EnsEMBL::DBSQL::DBAdaptor instances with the supplied info objects
+	Argument    : array ref of Bio::EnsEMBL::Utils::MetaData::GenomeInfo
+	Exceptions  : None
+	Return type : array ref of Bio::EnsEMBL::DBSQL::DBAdaptor
+=cut
 
 sub genomes_to_dbas {
   my ($self, $genomes) = @_;
@@ -215,6 +177,13 @@ sub genomes_to_dbas {
   }
   return $dbas;
 }
+
+=head2 compara_to_dba
+	Description : Build a Bio::EnsEMBL::Compara::DBSQL::DBAdaptor instance with the supplied info object
+	Argument    : Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo
+	Exceptions  : None
+	Return type : Arrayref of strings
+=cut
 
 sub compara_to_dba {
   my ($self, $genome_info) = @_;
@@ -287,7 +256,8 @@ sub get_all_by_taxon_id {
 
 sub get_by_name_exact {
   my ($self, $name) = @_;
-  return $self->genome_to_dba($self->{_adaptor}->fetch_by_any_name($name));
+  return $self->genome_to_dba(
+						   $self->{_adaptor}->fetch_by_any_name($name));
 }
 
 =head2 get_all_by_accession
@@ -358,7 +328,8 @@ sub get_all_by_dbname {
 
 sub get_all_taxon_ids {
   my ($self) = @_;
-  return [uniq(map { $_->taxonomy_id() } @{$self->{_adaptor}->fetch_all()})
+  return [
+	   uniq(map { $_->taxonomy_id() } @{$self->{_adaptor}->fetch_all()})
   ];
 }
 
@@ -414,8 +385,9 @@ sub get_all_assemblies {
 sub get_all_versioned_assemblies {
   my ($self) = @_;
   return [
-	   uniq(map { $_->assembly_id()||'' } @{$self->{_adaptor}->fetch_all()})
-  ];
+	 uniq(
+	   map { $_->assembly_id() || '' } @{$self->{_adaptor}->fetch_all()}
+	 )];
 }
 
 1;
