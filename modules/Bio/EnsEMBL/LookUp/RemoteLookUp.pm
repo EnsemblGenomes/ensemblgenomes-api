@@ -140,7 +140,7 @@ sub genome_to_dba {
   if (defined $genome_info) {
 	assert_ref($genome_info,
 			   'Bio::EnsEMBL::Utils::MetaData::GenomeInfo');
-	$dba = $self->_cache()->{$genome_info->dbname()};
+	$dba = $self->_cache()->{$genome_info->species()};
 	if (!defined $dba) {
 	  $dba = Bio::EnsEMBL::DBSQL::DBAdaptor->new(
 		-USER       => $self->{user},
@@ -154,7 +154,7 @@ sub genome_to_dba {
 		  1 :
 		  0,
 		-GROUP => 'core');
-	  $self->_cache()->{$genome_info->dbname()} = $dba;
+	  $self->_cache()->{$genome_info->species()} = $dba;
 	}
   }
   return $dba;
