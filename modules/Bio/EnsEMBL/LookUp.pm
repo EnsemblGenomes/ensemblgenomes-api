@@ -33,8 +33,8 @@ Bio::EnsEMBL::LookUp
 
 =head1 SYNOPSIS
 
-# default creation
-my $lookup = Bio::EnsEMBL::LookUp->build();
+# default creation using latest public release of Ensembl Genomes
+my $lookup = Bio::EnsEMBL::LookUp->new();
 
 =head1 DESCRIPTION
 
@@ -46,7 +46,7 @@ that belong to a particular part of the taxonomy.
 There are a number of ways of creating a lookup but the simplest is to use the default setting of the latest publicly 
 available Ensembl Genomes databases: 
 
-	my $lookup = Bio::EnsEMBL::LookUp->build();
+	my $lookup = Bio::EnsEMBL::LookUp->new();
 
 Once a lookup has been created, there are various methods to retreive DBAdaptors for species of interest:
 
@@ -85,6 +85,15 @@ Once retrieved, the arguments needed for constructing a DBAdaptor directly can b
 	my $args = $lookup->dba_to_args($dba);
 	... store and retrieve $args for use in another script ... 
 	my $resurrected_dba = Bio::EnsEMBL::DBSQL::DBAdaptor->new(@$args);
+
+=head2 Local implementation
+
+The default implementation of LookUp is a remoting implementation that uses a MySQL database backend
+to look up genome information. The previous implementation loaded an internal hash from either a JSON file
+(remote or local) or by processing the contents of the Registry. 
+
+This implementation is still available, but has been renamed Bio::EnsEMBL::LookUp::LocalLookUp and should
+be constructed directly.
   
 =head1 AUTHOR
 
