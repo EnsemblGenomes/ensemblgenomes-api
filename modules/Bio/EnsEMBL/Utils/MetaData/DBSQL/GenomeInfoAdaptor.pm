@@ -109,7 +109,7 @@ sub build_adaptor {
 	  -SQL => q/select schema_name, 
       cast(replace(schema_name,'ensemblgenomes_info_','') as unsigned int ) as rel
       from information_schema.SCHEMATA 
-      where schema_name like 'ensemblgenomes_info_%' order by rel/
+      where schema_name like 'ensemblgenomes_info_%' order by rel desc/
 	);
 	$dbc->disconnect_if_idle();
 
