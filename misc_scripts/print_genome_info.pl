@@ -44,18 +44,10 @@ $Revision$
 use strict;
 use warnings;
 
-use Bio::EnsEMBL::DBSQL::DBConnection;
 use Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor;
 
-# open connection to desired database
-my $dbc =
-  Bio::EnsEMBL::DBSQL::DBConnection->new(-user   => 'anonymous',
-										 -dbname => 'ensemblgenomes_info_21',
-										 -host   => 'mysql.ebi.ac.uk',
-										 -port   => 4157);
-
 # create an adaptor to work with genomes
-my $gdba = Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->new($dbc);
+my $gdba = Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->build_adaptor();
 
 # get the genome of interest and print some information
 my $genome = $gdba->fetch_by_species('arabidopsis_thaliana');
