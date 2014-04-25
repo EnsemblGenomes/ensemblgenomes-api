@@ -25,17 +25,59 @@ Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor
 
 =head1 SYNOPSIS
 
+my $gdba = Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->build_adaptor();
+my $md = $gdba->fetch_by_species("arabidopsis_thaliana");
+
+=head1 DESCRIPTION
+
+Adaptor for storing and retrieving GenomeInfo objects from MySQL genome_info database
+
+To start working with an adaptor:
+
+# getting an adaptor
+## adaptor for latest public EG release
+my $gdba = Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->build_adaptor();
+## adaptor for specified public EG release
+my $gdba = Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->build_adaptor(21);
+## manually specify a given database
 my $dbc = Bio::EnsEMBL::DBSQL::DBConnection->new(
 -USER=>'anonymous',
 -PORT=>4157,
 -HOST=>'mysql.ebi.ac.uk',
 -DBNAME=>'genome_info_21');
 my $gdba = Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->new(-DBC=>$dbc);
-my $md = $gdba->fetch_by_species("arabidopsis_thaliana");
 
-=head1 DESCRIPTION
+To find genomes, use the fetch methods e.g.
 
-Adaptor for storing and retrieving GenomeInfo objects from MySQL genome_info database
+# find a genome by name
+my $genome = $gdba->fetch_by_species('arabidopsis_thaliana');
+
+# find and iterate over all genomes
+for my $genome (@{$gdba->fetch_all()}) {
+	print $genome->name()."\n";
+}
+
+# find and iterate over all genomes from plants
+for my $genome (@{$gdba->fetch_all_by_division('EnsemblPlants')}) {
+	print $genome->name()."\n";
+}
+
+# find and iterate over all genomes with variation
+for my $genome (@{$gdba->fetch_all_with_variation()}) {
+	print $genome->name()."\n";
+}
+
+# find all comparas for the division of interest
+my $comparas = $gdba->fetch_all_compara_by_division('EnsemblPlants');
+
+# find the peptide compara
+my ($compara) = grep {$_->is_peptide_compara()} @$comparas;
+print $compara->division()." ".$compara->method()."(".$compara->dbname().")\n";
+
+# print out all the genomes in this compara
+for my $genome (@{$compara->genomes()}) {
+	print $genome->name()."\n";
+}
 
 =head1 Author
 

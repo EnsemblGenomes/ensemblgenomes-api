@@ -25,17 +25,30 @@ Bio::EnsEMBL::Utils::MetaData::GenomeInfo
 
 =head1 SYNOPSIS
 
-  my $md = Bio::EnsEMBL::Utils::MetaData::GenomeInfo->new(
+  my $genome = Bio::EnsEMBL::Utils::MetaData::GenomeInfo->new(
 	  -species    => $dba->species(),
 	  -species_id => $dba->species_id(),
 	  -division   => $meta->get_division() || 'Ensembl',
 	  -dbname     => $dbname);
 	  
-  print Dumper($md->to_hash());
+  print Dumper($genome->to_hash());
 
 =head1 DESCRIPTION
 
-Object encapsulating meta information about a genome in Ensembl Genomes
+Object encapsulating meta information about a genome in Ensembl Genomes. 
+
+Can be used to render information about a genome e.g.
+
+print $genome->name()." (".$genome->species.")\n";
+print "Sequences: ".scalar(@{$genome->sequences()})."\n";
+if($genome->has_variations()) {
+	print "Variations: \n";
+	# variations is a hash with type as the key
+	while(my ($type,$value) = each %{$genome->variations()}) {
+		print "- $type\n";
+	}
+}
+print "Compara analyses: ".scalar(@{$genome->compara()})."\n";
 
 =head1 AUTHOR
 
