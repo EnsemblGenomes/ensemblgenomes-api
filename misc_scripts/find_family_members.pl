@@ -44,8 +44,7 @@ use warnings;
 use Bio::EnsEMBL::LookUp;
 use Bio::EnsEMBL::Compara::DBSQL::DBAdaptor;
 print "Building helper\n";
-my $helper = Bio::EnsEMBL::LookUp->new(-URL      => "http://bacteria.ensembl.org/registry.json",
-									   -NO_CACHE => 1);
+my $helper = Bio::EnsEMBL::LookUp->new();
 
 # load compara adaptor
 my $compara_dba = Bio::EnsEMBL::Compara::DBSQL::DBAdaptor->new(-HOST => 'mysql.ebi.ac.uk', -USER => 'anonymous', -PORT => '4157', -DBNAME => 'ensembl_compara_bacteria_17_70');

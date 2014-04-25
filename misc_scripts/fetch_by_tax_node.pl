@@ -52,8 +52,10 @@ print "Building helper\n";
 my $helper = Bio::EnsEMBL::LookUp->new();
 
 my $taxid = 562;
-print "Finding descendants for " . $taxid . "\n";
-for my $dba (@{$helper->get_all_by_taxon_branch($taxid)}) {
+print "Finding descendants for $taxid\n";
+my @dbas = @{$helper->get_all_by_taxon_branch($taxid)};
+print "Found ".scalar @dbas." descendants\n";
+for my $dba (@dbas) {
   my $genes = $dba->get_GeneAdaptor()->fetch_all();
   print "Found " .
 	scalar @$genes . " genes for " . $dba->species() . "\n";

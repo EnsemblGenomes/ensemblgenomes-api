@@ -44,12 +44,11 @@ use warnings;
 use Bio::EnsEMBL::LookUp;
 use Bio::EnsEMBL::Compara::DBSQL::DBAdaptor;
 print "Building helper\n";
-my $helper = Bio::EnsEMBL::LookUp->new(-URL      => "http://bacteria.ensembl.org/registry.json",
-									   -NO_CACHE => 1);
+my $helper = Bio::EnsEMBL::LookUp->new();
 
 my $nom = 'escherichia_coli_str_k_12_substr_mg1655';
 print "Getting DBA for $nom\n";
-my ($dba) = @{$helper->get_by_name_exact($nom)};  
+my $dba = $helper->get_by_name_exact($nom);  
 
 my $gene = $dba->get_GeneAdaptor()->fetch_by_stable_id('b0344');
 print "Found gene " . $gene->external_name() . "\n";
