@@ -25,7 +25,7 @@
 =head1 DESCRIPTION
 
 This script is an example of how to use 
-Bio::EnsEMBL::LookUp::get_by_accession to retrieve a 
+Bio::EnsEMBL::LookUp::LocalLookUp::get_all_by_accession to retrieve a 
 DBAdaptor instance for the genome containing the supplied 
 INSDC accession, using a specified set of databases to build the helper
 
@@ -52,6 +52,6 @@ my $helper =
   Bio::EnsEMBL::LookUp::LocalLookUp->new();
 my $acc = 'U00096';
 print "Getting DBA for $acc\n";
-my $dba   = $helper->fetch_all_by_accession($acc);
+my ($dba)   = @{$helper->get_all_by_accession($acc)};
 my $genes = $dba->get_GeneAdaptor()->fetch_all();
 print "Found " . scalar @$genes . " genes for " . $dba->species() . "\n";
