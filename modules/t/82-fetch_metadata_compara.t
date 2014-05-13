@@ -127,6 +127,15 @@ is($is_found,
    "metadata " . $md->species() . " found in compara " .
 	 $comparas[0]->method() . "/" . $comparas[0]->division());
 
+diag("Fetching all genome info with any compara");
+$mds  = $gdba->fetch_all_with_compara();
+$nAll = scalar @$mds;
+diag("Fetched $nAll GenomeInfo");
+ok($nAll > 0, "At least 1 GenomeInfo found");
+
+$md = $mds->[0];
+diag("Found " . $md->species());
+ok(($md->has_peptide_compara() == 1 || $md->has_pan_compara() == 1 || $md->has_whole_genome_alignments()), "has_*_compara set to 1");
 
 
 done_testing;
