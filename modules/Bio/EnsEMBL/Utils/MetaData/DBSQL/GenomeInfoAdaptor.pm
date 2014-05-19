@@ -181,7 +181,7 @@ sub build_adaptor {
 
   return
 	Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->new(
-								 Bio::EnsEMBL::DBSQL::DBConnection->new(
+								 -DBC=>Bio::EnsEMBL::DBSQL::DBConnection->new(
 													 -user => eg_user(),
 													 -host => eg_host(),
 													 -port => eg_port(),
