@@ -1,0 +1,85 @@
+1	all	synonym
+1	root	scientific name
+2	Bacteria	scientific name
+2	Monera	in-part
+2	Procaryotae	in-part
+2	Prokaryota	in-part
+2	Prokaryotae	in-part
+2	bacteria	blast name
+2	eubacteria	genbank common name
+2	not Bacteria Haeckel 1894	synonym
+2	prokaryote	in-part
+2	prokaryotes	in-part
+543	Enterobacteraceae	synonym
+543	Enterobacteraceae (ex Lapage 1979) Lapage 1982, fam. nov., nom. rev.	synonym
+543	Enterobacteriaceae	scientific name
+543	Enterobacteriaceae (ex Rahn 1937) Ewing et al. 1980, fam. nov., nom. rev.	synonym
+543	Enterobacteriaceae Rahn 1937	synonym
+543	gamma-3 proteobacteria	in-part
+561	Escherchia	misspelling
+561	Escherichia	scientific name
+561	Escherichia Castellani and Chalmers 1919	authority
+562	"Bacillus coli" Migula 1895	authority
+562	"Bacterium coli commune" Escherich 1885	authority
+562	"Bacterium coli" (Migula 1895) Lehmann and Neumann 1896	authority
+562	ATCC 11775	type material
+562	Bacillus coli	synonym
+562	Bacterium coli	synonym
+562	Bacterium coli commune	synonym
+562	CCUG 24	type material
+562	CCUG 29300	type material
+562	CIP 54.8	type material
+562	DSM 30083	type material
+562	Enterococcus coli	synonym
+562	Escherchia coli	misspelling
+562	Escherichia coli	scientific name
+562	Escherichia coli (Migula 1895) Castellani and Chalmers 1919	authority
+562	Escherichia coli retron Ec107	includes
+562	Escherichia coli retron Ec67	includes
+562	Escherichia coli retron Ec79	includes
+562	Escherichia coli retron Ec86	includes
+562	Escherichia/Shigella coli	equivalent name
+562	Eschericia coli	misspelling
+562	JCM 1649	type material
+562	LMG 2092	type material
+562	NBRC 102203	type material
+562	NCCB 54008	type material
+562	NCTC 9001	type material
+562	bacterium 10a	includes
+562	bacterium E3	synonym
+1224	Proteobacteria	scientific name
+1224	Proteobacteria Garrity et al. 2005	authority
+1224	Proteobacteria [class] Stackebrandt et al. 1988	authority
+1224	not Proteobacteria Cavalier-Smith 2002	authority
+1224	proteobacteria	blast name
+1224	purple bacteria	common name
+1224	purple bacteria and relatives	common name
+1224	purple non-sulfur bacteria	common name
+1224	purple photosynthetic bacteria	common name
+1224	purple photosynthetic bacteria and relatives	common name
+1236	Gammaproteobacteria	scientific name
+1236	Gammaproteobacteria Garrity et al. 2005	synonym
+1236	Proteobacteria gamma subdivision	synonym
+1236	Purple bacteria, gamma subdivision	synonym
+1236	g-proteobacteria	blast name
+1236	gamma proteobacteria	synonym
+1236	gamma subdivision	synonym
+1236	gamma subgroup	synonym
+83333	Escherichia coli K-12	scientific name
+83333	Escherichia coli K12	equivalent name
+91347	'Enterobacteriales'	synonym
+91347	Enterobacteriaceae and related endosymbionts	synonym
+91347	Enterobacteriaceae group	synonym
+91347	Enterobacteriales	scientific name
+91347	enterobacteria	blast name
+91347	gamma-3 proteobacteria	in-part
+131567	biota	synonym
+131567	cellular organisms	scientific name
+511145	Escherichia coli MG1655	synonym
+511145	Escherichia coli str. K-12 substr. MG1655	scientific name
+511145	Escherichia coli str. K12 substr. MG1655	equivalent name
+511145	Escherichia coli str. MG1655	equivalent name
+511145	Escherichia coli strain MG1655	equivalent name
+562	662101	merged_taxon_id
+562	662104	merged_taxon_id
+1	2013-09-13 17:47:26	import date

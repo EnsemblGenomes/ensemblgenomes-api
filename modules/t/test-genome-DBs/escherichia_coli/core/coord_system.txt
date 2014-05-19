@@ -1,0 +1,2 @@
+4	1	chromosome	GCA_000005845.1	1	default_version
+5	1	contig		4	default_version,sequence_level

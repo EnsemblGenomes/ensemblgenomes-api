@@ -1,0 +1,8 @@
+density_feature	4	30932
+exon	4	7077
+gene	4	21837
+operon	4	17841
+operon_transcript	4	17879
+repeat_feature	4	655
+simple_feature	4	34308
+transcript	4	7077
