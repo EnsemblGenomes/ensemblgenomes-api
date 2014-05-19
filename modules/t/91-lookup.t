@@ -17,18 +17,8 @@ use warnings;
 
 use Test::More;
 use Bio::EnsEMBL::LookUp;
-use Bio::EnsEMBL::DBSQL::DBConnection;
-use Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor;
-use Data::Dumper;
 
-my $conf_file = 'db.conf';
-
-my $conf = do $conf_file ||
-  die "Could not load configuration from " . $conf_file;
-
-$conf = $conf->{genome_info};
-
-diag("Creating adaptor");
+diag("Creating default adaptor");
 # test using default LookUp constructor
 my $helper =
   Bio::EnsEMBL::LookUp->new();
