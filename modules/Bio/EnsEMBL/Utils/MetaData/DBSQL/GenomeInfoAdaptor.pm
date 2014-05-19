@@ -119,8 +119,23 @@ use constant PUBLIC_DBNAME => 'ensemblgenomes_info_';
 sub new {
   my ( $proto, @args ) = @_;
   my $self = bless {}, $proto;
-  ( $self->{dbc}, $self->{taxonomy_adaptor} ) =
-	rearrange( [ 'DBC', 'TAXONOMY_ADAPTOR' ], @args );
+  ( $self->{user}, $self->{pass}, $self->{host}, $self->{port},
+	$self->{dbname}, $self->{dbc}, $self->{taxonomy_adaptor} )
+	= rearrange(
+				 [ 'USER',   'PASS',
+				   'HOST',   'PORT',
+				   'DBNAME', 'DBC',
+				   'TAXONOMY_ADAPTOR' ],
+				 @args );
+  if ( !defined $self->{dbc} ) {
+	$self->{dbc} =
+	  Bio::EnsEMBL::DBSQL::DBConnection->new( -USER   => $self->{user},
+											  -PASS   => $self->{pass},
+											  -HOST   => $self->{host},
+											  -PORT   => $self->{port},
+											  -DBNAME => $self->{dbname}
+	  );
+  }
   return $self;
 }
 
