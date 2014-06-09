@@ -482,18 +482,33 @@ Description : Fetch an array of nodes below the supplied node on the tree
 Argument    : Bio::EnsEMBL::TaxonomyNode or ID of desired node
 Return type : Arrayref of Bio::EnsEMBL::TaxonomyNode
 =cut
-
 sub fetch_descendants {
   my ($self, $node) = @_;
-
-  my $nodes = $self->helper()->execute_into_hash(
-	-SQL => $base_sql . q{ join ncbi_taxa_node parent 
+  my $sql = $base_sql . q{ join ncbi_taxa_node parent 
 		  	on (n.left_index between parent.left_index and parent.right_index and n.taxon_id<>parent.taxon_id)
-			where parent.taxon_id=?},
+			where parent.taxon_id=?};
+  my $nodes = $self->helper()->execute_into_hash(
+	-SQL => $sql,
 	-CALLBACK => $self->mapper(),
 	-PARAMS   => [_get_node_id($node)]);
   return [sort { $a->num_descendants() <=> $b->num_descendants() }
 		  values %{$nodes}];
+}
+
+=head2 fetch_descendant_ids
+
+Description : Fetch an array of taxon IDs below the supplied node on the tree
+Argument    : Bio::EnsEMBL::TaxonomyNode or ID of desired node
+Return type : Arrayref of integers
+=cut
+sub fetch_descendant_ids {
+  my ($self, $node) = @_;
+  my $sql = q/select n.taxon_id from ncbi_taxa_node n join ncbi_taxa_node parent 
+		  	on (n.left_index between parent.left_index and parent.right_index and n.taxon_id<>parent.taxon_id)
+			where parent.taxon_id=?/;
+  return  $self->helper()->execute_simple(
+	-SQL => $sql,
+	-PARAMS   => [_get_node_id($node)]);
 }
 
 =head2 fetch_leaf_nodes

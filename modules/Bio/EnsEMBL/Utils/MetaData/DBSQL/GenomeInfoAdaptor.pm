@@ -487,6 +487,27 @@ sub fetch_by_dbID {
 					$keen );
 }
 
+=head2 fetch_by_dbIDs
+  Arg	     : IDs of genome info
+  Arg        : (optional) if 1, expand children of genome info
+  Description: Fetch genome info for specified ID
+  Returntype : Bio::EnsEMBL::Utils::MetaData::GenomeInfo
+  Exceptions : none
+  Caller     : internal
+  Status     : Stable
+=cut
+
+sub fetch_by_dbIDs {
+	  my ( $self, $ids, $keen ) = @_;
+	  my @genomes = ();
+  my $it = natatime 1000, @{$ids};
+  while ( my @vals = $it->() ) {
+  	my $sql    = $base_fetch_sql . ' where genome_id in (' . join (',',@vals) . ')';
+  	@genomes = (@genomes, @{$self->_fetch_generic( $sql, [] )});
+  }
+  return \@genomes;
+}
+
 =head2 fetch_all_by_sequence_accession
   Arg	     : INSDC sequence accession e.g. U00096.1 or U00096
   Arg        : (optional) if 1, expand children of genome info
@@ -628,8 +649,11 @@ sub fetch_all_by_taxonomy_id {
 
 sub fetch_all_by_taxonomy_ids {
   my ( $self, $ids, $keen ) = @_;
+  # filter list down
+  my %ids = map {$_=>1} @$ids;
+  my @tids = grep {defined $ids{$_}} @{$self->{dbc}->sql_helper()->execute_simple(-SQL=>q/select distinct taxonomy_id from genome/)};
   my @genomes = ();
-  my $it = natatime 1000, @{$ids};
+  my $it = natatime 1000, @tids;
   while ( my @vals = $it->() ) {
   	my $sql    = $base_fetch_sql . ' where taxonomy_id in (' . join (',',@vals) . ')';
   	@genomes = (@genomes, @{$self->_fetch_generic( $sql, [] )});
@@ -657,7 +681,7 @@ sub fetch_all_by_taxonomy_branch {
 	  ($root) = @{$self->taxonomy_adaptor()->fetch_all_by_name($root)};
 	}
   }
-  my @taxids = ($root->taxon_id(), map {$_->taxon_id()} @{ $root->adaptor()->fetch_descendants($root) });
+  my @taxids = ($root->taxon_id(), @{ $root->adaptor()->fetch_descendant_ids($root) });
   return $self->fetch_all_by_taxonomy_ids(\@taxids);
 }
 
