@@ -616,6 +616,27 @@ sub fetch_all_by_taxonomy_id {
 										  $keen );
 }
 
+=head2 fetch_by_taxonomy_ids
+  Arg	     : Arrayref of Taxonomy ID
+  Arg        : (optional) if 1, expand children of genome info
+  Description: Fetch genome info for specified taxonomy nodes (batch)
+  Returntype : arrayref of Bio::EnsEMBL::Utils::MetaData::GenomeInfo
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub fetch_all_by_taxonomy_ids {
+  my ( $self, $ids, $keen ) = @_;
+  my @genomes = ();
+  my $it = natatime 1000, @{$ids};
+  while ( my @vals = $it->() ) {
+  	my $sql    = $base_fetch_sql . ' where taxonomy_id in (' . join (',',@vals) . ')';
+  	@genomes = (@genomes, @{$self->_fetch_generic( $sql, [] )});
+  }
+  return \@genomes;
+}
+
 =head2 fetch_all_by_taxonomy_branch
   Arg	     : Bio::EnsEMBL::TaxonomyNode
   Arg        : (optional) if 1, expand children of genome info
@@ -636,14 +657,8 @@ sub fetch_all_by_taxonomy_branch {
 	  ($root) = @{$self->taxonomy_adaptor()->fetch_all_by_name($root)};
 	}
   }
-  my @genomes =
-	@{ $self->fetch_all_by_taxonomy_id( $root->taxon_id() ) };
-  for my $node ( @{ $root->adaptor()->fetch_descendants($root) } ) {
-  	@genomes = ( @genomes,
-				 @{$self->fetch_all_by_taxonomy_id( $node->taxon_id(),
-													$keen ) } );
-  }
-  return \@genomes;
+  my @taxids = ($root->taxon_id(), map {$_->taxon_id()} @{ $root->adaptor()->fetch_descendants($root) });
+  return $self->fetch_all_by_taxonomy_ids(\@taxids);
 }
 
 =head2 fetch_all_by_division
