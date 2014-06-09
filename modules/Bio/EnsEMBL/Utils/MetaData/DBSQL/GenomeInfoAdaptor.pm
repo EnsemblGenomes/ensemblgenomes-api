@@ -488,7 +488,7 @@ sub fetch_by_dbID {
 }
 
 =head2 fetch_all_by_sequence_accession
-  Arg	     : INSDC sequence accession e.g. U00096.1
+  Arg	     : INSDC sequence accession e.g. U00096.1 or U00096
   Arg        : (optional) if 1, expand children of genome info
   Description: Fetch genome info for specified sequence accession
   Returntype : Bio::EnsEMBL::Utils::MetaData::GenomeInfo
@@ -499,12 +499,11 @@ sub fetch_by_dbID {
 
 sub fetch_all_by_sequence_accession {
   my ( $self, $id, $keen ) = @_;
-  return
-	$self->_fetch_generic(
-	$base_fetch_sql .
-' where genome_id in (select distinct(genome_id) from genome_sequence where acc=? or name=?)',
-	[ $id, $id ],
-	$keen );
+    if($id =~ m/\.[0-9]+$/) {
+	return $self->fetch_all_by_sequence_accession_versioned($id, $keen); 	  	
+  } else {
+	return $self->fetch_all_by_sequence_accession_unversioned($id, $keen); 	
+  }
 }
 
 =head2 fetch_all_by_sequence_accession_unversioned
@@ -527,7 +526,47 @@ sub fetch_all_by_sequence_accession_unversioned {
 	$keen );
 }
 
+
+=head2 fetch_all_by_sequence_accession_versioned
+  Arg	     : INSDC sequence accession e.g. U00096.1
+  Arg        : (optional) if 1, expand children of genome info
+  Description: Fetch genome info for specified sequence accession
+  Returntype : Bio::EnsEMBL::Utils::MetaData::GenomeInfo
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub fetch_all_by_sequence_accession_versioned {
+  my ( $self, $id, $keen ) = @_;
+  return
+	$self->_fetch_generic(
+	$base_fetch_sql .
+' where genome_id in (select distinct(genome_id) from genome_sequence where acc=? or name=?)',
+	[ $id, $id ],
+	$keen );
+}
+
 =head2 fetch_by_assembly_id
+  Arg	     : INSDC assembly accession
+  Arg        : (optional) if 1, expand children of genome info
+  Description: Fetch genome info for specified assembly ID (versioned or unversioned)
+  Returntype : Bio::EnsEMBL::Utils::MetaData::GenomeInfo
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub fetch_by_assembly_id {
+  my ( $self, $id, $keen ) = @_;
+  if($id =~ m/\.[0-9]+$/) {
+	return $self->fetch_by_assembly_id_versioned($id, $keen); 	  	
+  } else {
+	return $self->fetch_by_assembly_id_unversioned($id, $keen); 	
+  }
+}
+
+=head2 fetch_by_assembly_id_versioned
   Arg	     : INSDC assembly accession
   Arg        : (optional) if 1, expand children of genome info
   Description: Fetch genome info for specified assembly ID
@@ -537,7 +576,7 @@ sub fetch_all_by_sequence_accession_unversioned {
   Status     : Stable
 =cut
 
-sub fetch_by_assembly_id {
+sub fetch_by_assembly_id_versioned {
   my ( $self, $id, $keen ) = @_;
   return _first_element(
 	 $self->_fetch_generic_with_args( { 'assembly_id', $id }, $keen ) );
@@ -594,13 +633,13 @@ sub fetch_all_by_taxonomy_branch {
 	  $root = $self->taxonomy_adaptor()->fetch_by_taxon_id($root);
 	}
 	else {
-	  $root = $self->taxonomy_adaptor()->fetch_by_name($root);
+	  ($root) = @{$self->taxonomy_adaptor()->fetch_all_by_name($root)};
 	}
   }
   my @genomes =
 	@{ $self->fetch_all_by_taxonomy_id( $root->taxon_id() ) };
   for my $node ( @{ $root->adaptor()->fetch_descendants($root) } ) {
-	@genomes = ( @genomes,
+  	@genomes = ( @genomes,
 				 @{$self->fetch_all_by_taxonomy_id( $node->taxon_id(),
 													$keen ) } );
   }
