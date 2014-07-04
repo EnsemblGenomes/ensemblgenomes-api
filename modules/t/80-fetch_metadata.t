@@ -92,4 +92,15 @@ diag("Retrieving a new GenomeInfo object");
 my $genome2 = $gdba->fetch_by_name($genome->name()); 
 ok($genome->dbID() eq $genome2->dbID(), "GenomeInfos have same ID" );
 
+$genome2->assembly_level("ground");
+
+diag("Updating an existing GenomeInfo object");
+$gdba->update($genome2);
+ok($genome->dbID() eq $genome2->dbID(), "GenomeInfos have same ID" );
+
+diag("Retrieving a new GenomeInfo object");
+my $genome3 = $gdba->fetch_by_name($genome->name()); 
+ok($genome2->dbID() eq $genome3->dbID(), "GenomeInfos have same ID" );
+ok($genome2->assembly_level() eq $genome3->assembly_level(), "GenomeInfos have same level" );
+
 done_testing;
