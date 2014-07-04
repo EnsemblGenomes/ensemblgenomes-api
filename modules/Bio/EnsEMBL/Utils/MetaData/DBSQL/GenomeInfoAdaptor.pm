@@ -297,13 +297,18 @@ has_genome_alignments=?,has_synteny=?,has_other_alignments=? where genome_id=?/,
   $self->_store_features($genome);
   $self->_store_variations($genome);
   $self->_store_alignments($genome);
-  # do not update compara objects for an update
-  #  if ( defined $genome->compara() ) {
-  #
-  #	for my $compara ( @{ $genome->compara() } ) {
-  #	  $self->store_compara($compara);
-  #	}
-  #  }
+  #do not update compara objects for an update
+  if ( defined $genome->compara() ) {
+
+	for my $compara ( @{ $genome->compara() } ) {
+	  if ( defined $compara->dbID() ) {
+		$self->update_compara($compara);
+	  }
+	  else {
+		$self->store_compara($compara);
+	  }
+	}
+  }
   return;
 } ## end sub update
 
@@ -330,11 +335,24 @@ sub update_compara {
 				 $compara->dbID() ] );
 
   $self->{dbc}->sql_helper()->execute_update(
-	-SQL =>
-	  q/delete from genome_compara_analysis compara_analysis_id=?/,
-	-PARAMS => [ $compara->dbID() ] );
-  $self->_store_compara_genomes($compara);
-}
+		 -SQL =>
+		   q/delete from genome_compara_analysis compara_analysis_id=?/,
+		 -PARAMS => [ $compara->dbID() ] );
+  for my $genome ( @{ $compara->genomes() } ) {
+	if ( defined $genome->dbID() ) {
+	  $self->update($genome);
+	}
+	else {
+	  $self->store($genome);
+	}
+	$self->{dbc}->sql_helper()->execute_update(
+	  -SQL =>
+q/insert into genome_compara_analysis(genome_id,compara_analysis_id)
+		values(?,?)/,
+	  -PARAMS => [ $genome->dbID(), $compara->dbID() ] );
+  }
+  return;
+} ## end sub update_compara
 
 =head2 store_compara
   Arg	     : Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo
@@ -360,11 +378,6 @@ sub store_compara {
 	  my ( $sth, $dbh, $rv ) = @_;
 	  $compara->dbID( $dbh->{mysql_insertid} );
 	} );
-  $self->_store_compara_genomes($compara);
-}
-
-sub _store_compara_genomes {
-  my ( $self, $compara ) = @_;
   for my $genome ( @{ $compara->genomes() } ) {
 	$self->store($genome);
 	$self->{dbc}->sql_helper()->execute_update(
@@ -374,7 +387,7 @@ q/insert into genome_compara_analysis(genome_id,compara_analysis_id)
 	  -PARAMS => [ $genome->dbID(), $compara->dbID() ] );
   }
   return;
-}
+} ## end sub store_compara
 
 =head2 _store_aliases
   Arg	     : Bio::EnsEMBL::Utils::MetaData::GenomeInfo
