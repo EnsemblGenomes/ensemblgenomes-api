@@ -123,9 +123,20 @@ use Bio::EnsEMBL::Utils::Exception qw( throw );
 use Bio::EnsEMBL::Utils::Scalar qw( assert_ref );
 use Bio::EnsEMBL::Utils::SqlHelper;
 use Bio::EnsEMBL::TaxonomyNode;
-use Data::Dumper;
+use Bio::EnsEMBL::DBSQL::TaxonomyDBAdaptor;
 
 use base qw( Bio::EnsEMBL::DBSQL::BaseAdaptor );
+
+=head2 new_public	
+
+	Description	: Build a new adaptor from the public database
+	Returns		: Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor
+=cut
+
+sub new_public {
+  return
+	Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor->new(Bio::EnsEMBL::DBSQL::TaxonomyDBAdaptor->new_public());
+}
 
 =head1 SUBROUTINES/METHODS
 
@@ -245,7 +256,23 @@ sub fetch_by_taxon_id {
 							 -PARAMS   => [$taxon_id]);
   return $node->{$taxon_id};
 }
+=head2 fetch_by_taxon_name
 
+Description : Fetch a single node where the name is as specified
+Argument    : String
+Return type : Bio::EnsEMBL::TaxonomyNode
+=cut
+
+sub fetch_by_taxon_name {
+  my ($self, $name) = @_;
+  my $node =
+	$self->helper()->execute_into_hash(
+							 -SQL => $base_sql .
+q{ join ncbi_taxa_name nan using (taxon_id) where nan.name=?},
+							 -CALLBACK => $self->mapper(),
+							 -PARAMS   => [$name]);
+  return _first_element([values(%$node)]);
+}
 =head2 fetch_all_by_taxon_ids
 
 Description : Fetch an array of nodes corresponding to the supplied taxonomy IDs
@@ -455,18 +482,33 @@ Description : Fetch an array of nodes below the supplied node on the tree
 Argument    : Bio::EnsEMBL::TaxonomyNode or ID of desired node
 Return type : Arrayref of Bio::EnsEMBL::TaxonomyNode
 =cut
-
 sub fetch_descendants {
   my ($self, $node) = @_;
-
-  my $nodes = $self->helper()->execute_into_hash(
-	-SQL => $base_sql . q{ join ncbi_taxa_node parent 
+  my $sql = $base_sql . q{ join ncbi_taxa_node parent 
 		  	on (n.left_index between parent.left_index and parent.right_index and n.taxon_id<>parent.taxon_id)
-			where parent.taxon_id=?},
+			where parent.taxon_id=?};
+  my $nodes = $self->helper()->execute_into_hash(
+	-SQL => $sql,
 	-CALLBACK => $self->mapper(),
 	-PARAMS   => [_get_node_id($node)]);
   return [sort { $a->num_descendants() <=> $b->num_descendants() }
 		  values %{$nodes}];
+}
+
+=head2 fetch_descendant_ids
+
+Description : Fetch an array of taxon IDs below the supplied node on the tree
+Argument    : Bio::EnsEMBL::TaxonomyNode or ID of desired node
+Return type : Arrayref of integers
+=cut
+sub fetch_descendant_ids {
+  my ($self, $node) = @_;
+  my $sql = q/select n.taxon_id from ncbi_taxa_node n join ncbi_taxa_node parent 
+		  	on (n.left_index between parent.left_index and parent.right_index and n.taxon_id<>parent.taxon_id)
+			where parent.taxon_id=?/;
+  return  $self->helper()->execute_simple(
+	-SQL => $sql,
+	-PARAMS   => [_get_node_id($node)]);
 }
 
 =head2 fetch_leaf_nodes
@@ -772,6 +814,25 @@ sub _restrict_set {
   }
   return \@output_set;
 } ## end sub _restrict_set
+
+=head2 _first_element
+  Arg	     : arrayref
+  Description: Utility method to return the first element in a list, undef if empty
+  Returntype : arrayref element
+  Exceptions : none
+  Caller     : internal
+  Status     : Stable
+=cut
+
+sub _first_element {
+  my ($arr) = @_;
+  if (defined $arr && scalar(@$arr) > 0) {
+	return $arr->[0];
+  }
+  else {
+	return undef;
+  }
+}
 
 1;
 

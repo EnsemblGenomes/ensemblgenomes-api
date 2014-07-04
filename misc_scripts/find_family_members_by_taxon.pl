@@ -46,8 +46,7 @@ use Bio::EnsEMBL::Compara::DBSQL::DBAdaptor;
 use Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor;
 
 print "Building helper\n";
-my $helper = Bio::EnsEMBL::LookUp->new(-URL      => "http://bacteria.ensembl.org/registry.json",
-									   -NO_CACHE => 1);
+my $helper = Bio::EnsEMBL::LookUp->new();
 
 print "Connecting to taxonomy DB\n";
 my $node_adaptor = Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor->new(Bio::EnsEMBL::DBSQL::DBAdaptor->new(-user    => 'anonymous',
@@ -72,10 +71,10 @@ for my $member (@{$family->get_all_Members()}) {
   my $genome_db = $member->genome_db();
   # filter by taxon
   if (defined $taxids{$genome_db->taxon_id()}) {
-	my ($member_dba) = @{$helper->get_by_name_exact($genome_db->name())};
+	my $member_dba = $helper->get_by_name_exact($genome_db->name());
 	if (defined $member_dba) {
 	  my $gene = $member_dba->get_GeneAdaptor()->fetch_by_stable_id($member->stable_id());
-	  print $member_dba->species() . " " . $gene->external_name . "\n";
+	  print $member_dba->species() . " " . ($gene->external_name()||$gene->stable_id()) . "\n";
 	}
   }
 }

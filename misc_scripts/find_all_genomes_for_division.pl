@@ -26,7 +26,7 @@
 =head1 DESCRIPTION
 
 This script is an example of how to use Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor
-to find and print information about all plant genomes in release 21 of Ensembl Genomes
+to find and print information about all plant genomes in the latest release of Ensembl Genomes
 
 =head1 AUTHOR
 
@@ -47,17 +47,11 @@ use warnings;
 use Bio::EnsEMBL::DBSQL::DBConnection;
 use Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor;
 
-# open connection to desired database
-my $dbc =
-  Bio::EnsEMBL::DBSQL::DBConnection->new(-user   => 'anonymous',
-										 -dbname => 'ensemblgenomes_info_21',
-										 -host   => 'mysql.ebi.ac.uk',
-										 -port   => 4157);
 
 # create an adaptor to work with genomes
-my $gdba = Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->new($dbc);
+my $gdba = Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->build_adaptor();
 
 # find and iterate over all genomes
-for my $genome (@{$gdba->fetch_by_division('EnsemblPlants')}) {
+for my $genome (@{$gdba->fetch_all_by_division('EnsemblPlants')}) {
 	print $genome->name()."\n";
 }

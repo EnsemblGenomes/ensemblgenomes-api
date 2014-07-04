@@ -1,0 +1,13 @@
+# This provides a local set of configurations which is merged with the
+# provided MultiTestDB.conf.default
+#
+
+{
+
+  'port'   => '3306',
+  'driver' => 'mysql',
+  'user'   => 'root',
+  'pass'   => '',
+  'host'   => 'localhost'
+
+}

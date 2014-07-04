@@ -16,25 +16,12 @@ use strict;
 use warnings;
 
 use Test::More;
-use Bio::EnsEMBL::DBSQL::DBConnection;
-use Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor;
-use Data::Dumper;
+use Bio::EnsEMBL::Test::MultiTestDB;
 
-my $conf_file = 'db.conf';
-my $conf = do $conf_file ||
-  die "Could not load configuration from " . $conf_file;
-my $tconf = $conf->{genome_info};
-
-diag("Connecting to genome info database");
-my $dba =
-  Bio::EnsEMBL::DBSQL::DBConnection->new(-user   => $tconf->{user},
-										 -pass   => $tconf->{pass},
-										 -dbname => $tconf->{db},
-										 -host   => $tconf->{host},
-										 -port   => $tconf->{port},
-										 -driver => $tconf->{driver},);
-
-my $gdba = Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->new($dba);
+my $multi     = Bio::EnsEMBL::Test::MultiTestDB->new('eg');
+my $gdba = $multi->get_DBAdaptor('info');
+my $tax = $multi->get_DBAdaptor('tax');
+$gdba->taxonomy_adaptor($tax);
 ok(defined $gdba, "GenomeInfoAdaptor exists");
 
 diag("Fetching all genome info");

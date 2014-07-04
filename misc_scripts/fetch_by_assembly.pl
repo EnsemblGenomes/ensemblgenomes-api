@@ -27,7 +27,7 @@
 
 This script is an example of how to use 
 Bio::EnsEMBL::LookUp::get_by_assembly_accession to retrieve a 
-DBAdaptor instance for the ENA Bacteria genome for the supplied INSDC Assembly accession
+DBAdaptor instance for the genome for the supplied INSDC Assembly accession
 
 =head1 AUTHOR
 
@@ -47,9 +47,7 @@ use warnings;
 use Bio::EnsEMBL::LookUp;
 print "Building helper\n";
 my $helper =
-  Bio::EnsEMBL::LookUp->new(
-						-URL => "http://bacteria.ensembl.org/registry.json",
-						-NO_CACHE => 1 );
+  Bio::EnsEMBL::LookUp->new();
 
 my $acc = 'GCA_000005845';
 print "Getting DBA for $acc\n";

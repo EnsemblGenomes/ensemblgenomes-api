@@ -1,4 +1,5 @@
 #!/usr/bin/env perl
+
 =head1 LICENSE
  Copyright [2009-2014] EMBL-European Bioinformatics Institute
  
@@ -25,10 +26,10 @@
 =head1 DESCRIPTION
 
 This script is an example of how to use 
-Bio::EnsEMBL::LookUp::fetch_by_taxon_id to retrieve all 
-DBAdaptor instances for ENA Bacteria genomes which are children of the 
-supplied NCBI taxonomy ID (using the ENA Bacteria hosted copy of the ncbi_taxonomy 
-database)
+Bio::EnsEMBL::LookUp::fetch_by_taxon_branch to retrieve all 
+DBAdaptor instances for genomes which are children of the 
+supplied NCBI taxonomy ID (using the Ensembl Genomes hosted 
+copy of the ncbi_taxonomy database)
 
 =head1 AUTHOR
 
@@ -46,30 +47,16 @@ $Revision$
 use strict;
 use warnings;
 use Bio::EnsEMBL::LookUp;
-use Bio::EnsEMBL::DBSQL::DBAdaptor;
-use Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor;
 
 print "Building helper\n";
-my $helper = Bio::EnsEMBL::LookUp->new(-URL=>"http://bacteria.ensembl.org/registry.json",-NO_CACHE=>1);
-
-print "Connecting to taxonomy DB\n";
-my $tax_dba =
-  Bio::EnsEMBL::DBSQL::DBAdaptor->new( -user    => 'anonymous',
-									   -dbname  => 'ncbi_taxonomy',
-									   -host    => 'mysql.ebi.ac.uk',
-									   -port    => 4157,
-									   -group   => 'taxonomy',
-									   -species => 'ena' );
-
-my $node_adaptor = Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor->new($tax_dba);
+my $helper = Bio::EnsEMBL::LookUp->new();
 
 my $taxid = 562;
-print "Finding taxonomy node for ".$taxid."\n";
-my $root = $node_adaptor->fetch_by_taxon_id($taxid);
-print "Finding descendants for ".$taxid."\n";
-for my $node (@{$node_adaptor->fetch_descendants($root)}) {
-	for my $dba (@{$helper->get_all_by_taxon_id($node->taxon_id())}) {
-			my $genes = $dba->get_GeneAdaptor()->fetch_all();
-			print "Found ".scalar @$genes." genes for ".$dba->species()."\n";
-	}
+print "Finding descendants for $taxid\n";
+my @dbas = @{$helper->get_all_by_taxon_branch($taxid)};
+print "Found ".scalar @dbas." descendants\n";
+for my $dba (@dbas) {
+  my $genes = $dba->get_GeneAdaptor()->fetch_all();
+  print "Found " .
+	scalar @$genes . " genes for " . $dba->species() . "\n";
 }

@@ -45,7 +45,7 @@ use strict;
 use warnings;
 use Bio::EnsEMBL::LookUp;
 print "Building helper\n";
-my $helper = Bio::EnsEMBL::LookUp->new(-URL=>"http://bacteria.ensembl.org/registry.json",-NO_CACHE=>1);
+my $helper = Bio::EnsEMBL::LookUp->new();
 
 my $taxid = 511145;
 print "Getting DBAs for taxonomy node $taxid\n";

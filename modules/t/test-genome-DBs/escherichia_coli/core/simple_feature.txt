@@ -1,0 +1,11 @@
+18	9	148	148	1	Promoter thrLp (<a href='http://regulondb.ccg.unam.mx/operon?term=ECK120014725&format=jsp'>RegulonDB:ECK120010236</a>)	85	\N
+19	9	148	148	1	Promoter thrLp (<a href='http://regulondb.ccg.unam.mx/operon?term=ECK120014725&format=jsp'>RegulonDB:ECK120010236</a>)	85	\N
+20	9	274	310	1	rho-independent terminator (<a href='http://regulondb.ccg.unam.mx/operon?term=ECK120014725&format=jsp'>RegulonDB:ECK120033737</a>)	86	\N
+21	9	5030	5030	1	Promoter yaaXp4 (<a href='http://regulondb.ccg.unam.mx/operon?term=ECK120029262&format=jsp'>RegulonDB:ECK125136344</a>)	85	\N
+22	9	6587	6587	-1	Promoter yaaAp3 (<a href='http://regulondb.ccg.unam.mx/operon?term=ECK120029263&format=jsp'>RegulonDB:ECK125136345</a>)	85	\N
+23	9	6615	6615	-1	Promoter yaaAp5 (<a href='http://regulondb.ccg.unam.mx/operon?term=ECK120029263&format=jsp'>RegulonDB:ECK125136346</a>)	85	\N
+24	9	8017	8017	-1	Promoter yaaJp4 (<a href='http://regulondb.ccg.unam.mx/operon?term=ECK120029264&format=jsp'>RegulonDB:ECK125136347</a>)	85	\N
+25	9	8191	8191	1	Promoter talBp (<a href='http://regulondb.ccg.unam.mx/operon?term=ECK120015882&format=jsp'>RegulonDB:ECK120034390</a>)	85	\N
+26	9	9199	9226	1	rho-independent terminator (<a href='http://regulondb.ccg.unam.mx/operon?term=ECK120015882&format=jsp'>RegulonDB:ECK120015459</a>)	86	\N
+27	9	10643	10643	1	Promoter htgAp2 (<a href='http://regulondb.ccg.unam.mx/operon?term=ECK120014676&format=jsp'>RegulonDB:ECK120010501</a>)	85	\N
+28	9	10644	10644	1	Promoter htgAp1 (<a href='http://regulondb.ccg.unam.mx/operon?term=ECK120014676&format=jsp'>RegulonDB:ECK120010500</a>)	85	\N

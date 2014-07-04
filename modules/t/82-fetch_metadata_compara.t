@@ -16,26 +16,12 @@ use strict;
 use warnings;
 
 use Test::More;
-use Bio::EnsEMBL::DBSQL::DBConnection;
-use Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor;
-use Data::Dumper;
+use Bio::EnsEMBL::Test::MultiTestDB;
 
-my $conf_file = 'db.conf';
-my $conf = do $conf_file ||
-  die "Could not load configuration from " . $conf_file;
-my $tconf = $conf->{genome_info};
-
-diag("Connecting to genome info database");
-my $dba =
-  Bio::EnsEMBL::DBSQL::DBConnection->new(-user   => $tconf->{user},
-										 -pass   => $tconf->{pass},
-										 -dbname => $tconf->{db},
-										 -host   => $tconf->{host},
-										 -port   => $tconf->{port},
-										 -driver => $tconf->{driver},);
-
-my $gdba =
-  Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->new($dba);
+my $multi     = Bio::EnsEMBL::Test::MultiTestDB->new('eg');
+my $gdba = $multi->get_DBAdaptor('info');
+my $tax = $multi->get_DBAdaptor('tax');
+$gdba->taxonomy_adaptor($tax);
 ok(defined $gdba, "GenomeInfoAdaptor exists");
 
 diag("Fetching all genome info with peptide compara");
@@ -70,6 +56,16 @@ is($is_found,
    1,
    "metadata " . $md->species() . " found in compara " .
 	 $comparas[0]->method() . "/" . $comparas[0]->division());
+
+diag("Fetching all genome info with any compara");
+$mds  = $gdba->fetch_all_with_compara();
+$nAll = scalar @$mds;
+diag("Fetched $nAll GenomeInfo");
+ok($nAll > 0, "At least 1 GenomeInfo found");
+
+$md = $mds->[0];
+diag("Found " . $md->species());
+ok(($md->has_peptide_compara() == 1 || $md->has_pan_compara() == 1 || $md->has_whole_genome_alignments()), "has_*_compara set to 1");
 	 
 my $compara = $gdba->fetch_compara_by_dbID($comparas[0]->dbID());
 is($compara->dbID(), $comparas[0]->dbID(), "Retrieval by dbID worked");
@@ -127,6 +123,15 @@ is($is_found,
    "metadata " . $md->species() . " found in compara " .
 	 $comparas[0]->method() . "/" . $comparas[0]->division());
 
+diag("Fetching all genome info with any compara");
+$mds  = $gdba->fetch_all_with_compara();
+$nAll = scalar @$mds;
+diag("Fetched $nAll GenomeInfo");
+ok($nAll > 0, "At least 1 GenomeInfo found");
+
+$md = $mds->[0];
+diag("Found " . $md->species());
+ok(($md->has_peptide_compara() == 1 || $md->has_pan_compara() == 1 || $md->has_whole_genome_alignments()), "has_*_compara set to 1");
 
 
 done_testing;

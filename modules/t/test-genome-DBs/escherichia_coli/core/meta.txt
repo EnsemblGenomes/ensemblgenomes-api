@@ -1,0 +1,60 @@
+66	1	schema.load_started	2013-10-01 20:02:01
+67	1	assembly.default	GCA_000005845.1
+68	1	assembly.accession	GCA_000005845.1
+69	1	assembly.name	ASM584v1
+70	1	assembly.date	2011-09
+71	1	assembly.description	Model organism for genetics, physiology, biochemistry
+72	1	genebuild.version	2011-09-EnsemblBacteria
+73	1	genebuild.start_date	2006-02-EnsemblBacteria
+74	1	genebuild.initial_release_date	2006-02-EnsemblBacteria
+75	1	genebuild.last_geneset_update	2011-09
+76	1	genebuild.method	Generated from ENA annotation
+77	1	assembly.master_accession	U00096
+78	1	species.classification	Escherichia coli str. K-12 substr. MG1664
+79	1	species.classification	Escherichia coli K-12
+80	1	species.classification	Escherichia coli
+81	1	species.classification	Escherichia
+82	1	species.classification	Enterobacteriaceae
+83	1	species.classification	Enterobacteriales
+84	1	species.classification	Gammaproteobacteria
+85	1	species.classification	Proteobacteria
+86	1	species.classification	Bacteria
+87	1	species.classification	cellular organisms
+88	1	species.production_name	escherichia_coli_str_k_12_substr_mg1664
+89	1	species.url	Escherichia_coli_str_k_12_substr_mg1664
+90	1	species.scientific_name	Escherichia coli str. K-12 substr. MG1664
+91	1	species.display_name	Escherichia coli str. K-12 substr. MG1664
+92	1	species.common_name	Escherichia coli str. K-12 substr. MG1664
+93	1	species.short_name	Escherichia coli str. K-12 substr. MG1664
+94	1	species.strain	K-12
+95	1	species.substrain	MG1664
+96	1	species.ensembl_alias_name	Escherichia coli str. K-12 substr. MG1664
+97	1	species.alias	Escherichia coli MG1664
+98	1	species.alias	Escherichia coli str. K12 substr. MG1664
+99	1	species.alias	Escherichia coli strain MG1664
+100	1	species.alias	Escherichia coli str. MG1664
+101	1	species.alias	Escherichia coli str. K-12 substr. MG1664
+102	1	species.alias	escherichia_coli_str_k_12_substr_mg1664
+103	1	species.db_name	escherichia_coli_str_k_12_substr_mg1664
+104	1	species.taxonomy_id	511145
+105	1	species.division	EnsemblBacteria
+106	1	provider.name	European Nucleotide Archive
+107	1	provider.url	http://www.ebi.ac.uk/ena/data/view/GCA_000005845
+108	1	assembly.mapping	chromosome:GCA_000005845.1#contig
+109	1	sample.location_param	Chromosome:1662530-1663144
+110	1	sample.location_text	Chromosome:1662530-1663144
+111	1	sample.gene_param	b1591
+112	1	sample.gene_text	dmsD
+113	1	sample.transcript_param	AAC74663
+114	1	sample.transcript_text	dmsD-1
+115	1	sample.search_text	synthetase
+116	1	repeat.analysis	ena_repeat
+117	1	genebuild.hash	299b72c1512f8e60a64127877cd97b8b
+118	1	genebuild.level	toplevel
+119	1	transcriptbuild.level	toplevel
+120	1	exonbuild.level	toplevel
+121	1	repeat_featurebuild.level	toplevel
+122	1	simple_featurebuild.level	toplevel
+123	1	schema.load_complete	2013-10-01 20:20:07
+124	1	schema.copy_src	bacteria_22_collection_core_21_74_1/131
+125	\N	schema_version	74

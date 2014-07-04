@@ -176,7 +176,7 @@ sub is_pan_compara {
 =cut
 sub is_peptide_compara {
   my ($self) = @_;
-  return ($self->{division} ne 'pan_homology' &&
+  return ($self->{division} ne 'EnsemblPan' &&
 	$self->{method} eq 'PROTEIN_TREES')?1:0;
 }
 

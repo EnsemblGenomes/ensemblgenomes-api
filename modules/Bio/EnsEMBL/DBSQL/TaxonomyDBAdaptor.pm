@@ -1,3 +1,4 @@
+
 =head1 LICENSE
 
 Copyright [2009-2014] EMBL-European Bioinformatics Institute
@@ -15,8 +16,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 =cut
-
-
 
 =head1 CONTACT
 
@@ -71,6 +70,7 @@ use strict;
 use warnings;
 
 use base qw ( Bio::EnsEMBL::DBSQL::DBAdaptor );
+use Bio::EnsEMBL::Utils::EGPublicMySQLServer;
 
 =head1 SUBROUTINES/METHODS
 
@@ -92,10 +92,13 @@ sub get_available_adaptors {
 
 sub new_public {
   return
-	Bio::EnsEMBL::DBSQL::TaxonomyDBAdaptor->new(-user   => 'anonymous',
-												-dbname => 'ncbi_taxonomy',
-												-host   => 'mysql.ebi.ac.uk',
-												-port   => 4157);
+	Bio::EnsEMBL::DBSQL::TaxonomyDBAdaptor->new(
+											 -user   => eg_user(),
+											 -pass   => eg_pass(),
+											 -dbname => 'ncbi_taxonomy',
+											 -host   => eg_host(),
+											 -port   => eg_port()
+	);
 }
 
 1;

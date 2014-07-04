@@ -1,3 +1,4 @@
+
 =head1 LICENSE
 
 Copyright [2009-2014] EMBL-European Bioinformatics Institute
@@ -16,7 +17,6 @@ limitations under the License.
 
 =cut
 
-
 =pod
 
 =head1 CONTACT
@@ -33,16 +33,8 @@ Bio::EnsEMBL::LookUp
 
 =head1 SYNOPSIS
 
-# creation from a database server
-Bio::EnsEMBL::LookUp->register_all_dbs( $conf->{host},
-	   $conf->{port}, $conf->{user}, $conf->{pass}, $conf->{db});
+# default creation using latest public release of Ensembl Genomes
 my $lookup = Bio::EnsEMBL::LookUp->new();
-my $dbas = $lookup->registry()->get_all();
-$dbas = $lookup->get_all_by_taxon_id(388919);
-$dbas = $lookup->get_by_name_pattern("Escherichia.*");
-
-# creation from a URL
-my $lookup = Bio::EnsEMBL::LookUp->new(-URL=>'http://bacteria.ensembl.org/registry.json');
 
 =head1 DESCRIPTION
 
@@ -93,6 +85,15 @@ Once retrieved, the arguments needed for constructing a DBAdaptor directly can b
 	my $args = $lookup->dba_to_args($dba);
 	... store and retrieve $args for use in another script ... 
 	my $resurrected_dba = Bio::EnsEMBL::DBSQL::DBAdaptor->new(@$args);
+
+=head2 Local implementation
+
+The default implementation of LookUp is a remoting implementation that uses a MySQL database backend
+to look up genome information. The previous implementation loaded an internal hash from either a JSON file
+(remote or local) or by processing the contents of the Registry. 
+
+This implementation is still available, but has been renamed Bio::EnsEMBL::LookUp::LocalLookUp and should
+be constructed directly.
   
 =head1 AUTHOR
 
@@ -119,13 +120,15 @@ use JSON;
 use LWP::Simple;
 use Carp;
 use Data::Dumper;
+use Bio::EnsEMBL::LookUp::LocalLookUp;
+use Bio::EnsEMBL::LookUp::RemoteLookUp;
 my $default_cache_file = qw/lookup_cache.json/;
 
 =head1 SUBROUTINES/METHODS
 
 =head2 new
 
-  Description       : Creates a new instance of this object. 
+  Description       : Creates a new instance of LookUp, by default using Bio::EnsEMBL::LookUp::RemoteLookUp
   Returntype        : Instance of lookup
   Status            : Stable
 
@@ -136,160 +139,44 @@ my $default_cache_file = qw/lookup_cache.json/;
 sub new {
   my ($class, @args) = @_;
   my $self = bless({}, ref($class) || $class);
+  ($self->{lookup}, $self->{lookup}, $self->{registry},
+   $self->{url},    $self->{file}
+  ) = rearrange([qw(lookup registry url file)], @args);
+  if (defined $self->{url} ||
+	  defined $self->{registry} ||
+	  defined $self->{file})
+  {
+	warning(
+q/Direct construction of local or url\/file-based LookUp deprecated.  
+  	Use Bio::EnsEMBL::LookUp->new() for new remoting implementation or
+  	use Bio::EnsEMBL::LookUp::LocalLookUp->new() directly for previous implementation/
+	);
+	$self->{lookup} =
+	  Bio::EnsEMBL::LookUp::LocalLookUp->new(@args);
+  }
+  if (!defined $self->{lookup}) {
+	$self->{lookup} = Bio::EnsEMBL::LookUp::RemoteLookUp->new(@args);
+  }
   return $self;
-} ## end sub new
-
-
-=head2 get_all_dbnames
-	Description : Return all database names used by the DBAs retrieved from the registry
-	Argument    : None
-	Exceptions  : None
-	Return type : Arrayref of strings
-=cut
-
-sub get_all_dbnames {
-	throw "Unimplemented method";
 }
 
-=head2 get_all
-	Description : Return all database adaptors that have been retrieved from registry
-	Argument    : None
-	Exceptions  : None
-	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
-=cut
-
-sub get_all {
-	throw "Unimplemented method";
+sub register_all_dbs {
+  my ($class, $host, $port, $user, $pass, $regexp) = @_;
+  warning(
+	q/register_all_dbs is now part of Bio::EnsEMBL::LookUp::LocalLookUp 
+  and should be invoked directly/);
+  Bio::EnsEMBL::LookUp::LocalLookUp->register_all_dbs($host, $port,
+												 $user, $pass, $regexp);
+  return;
 }
 
-sub get_all_by_taxon_branch {
-	throw "Unimplemented method";
+use vars '$AUTOLOAD';
+sub AUTOLOAD {
+   my ( $self, @args ) = @_;
+   (my $method = $AUTOLOAD) =~ s/^.*::(\w+)$/$1/ ;
+   return $self->{lookup}->$method(@args);
 }
-
-=head2 get_all_by_taxon_id
-	Description : Returns all database adaptors that have the supplied taxonomy ID
-	Argument    : Int
-	Exceptions  : None
-	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
-=cut
-
-sub get_all_by_taxon_id {
-	throw "Unimplemented method";
-}
-
-=head2 get_by_name_exact
-	Description : Return all database adaptors that have the supplied string as an alias/name
-	Argument    : String
-	Exceptions  : None
-	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
-=cut
-
-sub get_by_name_exact {
-	throw "Unimplemented method";
-}
-
-=head2 get_all_by_accession
-	Description : Returns the database adaptor(s) that contains a seq_region with the supplied INSDC accession (or other seq_region name)
-	Argument    : Int
-	Exceptions  : None
-	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
-=cut	
-
-sub get_all_by_accession {
-	throw "Unimplemented method";
-}
-
-=head2 get_by_assembly_accession
-	Description : Returns the database adaptor that contains the assembly with the supplied INSDC assembly accession
-	Argument    : Int
-	Exceptions  : None
-	Return type : Bio::EnsEMBL::DBSQL::DatabaseAdaptor
-=cut
-
-sub get_by_assembly_accession {
-	throw "Unimplemented method";
-}
-
-=head2 get_all_by_name_pattern
-	Description : Return all database adaptors that have an alias/name that match the supplied regexp
-	Argument    : String
-	Exceptions  : None
-	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
-=cut	
-
-sub get_all_by_name_pattern {
-	throw "Unimplemented method";
-}
-
-=head2 get_all_by_dbname
-	Description : Returns all database adaptors that have the supplied dbname
-	Argument    : String
-	Exceptions  : None
-	Return type : Arrayref of Bio::EnsEMBL::DBSQL::DatabaseAdaptor
-=cut
-
-sub get_all_by_dbname {
-	throw "Unimplemented method";
-}
-
-=head2 get_all_taxon_ids
-	Description : Return list of all taxon IDs registered with the helper
-	Exceptions  : None
-	Return type : Arrayref of integers
-=cut
-
-sub get_all_taxon_ids {
-	throw "Unimplemented method";
-}
-
-=head2 get_all_names
-	Description : Return list of all species names registered with the helper
-	Exceptions  : None
-	Return type : Arrayref of strings
-=cut
-
-sub get_all_names {
-	throw "Unimplemented method";
-}
-
-=head2 get_all_accessions
-	Description : Return list of all INSDC sequence accessions (or other seq_region names) registered with the helper
-	Exceptions  : None
-	Return type : Arrayref of strings
-=cut
-
-sub get_all_accessions {
-	throw "Unimplemented method";
-}
-
-=head2 get_all_versioned_accessions
-	Description : Return list of all versioned INSDC sequence accessions (or other seq_region names) registered with the helper
-	Exceptions  : None
-	Return type : Arrayref of strings
-=cut
-
-sub get_all_versioned_accessions {
-	throw "Unimplemented method";
-}
-
-=head2 get_all_assemblies
-	Description : Return list of all INSDC assembly accessions registered with the helper
-	Exceptions  : None
-	Return type : Arrayref of strings
-=cut
-sub get_all_assemblies {
-	throw "Unimplemented method";
-}
-
-=head2 get_all_versioned_assemblies
-	Description : Return list of all versioned INSDC assembly accessions registered with the helper
-	Exceptions  : None
-	Return type : Arrayref of strings
-=cut
-
-sub get_all_versioned_assemblies {
-	throw "Unimplemented method";
-}
+sub DESTROY { }    # required due to AUTOLOAD
 
 1;
 
