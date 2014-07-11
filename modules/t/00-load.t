@@ -19,7 +19,12 @@ BEGIN {
 	use_ok( 'Bio::EnsEMBL::TaxonomyNode' );
 	use_ok( 'Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor' );
 	use_ok( 'Bio::EnsEMBL::LookUp' );
+	use_ok( 'Bio::EnsEMBL::LookUp::LocalLookUp' );
+	use_ok( 'Bio::EnsEMBL::LookUp::RemoteLookUp' );
+	use_ok( 'Bio::EnsEMBL::Utils::MetaData::GenomeInfo' );
+	use_ok( 'Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo' );
+	use_ok( 'Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor' );
 }
 
-diag( "Testing EGEna $EGEna::VERSION, Perl $], $^X" );
+diag( "Testing ensemblgenomes-api, Perl $], $^X" );
 done_testing;

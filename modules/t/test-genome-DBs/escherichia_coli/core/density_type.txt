@@ -1,0 +1,5 @@
+5	66	0	0	ratio
+6	69	0	0	sum
+7	70	0	0	sum
+8	68	0	0	sum
+9	71	0	0	ratio
