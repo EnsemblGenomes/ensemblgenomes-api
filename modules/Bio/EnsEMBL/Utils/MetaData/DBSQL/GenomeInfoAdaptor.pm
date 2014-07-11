@@ -241,12 +241,6 @@ has_genome_alignments,has_synteny,has_other_alignments)
   $self->_store_features($genome);
   $self->_store_variations($genome);
   $self->_store_alignments($genome);
-  if ( defined $genome->compara() ) {
-
-	for my $compara ( @{ $genome->compara() } ) {
-	  $self->_store_compara($compara);
-	}
-  }
   return;
 } ## end sub store
 
@@ -297,18 +291,6 @@ has_genome_alignments=?,has_synteny=?,has_other_alignments=? where genome_id=?/,
   $self->_store_features($genome);
   $self->_store_variations($genome);
   $self->_store_alignments($genome);
-  #do not update compara objects for an update
-  if ( defined $genome->compara() ) {
-
-	for my $compara ( @{ $genome->compara() } ) {
-	  if ( defined $compara->dbID() ) {
-		$self->update_compara($compara);
-	  }
-	  else {
-		$self->store_compara($compara);
-	  }
-	}
-  }
   return;
 } ## end sub update
 
@@ -327,7 +309,7 @@ sub update_compara {
 	croak "Cannot update compara object with no dbID";
   }
   $self->{dbc}->sql_helper()->execute_update(
-	-SQL => q/update into compara_analysis 
+	-SQL => q/update compara_analysis 
 	  set method=?,division=?,set_name=?,dbname=? 
 	  where compara_analysis_id=?/,
 	-PARAMS => [ $compara->method(),   $compara->division(),
@@ -336,7 +318,7 @@ sub update_compara {
 
   $self->{dbc}->sql_helper()->execute_update(
 		 -SQL =>
-		   q/delete from genome_compara_analysis compara_analysis_id=?/,
+		   q/delete from genome_compara_analysis where compara_analysis_id=?/,
 		 -PARAMS => [ $compara->dbID() ] );
   for my $genome ( @{ $compara->genomes() } ) {
 	if ( defined $genome->dbID() ) {
@@ -1320,6 +1302,22 @@ sub fetch_all_compara_by_method {
   return $self->_fetch_compara_with_args( { method => $method } );
 }
 
+=head2 fetch_compara_by_dbname_method_set
+  Arg	     : DBName of compara analyses to retrieve
+  Arg	     : Method of compara analyses to retrieve
+  Arg	     : Set of compara analyses to retrieve
+  Description: Fetch specified compara analysis
+  Returntype : Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub fetch_compara_by_dbname_method_set {
+  my ( $self, $dbname, $method, $set_name ) = @_;
+  return _first_element($self->_fetch_compara_with_args( { dbname => $dbname, method=>$method, set_name=>$set_name } ));
+}
+
 my $base_compara_fetch_sql =
 q/select compara_analysis_id, division, method, set_name, dbname from compara_analysis/;
 
@@ -1336,7 +1334,7 @@ sub _fetch_compara_with_args {
   my ( $self, $args ) = @_;
   my $sql    = $base_compara_fetch_sql;
   my $params = [ values %$args ];
-  my $clause = join( ',', map { $_ . '=?' } keys %$args );
+  my $clause = join( ' AND ', map { $_ . '=?' } keys %$args );
   if ( $clause ne '' ) {
 	$sql .= ' where ' . $clause;
   }

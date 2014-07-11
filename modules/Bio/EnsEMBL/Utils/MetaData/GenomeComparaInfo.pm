@@ -1,3 +1,4 @@
+
 =head1 LICENSE
 
 Copyright [1999-2014] EMBL-European Bioinformatics Institute
@@ -68,17 +69,19 @@ use warnings;
   Status     : Stable
 
 =cut
+
 sub new {
-  my ($proto, @args) = @_;
+  my ( $proto, @args ) = @_;
   my $class = ref($proto) || $proto;
-  my $self = bless({}, $class);
-  ($self->{division}, $self->{method},
-   $self->{dbname},   $self->{set_name},
-   $self->{genomes}
-  ) = rearrange(['DIVISION', 'METHOD', 'DBNAME', 'SET_NAME', 'GENOMES'], @args);
+  my $self = bless( {}, $class );
+  ( $self->{division}, $self->{method}, $self->{dbname},
+	$self->{set_name}, $self->{genomes} )
+	= rearrange(
+				 [ 'DIVISION', 'METHOD', 'DBNAME', 'SET_NAME', 'GENOMES'
+				 ],
+				 @args );
   return $self;
 }
-
 
 =head1 ATTRIBUTE METHODS
 =head2 dbname
@@ -91,8 +94,8 @@ sub new {
 =cut
 
 sub dbname {
-  my ($self, $arg) = @_;
-  $self->{dbname} = $arg if (defined $arg);
+  my ( $self, $arg ) = @_;
+  $self->{dbname} = $arg if ( defined $arg );
   return $self->{dbname};
 }
 
@@ -104,9 +107,10 @@ sub dbname {
   Caller     : general
   Status     : Stable
 =cut
+
 sub method {
-  my ($self, $arg) = @_;
-  $self->{method} = $arg if (defined $arg);
+  my ( $self, $arg ) = @_;
+  $self->{method} = $arg if ( defined $arg );
   return $self->{method};
 }
 
@@ -118,9 +122,10 @@ sub method {
   Caller     : general
   Status     : Stable
 =cut
+
 sub set_name {
-  my ($self, $arg) = @_;
-  $self->{set_name} = $arg if (defined $arg);
+  my ( $self, $arg ) = @_;
+  $self->{set_name} = $arg if ( defined $arg );
   return $self->{set_name};
 }
 
@@ -132,9 +137,10 @@ sub set_name {
   Caller     : general
   Status     : Stable
 =cut
+
 sub division {
-  my ($self, $arg) = @_;
-  $self->{division} = $arg if (defined $arg);
+  my ( $self, $arg ) = @_;
+  $self->{division} = $arg if ( defined $arg );
   return $self->{division};
 }
 
@@ -146,9 +152,10 @@ sub division {
   Caller     : general
   Status     : Stable
 =cut
+
 sub genomes {
-  my ($self, $arg) = @_;
-  $self->{genomes} = $arg if (defined $arg);
+  my ( $self, $arg ) = @_;
+  $self->{genomes} = $arg if ( defined $arg );
   return $self->{genomes};
 }
 
@@ -161,9 +168,10 @@ sub genomes {
   Caller     : general
   Status     : Stable
 =cut
+
 sub is_pan_compara {
   my ($self) = @_;
-  return $self->{division} eq 'EnsemblPan'?1:0;
+  return $self->{division} eq 'EnsemblPan' ? 1 : 0;
 }
 
 =head2 is_peptide_compara
@@ -174,10 +182,11 @@ sub is_pan_compara {
   Caller     : general
   Status     : Stable
 =cut
+
 sub is_peptide_compara {
   my ($self) = @_;
-  return ($self->{division} ne 'EnsemblPan' &&
-	$self->{method} eq 'PROTEIN_TREES')?1:0;
+  return ( $self->{division} ne 'EnsemblPan' &&
+		   $self->{method} eq 'PROTEIN_TREES' ) ? 1 : 0;
 }
 
 =head2 is_dna_compara
@@ -188,12 +197,13 @@ sub is_peptide_compara {
   Caller     : general
   Status     : Stable
 =cut
+
 sub is_dna_compara {
   my ($self) = @_;
-  return ($self->{method} eq 'TRANSLATED_BLAT_NET' ||
-	$self->{method} eq 'LASTZ_NET' ||
-		$self->{method} eq 'TBLAT' ||
-	$self->{method} eq 'BLASTZ_NET')?1:0;
+  return ( $self->{method} eq 'TRANSLATED_BLAT_NET' ||
+		   $self->{method} eq 'LASTZ_NET' ||
+		   $self->{method} eq 'TBLAT'     ||
+		   $self->{method} eq 'BLASTZ_NET' ) ? 1 : 0;
 }
 
 =head2 is_synteny
@@ -204,9 +214,10 @@ sub is_dna_compara {
   Caller     : general
   Status     : Stable
 =cut
+
 sub is_synteny {
   my ($self) = @_;
-  return ($self->{method} eq 'SYNTENY')?1:0;
+  return ( $self->{method} eq 'SYNTENY' ) ? 1 : 0;
 }
 
 =head2 to_hash
@@ -216,20 +227,27 @@ sub is_synteny {
   Caller     : general
   Status     : Stable
 =cut
+
 sub to_hash {
   my ($in) = @_;
-  my $out = {method             => $in->{method},
-			 division           => $in->{division},
-			 dbname             => $in->{dbname},
-			 set_name           => $in->{set_name},
-			 is_pan_compara     => $in->is_pan_compara(),
-			 is_peptide_compara => $in->is_peptide_compara(),
-			 is_dna_compara     => $in->is_dna_compara(),};
+  my $out = { method             => $in->{method},
+			  division           => $in->{division},
+			  dbname             => $in->{dbname},
+			  set_name           => $in->{set_name},
+			  is_pan_compara     => $in->is_pan_compara(),
+			  is_peptide_compara => $in->is_peptide_compara(),
+			  is_dna_compara     => $in->is_dna_compara(), };
   $out->{genomes} = [];
-  for my $genome (@{$in->genomes()}) {
-	push @{$out->{genomes}}, $genome->species();
+  for my $genome ( @{ $in->genomes() } ) {
+	push @{ $out->{genomes} }, $genome->species();
   }
   return $out;
+}
+
+sub to_string {
+  my ($self) = @_;
+  return
+	join( '/', $self->division(), $self->method(), ($self->set_name()||'-') );
 }
 
 =head1 INTERNAL METHODS
@@ -243,8 +261,8 @@ sub to_hash {
 =cut
 
 sub dbID {
-  my ($self, $arg) = @_;
-  if (defined $arg) {
+  my ( $self, $arg ) = @_;
+  if ( defined $arg ) {
 	$self->{dbID} = $arg;
   }
   return $self->{dbID};
@@ -258,9 +276,10 @@ sub dbID {
   Caller     : Internal
   Status     : Stable
 =cut
+
 sub adaptor {
-  my ($self, $arg) = @_;
-  if (defined $arg) {
+  my ( $self, $arg ) = @_;
+  if ( defined $arg ) {
 	$self->{adaptor} = $arg;
   }
   return $self->{adaptor};
