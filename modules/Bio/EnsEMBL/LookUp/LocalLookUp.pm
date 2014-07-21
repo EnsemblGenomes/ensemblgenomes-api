@@ -132,7 +132,7 @@ my $default_cache_file = qw/lookup_cache.json/;
 sub new {
   my ( $class, @args ) = @_;
   my $self = bless( {}, ref($class) || $class );
-  my ( $reg, $url, $file, $nocache, $cache_file, $clear_cache, $skip_configs ) =
+  my ( $reg, $url, $file, $nocache, $cache_file, $clear_cache, $skip_contigs ) =
 	rearrange( [qw(registry url file no_cache cache_file clear_cache skip_contigs)],
 			   @args );
   if ( !defined $reg ) { $reg = 'Bio::EnsEMBL::Registry' }
