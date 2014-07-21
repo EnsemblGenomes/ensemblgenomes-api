@@ -132,8 +132,8 @@ my $default_cache_file = qw/lookup_cache.json/;
 sub new {
   my ( $class, @args ) = @_;
   my $self = bless( {}, ref($class) || $class );
-  my ( $reg, $url, $file, $nocache, $cache_file, $clear_cache ) =
-	rearrange( [qw(registry url file no_cache cache_file clear_cache)],
+  my ( $reg, $url, $file, $nocache, $cache_file, $clear_cache, $skip_configs ) =
+	rearrange( [qw(registry url file no_cache cache_file clear_cache skip_contigs)],
 			   @args );
   if ( !defined $reg ) { $reg = 'Bio::EnsEMBL::Registry' }
   $self->{registry}      = $reg;
@@ -145,6 +145,7 @@ sub new {
   $self->{dbas_by_vgc}   = {};
   $self->{dbas}          = {};
   $self->{dbc_meta}      = {};
+  $self->{skip_contigs}  = $skip_contigs;
   $cache_file ||= $default_cache_file;
   $self->cache_file($cache_file);
 
@@ -288,6 +289,7 @@ q/select species_id,meta_value from meta where meta_key='species.taxonomy_id'/,
 		  $row[1];
 	  } );
 
+        if(!defined $self->{skip_contigs}) {
 	# seq_region_names and synonyms
 	$dbc->sql_helper()->execute(
 	  -SQL =>
@@ -304,6 +306,7 @@ q/select species_id,meta_value from meta where meta_key='species.taxonomy_id'/,
 			$row[2];
 		}
 	  } );
+        }
   } ## end if ( !defined $self->{...})
   return $self->{dbc_meta}{$name};
 } ## end sub _get_dbc_meta
