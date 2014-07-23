@@ -176,7 +176,8 @@ CREATE TABLE `genome_sequence` (
   `name` varchar(40) NOT NULL,
   `acc` varchar(24) DEFAULT NULL,
   UNIQUE KEY `id_alias` (`genome_id`,`name`,`acc`),
-  KEY `acc` (`acc`)
+  KEY `acc` (`acc`),
+  KEY `name` (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

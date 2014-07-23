@@ -139,7 +139,7 @@ my $default_cache_file = qw/lookup_cache.json/;
 sub new {
   my ($class, @args) = @_;
   my $self = bless({}, ref($class) || $class);
-  ($self->{lookup}, $self->{lookup}, $self->{registry},
+  ($self->{lookup}, $self->{registry},
    $self->{url},    $self->{file}
   ) = rearrange([qw(lookup registry url file)], @args);
   if (defined $self->{url} ||
