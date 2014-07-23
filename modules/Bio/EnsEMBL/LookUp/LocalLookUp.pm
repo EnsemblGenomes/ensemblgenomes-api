@@ -219,6 +219,7 @@ sub update_from_registry {
 		@{ $self->registry()->get_all_DBAdaptors( -group => 'core' ) } )
   {
 	$self->_hash_dba( $dba, $update_only );
+        $dba->dbc()->disconnect_if_idle();
   }
   return;
 }
