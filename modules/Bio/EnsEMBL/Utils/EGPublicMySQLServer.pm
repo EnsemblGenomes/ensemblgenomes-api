@@ -53,7 +53,7 @@ use base qw( Exporter );
 
 our @EXPORT = qw(eg_host eg_port eg_user eg_pass eg_args);
 
-use constant PUBLIC_HOST => 'mysql.ebi.ac.uk';
+use constant PUBLIC_HOST => 'mysql-eg-publicsql.ebi.ac.uk';
 use constant PUBLIC_USER => 'anonymous';
 use constant PUBLIC_PASS => '';
 use constant PUBLIC_PORT => 4157;

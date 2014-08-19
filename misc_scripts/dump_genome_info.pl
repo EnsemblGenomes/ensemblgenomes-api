@@ -52,7 +52,7 @@ use JSON;
 my $dbc =
   Bio::EnsEMBL::DBSQL::DBConnection->new(-user   => 'anonymous',
 										 -dbname => 'ensemblgenomes_info_21',
-										 -host   => 'mysql.ebi.ac.uk',
+										 -host   => 'mysql-eg-publicsql.ebi.ac.uk',
 										 -port   => 4157);
 
 # create an adaptor to work with genomes

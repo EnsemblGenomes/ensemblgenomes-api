@@ -46,7 +46,7 @@ use strict;
 use warnings;
 use Bio::EnsEMBL::LookUp::LocalLookUp;
 print "Loading registry\n";
-Bio::EnsEMBL::LookUp::LocalLookUp->register_all_dbs( "mysql.ebi.ac.uk", 4157, "anonymous","",'bacteria_[0-9]+_collection_core_17_70_1');
+Bio::EnsEMBL::LookUp::LocalLookUp->register_all_dbs( "mysql-eg-publicsql.ebi.ac.uk", 4157, "anonymous","",'bacteria_[0-9]+_collection_core_17_70_1');
 print "Building helper\n";
 my $helper =
   Bio::EnsEMBL::LookUp::LocalLookUp->new();

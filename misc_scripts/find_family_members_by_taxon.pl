@@ -51,7 +51,7 @@ my $helper = Bio::EnsEMBL::LookUp->new();
 print "Connecting to taxonomy DB\n";
 my $node_adaptor = Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor->new(Bio::EnsEMBL::DBSQL::DBAdaptor->new(-user    => 'anonymous',
 																									 -dbname  => 'ncbi_taxonomy',
-																									 -host    => 'mysql.ebi.ac.uk',
+																									 -host    => 'mysql-eg-publicsql.ebi.ac.uk',
 																									 -port    => 4157,
 																									 -group   => 'taxonomy',
 																									 -species => 'ena'));
@@ -63,7 +63,7 @@ my $root = $node_adaptor->fetch_by_taxon_id($taxid);
 my %taxids = map { $_->taxon_id() => 1 } @{$node_adaptor->fetch_descendants($root)};
 
 # load compara adaptor
-my $compara_dba = Bio::EnsEMBL::Compara::DBSQL::DBAdaptor->new(-HOST => 'mysql.ebi.ac.uk', -USER => 'anonymous', -PORT => '4157', -DBNAME => 'ensembl_compara_bacteria_17_70');
+my $compara_dba = Bio::EnsEMBL::Compara::DBSQL::DBAdaptor->new(-HOST => 'mysql-eg-publicsql.ebi.ac.uk', -USER => 'anonymous', -PORT => '4157', -DBNAME => 'ensembl_compara_bacteria_17_70');
 # find the corresponding member
 my $family = $compara_dba->get_FamilyAdaptor()->fetch_by_stable_id('MF_00395');
 print "Family " . $family->stable_id() . "\n";

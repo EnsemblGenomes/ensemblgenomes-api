@@ -43,7 +43,7 @@ my $gdba = Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->build_adapto
 my $dbc = Bio::EnsEMBL::DBSQL::DBConnection->new(
 -USER=>'anonymous',
 -PORT=>4157,
--HOST=>'mysql.ebi.ac.uk',
+-HOST=>'mysql-eg-publicsql.ebi.ac.uk',
 -DBNAME=>'genome_info_21');
 my $gdba = Bio::EnsEMBL::Utils::MetaData::DBSQL::GenomeInfoAdaptor->new(-DBC=>$dbc);
 

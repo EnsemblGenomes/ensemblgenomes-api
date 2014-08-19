@@ -48,7 +48,7 @@ print "Building helper\n";
 my $helper = Bio::EnsEMBL::LookUp->new();
 
 # load compara adaptor
-my $compara_dba = Bio::EnsEMBL::Compara::DBSQL::DBAdaptor->new(-HOST => 'mysql.ebi.ac.uk', -USER => 'anonymous', -PORT => '4157', -DBNAME => 'ensembl_compara_bacteria_17_70');
+my $compara_dba = Bio::EnsEMBL::Compara::DBSQL::DBAdaptor->new(-HOST => 'mysql-eg-publicsql.ebi.ac.uk', -USER => 'anonymous', -PORT => '4157', -DBNAME => 'ensembl_compara_bacteria_17_70');
 
 # find the corresponding member
 my $family  = $compara_dba->get_FamilyAdaptor()->fetch_by_stable_id('MF_00395');

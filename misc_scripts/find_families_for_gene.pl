@@ -54,7 +54,7 @@ my $gene = $dba->get_GeneAdaptor()->fetch_by_stable_id('b0344');
 print "Found gene " . $gene->external_name() . "\n";
 
 # load compara adaptor
-my $compara_dba = Bio::EnsEMBL::Compara::DBSQL::DBAdaptor->new(-HOST => 'mysql.ebi.ac.uk', -USER => 'anonymous', -PORT => '4157', -DBNAME => 'ensembl_compara_bacteria_17_70');
+my $compara_dba = Bio::EnsEMBL::Compara::DBSQL::DBAdaptor->new(-HOST => 'mysql-eg-publicsql.ebi.ac.uk', -USER => 'anonymous', -PORT => '4157', -DBNAME => 'ensembl_compara_bacteria_17_70');
 # find the corresponding member
 my $member = $compara_dba->get_GeneMemberAdaptor()->fetch_by_source_stable_id('ENSEMBLGENE',$gene->stable_id());
 # find families involving this member
