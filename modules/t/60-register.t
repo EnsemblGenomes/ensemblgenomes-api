@@ -16,7 +16,7 @@ use strict;
 use warnings;
 
 use Test::More;
-use Bio::EnsEMBL::LookUp;
+use Bio::EnsEMBL::LookUp::LocalLookUp;
 
 my $conf_file = 'db.conf';
 
@@ -25,13 +25,13 @@ my $conf = do $conf_file
 
 $conf = $conf->{ena};
 diag("Loading dbs into registry");
-Bio::EnsEMBL::LookUp->register_all_dbs( $conf->{host},
+Bio::EnsEMBL::LookUp::LocalLookUp->register_all_dbs( $conf->{host},
 	   $conf->{port}, $conf->{user}, $conf->{pass}, $conf->{db});
 	   
 diag("Creating helper");
 print localtime."\n";
 
-my $helper = Bio::EnsEMBL::LookUp->new(-CLEAR_CACHE => 1);
+my $helper = Bio::EnsEMBL::LookUp::LocalLookUp->new(-CLEAR_CACHE => 1);
 print localtime."\n";
 ok(defined $helper, "Helper object exists");
 ok(-e $helper->cache_file(),"Checking for cache");
@@ -52,7 +52,7 @@ ok($dbas->[0]->species()=~m/$pattern/i,"Name $pattern match");
 
 diag("Creating new helper from cache");
 $helper->registry()->clear();
-$helper = Bio::EnsEMBL::LookUp->new();
+$helper = Bio::EnsEMBL::LookUp::LocalLookUp->new();
 print localtime."\n";
 ok(defined $helper, "Helper object exists");
 diag("Clearing cache");

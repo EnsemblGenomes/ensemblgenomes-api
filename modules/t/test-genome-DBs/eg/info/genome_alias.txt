@@ -1,0 +1,4045 @@
+8	Escherichia coli KTE191
+8	escherichia_coli_kte191
+12	Escherichia coli HVH 44 (4-2298570)
+12	escherichia_coli_hvh_44_4_2298570_
+14	Escherichia coli MP020980.2
+14	escherichia_coli_mp020980_2
+17	Escherichia coli Envira 8/11
+17	escherichia_coli_envira_8_11
+23	Escherichia coli DEC13E
+23	Escherichia coli DEC13E serotype O128:H47
+23	escherichia_coli_dec13e
+25	Escherichia coli MS 115-1
+25	escherichia_coli_ms_115_1
+109	Escherichia coli MG1655
+109	Escherichia coli str. K-12 substr. MG1655
+109	Escherichia coli str. K12 substr. MG1655
+109	Escherichia coli str. MG1655
+109	Escherichia coli strain MG1655
+109	escherichia_coli_str_k_12_substr_mg1655
+122	Corn smut
+122	Ustilago maydis
+123	Cryptococcus neoformans
+123	Cryptococcus neoformans JEC21
+123	Cryptococcus neoformans var. neoformans JEC21
+123	Cryptococcus neoformans var. neoformans serotype D JEC21
+123	Cryptococcus neoformans var. neoformans strain JEC21
+123	Filobasidiella neoformans var. neoformans strain JEC21
+123	cryptococcus_neoformans
+124	A_flavus
+124	Aspergillus flavus
+124	Aspergillus flavus NRRL3357
+125	N_crassa
+125	Neurospora crassa
+125	Neurospora crassa OR74A
+126	Gaeumannomyces graminis
+126	Gaeumannomyces graminis var. tritici R3-111a-1
+126	Take-all disease fungus
+127	Magnaporthe poae
+127	Magnaporthe poae ATCC 64411
+128	Magnaporthe oryzae
+128	Magnaporthe oryzae 70-15
+129	Schizosaccharomyces pombe
+129	Schizosaccharomyces pombe 972h-
+130	Schizosaccharomyces cryophilus CBS 11777
+130	Schizosaccharomyces cryophilus NBRC 106824
+130	Schizosaccharomyces cryophilus NRRL Y-48691
+130	Schizosaccharomyces cryophilus OY26
+130	Schizosaccharomyces sp. OY26
+130	schizosaccharomyces_cryophilus
+131	Schizosaccharomyces japonicus yFS275
+131	schizosaccharomyces_japonicus
+132	Schizosaccharomyces octosporus yFS286
+132	schizosaccharomyces_octosporus
+133	Trichoderma reesei
+133	Trichoderma reesei QM6a
+133	trichoderma_reesei
+134	Blumeria graminis
+134	Blumeria graminis f. sp. hordei DH14
+134	Blumeria graminis f. sp. hordei strain DH14
+134	blumeria_graminis
+135	Aspergillus fumigatus A1163
+135	Aspergillus fumigatusa1163
+136	A_nidulans
+136	Aspergillus nidulans
+136	Aspergillus nidulans FGSC A4
+136	FGSC A4
+137	A_clavatus
+137	Aspergillus clavatus
+138	A_terreus
+138	Aspergillus terreus
+139	A_oryzae
+139	Aspergillus oryzae
+140	A_fumigatus
+140	Aspergillus fumigatus
+140	Aspergillus fumigatus Af293
+141	N_fischeri
+141	Neosartorya fischeri
+142	A_niger
+142	Aspergillus niger
+143	Pyrenophora teres
+143	Pyrenophora teres f. teres 0-1
+143	pyrenophora_teres
+144	Pyrenophora tritici-repentis
+144	Pyrenophora tritici-repentis Pt-1C-BFP
+144	pyrenophora_triticirepentis
+145	Mycosphaerella graminicola
+145	Septoria tritici
+145	Zymoseptoria tritici
+145	septoria tritici blotch
+146	Fusarium solani
+146	Fusarium solani subsp. pisi
+146	Nectria haematococca
+146	Nectria haematococca FGSC 9596
+146	Nectria haematococca mpVI 77-13-4
+146	Nectria haematococca strain 77-13-4
+147	Fusarium graminearum
+147	Gibberella zeae
+147	Gibberella zeae PH-1
+148	Fusarium oxysporum
+149	Fusarium moniliforme
+149	Fusarium verticillioides
+149	Gibberella fujikuroi
+149	Gibberella fujikuroi var. moniliformis
+149	Gibberella moniliformis
+149	Gibberella moniliformis 7600
+149	Lisea fujikuroi
+149	Oospora verticillioides
+150	Microbotryum violaceum
+150	Microbotryum violaceum p1A1 Lamole
+150	microbotryum_violaceum
+151	Sporisorium reilianum
+151	Sporisorium reilianum SRZ2
+151	sporisorium_reilianum
+152	Phaeosphaeria nodorum
+152	Phaeosphaeria nodorum SN15
+152	stagonospora_nodorum
+153	Ashbya gossypii
+153	Ashbya gossypii (strain ATCC 10895 / CBS 109.51 / FGSC 9923 / NRRL Y-1056)
+153	Ashbya gossypii ATCC 10895
+153	Eremothecium gossypii ATCC 10895
+153	a_gossypii
+154	S_cerevisiae
+154	Saccharomyces cerevisiae
+154	Saccharomyces cerevisiae (Baker's yeast)
+154	Saccharomyces cerevisiae S288c
+155	325569
+155	Sclerotinia sclerotiorum
+155	Sclerotinia sclerotiorum 1980
+155	Sclerotinia sclerotiorum 1980 UF-70
+155	sclerotinia_sclerotiorum
+156	French truffle
+156	Perigord truffle
+156	Tuber melanosporum
+156	Tuber melanosporum Mel28
+156	black truffle
+156	tuber_melanosporum
+157	Yarrowia lipolytica
+157	Yarrowia lipolytica CLIB122
+157	Yarrowia lipolytica CLIB99
+157	yarrowia_lipolytica
+158	Botryotinia fuckeliana
+158	Botryotinia fuckeliana B05.10
+159	Trichoderma virens
+159	Trichoderma virens Gv29-8
+159	trichoderma_virens
+160	Puccinia recondita f. sp. tritici
+160	Puccinia triticina
+160	Puccinia triticina 1-1 BBBD Race 1
+160	wheat leaf rust
+161	Puccinia graminis
+161	Puccinia graminis f. sp. tritici CRL 75-36-700-3
+162	Verticillium dahliae VdLs.17
+162	verticillium_dahliae
+163	Komagataella pastoris
+163	Komagataella pastoris GS115
+163	Pichia pastoris GS115
+163	komagataella_pastoris
+164	Leptosphaeria maculans
+164	Leptosphaeria maculans JN3
+164	Leptosphaeria maculans v23.1.3
+164	leptosphaeria_maculans
+165	Melampsora larici-populina
+165	Melampsora larici-populina 98AG31
+165	Melampsora laricis-populina 98AG31
+165	melampsora_laricipopulina
+166	Glomerella graminicola
+166	Glomerella graminicola M1.001
+166	glomerella_graminicola
+175	Tetrahymena thermophila
+175	Tetrahymena thermophila SB210
+175	tetrahymena_thermophila
+177	Entamoeba histolytica
+177	Entamoeba histolytica HM-1:IMSS
+178	Plasmodium berghei
+178	Plasmodium berghei ANKA
+178	Plasmodium berghei str. ANKA
+178	plasmodium_berghei
+179	Plasmodium (Plasmodium) vivax
+179	Plasmodium vivax
+179	plasmodium_vivax
+180	Plasmodium chabaudi
+180	plasmodium_chabaudi
+182	Plasmodium (Plasmodium) knowlesi
+182	Plasmodium knowlesi
+182	plasmodium_knowlesi
+183	Plasmodium falciparum
+183	Plasmodium falciparum 3D7
+183	Plasmodium falciparum Str.3D7
+183	plasmodium_falciparum
+185	Pythium irregulare DAOM BR486
+185	pythium_irregulare
+186	Bigelowiella natans CCMP2755
+186	bigelowiella_natans
+187	Leishmania major
+187	Leishmania major strain Friedlin
+188	Trypanosoma (Trypanozoon) brucei brucei
+188	Trypanosoma brucei
+188	t_brucei_brucei
+189	Hyaloperonospora arabidopsidis
+189	Hyaloperonospora arabidopsidis Emoy2
+189	Hyaloperonospora parasitica
+189	Peronospora parasitica
+192	Phytophthora ramorum
+193	Guillardia theta
+193	guillardia_theta
+194	Toxoplasma gondii
+194	Toxoplasma gondii ME49
+194	Toxoplasma gondii strain ME49
+196	Pythium iwayamai DAOM BR242034
+196	pythium_iwayamai
+197	Pythium arrhenomanes ATCC 12531
+197	pythium_arrhenomanes
+198	Giardia intestinalis ATCC 50803
+198	Giardia lamblia
+198	Giardia lamblia ATCC 50803
+198	giardia_lamblia
+199	Albugo laibachii
+199	Albugo laibachii Nc14
+199	albugo_laibachii
+200	Pythium aphanidermatum DAOM BR444
+200	pythium_aphanidermatum
+201	Pythium vexans DAOM BR484
+201	pythium_vexans
+202	42403
+202	Paramecium aurelia syngen 4
+202	Paramecium tetraurelia
+202	paramecium_tetraurelia
+203	Emiliania huxleyi CCMP1516
+203	Emiliania huxleyi CCMP2090
+203	emiliania_huxleyi
+260	Campylobacter jejuni subsp. jejuni ATCC 700819
+260	Campylobacter jejuni subsp. jejuni ATCC 700819 = NCTC 11168
+260	Campylobacter jejuni subsp. jejuni NCTC 11168
+260	Campylobacter jejuni subsp. jejuni NCTC 11168 = ATCC 700819
+260	campylobacter_jejuni_subsp_jejuni_nctc_11168_atcc_700819
+344	Escherichia coli 1.2264
+344	escherichia_coli_1_2264
+347	Escherichia coli B86
+347	Escherichia coli B86 serotype O157:H7
+347	escherichia_coli_b86
+358	Campylobacter concisus ATCC 51562
+358	campylobacter_concisus_atcc_51562
+381	Escherichia coli MS 107-1
+381	Escherichia coli str. MS 107-1
+381	Escherichia coli strain MS 107-1
+381	escherichia_coli_ms_107_1
+388	Escherichia coli DEC13B
+388	Escherichia coli DEC13B serotype O128:H7
+388	escherichia_coli_dec13b
+397	Escherichia coli 99.0814
+397	Escherichia coli 99.0814 serotype O157:H7
+397	escherichia_coli_99_0814
+408	Escherichia coli KOEGE 7 (16a)
+408	escherichia_coli_koege_7_16a_
+432	Escherichia coli O111:H8 str. CVM9602
+432	Escherichia coli O111:H8 strain CVM9602
+432	escherichia_coli_o111_h8_str_cvm9602
+458	Escherichia coli p0305293.3
+458	escherichia_coli_p0305293_3
+463	Escherichia coli KTE65
+463	escherichia_coli_kte65
+465	Escherichia coli BWH 24
+465	escherichia_coli_bwh_24
+466	Escherichia coli HVH 130 (4-7036876)
+466	escherichia_coli_hvh_130_4_7036876_
+468	Escherichia coli 09BKT024447
+468	Escherichia coli 09BKT024447 serotype O157:H7
+468	Escherichia coli str. 09BKT024447
+468	Escherichia coli strain 09BKT024447
+468	escherichia_coli_09bkt024447
+471	Escherichia coli FDA517
+471	Escherichia coli FDA517 serotype O157:H7
+471	escherichia_coli_fda517
+473	Escherichia coli HVH 186 (4-3405044)
+473	escherichia_coli_hvh_186_4_3405044_
+476	Escherichia coli KTE213
+476	escherichia_coli_kte213
+480	Escherichia coli HVH 170 (4-3026949)
+480	escherichia_coli_hvh_170_4_3026949_
+481	Escherichia coli BCE011_MS-01
+481	escherichia_coli_bce011_ms_01
+496	Escherichia coli 5.0588
+496	escherichia_coli_5_0588
+497	Escherichia coli P0299438.3
+497	escherichia_coli_p0299438_3
+499	Escherichia coli KTE208
+499	escherichia_coli_kte208
+500	Campylobacter jejuni subsp. jejuni 84-25
+500	Campylobacter jejuni subsp. str. jejuni 84-25
+500	Campylobacter jejuni subsp. strain jejuni 84-25
+500	campylobacter_jejuni_subsp_jejuni_84_25
+506	Escherichia coli STEC_C165-02
+506	escherichia_coli_stec_c165_02
+521	Escherichia coli KTE201
+521	escherichia_coli_kte201
+528	Campylobacter jejuni subsp. jejuni LMG 23223
+528	campylobacter_jejuni_subsp_jejuni_lmg_23223
+530	Escherichia coli KTE125
+530	escherichia_coli_kte125
+535	Escherichia coli LAU-EC8
+535	escherichia_coli_lau_ec8
+541	Escherichia coli H591
+541	escherichia_coli_h591
+544	Escherichia coli DEC9A
+544	Escherichia coli DEC9A serotype O26:H11
+544	escherichia_coli_dec9a
+545	Escherichia coli PA2
+545	Escherichia coli PA2 serotype O157:H7
+545	escherichia_coli_pa2
+548	Escherichia coli KTE106
+548	escherichia_coli_kte106
+568	Escherichia coli DEC10B
+568	Escherichia coli DEC10B serotype O26:H11
+568	escherichia_coli_dec10b
+570	Escherichia coli 2534-86
+570	escherichia_coli_2534_86
+584	Escherichia coli UMEA 3652-1
+584	escherichia_coli_umea_3652_1
+587	Campylobacter fetus subsp. venerealis cfvi03/293
+587	campylobacter_fetus_subsp_venerealis_cfvi03_293
+593	Escherichia coli 909945-2
+593	escherichia_coli_909945_2
+595	Escherichia coli 2866350
+595	escherichia_coli_2866350
+608	Escherichia coli FDA507
+608	Escherichia coli FDA507 serotype O157:H7
+608	escherichia_coli_fda507
+617	Escherichia coli HVH 84 (4-1021478)
+617	escherichia_coli_hvh_84_4_1021478_
+629	Escherichia coli EC96038
+629	Escherichia coli EC96038 serotype O157:H7
+629	escherichia_coli_ec96038
+640	Escherichia coli N1
+640	Escherichia coli N1 serotype O157:H29
+640	escherichia_coli_n1
+643	Escherichia coli KTE178
+643	escherichia_coli_kte178
+647	Escherichia coli EC1863
+647	Escherichia coli EC1863 serotype O157:H7
+647	escherichia_coli_ec1863
+649	Escherichia coli HVH 121 (4-6877826)
+649	escherichia_coli_hvh_121_4_6877826_
+650	Escherichia coli PA38
+650	Escherichia coli PA38 serotype O157:H7
+650	escherichia_coli_pa38
+654	Escherichia fergusonii ATCC 35469
+654	Escherichia fergusonii ATCC 35469 str. type strain: ATCC 35469
+654	Escherichia fergusonii str. ATCC 35469
+654	Escherichia fergusonii strain ATCC 35469
+654	escherichia_fergusonii_atcc_35469
+655	Escherichia coli HVH 154 (4-5636698)
+655	escherichia_coli_hvh_154_4_5636698_
+657	Escherichia coli P0299917.9
+657	escherichia_coli_p0299917_9
+662	Escherichia coli KTE210
+662	escherichia_coli_kte210
+664	Campylobacter jejuni subsp. jejuni PT14
+664	campylobacter_jejuni_subsp_jejuni_pt14
+688	Escherichia coli MP021017.1
+688	escherichia_coli_mp021017_1
+698	Escherichia coli HVH 46 (4-2758776)
+698	escherichia_coli_hvh_46_4_2758776_
+708	Escherichia coli G58-1
+708	escherichia_coli_g58_1
+717	Escherichia coli P0304799.3
+717	escherichia_coli_p0304799_3
+726	Escherichia coli MS 198-1
+726	escherichia_coli_ms_198_1
+738	Escherichia coli P0304777.14
+738	escherichia_coli_p0304777_14
+742	Escherichia coli 2872000
+742	escherichia_coli_2872000
+748	Escherichia coli UMEA 3702-1
+748	escherichia_coli_umea_3702_1
+756	Escherichia coli 2.3916
+756	escherichia_coli_2_3916
+763	Escherichia coli 95NR1
+763	escherichia_coli_95nr1
+766	Campylobacter coli 1948
+766	campylobacter_coli_1948
+773	Escherichia coli O157:H7 str. EC4206
+773	escherichia_coli_o157_h7_str_ec4206
+806	Escherichia coli HVH 120 (4-6978681)
+806	escherichia_coli_hvh_120_4_6978681_
+807	Escherichia coli 2853500
+807	escherichia_coli_2853500
+838	Escherichia coli HVH 127 (4-7303629)
+838	escherichia_coli_hvh_127_4_7303629_
+843	Escherichia coli P0302293.6
+843	escherichia_coli_p0302293_6
+859	Escherichia coli HVH 119 (4-6879578)
+859	escherichia_coli_hvh_119_4_6879578_
+862	Escherichia coli 178900
+862	escherichia_coli_178900
+869	Escherichia coli KTE53
+869	escherichia_coli_kte53
+877	Escherichia coli P0298942.10
+877	escherichia_coli_p0298942_10
+880	Escherichia coli KTE76
+880	escherichia_coli_kte76
+883	Campylobacter jejuni subsp. jejuni 305
+883	Campylobacter jejuni subsp. jejuni str. 305
+883	Campylobacter jejuni subsp. jejuni strain 305
+883	campylobacter_jejuni_subsp_jejuni_305
+884	Escherichia coli HVH 107 (4-5860571)
+884	escherichia_coli_hvh_107_4_5860571_
+888	Escherichia coli p0305293.13
+888	escherichia_coli_p0305293_13
+904	Escherichia coli BIDMC 19C
+904	escherichia_coli_bidmc_19c
+910	Escherichia coli E24377A
+910	Escherichia coli str. E24377A
+910	Escherichia coli strain E24377A
+910	escherichia_coli_e24377a
+913	Campylobacter jejuni subsp. jejuni HB93-13
+913	Campylobacter jejuni subsp. jejuni str. HB93-13
+913	Campylobacter jejuni subsp. jejuni strain HB93-13
+913	campylobacter_jejuni_subsp_jejuni_hb93_13
+917	Campylobacter lari RM2100
+917	Campylobacter lari RM2100 str. RM2100; ATCC BAA-1060D
+917	Campylobacter lari str. RM2100
+917	Campylobacter lari strain RM2100
+917	campylobacter_lari_rm2100
+919	Campylobacter coli 86119
+919	campylobacter_coli_86119
+921	Escherichia coli TW10119
+921	Escherichia coli TW10119 serotype O157:H7
+921	escherichia_coli_tw10119
+943	Escherichia coli UMEA 3208-1
+943	escherichia_coli_umea_3208_1
+953	Escherichia coli KTE237
+953	escherichia_coli_kte237
+954	Escherichia coli KTE37
+954	escherichia_coli_kte37
+961	Campylobacter jejuni subsp. jejuni LMG 23357
+961	campylobacter_jejuni_subsp_jejuni_lmg_23357
+966	Escherichia coli MP021017.12
+966	escherichia_coli_mp021017_12
+967	Escherichia coli UMEA 3097-1
+967	escherichia_coli_umea_3097_1
+972	Escherichia coli KTE135
+972	escherichia_coli_kte135
+974	Escherichia coli SEPT362
+974	escherichia_coli_sept362
+978	Escherichia coli HS
+978	Escherichia coli str. HS
+978	Escherichia coli strain HS
+978	escherichia_coli_hs
+982	Escherichia coli B26-1
+982	escherichia_coli_b26_1
+983	Escherichia coli MP021017.6
+983	escherichia_coli_mp021017_6
+985	Campylobacter jejuni subsp. jejuni LMG 23269
+985	campylobacter_jejuni_subsp_jejuni_lmg_23269
+987	Escherichia coli EC1845
+987	Escherichia coli EC1845 serotype O157:H7
+987	escherichia_coli_ec1845
+995	Escherichia coli KTE161
+995	escherichia_coli_kte161
+1007	Escherichia coli KTE99
+1007	escherichia_coli_kte99
+1032	Escherichia coli HVH 178 (4-3189163)
+1032	escherichia_coli_hvh_178_4_3189163_
+1039	Escherichia coli O26:H11 str. CVM10026
+1039	Escherichia coli O26:H11 strain CVM10026
+1039	escherichia_coli_o26_h11_str_cvm10026
+1063	Escherichia coli DEC10C
+1063	Escherichia coli DEC10C serotype O26:H11
+1063	escherichia_coli_dec10c
+1068	Escherichia coli PA25
+1068	Escherichia coli PA25 serotype O157:H7
+1068	escherichia_coli_pa25
+1069	Escherichia coli O104:H4 str. 11-4632 C2
+1069	Escherichia coli O104:H4 strain 11-4632 C2
+1069	escherichia_coli_o104_h4_str_11_4632_c2
+1086	Escherichia coli UMEA 3292-1
+1086	escherichia_coli_umea_3292_1
+1092	Escherichia coli KTE41
+1092	escherichia_coli_kte41
+1098	Escherichia coli O55:H7 str. 3256-97
+1098	Escherichia coli O55:H7 str. 3256-97 TW 07815
+1098	Escherichia coli O55:H7 str. 3256-97 str. 3256-97 TW 07815
+1098	Escherichia coli O55:H7 strain 3256-97 TW 07815
+1098	escherichia_coli_o55_h7_str_3256_97
+1101	Escherichia coli KTE166
+1101	escherichia_coli_kte166
+1109	Escherichia coli HVH 98 (4-5799287)
+1109	escherichia_coli_hvh_98_4_5799287_
+1137	Escherichia coli HVH 22 (4-2258986)
+1137	escherichia_coli_hvh_22_4_2258986_
+1151	Escherichia coli 910096-2
+1151	escherichia_coli_910096_2
+1153	Escherichia coli DEC4C
+1153	Escherichia coli DEC4C serotype O157:H7
+1153	escherichia_coli_dec4c
+1165	Escherichia coli HVH 167 (4-6073565)
+1165	escherichia_coli_hvh_167_4_6073565_
+1176	Escherichia coli KTE105
+1176	escherichia_coli_kte105
+1178	Escherichia coli B112
+1178	Escherichia coli B112 serotype O157:H7
+1178	escherichia_coli_b112
+1183	Escherichia coli DEC5A
+1183	Escherichia coli DEC5A serotype O55:H7
+1183	escherichia_coli_dec5a
+1186	Escherichia coli KTE113
+1186	escherichia_coli_kte113
+1189	Escherichia coli HVH 80 (4-2428830)
+1189	escherichia_coli_hvh_80_4_2428830_
+1208	Campylobacter jejuni subsp. jejuni 1928
+1208	campylobacter_jejuni_subsp_jejuni_1928
+1225	Escherichia coli KTE176
+1225	escherichia_coli_kte176
+1231	Escherichia coli KTE232
+1231	escherichia_coli_kte232
+1234	Escherichia coli H263
+1234	escherichia_coli_h263
+1238	Escherichia coli KTE196
+1238	escherichia_coli_kte196
+1239	Escherichia coli PA41
+1239	Escherichia coli PA41 serotype O157:H7
+1239	escherichia_coli_pa41
+1242	Escherichia coli P0298942.4
+1242	escherichia_coli_p0298942_4
+1256	Escherichia coli PA4
+1256	Escherichia coli PA4 serotype O157:H7
+1256	escherichia_coli_pa4
+1257	Campylobacter coli 76339
+1257	campylobacter_coli_76339
+1258	Escherichia coli KTE195
+1258	escherichia_coli_kte195
+1263	Escherichia coli P0302308.10
+1263	escherichia_coli_p0302308_10
+1269	Escherichia coli UMEA 3053-1
+1269	escherichia_coli_umea_3053_1
+1283	Escherichia coli E110019
+1283	Escherichia coli str. E110019
+1283	Escherichia coli strain E110019
+1283	escherichia_coli_e110019
+1289	Escherichia coli KTE90
+1289	escherichia_coli_kte90
+1296	Escherichia coli B89
+1296	Escherichia coli B89 serotype O157:H7
+1296	escherichia_coli_b89
+1307	Escherichia coli KTE3
+1307	escherichia_coli_kte3
+1329	Escherichia coli UMEA 3314-1
+1329	escherichia_coli_umea_3314_1
+1343	Escherichia coli HVH 220 (4-5876842)
+1343	escherichia_coli_hvh_220_4_5876842_
+1345	Escherichia coli P0305260.11
+1345	escherichia_coli_p0305260_11
+1349	Escherichia coli O111:B4 str. C48/93
+1349	Escherichia coli ONT:H33 str. C48/93
+1349	Escherichia coli ONT:H33 strain C48/93
+1349	escherichia_coli_ont_h33_str_c48_93
+1351	Campylobacter curvus 525.92
+1351	Campylobacter curvus str. 525.92
+1351	Campylobacter curvus strain 525.92
+1351	campylobacter_curvus_525_92
+1361	Escherichia coli KTE5
+1361	escherichia_coli_kte5
+1367	Escherichia coli ATCC 25922
+1367	escherichia_coli_atcc_25922
+1376	Escherichia coli 907701
+1376	escherichia_coli_907701
+1381	Escherichia coli EC1856
+1381	Escherichia coli EC1856 serotype O157:H7
+1381	escherichia_coli_ec1856
+1385	Campylobacter jejuni subsp. jejuni 00-2538
+1385	campylobacter_jejuni_subsp_jejuni_00_2538
+1401	Escherichia coli DEC15E
+1401	Escherichia coli DEC15E serotype O111:H21
+1401	escherichia_coli_dec15e
+1409	Escherichia coli HVH 115 (4-4465989)
+1409	escherichia_coli_hvh_115_4_4465989_
+1410	Escherichia coli 2861200
+1410	escherichia_coli_2861200
+1417	Escherichia coli 2729250
+1417	escherichia_coli_2729250
+1428	Escherichia coli UMEA 3718-1
+1428	escherichia_coli_umea_3718_1
+1432	Escherichia coli KTE69
+1432	escherichia_coli_kte69
+1439	Escherichia coli KTE83
+1439	escherichia_coli_kte83
+1449	Escherichia coli Tx3800
+1449	Escherichia coli Tx3800 serotype O157:H7
+1449	escherichia_coli_tx3800
+1451	Escherichia coli 2867750
+1451	escherichia_coli_2867750
+1452	Escherichia coli 95.0943
+1452	Escherichia coli 95.0943 serotype O157:H7
+1452	escherichia_coli_95_0943
+1457	Escherichia coli BCE030_MS-09
+1457	escherichia_coli_bce030_ms_09
+1458	Escherichia coli 97.1742
+1458	Escherichia coli 97.1742 serotype O157:H7
+1458	escherichia_coli_97_1742
+1473	Escherichia coli P0302293.10
+1473	escherichia_coli_p0302293_10
+1484	Escherichia coli 99.1762
+1484	Escherichia coli 99.1762 serotype O157:H7
+1484	escherichia_coli_99_1762
+1489	Escherichia coli O157:H7 str. EC869
+1489	escherichia_coli_o157_h7_str_ec869
+1498	Escherichia coli P0305260.1
+1498	escherichia_coli_p0305260_1
+1502	Escherichia coli HVH 111 (4-7039018)
+1502	escherichia_coli_hvh_111_4_7039018_
+1506	Escherichia coli UMEA 3041-1
+1506	escherichia_coli_umea_3041_1
+1507	Escherichia coli MP021561.3
+1507	escherichia_coli_mp021561_3
+1513	Campylobacter jejuni subsp. jejuni DFVF1099
+1513	Campylobacter jejuni subsp. jejuni str. DFVF1099
+1513	Campylobacter jejuni subsp. jejuni strain DFVF1099
+1513	campylobacter_jejuni_subsp_jejuni_dfvf1099
+1527	Escherichia coli HVH 203 (4-3126218)
+1527	escherichia_coli_hvh_203_4_3126218_
+1532	Escherichia coli KTE181
+1532	escherichia_coli_kte181
+1534	Escherichia coli KTE23
+1534	escherichia_coli_kte23
+1538	Escherichia coli 908658
+1538	escherichia_coli_908658
+1559	Escherichia coli HVH 138 (4-6066704)
+1559	escherichia_coli_hvh_138_4_6066704_
+1562	Escherichia coli DEC12D
+1562	Escherichia coli DEC12D serotype O111:H2
+1562	escherichia_coli_dec12d
+1563	Escherichia coli P0301867.2
+1563	escherichia_coli_p0301867_2
+1576	Escherichia coli HVH 78 (4-2735946)
+1576	escherichia_coli_hvh_78_4_2735946_
+1578	Campylobacter jejuni subsp. jejuni LMG 9217
+1578	campylobacter_jejuni_subsp_jejuni_lmg_9217
+1585	Escherichia coli KTE222
+1585	escherichia_coli_kte222
+1597	Escherichia coli KTE142
+1597	escherichia_coli_kte142
+1603	Escherichia coli KTE229
+1603	escherichia_coli_kte229
+1604	Campylobacter gracilis RM3268
+1604	Campylobacter gracilis str. RM3268
+1604	Campylobacter gracilis strain RM3268
+1604	campylobacter_gracilis_rm3268
+1611	Escherichia coli PA33
+1611	Escherichia coli PA33 serotype O157:H7
+1611	escherichia_coli_pa33
+1619	Escherichia coli PCN033
+1619	Escherichia coli str. PCN033
+1619	Escherichia coli strain PCN033
+1619	escherichia_coli_pcn033
+1631	Campylobacter jejuni subsp. jejuni 87459
+1631	campylobacter_jejuni_subsp_jejuni_87459
+1640	Escherichia coli KTE123
+1640	escherichia_coli_kte123
+1643	Escherichia coli J96
+1643	escherichia_coli_j96
+1646	Escherichia coli HVH 134 (4-6073441)
+1646	escherichia_coli_hvh_134_4_6073441_
+1651	Escherichia coli KOEGE 32 (66a)
+1651	escherichia_coli_koege_32_66a_
+1652	Campylobacter jejuni subsp. jejuni 1798
+1652	campylobacter_jejuni_subsp_jejuni_1798
+1653	Escherichia coli 99.1781
+1653	Escherichia coli 99.1781 serotype O157:H7
+1653	escherichia_coli_99_1781
+1654	Escherichia coli DEC11A
+1654	Escherichia coli DEC11A serotype O128a:H2
+1654	escherichia_coli_dec11a
+1660	Escherichia coli UMEA 3201-1
+1660	escherichia_coli_umea_3201_1
+1677	Escherichia coli DEC4A
+1677	Escherichia coli DEC4A serotype O157:-
+1677	escherichia_coli_dec4a
+1680	Escherichia coli 199900.1
+1680	escherichia_coli_199900_1
+1683	Escherichia coli P0302293.2
+1683	escherichia_coli_p0302293_2
+1686	Campylobacter jejuni subsp. jejuni LMG 23211
+1686	campylobacter_jejuni_subsp_jejuni_lmg_23211
+1710	Escherichia coli UMEA 3117-1
+1710	escherichia_coli_umea_3117_1
+1711	Escherichia coli UMEA 3805-1
+1711	escherichia_coli_umea_3805_1
+1718	Escherichia coli T1840_97
+1718	Escherichia coli T1840_97 serotype O157:H7
+1718	Escherichia coli str. T1840_97
+1718	Escherichia coli strain T1840_97
+1718	escherichia_coli_t1840_97
+1722	Escherichia coli TW07793
+1722	escherichia_coli_tw07793
+1730	Escherichia coli HVH 217 (4-1022806)
+1730	escherichia_coli_hvh_217_4_1022806_
+1735	Escherichia coli UMEA 3693-1
+1735	escherichia_coli_umea_3693_1
+1741	Campylobacter jejuni subsp. jejuni LMG 9081
+1741	campylobacter_jejuni_subsp_jejuni_lmg_9081
+1749	Escherichia coli DEC6E
+1749	Escherichia coli DEC6E serotype O111:H12
+1749	escherichia_coli_dec6e
+1759	Campylobacter jejuni subsp. jejuni D2600
+1759	Campylobacter jejuni subsp. jejuni str. D2600
+1759	Campylobacter jejuni subsp. jejuni strain D2600
+1759	campylobacter_jejuni_subsp_jejuni_d2600
+1764	Escherichia coli 96.0497
+1764	escherichia_coli_96_0497
+1765	Escherichia coli KTE220
+1765	escherichia_coli_kte220
+1773	Escherichia coli O157:H7 str. EC508
+1773	escherichia_coli_o157_h7_str_ec508
+1774	Escherichia coli HVH 30 (4-2661829)
+1774	escherichia_coli_hvh_30_4_2661829_
+1781	Escherichia coli P0301867.13
+1781	escherichia_coli_p0301867_13
+1784	Escherichia coli UMEA 3151-1
+1784	escherichia_coli_umea_3151_1
+1798	Escherichia coli HVH 197 (4-4466217)
+1798	escherichia_coli_hvh_197_4_4466217_
+1805	Escherichia coli DEC8A
+1805	Escherichia coli DEC8A serotype O111a:NM
+1805	escherichia_coli_dec8a
+1811	Escherichia coli HVH 10 (4-6832164)
+1811	escherichia_coli_hvh_10_4_6832164_
+1812	Escherichia coli 2730450
+1812	escherichia_coli_2730450
+1813	Escherichia coli HVH 141 (4-5995973)
+1813	escherichia_coli_hvh_141_4_5995973_
+1840	Escherichia coli P0298942.3
+1840	escherichia_coli_p0298942_3
+1843	Escherichia coli T924_01
+1843	Escherichia coli T924_01 serotype O157:H7
+1843	Escherichia coli str. T924_01
+1843	Escherichia coli strain T924_01
+1843	escherichia_coli_t924_01
+1861	Escherichia coli SCD2
+1861	escherichia_coli_scd2
+1875	Escherichia coli UMEA 3193-1
+1875	escherichia_coli_umea_3193_1
+1878	Campylobacter jejuni subsp. jejuni 00-2425
+1878	campylobacter_jejuni_subsp_jejuni_00_2425
+1883	Escherichia coli P0304816.15
+1883	escherichia_coli_p0304816_15
+1892	Escherichia coli UMEA 3175-1
+1892	escherichia_coli_umea_3175_1
+1908	Escherichia coli ECC-Z
+1908	Escherichia coli str. ECC-Z
+1908	Escherichia coli strain ECC-Z
+1908	escherichia_coli_ecc_z
+1912	Escherichia albertii TW07627
+1912	Escherichia albertii str. TW07627
+1912	Escherichia albertii strain TW07627
+1912	escherichia_albertii_tw07627
+1926	Campylobacter upsaliensis RM3195
+1926	Campylobacter upsaliensis str. RM3195
+1926	Campylobacter upsaliensis strain RM3195
+1926	campylobacter_upsaliensis_rm3195
+1927	1157341
+1927	Escherichia coli Ec12-0466
+1927	Escherichia coli O104:H4 str. Ec12-0466
+1927	escherichia_coli_o104_h4_str_ec12_0466
+1944	Escherichia coli KTE50
+1944	escherichia_coli_kte50
+1947	Escherichia coli HVH 193 (4-3331423)
+1947	escherichia_coli_hvh_193_4_3331423_
+1950	Escherichia coli KTE129
+1950	escherichia_coli_kte129
+1961	Escherichia coli EC4421
+1961	Escherichia coli EC4421 serotype O157:H7
+1961	escherichia_coli_ec4421
+1978	Escherichia coli HVH 196 (4-4530470)
+1978	escherichia_coli_hvh_196_4_4530470_
+1982	Escherichia coli HVH 28 (4-0907367)
+1982	escherichia_coli_hvh_28_4_0907367_
+1992	Escherichia coli HVH 53 (4-0631051)
+1992	escherichia_coli_hvh_53_4_0631051_
+1993	Escherichia coli 99.0816
+1993	Escherichia coli 99.0816 serotype O157:H7
+1993	escherichia_coli_99_0816
+1999	Campylobacter coli 132-6
+1999	campylobacter_coli_132_6
+2003	Escherichia coli PA31
+2003	Escherichia coli PA31 serotype O157:H7
+2003	escherichia_coli_pa31
+2006	Escherichia coli UMEA 3257-1
+2006	escherichia_coli_umea_3257_1
+2014	Campylobacter jejuni subsp. jejuni CF93-6
+2014	Campylobacter jejuni subsp. jejuni str. CF93-6
+2014	Campylobacter jejuni subsp. jejuni strain CF93-6
+2014	campylobacter_jejuni_subsp_jejuni_cf93_6
+2015	Escherichia coli UTI89
+2015	Escherichia coli str. UTI89
+2015	Escherichia coli strain UTI89
+2015	escherichia_coli_uti89
+2017	Escherichia coli KTE18
+2017	escherichia_coli_kte18
+2046	Campylobacter rectus RM3267
+2046	Campylobacter rectus str. RM3267
+2046	Campylobacter rectus strain RM3267
+2046	campylobacter_rectus_rm3267
+2057	Escherichia coli 99.0848
+2057	Escherichia coli 99.0848 serotype O157:H7
+2057	escherichia_coli_99_0848
+2067	Campylobacter jejuni subsp. jejuni 327
+2067	Campylobacter jejuni subsp. jejuni str. 327
+2067	Campylobacter jejuni subsp. jejuni strain 327
+2067	campylobacter_jejuni_subsp_jejuni_327
+2074	Escherichia coli P0302293.8
+2074	escherichia_coli_p0302293_8
+2079	Escherichia coli HVH 79 (4-2512823)
+2079	escherichia_coli_hvh_79_4_2512823_
+2081	Escherichia coli O111:H8 str. CVM9574
+2081	Escherichia coli O111:H8 strain CVM9574
+2081	escherichia_coli_o111_h8_str_cvm9574
+2083	Escherichia coli HVH 43 (4-2173468)
+2083	escherichia_coli_hvh_43_4_2173468_
+2109	Escherichia coli HVH 126 (4-6034225)
+2109	escherichia_coli_hvh_126_4_6034225_
+2116	Escherichia coli 2726950
+2116	escherichia_coli_2726950
+2120	Escherichia coli HVH 3 (4-7276001)
+2120	escherichia_coli_hvh_3_4_7276001_
+2122	Escherichia coli P0299917.4
+2122	escherichia_coli_p0299917_4
+2136	Campylobacter jejuni subsp. jejuni HN-CJD07035
+2136	campylobacter_jejuni_subsp_jejuni_hn_cjd07035
+2139	Escherichia coli KTE240
+2139	escherichia_coli_kte240
+2142	Escherichia coli Tx1686
+2142	Escherichia coli Tx1686 serotype O157:H7
+2142	escherichia_coli_tx1686
+2154	Escherichia coli KTE74
+2154	escherichia_coli_kte74
+2156	Escherichia coli P0304816.2
+2156	escherichia_coli_p0304816_2
+2159	Escherichia coli HVH 158 (4-3224287)
+2159	escherichia_coli_hvh_158_4_3224287_
+2163	Escherichia coli Nissle 1917
+2163	Escherichia coli str. Nissle 1917
+2163	Escherichia coli strain Nissle 1917
+2163	escherichia_coli_nissle_1917
+2168	Escherichia coli O157:H- str. H 2687
+2168	Escherichia coli O157:H- strain H 2687
+2168	escherichia_coli_o157_h_str_h_2687
+2170	Escherichia coli KTE182
+2170	escherichia_coli_kte182
+2171	Campylobacter coli 111-3
+2171	campylobacter_coli_111_3
+2176	Escherichia coli DEC2C
+2176	Escherichia coli DEC2C serotype O55:H6
+2176	escherichia_coli_dec2c
+2177	Escherichia coli KTE39
+2177	escherichia_coli_kte39
+2178	Escherichia coli KOEGE 71 (186a)
+2178	escherichia_coli_koege_71_186a_
+2179	Escherichia coli HVH 112 (4-5987253)
+2179	escherichia_coli_hvh_112_4_5987253_
+2180	Escherichia coli UMEA 3173-1
+2180	escherichia_coli_umea_3173_1
+2183	Escherichia coli PA22
+2183	Escherichia coli PA22 serotype O157:H7
+2183	escherichia_coli_pa22
+2197	Escherichia coli 97.0010
+2197	Escherichia coli 97.0010 serotype O157:H7
+2197	escherichia_coli_97_0010
+2220	Escherichia coli B105
+2220	Escherichia coli B105 serotype O157:H7
+2220	escherichia_coli_b105
+2221	Escherichia coli O104:H4 str. 11-4404
+2221	Escherichia coli O104:H4 strain 11-4404
+2221	escherichia_coli_o104_h4_str_11_4404
+2227	Escherichia coli APEC O1
+2227	Escherichia coli str. APEC O1
+2227	Escherichia coli strain APEC O1
+2227	escherichia_coli_apec_o1
+2244	Escherichia coli 75
+2244	Escherichia coli str. 75
+2244	Escherichia coli strain 75
+2244	escherichia_coli_75
+2252	Escherichia coli KTE215
+2252	escherichia_coli_kte215
+2255	Escherichia coli O08
+2255	escherichia_coli_o08
+2258	Escherichia coli 541-15
+2258	Escherichia coli str. 541-15
+2258	Escherichia coli strain 541-15
+2258	escherichia_coli_541_15
+2270	Escherichia coli HVH 184 (4-3343286)
+2270	escherichia_coli_hvh_184_4_3343286_
+2272	Escherichia coli PA15
+2272	Escherichia coli PA15 serotype O157:H7
+2272	escherichia_coli_pa15
+2278	Escherichia coli ED1a
+2278	Escherichia coli str. ED1a
+2278	Escherichia coli strain ED1a
+2278	escherichia_coli_ed1a
+2280	Escherichia coli DEC7B
+2280	Escherichia coli DEC7B serotype O149:NM
+2280	escherichia_coli_dec7b
+2291	Escherichia coli P0299483.2
+2291	escherichia_coli_p0299483_2
+2304	Escherichia coli HVH 132 (4-6876862)
+2304	escherichia_coli_hvh_132_4_6876862_
+2326	Escherichia coli EC1850
+2326	Escherichia coli EC1850 serotype O157:H7
+2326	escherichia_coli_ec1850
+2334	Escherichia coli DEC3D
+2334	Escherichia coli DEC3D serotype O157:H7
+2334	escherichia_coli_dec3d
+2338	Escherichia coli clone D i2
+2338	Escherichia coli str. 'clone D i2'
+2338	Escherichia coli strain 'clone D i2'
+2338	escherichia_coli_str_clone_d_i2_
+2341	Escherichia coli DEC15B
+2341	Escherichia coli DEC15B serotype O111:H21
+2341	escherichia_coli_dec15b
+2343	Escherichia coli HVH 192 (4-3054470)
+2343	escherichia_coli_hvh_192_4_3054470_
+2352	Escherichia coli UMEA 3172-1
+2352	escherichia_coli_umea_3172_1
+2358	Escherichia coli B107
+2358	Escherichia coli B107 serotype O157:H7
+2358	escherichia_coli_b107
+2359	Escherichia coli HVH 145 (4-5672112)
+2359	escherichia_coli_hvh_145_4_5672112_
+2363	Escherichia coli HVH 180 (4-3051617)
+2363	escherichia_coli_hvh_180_4_3051617_
+2368	Escherichia coli KOEGE 3 (4a)
+2368	escherichia_coli_koege_3_4a_
+2374	Escherichia coli CB7326
+2374	Escherichia coli CB7326 serotype Or:H7
+2374	escherichia_coli_cb7326
+2385	Escherichia coli HVH 143 (4-5674999)
+2385	escherichia_coli_hvh_143_4_5674999_
+2388	Escherichia coli KTE119
+2388	escherichia_coli_kte119
+2390	Escherichia coli KTE184
+2390	escherichia_coli_kte184
+2394	Escherichia coli E128010
+2394	escherichia_coli_e128010
+2395	Escherichia coli P0305260.3
+2395	escherichia_coli_p0305260_3
+2405	Escherichia coli HVH 162 (4-5627982)
+2405	escherichia_coli_hvh_162_4_5627982_
+2413	Escherichia coli O104:H4 str. 11-4632 C4
+2413	Escherichia coli O104:H4 strain 11-4632 C4
+2413	escherichia_coli_o104_h4_str_11_4632_c4
+2430	Escherichia coli 5905
+2430	Escherichia coli 5905 serotype O55:H7
+2430	escherichia_coli_5905
+2432	Escherichia coli KTE55
+2432	escherichia_coli_kte55
+2442	Escherichia coli O55:H7 str. RM12579
+2442	Escherichia coli O55:H7 strain RM12579
+2442	escherichia_coli_o55_h7_str_rm12579
+2454	Escherichia coli HVH 21 (4-4517873)
+2454	escherichia_coli_hvh_21_4_4517873_
+2477	Escherichia coli S88
+2477	Escherichia coli str. S88
+2477	Escherichia coli strain S88
+2477	escherichia_coli_s88
+2480	Escherichia coli UMEA 3139-1
+2480	escherichia_coli_umea_3139_1
+2482	Escherichia coli KTE212
+2482	escherichia_coli_kte212
+2483	Escherichia coli 3431
+2483	escherichia_coli_3431
+2485	Escherichia coli KTE227
+2485	escherichia_coli_kte227
+2491	Escherichia coli LF82
+2491	Escherichia coli str. LF82
+2491	Escherichia coli strain LF82
+2491	escherichia_coli_lf82
+2504	Escherichia coli KTE193
+2504	escherichia_coli_kte193
+2507	Escherichia coli HVH 1 (4-6876161)
+2507	escherichia_coli_hvh_1_4_6876161_
+2511	Escherichia coli KTE230
+2511	escherichia_coli_kte230
+2517	Escherichia coli STEC_B2F1
+2517	escherichia_coli_stec_b2f1
+2521	Escherichia coli BCE008_MS-13
+2521	escherichia_coli_bce008_ms_13
+2528	Escherichia coli O157:H7 str. 1125
+2528	Escherichia coli O157:H7 strain 1125
+2528	escherichia_coli_o157_h7_str_1125
+2529	Escherichia coli B36-2
+2529	Escherichia coli B36-2 serotype O157:H7
+2529	escherichia_coli_b36_2
+2531	Escherichia coli FDA505
+2531	Escherichia coli FDA505 serotype O157:H7
+2531	escherichia_coli_fda505
+2541	Escherichia coli KTE81
+2541	escherichia_coli_kte81
+2542	Escherichia coli KTE97
+2542	escherichia_coli_kte97
+2544	Escherichia coli KTE168
+2544	escherichia_coli_kte168
+2549	Escherichia coli O26:H11 11368
+2549	Escherichia coli O26:H11 str. 11368
+2549	Escherichia coli O26:H11 strain 11368
+2549	escherichia_coli_o26_h11_str_11368
+2571	Escherichia coli DEC5C
+2571	Escherichia coli DEC5C serotype O55:H7
+2571	escherichia_coli_dec5c
+2580	Escherichia coli 2733950
+2580	escherichia_coli_2733950
+2581	Escherichia coli 09BKT078844
+2581	Escherichia coli 09BKT078844 serotype O157:H7
+2581	Escherichia coli str. 09BKT078844
+2581	Escherichia coli strain 09BKT078844
+2581	escherichia_coli_09bkt078844
+2582	Escherichia coli UMEA 3889-1
+2582	escherichia_coli_umea_3889_1
+2591	Escherichia coli 10.0869
+2591	Escherichia coli 10.0869 serotype O157:H7
+2591	escherichia_coli_10_0869
+2594	Escherichia coli EC1847
+2594	Escherichia coli EC1847 serotype O157:H7
+2594	escherichia_coli_ec1847
+2596	Escherichia coli P0302308.4
+2596	escherichia_coli_p0302308_4
+2601	Escherichia coli M919
+2601	escherichia_coli_m919
+2636	Escherichia coli 907892
+2636	escherichia_coli_907892
+2640	Escherichia coli 99.1775
+2640	Escherichia coli 99.1775 serotype O157:H7
+2640	escherichia_coli_99_1775
+2646	Escherichia coli PA47
+2646	Escherichia coli PA47 serotype O157:H7
+2646	escherichia_coli_pa47
+2660	Campylobacter coli 2685
+2660	campylobacter_coli_2685
+2665	Escherichia coli KTE154
+2665	escherichia_coli_kte154
+2666	1228011
+2666	Escherichia coli 11-03943
+2666	Escherichia coli O104:H4 str. 11-03943
+2666	escherichia_coli_o104_h4_str_11_03943
+2671	Escherichia coli O157:H7 str. TW14588
+2671	escherichia_coli_o157_h7_str_tw14588
+2673	Escherichia coli HVH 25 (4-5851939)
+2673	escherichia_coli_hvh_25_4_5851939_
+2674	Campylobacter coli 7--1
+2674	campylobacter_coli_7_1
+2697	Escherichia coli 96.0427
+2697	Escherichia coli 96.0427 serotype O157:H7
+2697	escherichia_coli_96_0427
+2701	Escherichia coli KTE43
+2701	escherichia_coli_kte43
+2707	Escherichia coli HM605
+2707	Escherichia coli str. HM605
+2707	Escherichia coli strain HM605
+2707	escherichia_coli_hm605
+2708	Escherichia coli 2770900
+2708	escherichia_coli_2770900
+2716	Escherichia coli KTE29
+2716	escherichia_coli_kte29
+2718	Escherichia coli KO11FL (ASM25802v1)
+2718	escherichia_coli_ko11fl_asm25802v1
+2729	Escherichia coli TW06591
+2729	Escherichia coli TW06591 serotype O157:H-
+2729	escherichia_coli_tw06591
+2737	Escherichia coli HVH 23 (4-6066488)
+2737	escherichia_coli_hvh_23_4_6066488_
+2748	Escherichia coli KOEGE 44 (106a)
+2748	escherichia_coli_koege_44_106a_
+2754	Escherichia coli P0298942.15
+2754	escherichia_coli_p0298942_15
+2758	Escherichia coli TA007
+2758	escherichia_coli_ta007
+2761	Escherichia coli EC4402
+2761	Escherichia coli EC4402 serotype O157:H7
+2761	escherichia_coli_ec4402
+2762	Escherichia coli TW10246
+2762	Escherichia coli TW10246 serotype O157:H7
+2762	escherichia_coli_tw10246
+2768	Escherichia coli MS 60-1
+2768	escherichia_coli_ms_60_1
+2770	Escherichia coli EC4100B
+2770	Escherichia coli str. EC4100B
+2770	Escherichia coli strain EC4100B
+2770	escherichia_coli_ec4100b
+2772	Escherichia coli KTE148
+2772	escherichia_coli_kte148
+2784	Escherichia coli KTE127
+2784	escherichia_coli_kte127
+2796	Escherichia sp. 3_2_53FAA
+2796	escherichia_sp_3_2_53faa
+2802	Escherichia coli KOEGE 68 (182a)
+2802	escherichia_coli_koege_68_182a_
+2805	Campylobacter jejuni subsp. jejuni 260.94
+2805	Campylobacter jejuni subsp. jejuni str. 260.94
+2805	Campylobacter jejuni subsp. jejuni strain 260.94
+2805	campylobacter_jejuni_subsp_jejuni_260_94
+2813	Escherichia coli HVH 137 (4-2124971)
+2813	escherichia_coli_hvh_137_4_2124971_
+2814	Escherichia coli HVH 24 (4-5985145)
+2814	escherichia_coli_hvh_24_4_5985145_
+2817	Campylobacter jejuni 1336
+2817	Campylobacter jejuni subsp. jejuni 1336
+2817	Campylobacter jejuni subsp. jejuni str. 1336
+2817	Campylobacter jejuni subsp. jejuni strain 1336
+2817	campylobacter_jejuni_subsp_jejuni_1336
+2822	Escherichia coli P0301867.4
+2822	escherichia_coli_p0301867_4
+2827	Campylobacter jejuni subsp. jejuni 1997-11
+2827	campylobacter_jejuni_subsp_jejuni_1997_11
+2828	Escherichia coli 2845350
+2828	escherichia_coli_2845350
+2846	Escherichia coli cloneA_i1
+2846	Escherichia coli str. cloneA_i1
+2846	Escherichia coli strain cloneA_i1
+2846	escherichia_coli_clonea_i1
+2849	Escherichia coli KTE170
+2849	escherichia_coli_kte170
+2869	Escherichia coli DH1 (ASM2336v1)
+2869	escherichia_coli_dh1_asm2336v1
+2876	Escherichia coli HVH 149 (4-4451880)
+2876	escherichia_coli_hvh_149_4_4451880_
+2888	Escherichia coli UMEA 3317-1
+2888	escherichia_coli_umea_3317_1
+2890	Escherichia coli E482
+2890	escherichia_coli_e482
+2900	Escherichia coli O157:H7 str. EC4401
+2900	escherichia_coli_o157_h7_str_ec4401
+2906	Escherichia coli DEC3B
+2906	Escherichia coli DEC3B serotype O157:H7
+2906	escherichia_coli_dec3b
+2907	Escherichia coli KTE7
+2907	escherichia_coli_kte7
+2909	Escherichia coli 908521
+2909	escherichia_coli_908521
+2914	Escherichia coli BWH 32
+2914	escherichia_coli_bwh_32
+2924	Campylobacter coli H6
+2924	campylobacter_coli_h6
+2933	Escherichia coli O157:H7 str. EC4045
+2933	escherichia_coli_o157_h7_str_ec4045
+2935	Escherichia coli HVH 125 (4-2634716)
+2935	escherichia_coli_hvh_125_4_2634716_
+2938	Escherichia coli KOEGE 40 (102a)
+2938	escherichia_coli_koege_40_102a_
+2951	Escherichia coli J53
+2951	Escherichia coli str. J53
+2951	Escherichia coli strain J53
+2951	escherichia_coli_j53
+2952	Escherichia coli BCE006_MS-23
+2952	escherichia_coli_bce006_ms_23
+2959	Escherichia coli 174750
+2959	escherichia_coli_174750
+2960	Escherichia coli 2730350
+2960	escherichia_coli_2730350
+2976	Escherichia coli HVH 86 (4-7026218)
+2976	escherichia_coli_hvh_86_4_7026218_
+2979	Escherichia coli O104:H4 str. 2009EL-2071
+2979	Escherichia coli O104:H4 strain 2009EL-2071
+2979	escherichia_coli_o104_h4_str_2009el_2071
+2983	Escherichia coli HVH 63 (4-2542528)
+2983	escherichia_coli_hvh_63_4_2542528_
+2992	Escherichia coli TW09195
+2992	Escherichia coli TW09195 serotype O157:H7
+2992	escherichia_coli_tw09195
+3003	Escherichia coli HVH 208 (4-3112292)
+3003	escherichia_coli_hvh_208_4_3112292_
+3013	Escherichia coli MA6
+3013	Escherichia coli MA6 serotype Or:H7
+3013	escherichia_coli_ma6
+3017	Escherichia coli HVH 13 (4-7634056)
+3017	escherichia_coli_hvh_13_4_7634056_
+3019	Escherichia coli H299
+3019	escherichia_coli_h299
+3028	Escherichia coli UMEA 3694-1
+3028	escherichia_coli_umea_3694_1
+3041	Escherichia coli 907710
+3041	escherichia_coli_907710
+3046	Escherichia coli KTE57
+3046	escherichia_coli_kte57
+3047	Escherichia coli UMEA 3391-1
+3047	escherichia_coli_umea_3391_1
+3060	Escherichia coli SE11
+3060	Escherichia coli str. SE11
+3060	Escherichia coli strain SE11
+3060	escherichia_coli_se11
+3066	Escherichia coli BIDMC 37
+3066	escherichia_coli_bidmc_37
+3069	Escherichia coli FDA506
+3069	Escherichia coli FDA506 serotype O157:H7
+3069	escherichia_coli_fda506
+3071	Escherichia coli O26:H11 str. CVM10030
+3071	Escherichia coli O26:H11 strain CVM10030
+3071	escherichia_coli_o26_h11_str_cvm10030
+3075	Escherichia coli O104:H21 str. CFSAN002236
+3075	escherichia_coli_o104_h21_str_cfsan002236
+3080	Escherichia coli P0304777.4
+3080	escherichia_coli_p0304777_4
+3095	Escherichia coli M605
+3095	escherichia_coli_m605
+3100	Campylobacter coli 1891
+3100	campylobacter_coli_1891
+3114	Escherichia coli 53638
+3114	escherichia_coli_53638
+3118	Escherichia coli EC1735
+3118	Escherichia coli EC1735 serotype O157:H7
+3118	escherichia_coli_ec1735
+3122	Escherichia coli P0302308.14
+3122	escherichia_coli_p0302308_14
+3134	Escherichia coli HVH 211 (4-3041891)
+3134	escherichia_coli_hvh_211_4_3041891_
+3144	Escherichia coli KTE87
+3144	escherichia_coli_kte87
+3148	Escherichia coli HVH 152 (4-3447545)
+3148	escherichia_coli_hvh_152_4_3447545_
+3151	Escherichia coli KTE236
+3151	escherichia_coli_kte236
+3154	Escherichia coli HVH 221 (4-3136817)
+3154	escherichia_coli_hvh_221_4_3136817_
+3160	Escherichia coli PA13
+3160	Escherichia coli PA13 serotype O157:H7
+3160	Escherichia coli str. PA13
+3160	Escherichia coli strain PA13
+3160	escherichia_coli_pa13
+3162	Escherichia coli P0299917.5
+3162	escherichia_coli_p0299917_5
+3163	Escherichia coli 3.4880
+3163	Escherichia coli 3.4880 serotype O157:H7
+3163	Escherichia coli str. 3.4880
+3163	Escherichia coli strain 3.4880
+3163	escherichia_coli_3_4880
+3167	Escherichia coli HVH 92 (4-5930790)
+3167	escherichia_coli_hvh_92_4_5930790_
+3174	Campylobacter coli LMG 9860
+3174	campylobacter_coli_lmg_9860
+3183	Campylobacter jejuni subsp. doylei 269.97
+3183	Campylobacter jejuni subsp. doylei 362.97
+3183	Campylobacter jejuni subsp. doylei str. 269.97
+3183	Campylobacter jejuni subsp. doylei strain 269.97
+3183	campylobacter_jejuni_subsp_doylei_269_97
+3197	Escherichia coli EC1870
+3197	Escherichia coli EC1870 serotype O157:H7
+3197	escherichia_coli_ec1870
+3199	Campylobacter jejuni subsp. jejuni ICDCCJ07002
+3199	campylobacter_jejuni_subsp_jejuni_icdccj07002
+3203	Escherichia coli B29-1
+3203	Escherichia coli B29-1 serotype O157:H7
+3203	escherichia_coli_b29_1
+3204	Escherichia coli KTE120
+3204	escherichia_coli_kte120
+3213	Escherichia coli 907391
+3213	escherichia_coli_907391
+3219	Escherichia coli EC1848
+3219	Escherichia coli EC1848 serotype O157:H7
+3219	escherichia_coli_ec1848
+3227	Escherichia coli KTE185
+3227	escherichia_coli_kte185
+3228	Escherichia coli KTE79
+3228	escherichia_coli_kte79
+3231	1128599
+3231	Escherichia coli Ec11-4988
+3231	Escherichia coli O104:H4 str. Ec11-4988
+3231	escherichia_coli_o104_h4_str_ec11_4988
+3242	Escherichia coli ThroopD
+3242	Escherichia coli ThroopD serotype 063:NM
+3242	escherichia_coli_throopd
+3247	Escherichia coli HVH 33 (4-2174936)
+3247	escherichia_coli_hvh_33_4_2174936_
+3248	Escherichia coli KTE147
+3248	escherichia_coli_kte147
+3253	Escherichia coli DEC7E
+3253	Escherichia coli DEC7E serotype O157:NM
+3253	escherichia_coli_dec7e
+3256	Escherichia coli DEC1D
+3256	Escherichia coli DEC1D serotype O55:H6
+3256	escherichia_coli_dec1d
+3258	Escherichia coli 93.0055
+3258	Escherichia coli 93.0055 serotype O157:H7
+3258	escherichia_coli_93_0055
+3266	Escherichia coli KTE27
+3266	escherichia_coli_kte27
+3282	Escherichia coli HVH 225 (4-1273116)
+3282	escherichia_coli_hvh_225_4_1273116_
+3298	Escherichia coli Bd5610_99
+3298	Escherichia coli Bd5610_99 serotype O157:H7
+3298	Escherichia coli str. Bd5610_99
+3298	Escherichia coli strain Bd5610_99
+3298	escherichia_coli_bd5610_99
+3326	Escherichia coli B106
+3326	Escherichia coli B106 serotype O157:H7
+3326	escherichia_coli_b106
+3336	Escherichia coli UMEA 3318-1
+3336	escherichia_coli_umea_3318_1
+3337	Escherichia coli HVH 146 (4-3189767)
+3337	escherichia_coli_hvh_146_4_3189767_
+3341	Escherichia coli 2735000
+3341	escherichia_coli_2735000
+3349	Escherichia coli KTE72
+3349	escherichia_coli_kte72
+3351	Escherichia coli HVH 103 (4-5904188)
+3351	escherichia_coli_hvh_103_4_5904188_
+3355	Escherichia coli KTE218
+3355	escherichia_coli_kte218
+3373	Escherichia coli 908675
+3373	escherichia_coli_908675
+3402	Escherichia coli HVH 194 (4-2356805)
+3402	escherichia_coli_hvh_194_4_2356805_
+3412	Escherichia coli DEC2E
+3412	Escherichia coli DEC2E serotype O55:H6
+3412	escherichia_coli_dec2e
+3413	Escherichia coli UMEA 3022-1
+3413	escherichia_coli_umea_3022_1
+3417	Escherichia coli P0304816.13
+3417	escherichia_coli_p0304816_13
+3427	Escherichia coli NA114
+3427	Escherichia coli str. NA114
+3427	Escherichia coli strain NA114
+3427	escherichia_coli_na114
+3429	Campylobacter jejuni subsp. jejuni LMG 23264
+3429	campylobacter_jejuni_subsp_jejuni_lmg_23264
+3430	Escherichia coli KTE33
+3430	escherichia_coli_kte33
+3440	Escherichia coli 113290
+3440	escherichia_coli_113290
+3442	Escherichia coli KOEGE 62 (175a)
+3442	escherichia_coli_koege_62_175a_
+3463	Escherichia coli DEC1C
+3463	Escherichia coli DEC1C serotype O55:H6
+3463	escherichia_coli_dec1c
+3484	Campylobacter jejuni subsp. jejuni M1
+3484	Campylobacter jejuni subsp. jejuni str. M1
+3484	Campylobacter jejuni subsp. jejuni strain M1
+3484	campylobacter_jejuni_subsp_jejuni_m1
+3486	Escherichia coli TA280
+3486	escherichia_coli_ta280
+3495	Escherichia coli B95
+3495	Escherichia coli B95 serotype O157:H7
+3495	escherichia_coli_b95
+3496	Escherichia coli MP021552.7
+3496	escherichia_coli_mp021552_7
+3505	Escherichia coli O111:H- str. 11128
+3505	Escherichia coli O111:H- strain 11128
+3505	escherichia_coli_o111_h_str_11128
+3506	Escherichia coli UMEA 3240-1
+3506	escherichia_coli_umea_3240_1
+3508	Escherichia coli KTE223
+3508	escherichia_coli_kte223
+3523	Escherichia coli HVH 213 (4-3042928)
+3523	escherichia_coli_hvh_213_4_3042928_
+3532	Escherichia coli HVH 95 (4-6074464)
+3532	escherichia_coli_hvh_95_4_6074464_
+3535	Campylobacter jejuni RM1221
+3535	Campylobacter jejuni str. RM1221
+3535	Campylobacter jejuni strain RM1221
+3535	campylobacter_jejuni_rm1221
+3542	Escherichia coli 3.3884
+3542	escherichia_coli_3_3884
+3551	Escherichia coli O104:H4 str. C236-11
+3551	Escherichia coli O104:H4 strain C236-11
+3551	escherichia_coli_o104_h4_str_c236_11
+3555	Escherichia coli UMEA 3355-1
+3555	escherichia_coli_umea_3355_1
+3556	Escherichia coli DEC9E
+3556	Escherichia coli DEC9E serotype O26:H11
+3556	escherichia_coli_dec9e
+3560	Escherichia coli DEC6B
+3560	Escherichia coli DEC6B serotype O111:H12
+3560	escherichia_coli_dec6b
+3570	Escherichia coli KTE133
+3570	escherichia_coli_kte133
+3597	Escherichia coli P0302293.4
+3597	escherichia_coli_p0302293_4
+3602	Escherichia coli KTE52
+3602	escherichia_coli_kte52
+3621	Escherichia coli MP021017.4
+3621	escherichia_coli_mp021017_4
+3635	Escherichia coli KOEGE 61 (174a)
+3635	escherichia_coli_koege_61_174a_
+3645	Escherichia coli MS 78-1
+3645	escherichia_coli_ms_78_1
+3672	Escherichia coli ARS4.2123
+3672	Escherichia coli ARS4.2123 serotype O157:H16
+3672	escherichia_coli_ars4_2123
+3674	Escherichia coli KTE103
+3674	escherichia_coli_kte103
+3677	Escherichia coli KTE209
+3677	escherichia_coli_kte209
+3678	Escherichia coli KTE60
+3678	escherichia_coli_kte60
+3694	Escherichia coli PA7
+3694	Escherichia coli PA7 serotype O157:H7
+3694	escherichia_coli_pa7
+3703	Escherichia coli HVH 133 (4-4466519)
+3703	escherichia_coli_hvh_133_4_4466519_
+3713	Escherichia coli 96.0109
+3713	Escherichia coli 96.0109 serotype O157:H7
+3713	escherichia_coli_96_0109
+3719	Escherichia coli 2854350
+3719	escherichia_coli_2854350
+3720	Escherichia coli HVH 136 (4-5970458)
+3720	escherichia_coli_hvh_136_4_5970458_
+3721	Escherichia coli UMEA 3087-1
+3721	escherichia_coli_umea_3087_1
+3726	Escherichia coli 908525
+3726	escherichia_coli_908525
+3727	Escherichia coli UMEA 3185-1
+3727	escherichia_coli_umea_3185_1
+3736	Escherichia coli UMEA 3671-1
+3736	escherichia_coli_umea_3671_1
+3740	Escherichia coli CFT073
+3740	Escherichia coli str. CFT073
+3740	Escherichia coli strain CFT073
+3740	escherichia_coli_cft073
+3764	Escherichia coli DEC3E
+3764	Escherichia coli DEC3E serotype O157:H7
+3764	escherichia_coli_dec3e
+3766	Escherichia coli KTE22
+3766	escherichia_coli_kte22
+3772	Escherichia coli MS 116-1
+3772	escherichia_coli_ms_116_1
+3787	Escherichia coli HVH 59 (4-1119338)
+3787	escherichia_coli_hvh_59_4_1119338_
+3806	Escherichia coli 2866750
+3806	escherichia_coli_2866750
+3807	1228006
+3807	Escherichia coli 11-02281
+3807	Escherichia coli O104:H4 str. 11-02281
+3807	escherichia_coli_o104_h4_str_11_02281
+3818	Campylobacter coli 2548
+3818	campylobacter_coli_2548
+3821	Escherichia coli HVH 36 (4-5675286)
+3821	escherichia_coli_hvh_36_4_5675286_
+3835	Escherichia coli A25922R
+3835	escherichia_coli_a25922r
+3836	Campylobacter jejuni subsp. jejuni 1997-1
+3836	campylobacter_jejuni_subsp_jejuni_1997_1
+3844	Escherichia coli O83:H1 str. NRG 857C
+3844	Escherichia coli O83:H1 strain NRG 857C
+3844	escherichia_coli_o83_h1_str_nrg_857c
+3847	Escherichia coli 2872800
+3847	escherichia_coli_2872800
+3852	Escherichia coli 2747800
+3852	escherichia_coli_2747800
+3856	Escherichia coli UMEA 3233-1
+3856	escherichia_coli_umea_3233_1
+3871	Escherichia coli HVH 189 (4-3220125)
+3871	escherichia_coli_hvh_189_4_3220125_
+3876	Escherichia coli CUMT8
+3876	Escherichia coli MT8
+3876	Escherichia coli str. CUMT8
+3876	Escherichia coli strain CUMT8
+3876	escherichia_coli_cumt8
+3889	216593
+3889	Escherichia coli 0127:H6 str. E2348/69
+3889	Escherichia coli E2348
+3889	Escherichia coli E2348/69
+3889	Escherichia coli O127:H6 E2348/69
+3889	Escherichia coli O127:H6 str. E2348/69
+3889	Escherichia coli O127:H6 strain E2348/69
+3889	Escherichia coli str. E2348
+3889	Escherichia coli str. E2348/69
+3889	Escherichia coli strain E2348/69
+3889	escherichia_coli_o127_h6_str_e2348_69
+3900	Escherichia coli BCE034_MS-14
+3900	escherichia_coli_bce034_ms_14
+3901	Escherichia coli HVH 142 (4-5627451)
+3901	escherichia_coli_hvh_142_4_5627451_
+3904	Escherichia coli DEC6D
+3904	Escherichia coli DEC6D serotype O111:H12
+3904	escherichia_coli_dec6d
+3909	Campylobacter coli 2698
+3909	campylobacter_coli_2698
+3916	Campylobacter jejuni subsp. jejuni NCTC 11168-BN148
+3916	Campylobacter jejuni subsp. jejuni NCTC 11168-O
+3916	campylobacter_jejuni_subsp_jejuni_nctc_11168_bn148
+3918	Escherichia coli 08BKT77219
+3918	Escherichia coli 08BKT77219 serotype O157:H7
+3918	Escherichia coli str. 08BKT77219
+3918	Escherichia coli strain 08BKT77219
+3918	escherichia_coli_08bkt77219
+3919	Escherichia coli 99.0839
+3919	Escherichia coli 99.0839 serotype O157:H7
+3919	escherichia_coli_99_0839
+3927	Escherichia coli KTE186
+3927	escherichia_coli_kte186
+3935	Escherichia coli HVH 175 (4-3405184)
+3935	escherichia_coli_hvh_175_4_3405184_
+3951	Escherichia coli HVH 117 (4-6857191)
+3951	escherichia_coli_hvh_117_4_6857191_
+3952	Escherichia coli KTE225
+3952	escherichia_coli_kte225
+3956	Escherichia coli 99.0741
+3956	escherichia_coli_99_0741
+3991	Escherichia coli EC1868
+3991	Escherichia coli EC1868 serotype O157:H7
+3991	escherichia_coli_ec1868
+4002	Escherichia coli 907889
+4002	escherichia_coli_907889
+4009	Escherichia coli UMN026
+4009	escherichia_coli_umn026
+4011	Campylobacter coli H8
+4011	campylobacter_coli_h8
+4013	Escherichia coli 180600
+4013	escherichia_coli_180600
+4014	Escherichia coli 96.0932
+4014	Escherichia coli 96.0932 serotype O157:H7
+4014	escherichia_coli_96_0932
+4021	Escherichia coli KTE130
+4021	escherichia_coli_kte130
+4033	Escherichia coli 96.0939
+4033	Escherichia coli 96.0939 serotype O157:H7
+4033	escherichia_coli_96_0939
+4037	Escherichia coli EC4013
+4037	Escherichia coli EC4013 serotype O157:H7
+4037	escherichia_coli_ec4013
+4038	Escherichia coli KTE165
+4038	escherichia_coli_kte165
+4043	Escherichia coli DEC7C
+4043	Escherichia coli DEC7C serotype O157:H43
+4043	escherichia_coli_dec7c
+4059	Escherichia coli KTE95
+4059	escherichia_coli_kte95
+4063	Escherichia coli P0304816.4
+4063	escherichia_coli_p0304816_4
+4064	Escherichia coli PA9
+4064	Escherichia coli PA9 serotype O157:H7
+4064	escherichia_coli_pa9
+4096	Escherichia coli P0302308.2
+4096	escherichia_coli_p0302308_2
+4097	Escherichia coli HVH 210 (4-3042480)
+4097	escherichia_coli_hvh_210_4_3042480_
+4104	Escherichia coli HVH 139 (4-3192644)
+4104	escherichia_coli_hvh_139_4_3192644_
+4106	Escherichia coli KTE157
+4106	escherichia_coli_kte157
+4111	Escherichia coli 99.1805
+4111	Escherichia coli 99.1805 serotype O157:H7
+4111	escherichia_coli_99_1805
+4114	Escherichia coli HVH 42 (4-2100061)
+4114	escherichia_coli_hvh_42_4_2100061_
+4121	Escherichia coli P0301867.7
+4121	escherichia_coli_p0301867_7
+4123	Escherichia coli UMEA 3230-1
+4123	escherichia_coli_umea_3230_1
+4128	Escherichia coli MS 69-1
+4128	escherichia_coli_ms_69_1
+4130	Escherichia coli BIDMC 39
+4130	escherichia_coli_bidmc_39
+4131	Escherichia coli DEC5E
+4131	Escherichia coli DEC5E serotype O55:H7
+4131	escherichia_coli_dec5e
+4150	Escherichia coli KOEGE 43 (105a)
+4150	escherichia_coli_koege_43_105a_
+4151	Escherichia coli PA45
+4151	Escherichia coli PA45 serotype O157:H7
+4151	escherichia_coli_pa45
+4152	Escherichia coli KTE116
+4152	escherichia_coli_kte116
+4153	Escherichia coli EC4196
+4153	Escherichia coli EC4196 serotype O157:H7
+4153	escherichia_coli_ec4196
+4164	Escherichia coli HVH 195 (3-7155360)
+4164	escherichia_coli_hvh_195_3_7155360_
+4166	Escherichia coli HVH 68 (4-0888028)
+4166	escherichia_coli_hvh_68_4_0888028_
+4167	Escherichia coli 'BL21-Gold(DE3)pLysS AG'
+4167	Escherichia coli BL21-Gold(DE3)pLysS AG
+4167	Escherichia coli str. BL21-Gold(DE3)pLysS AG
+4167	Escherichia coli strain BL21-Gold(DE3)pLysS AG
+4167	escherichia_coli_bl21_gold_de3_plyss_ag_
+4176	Escherichia coli ECA-727
+4176	Escherichia coli str. ECA-727
+4176	Escherichia coli strain ECA-727
+4176	escherichia_coli_eca_727
+4186	Escherichia coli 10.0833
+4186	Escherichia coli 10.0833 serotype O157:H7
+4186	escherichia_coli_10_0833
+4194	Escherichia coli O32:H37 str. P4
+4194	Escherichia coli O32:H37 strain P4
+4194	escherichia_coli_o32_h37_str_p4
+4204	Escherichia coli PA49
+4204	Escherichia coli PA49 serotype O157:H7
+4204	escherichia_coli_pa49
+4212	Escherichia coli KTE100
+4212	escherichia_coli_kte100
+4216	Escherichia coli KTE172
+4216	escherichia_coli_kte172
+4230	Escherichia coli KTE35
+4230	escherichia_coli_kte35
+4241	Escherichia coli P4-NR
+4241	Escherichia coli str. P4-NR
+4241	Escherichia coli strain P4-NR
+4241	escherichia_coli_p4_nr
+4248	Escherichia coli P0299917.7
+4248	escherichia_coli_p0299917_7
+4255	Escherichia coli ETEC H10407
+4255	Escherichia coli ETEC str. H10407
+4255	Escherichia coli ETEC strain H10407
+4255	Escherichia coli H10407
+4255	Escherichia coli strain H10407
+4255	escherichia_coli_etec_h10407
+4260	Escherichia coli 1180
+4260	Escherichia coli OK1180
+4260	Escherichia coli str. OK1180
+4260	Escherichia coli strain OK1180
+4260	escherichia_coli_ok1180
+4262	Escherichia coli 2875150
+4262	escherichia_coli_2875150
+4269	Escherichia coli KTE192
+4269	escherichia_coli_kte192
+4271	Escherichia coli O104:H4 str. 11-3677
+4271	Escherichia coli O104:H4 strain 11-3677
+4271	escherichia_coli_o104_h4_str_11_3677
+4274	Escherichia coli DEC14B
+4274	Escherichia coli DEC14B serotype O128:H21
+4274	escherichia_coli_dec14b
+4278	Campylobacter coli LMG 23344
+4278	campylobacter_coli_lmg_23344
+4280	Escherichia coli DEC11B
+4280	Escherichia coli DEC11B serotype O128a:H2
+4280	escherichia_coli_dec11b
+4281	Escherichia coli FDA504
+4281	Escherichia coli FDA504 serotype O157:H7
+4281	escherichia_coli_fda504
+4297	Escherichia coli HVH 114 (4-7037740)
+4297	escherichia_coli_hvh_114_4_7037740_
+4299	Escherichia coli UMEA 3216-1
+4299	escherichia_coli_umea_3216_1
+4307	Escherichia coli P0305260.8
+4307	escherichia_coli_p0305260_8
+4313	Escherichia coli 8.2524
+4313	Escherichia coli 8.2524 serotype O157:H7
+4313	escherichia_coli_8_2524
+4320	Escherichia coli HVH 148 (4-3192490)
+4320	escherichia_coli_hvh_148_4_3192490_
+4324	Escherichia coli MP021017.2
+4324	escherichia_coli_mp021017_2
+4327	Escherichia coli PA34
+4327	Escherichia coli PA34 serotype O157:H7
+4327	escherichia_coli_pa34
+4329	Escherichia coli KTE139
+4329	escherichia_coli_kte139
+4330	Campylobacter coli 90-3
+4330	campylobacter_coli_90_3
+4339	Escherichia coli DEC11E
+4339	Escherichia coli DEC11E serotype O128:H2
+4339	escherichia_coli_dec11e
+4361	1128600
+4361	Escherichia coli Ec11-5603
+4361	Escherichia coli O104:H4 str. Ec11-5603
+4361	escherichia_coli_o104_h4_str_ec11_5603
+4367	Escherichia coli HVH 29 (4-3418073)
+4367	escherichia_coli_hvh_29_4_3418073_
+4374	Escherichia coli O26:H11 str. CVM10021
+4374	Escherichia coli O26:H11 strain CVM10021
+4374	escherichia_coli_o26_h11_str_cvm10021
+4376	Escherichia coli 99.1793
+4376	Escherichia coli 99.1793 serotype O157:H7
+4376	escherichia_coli_99_1793
+4379	Escherichia coli UMEA 3160-1
+4379	escherichia_coli_umea_3160_1
+4389	Campylobacter coli 2692
+4389	campylobacter_coli_2692
+4391	Escherichia coli DEC9C
+4391	Escherichia coli DEC9C serotype O26:NM
+4391	escherichia_coli_dec9c
+4395	Escherichia coli MP021552.12
+4395	escherichia_coli_mp021552_12
+4401	Escherichia coli p0305293.12
+4401	escherichia_coli_p0305293_12
+4403	Campylobacter jejuni subsp. jejuni 55037
+4403	campylobacter_jejuni_subsp_jejuni_55037
+4412	Escherichia coli O157:H7 str. 1044
+4412	Escherichia coli O157:H7 strain 1044
+4412	escherichia_coli_o157_h7_str_1044
+4414	Escherichia coli UMEA 3821-1
+4414	escherichia_coli_umea_3821_1
+4424	Escherichia coli O157:H7 str. EC4196
+4424	escherichia_coli_o157_h7_str_ec4196
+4431	Escherichia coli 179100
+4431	escherichia_coli_179100
+4432	Escherichia coli AI27
+4432	Escherichia coli str. AI27
+4432	Escherichia coli strain AI27
+4432	escherichia_coli_ai27
+4454	Escherichia coli KTE144
+4454	escherichia_coli_kte144
+4460	Escherichia coli KD2
+4460	Escherichia coli str. KD2
+4460	Escherichia coli strain KD2
+4460	escherichia_coli_kd2
+4466	Escherichia coli KTE11
+4466	escherichia_coli_kte11
+4473	Escherichia coli TW00353
+4473	Escherichia coli TW00353 serotype O157:H45
+4473	escherichia_coli_tw00353
+4499	Escherichia coli UMEA 3200-1
+4499	escherichia_coli_umea_3200_1
+4501	Campylobacter jejuni subsp. jejuni 129-258
+4501	campylobacter_jejuni_subsp_jejuni_129_258
+4505	Campylobacter jejuni subsp. jejuni 1997-7
+4505	campylobacter_jejuni_subsp_jejuni_1997_7
+4508	Escherichia coli FRIK523
+4508	Escherichia coli FRIK523 serotype O157:H7
+4508	escherichia_coli_frik523
+4511	Escherichia coli 178850
+4511	escherichia_coli_178850
+4524	Escherichia coli P0304777.2
+4524	escherichia_coli_p0304777_2
+4531	Escherichia coli DEC10D
+4531	Escherichia coli DEC10D serotype O26:H11
+4531	escherichia_coli_dec10d
+4534	Escherichia coli KTE13
+4534	escherichia_coli_kte13
+4544	Escherichia coli P12b
+4544	Escherichia coli str. P12b
+4544	Escherichia coli strain P12b
+4544	escherichia_coli_p12b
+4549	Escherichia coli UMEA 3329-1
+4549	escherichia_coli_umea_3329_1
+4551	Escherichia coli O26:H11 str. CVM9942
+4551	Escherichia coli O26:H11 strain CVM9942
+4551	escherichia_coli_o26_h11_str_cvm9942
+4558	Escherichia coli PA24
+4558	Escherichia coli PA24 serotype O157:H7
+4558	escherichia_coli_pa24
+4561	Escherichia coli HVH 18 (4-8589585)
+4561	escherichia_coli_hvh_18_4_8589585_
+4578	Escherichia coli UMEA 3140-1
+4578	escherichia_coli_umea_3140_1
+4588	Campylobacter jejuni subsp. jejuni 00-2544
+4588	campylobacter_jejuni_subsp_jejuni_00_2544
+4591	Escherichia coli DEC8D
+4591	Escherichia coli DEC8D serotype O111:H11
+4591	escherichia_coli_dec8d
+4592	Escherichia coli KTE85
+4592	escherichia_coli_kte85
+4599	Escherichia coli P0304777.12
+4599	escherichia_coli_p0304777_12
+4601	Escherichia coli B7-2
+4601	Escherichia coli B7-2 serotype O157:H7
+4601	escherichia_coli_b7_2
+4605	Escherichia coli W3110
+4605	Escherichia coli str. K-12 substr. W3110
+4605	Escherichia coli str. K-12 substr. W3110 str. K12
+4605	Escherichia coli str. K12 substr. W3110
+4605	Escherichia coli str. W3110
+4605	Escherichia coli strain W3110
+4605	escherichia_coli_str_k_12_substr_w3110
+4606	Escherichia coli P0302308.12
+4606	escherichia_coli_p0302308_12
+4607	Escherichia coli NE098
+4607	Escherichia coli NE098 serotype O157:H7
+4607	escherichia_coli_ne098
+4608	Escherichia coli UMEA 3212-1
+4608	escherichia_coli_umea_3212_1
+4614	Escherichia coli UMEA 3065-1
+4614	escherichia_coli_umea_3065_1
+4621	Escherichia coli PA11
+4621	Escherichia coli PA11 serotype O157:H7
+4621	Escherichia coli str. PA11
+4621	Escherichia coli strain PA11
+4621	escherichia_coli_pa11
+4638	Campylobacter coli CVM N29716
+4638	campylobacter_coli_cvm_n29716
+4652	Escherichia coli SCI-07
+4652	Escherichia coli str. SCI-07
+4652	Escherichia coli strain SCI-07
+4652	escherichia_coli_sci_07
+4654	1228005
+4654	Escherichia coli 11-02093
+4654	Escherichia coli O104:H4 str. 11-02093
+4654	escherichia_coli_o104_h4_str_11_02093
+4655	Escherichia coli HVH 90 (4-3191362)
+4655	escherichia_coli_hvh_90_4_3191362_
+4661	Campylobacter jejuni subsp. jejuni 2008-872
+4661	campylobacter_jejuni_subsp_jejuni_2008_872
+4662	Escherichia coli 94.0618
+4662	Escherichia coli 94.0618 serotype O157:H7
+4662	escherichia_coli_94_0618
+4664	Escherichia coli HVH 32 (4-3773988)
+4664	escherichia_coli_hvh_32_4_3773988_
+4672	Escherichia coli 9.0111
+4672	escherichia_coli_9_0111
+4689	Escherichia coli 8.0566
+4689	Escherichia coli 8.0566 serotype O157:H7
+4689	escherichia_coli_8_0566
+4690	Escherichia coli DEC4E
+4690	Escherichia coli DEC4E serotype O157:H7
+4690	escherichia_coli_dec4e
+4694	Escherichia coli P0304816.12
+4694	escherichia_coli_p0304816_12
+4699	Campylobacter jejuni subsp. jejuni LMG 23216
+4699	campylobacter_jejuni_subsp_jejuni_lmg_23216
+4714	Campylobacter jejuni subsp. jejuni 81116
+4714	Campylobacter jejuni subsp. jejuni 81116 str. 81116; NCTC 11828
+4714	Campylobacter jejuni subsp. jejuni NCTC 11828
+4714	Campylobacter jejuni subsp. jejuni str. 81116
+4714	Campylobacter jejuni subsp. jejuni strain 81116
+4714	campylobacter_jejuni_subsp_jejuni_81116
+4726	Escherichia coli 2719100
+4726	escherichia_coli_2719100
+4727	Escherichia coli EC4437
+4727	Escherichia coli EC4437 serotype O157:H7
+4727	escherichia_coli_ec4437
+4736	Escherichia coli UMEA 4207-1
+4736	escherichia_coli_umea_4207_1
+4750	Escherichia coli UMEA 3163-1
+4750	escherichia_coli_umea_3163_1
+4761	Escherichia coli MS 196-1
+4761	escherichia_coli_ms_196_1
+4763	Escherichia coli P0298942.6
+4763	escherichia_coli_p0298942_6
+4766	Campylobacter jejuni subsp. jejuni 1577
+4766	campylobacter_jejuni_subsp_jejuni_1577
+4772	Escherichia coli UMEA 3662-1
+4772	escherichia_coli_umea_3662_1
+4779	Escherichia coli EC1737
+4779	Escherichia coli EC1737 serotype O157:H7
+4779	escherichia_coli_ec1737
+4784	Campylobacter coli LMG 9853
+4784	campylobacter_coli_lmg_9853
+4786	Escherichia fergusonii ECD227
+4786	Escherichia fergusonii str. ECD227
+4786	Escherichia fergusonii strain ECD227
+4786	escherichia_fergusonii_ecd227
+4790	Escherichia coli KTE59
+4790	escherichia_coli_kte59
+4799	Escherichia coli 3.2608
+4799	escherichia_coli_3_2608
+4802	Escherichia coli TW14301
+4802	Escherichia coli TW14301 serotype O157:NM
+4802	escherichia_coli_tw14301
+4810	Escherichia coli DEC1A
+4810	Escherichia coli DEC1A serotype O55:H6
+4810	escherichia_coli_dec1a
+4818	Escherichia coli EC1866
+4818	Escherichia coli EC1866 serotype O157:H7
+4818	escherichia_coli_ec1866
+4830	Escherichia coli STEC_7v
+4830	escherichia_coli_stec_7v
+4833	Escherichia coli 907700
+4833	escherichia_coli_907700
+4863	Escherichia coli BL21(DE3) (ASM2266v1)
+4863	escherichia_coli_bl21_de3_asm2266v1
+4868	Escherichia coli 95JB1
+4868	escherichia_coli_95jb1
+4888	Escherichia coli HVH 218 (4-4500903)
+4888	escherichia_coli_hvh_218_4_4500903_
+4897	Campylobacter concisus UNSWCD
+4897	Campylobacter concisus str. UNSWCD
+4897	Campylobacter concisus strain UNSWCD
+4897	campylobacter_concisus_unswcd
+4917	Escherichia coli O104:H4 str. C227-11 (Esch_coli_C227-11_V2)
+4917	escherichia_coli_o104_h4_str_c227_11_esch_coli_c227_11_v2
+4918	Escherichia coli MP021017.11
+4918	escherichia_coli_mp021017_11
+4921	Escherichia coli O104:H4 str. C227-11 (Ecoli_C227-11_1.0)
+4921	escherichia_coli_o104_h4_str_c227_11_ecoli_c227_11_1_0
+4924	Escherichia coli HVH 140 (4-5894387)
+4924	escherichia_coli_hvh_140_4_5894387_
+4931	Escherichia coli O55:H7 str. USDA 5905
+4931	Escherichia coli O55:H7 str. USDA5905
+4931	Escherichia coli O55:H7 strain USDA 5905
+4931	escherichia_coli_o55_h7_str_usda_5905
+4949	Escherichia coli p0305293.5
+4949	escherichia_coli_p0305293_5
+4952	Escherichia coli 907779
+4952	escherichia_coli_907779
+4958	Escherichia coli P0304777.11
+4958	escherichia_coli_p0304777_11
+4962	Escherichia coli P0304777.9
+4962	escherichia_coli_p0304777_9
+4980	Escherichia coli BCE001_MS16
+4980	escherichia_coli_bce001_ms16
+4981	Escherichia coli HVH 122 (4-6851606)
+4981	escherichia_coli_hvh_122_4_6851606_
+4982	Escherichia coli P0299438.8
+4982	escherichia_coli_p0299438_8
+4996	Escherichia coli ATCC 35150
+4996	Escherichia coli ATCC 35150 serotype O157:H7
+4996	escherichia_coli_atcc_35150
+5000	Escherichia coli P0298942.11
+5000	escherichia_coli_p0298942_11
+5033	Escherichia coli O55:H7 CB9615
+5033	Escherichia coli O55:H7 str. CB9615
+5033	Escherichia coli O55:H7 strain CB9615
+5033	escherichia_coli_o55_h7_str_cb9615
+5040	Escherichia coli UMEA 3489-1
+5040	escherichia_coli_umea_3489_1
+5055	Escherichia coli KTE174
+5055	escherichia_coli_kte174
+5067	Escherichia coli KTE206
+5067	escherichia_coli_kte206
+5082	1128598
+5082	Escherichia coli Ec11-4987
+5082	Escherichia coli O104:H4 str. Ec11-4987
+5082	escherichia_coli_o104_h4_str_ec11_4987
+5094	Escherichia coli KTE124
+5094	escherichia_coli_kte124
+5095	Escherichia coli 909957
+5095	escherichia_coli_909957
+5103	Escherichia coli E1167
+5103	escherichia_coli_e1167
+5105	Escherichia coli KTE8
+5105	escherichia_coli_kte8
+5115	Escherichia coli DEC12B
+5115	Escherichia coli DEC12B serotype O111:H2
+5115	escherichia_coli_dec12b
+5126	Escherichia coli O157:H7 str. Sakai
+5126	Escherichia coli O157:H7 str. Sakai substr. RIMD 0509952
+5126	Escherichia coli O157:H7 strain Sakai
+5126	escherichia_coli_o157_h7_str_sakai
+5127	Escherichia coli HVH 176 (4-3428664)
+5127	escherichia_coli_hvh_176_4_3428664_
+5143	Escherichia coli W (ASM18418v1)
+5143	escherichia_coli_w_asm18418v1
+5152	Escherichia coli UMEA 3159-1
+5152	escherichia_coli_umea_3159_1
+5153	Escherichia coli TW15901
+5153	Escherichia coli TW15901 serotype O157:H16
+5153	escherichia_coli_tw15901
+5157	Escherichia coli HVH 85 (4-0792144)
+5157	escherichia_coli_hvh_85_4_0792144_
+5161	Escherichia coli HVH 177 (4-2876612)
+5161	escherichia_coli_hvh_177_4_2876612_
+5177	Escherichia coli 2720900
+5177	escherichia_coli_2720900
+5180	Escherichia coli H397
+5180	escherichia_coli_h397
+5182	Escherichia coli KTE62
+5182	escherichia_coli_kte62
+5185	Escherichia coli B108
+5185	Escherichia coli B108 serotype O157:H7
+5185	escherichia_coli_b108
+5204	Escherichia coli KTE1
+5204	escherichia_coli_kte1
+5208	Escherichia coli 900105 (10e)
+5208	escherichia_coli_900105_10e_
+5210	Escherichia coli ATCC 8739
+5210	Escherichia coli C (ATCC 8739)
+5210	Escherichia coli C str. ATCC 8739
+5210	Escherichia coli str. ATCC 8739
+5210	Escherichia coli strain ATCC 8739
+5210	escherichia_coli_atcc_8739
+5211	Escherichia coli FRIK2001
+5211	Escherichia coli FRIK2001 serotype O157:H7
+5211	escherichia_coli_frik2001
+5215	Escherichia coli 180200
+5215	escherichia_coli_180200
+5220	Escherichia coli 89.0511
+5220	Escherichia coli 89.0511 serotype O157:H7
+5220	escherichia_coli_89_0511
+5223	Escherichia coli KTE20
+5223	escherichia_coli_kte20
+5230	Escherichia coli 576-1
+5230	Escherichia coli str. 576-1
+5230	Escherichia coli strain 576-1
+5230	escherichia_coli_576_1
+5235	Escherichia coli KTE68
+5235	escherichia_coli_kte68
+5242	Escherichia coli 2864350
+5242	escherichia_coli_2864350
+5249	Escherichia coli PMV-1
+5249	escherichia_coli_pmv_1
+5253	Escherichia coli Jurua 18/11
+5253	escherichia_coli_jurua_18_11
+5255	Escherichia coli 113302
+5255	escherichia_coli_113302
+5268	Escherichia coli HVH 55 (4-2646161)
+5268	escherichia_coli_hvh_55_4_2646161_
+5270	Escherichia coli BL21(DE3) (ASM956v1)
+5270	escherichia_coli_bl21_de3_asm956v1
+5271	Escherichia coli O104:H4 str. E92/11
+5271	Escherichia coli O104:H4 strain E92/11
+5271	escherichia_coli_o104_h4_str_e92_11
+5279	Campylobacter jejuni subsp. jejuni 1893
+5279	campylobacter_jejuni_subsp_jejuni_1893
+5281	Escherichia coli HVH 191 (3-9341900)
+5281	escherichia_coli_hvh_191_3_9341900_
+5285	Escherichia coli XH140A
+5285	Escherichia coli str. XH140A
+5285	Escherichia coli strain XH140A
+5285	escherichia_coli_xh140a
+5295	Escherichia coli HVH 169 (4-1075578)
+5295	escherichia_coli_hvh_169_4_1075578_
+5311	Escherichia coli p0305293.8
+5311	escherichia_coli_p0305293_8
+5314	Campylobacter jejuni subsp. jejuni 51037
+5314	campylobacter_jejuni_subsp_jejuni_51037
+5316	Escherichia coli H494
+5316	escherichia_coli_h494
+5317	Escherichia coli 90.0091
+5317	Escherichia coli 90.0091 serotype O157:H7
+5317	escherichia_coli_90_0091
+5322	Escherichia coli KTE48
+5322	escherichia_coli_kte48
+5327	Escherichia coli UMEA 3682-1
+5327	escherichia_coli_umea_3682_1
+5329	Escherichia coli UMEA 3323-1
+5329	escherichia_coli_umea_3323_1
+5335	Escherichia coli MS 21-1
+5335	escherichia_coli_ms_21_1
+5337	Escherichia coli HVH 135 (4-4449320)
+5337	escherichia_coli_hvh_135_4_4449320_
+5348	Escherichia coli UMEA 3893-1
+5348	escherichia_coli_umea_3893_1
+5351	Campylobacter concisus 13826
+5351	Campylobacter concisus str. 13826
+5351	Campylobacter concisus strain 13826
+5351	campylobacter_concisus_13826
+5354	Escherichia coli KTE150
+5354	escherichia_coli_kte150
+5367	Escherichia coli B83
+5367	Escherichia coli B83 serotype O157:H7
+5367	escherichia_coli_b83
+5381	Escherichia coli UMEA 3124-1
+5381	escherichia_coli_umea_3124_1
+5385	Escherichia coli 908573
+5385	escherichia_coli_908573
+5390	Escherichia coli B103
+5390	Escherichia coli B103 serotype O157:H7
+5390	escherichia_coli_b103
+5407	Escherichia coli B15
+5407	Escherichia coli B15 serotype O157:H7
+5407	escherichia_coli_b15
+5408	Campylobacter coli 2680
+5408	campylobacter_coli_2680
+5411	Escherichia coli HVH 214 (4-3062198)
+5411	escherichia_coli_hvh_214_4_3062198_
+5415	Escherichia coli KTE115
+5415	escherichia_coli_kte115
+5416	Escherichia coli UMEA 3592-1
+5416	escherichia_coli_umea_3592_1
+5424	Escherichia coli UMEA 3585-1
+5424	escherichia_coli_umea_3585_1
+5427	Escherichia coli TW07509
+5427	Escherichia coli TW07509 serotype Ont:H52NA
+5427	Escherichia coli str. TW07509
+5427	Escherichia coli strain TW07509
+5427	escherichia_coli_tw07509
+5431	Escherichia coli Jurua 20/10
+5431	escherichia_coli_jurua_20_10
+5445	Escherichia coli p0305293.14
+5445	escherichia_coli_p0305293_14
+5454	Escherichia coli APEC O78
+5454	escherichia_coli_apec_o78
+5458	Escherichia coli HVH 16 (4-7649002)
+5458	escherichia_coli_hvh_16_4_7649002_
+5466	Campylobacter coli Z156
+5466	campylobacter_coli_z156
+5471	Escherichia coli O157:H7 str. EC4115
+5471	escherichia_coli_o157_h7_str_ec4115
+5486	Escherichia coli HVH 12 (4-7653042)
+5486	escherichia_coli_hvh_12_4_7653042_
+5520	Escherichia coli HVH 228 (4-7787030)
+5520	escherichia_coli_hvh_228_4_7787030_
+5522	Escherichia coli KTE198
+5522	escherichia_coli_kte198
+5534	Escherichia coli P0304816.6
+5534	escherichia_coli_p0304816_6
+5540	Escherichia coli HVH 19 (4-7154984)
+5540	escherichia_coli_hvh_19_4_7154984_
+5546	Escherichia coli B799
+5546	escherichia_coli_b799
+5552	Escherichia coli MP020940.1
+5552	escherichia_coli_mp020940_1
+5561	Escherichia coli 10.0821
+5561	Escherichia coli 10.0821 serotype O157:H7
+5561	escherichia_coli_10_0821
+5570	Escherichia coli MS 182-1
+5570	escherichia_coli_ms_182_1
+5571	Escherichia coli KTE137
+5571	escherichia_coli_kte137
+5572	Escherichia coli 2722950
+5572	escherichia_coli_2722950
+5579	Escherichia coli 908519
+5579	escherichia_coli_908519
+5589	Escherichia coli P0304816.1
+5589	escherichia_coli_p0304816_1
+5591	Escherichia coli KTE159
+5591	escherichia_coli_kte159
+5592	Escherichia coli KTE93
+5592	escherichia_coli_kte93
+5599	Escherichia coli O104:H4 str. 11-4623
+5599	Escherichia coli O104:H4 strain 11-4623
+5599	escherichia_coli_o104_h4_str_11_4623
+5607	Escherichia coli KTE234
+5607	escherichia_coli_kte234
+5616	Escherichia coli DEC10F
+5616	Escherichia coli DEC10F serotype O15
+5616	escherichia_coli_dec10f
+5623	Escherichia coli KTE109
+5623	escherichia_coli_kte109
+5628	Escherichia coli KTE188
+5628	escherichia_coli_kte188
+5639	Escherichia coli HVH 215 (4-3008371)
+5639	escherichia_coli_hvh_215_4_3008371_
+5642	Campylobacter coli LMG 23341
+5642	campylobacter_coli_lmg_23341
+5648	Escherichia coli IAI39
+5648	escherichia_coli_iai39
+5658	Escherichia coli T234_00
+5658	Escherichia coli T234_00 serotype O157:H7
+5658	Escherichia coli str. T234_00
+5658	Escherichia coli strain T234_00
+5658	escherichia_coli_t234_00
+5674	Campylobacter jejuni subsp. jejuni ATCC 33560
+5674	Campylobacter jejuni subsp. jejuni str. ATCC 33560
+5674	Campylobacter jejuni subsp. jejuni strain ATCC 33560
+5674	campylobacter_jejuni_subsp_jejuni_atcc_33560
+5676	Escherichia coli B36-1
+5676	escherichia_coli_b36_1
+5696	Escherichia coli KTE177
+5696	escherichia_coli_kte177
+5698	Escherichia coli MP021566.1
+5698	escherichia_coli_mp021566_1
+5703	Escherichia coli KTE49
+5703	escherichia_coli_kte49
+5706	Campylobacter hominis ATCC BAA-381
+5706	Campylobacter hominis str. ATCC BAA-381
+5706	Campylobacter hominis strain ATCC BAA-381
+5706	campylobacter_hominis_atcc_baa_381
+5711	Escherichia coli HVH 118 (4-7345399)
+5711	escherichia_coli_hvh_118_4_7345399_
+5712	Escherichia coli KTE31
+5712	escherichia_coli_kte31
+5720	Escherichia coli KTE82
+5720	escherichia_coli_kte82
+5723	Escherichia coli JB1-95
+5723	escherichia_coli_jb1_95
+5732	Escherichia coli KOEGE 131 (358a)
+5732	escherichia_coli_koege_131_358a_
+5738	Escherichia coli KTE91
+5738	escherichia_coli_kte91
+5739	Campylobacter coli 1417
+5739	campylobacter_coli_1417
+5745	Escherichia coli PA32
+5745	Escherichia coli PA32 serotype O157:H7
+5745	escherichia_coli_pa32
+5762	Escherichia coli P0299483.1
+5762	escherichia_coli_p0299483_1
+5764	Escherichia coli UMEA 3687-1
+5764	escherichia_coli_umea_3687_1
+5799	Escherichia coli UMEA 3899-1
+5799	escherichia_coli_umea_3899_1
+5815	Escherichia coli KTE134
+5815	escherichia_coli_kte134
+5822	Escherichia coli KTE112
+5822	escherichia_coli_kte112
+5825	Escherichia coli B26-2
+5825	Escherichia coli B26-2 serotype O157:H7
+5825	escherichia_coli_b26_2
+5837	Escherichia coli HVH 201 (4-4459431)
+5837	escherichia_coli_hvh_201_4_4459431_
+5844	Escherichia coli P0302308.3
+5844	escherichia_coli_p0302308_3
+5857	Escherichia coli KTE26
+5857	escherichia_coli_kte26
+5872	Escherichia coli O104:H4 str. 2009EL-2050
+5872	Escherichia coli O104:H4 strain 2009EL-2050
+5872	escherichia_coli_o104_h4_str_2009el_2050
+5873	Escherichia coli 09BKT076207
+5873	Escherichia coli 09BKT076207 serotype O157:H7
+5873	Escherichia coli str. 09BKT076207
+5873	Escherichia coli strain 09BKT076207
+5873	escherichia_coli_09bkt076207
+5876	Escherichia coli H730
+5876	escherichia_coli_h730
+5881	Escherichia coli HVH 45 (4-3129918)
+5881	escherichia_coli_hvh_45_4_3129918_
+5896	Escherichia coli LB226692
+5896	Escherichia coli O104:H4 LB226692
+5896	Escherichia coli O104:H4 str. LB226692
+5896	Escherichia coli serovar O104:H4 str. LB226692
+5896	escherichia_coli_o104_h4_str_lb226692
+5904	Escherichia coli KTE231
+5904	escherichia_coli_kte231
+5909	Escherichia coli EPECa12
+5909	escherichia_coli_epeca12
+5910	Escherichia coli P0305260.4
+5910	escherichia_coli_p0305260_4
+5919	Escherichia coli O103:H25 str. CVM9340
+5919	Escherichia coli O103:H25 strain CVM9340
+5919	escherichia_coli_o103_h25_str_cvm9340
+5926	Escherichia coli HVH 89 (4-5885604)
+5926	escherichia_coli_hvh_89_4_5885604_
+5932	Escherichia coli FRIK1997
+5932	Escherichia coli FRIK1997 serotype O157:H7
+5932	escherichia_coli_frik1997
+5944	Escherichia coli P0304816.8
+5944	escherichia_coli_p0304816_8
+5946	Escherichia coli HVH 82 (4-2209276)
+5946	escherichia_coli_hvh_82_4_2209276_
+5947	Escherichia coli M718
+5947	escherichia_coli_m718
+5948	Escherichia coli KTE194
+5948	escherichia_coli_kte194
+5950	Escherichia coli B185
+5950	escherichia_coli_b185
+5962	Escherichia coli TW09109
+5962	Escherichia coli TW09109 serotype O157:H7
+5962	escherichia_coli_tw09109
+5966	Escherichia coli MS 119-7
+5966	Escherichia coli str. MS 119-7
+5966	Escherichia coli strain MS 119-7
+5966	escherichia_coli_ms_119_7
+5971	Escherichia coli UMEA 3180-1
+5971	escherichia_coli_umea_3180_1
+5978	Escherichia coli O104:H4 str. 11-4632 C1
+5978	Escherichia coli O104:H4 strain 11-4632 C1
+5978	escherichia_coli_o104_h4_str_11_4632_c1
+5995	Escherichia coli 1827-70
+5995	escherichia_coli_1827_70
+6003	Escherichia coli 2851500
+6003	escherichia_coli_2851500
+6024	Escherichia coli P0299917.10
+6024	escherichia_coli_p0299917_10
+6032	Escherichia coli O104:H4 str. 09-7901
+6032	Escherichia coli O104:H4 strain 09-7901
+6032	escherichia_coli_o104_h4_str_09_7901
+6035	Escherichia coli HVH 108 (4-6924867)
+6035	escherichia_coli_hvh_108_4_6924867_
+6040	Escherichia coli KTE104
+6040	escherichia_coli_kte104
+6052	Escherichia coli XH001
+6052	Escherichia coli str. XH001
+6052	Escherichia coli strain XH001
+6052	escherichia_coli_xh001
+6071	Escherichia coli KTE128
+6071	escherichia_coli_kte128
+6077	Campylobacter concisus ATCC 51561
+6077	campylobacter_concisus_atcc_51561
+6097	Escherichia coli UMEA 3176-1
+6097	escherichia_coli_umea_3176_1
+6098	Escherichia coli O10:K5(L):H4 str. ATCC 23506
+6098	escherichia_coli_o10_k5_l_h4_str_atcc_23506
+6107	Campylobacter jejuni subsp. jejuni LMG 9879
+6107	campylobacter_jejuni_subsp_jejuni_lmg_9879
+6118	Escherichia coli HVH 113 (4-7535473)
+6118	escherichia_coli_hvh_113_4_7535473_
+6122	Escherichia coli UMEA 3155-1
+6122	escherichia_coli_umea_3155_1
+6124	Escherichia coli O111:H11 str. CVM9534
+6124	Escherichia coli O111:H11 strain CVM9534
+6124	escherichia_coli_o111_h11_str_cvm9534
+6144	Campylobacter coli LMG 23336
+6144	campylobacter_coli_lmg_23336
+6146	Escherichia coli PA42
+6146	Escherichia coli PA42 serotype O157:H7
+6146	escherichia_coli_pa42
+6148	Escherichia coli SCD1
+6148	escherichia_coli_scd1
+6159	Escherichia coli P0302308.11
+6159	escherichia_coli_p0302308_11
+6161	Escherichia coli KTE180
+6161	escherichia_coli_kte180
+6165	Escherichia coli P0299438.6
+6165	escherichia_coli_p0299438_6
+6171	Escherichia coli 97.0246
+6171	escherichia_coli_97_0246
+6181	Escherichia coli DEC8B
+6181	Escherichia coli DEC8B serotype O111:H8
+6181	escherichia_coli_dec8b
+6185	Escherichia coli KTE2
+6185	escherichia_coli_kte2
+6195	Escherichia coli KTE4
+6195	escherichia_coli_kte4
+6207	Escherichia coli DEC3A
+6207	Escherichia coli DEC3A serotype O157:H7
+6207	escherichia_coli_dec3a
+6222	Campylobacter jejuni subsp. jejuni 2008-979
+6222	campylobacter_jejuni_subsp_jejuni_2008_979
+6230	Escherichia coli O104:H4 str. Ec11-9990
+6230	escherichia_coli_o104_h4_str_ec11_9990
+6235	Escherichia coli KOEGE 30 (63a)
+6235	escherichia_coli_koege_30_63a_
+6250	Campylobacter jejuni subsp. jejuni 51494
+6250	campylobacter_jejuni_subsp_jejuni_51494
+6253	Campylobacter jejuni subsp. jejuni 140-16
+6253	campylobacter_jejuni_subsp_jejuni_140_16
+6257	Escherichia coli 2785200
+6257	escherichia_coli_2785200
+6258	Campylobacter jejuni subsp. jejuni NW
+6258	Campylobacter jejuni subsp. jejuni str. NW
+6258	Campylobacter jejuni subsp. jejuni strain NW
+6258	campylobacter_jejuni_subsp_jejuni_nw
+6262	Escherichia coli O7:K1 str. CE10
+6262	Escherichia coli O7:K1 str. CE10 serotype O7:K1:NM
+6262	Escherichia coli O7:K1 strain CE10
+6262	escherichia_coli_o7_k1_str_ce10
+6270	Escherichia coli DEC12E
+6270	Escherichia coli DEC12E serotype O111:NM
+6270	escherichia_coli_dec12e
+6273	Escherichia coli 2866550
+6273	escherichia_coli_2866550
+6289	Escherichia coli B (REL606 strain)
+6289	Escherichia coli B str. Bc251
+6289	Escherichia coli B str. REL606
+6289	Escherichia coli B strain REL606
+6289	Escherichia coli str. B substr. REL606
+6289	escherichia_coli_b_str_rel606
+6304	Escherichia coli HVH 102 (4-6906788)
+6304	escherichia_coli_hvh_102_4_6906788_
+6305	Escherichia coli 180050
+6305	escherichia_coli_180050
+6306	Escherichia coli HVH 76 (4-2538717)
+6306	escherichia_coli_hvh_76_4_2538717_
+6309	Escherichia coli P0301867.3
+6309	escherichia_coli_p0301867_3
+6315	Escherichia coli KTE143
+6315	escherichia_coli_kte143
+6316	Escherichia coli HVH 96 (4-5934869)
+6316	escherichia_coli_hvh_96_4_5934869_
+6320	Escherichia coli KTE204
+6320	escherichia_coli_kte204
+6328	Escherichia coli 2850400
+6328	escherichia_coli_2850400
+6333	Escherichia coli STEC_DG131-3
+6333	escherichia_coli_stec_dg131_3
+6341	Escherichia coli KTE44
+6341	escherichia_coli_kte44
+6342	Escherichia coli B102
+6342	Escherichia coli B102 serotype O157:H7
+6342	escherichia_coli_b102
+6343	Campylobacter jejuni subsp. jejuni 2008-988
+6343	campylobacter_jejuni_subsp_jejuni_2008_988
+6347	Escherichia coli UMEA 3617-1
+6347	escherichia_coli_umea_3617_1
+6357	Escherichia coli KTE189
+6357	escherichia_coli_kte189
+6358	Escherichia coli TA124
+6358	escherichia_coli_ta124
+6360	Escherichia coli B28-1
+6360	Escherichia coli B28-1 serotype O157:H7
+6360	escherichia_coli_b28_1
+6364	Escherichia coli UMEA 3268-1
+6364	escherichia_coli_umea_3268_1
+6392	Escherichia coli HVH 5 (4-7148410)
+6392	escherichia_coli_hvh_5_4_7148410_
+6403	Escherichia coli H252
+6403	escherichia_coli_h252
+6413	Escherichia coli B93
+6413	Escherichia coli B93 serotype O157:H7
+6413	escherichia_coli_b93
+6431	Escherichia coli KTE221
+6431	escherichia_coli_kte221
+6432	Escherichia coli B40-2
+6432	Escherichia coli B40-2 serotype O157:H7
+6432	escherichia_coli_b40_2
+6448	Escherichia sp. 4_1_40B
+6448	escherichia_sp_4_1_40b
+6449	Escherichia coli 99.0815
+6449	Escherichia coli 99.0815 serotype O157:H7
+6449	escherichia_coli_99_0815
+6459	Escherichia coli AA86
+6459	Escherichia coli str. AA86
+6459	Escherichia coli strain AA86
+6459	escherichia_coli_aa86
+6468	Escherichia coli KTE64
+6468	escherichia_coli_kte64
+6474	Campylobacter jejuni subsp. jejuni CG8486
+6474	Campylobacter jejuni subsp. jejuni str. CG8486
+6474	Campylobacter jejuni subsp. jejuni strain CG8486
+6474	campylobacter_jejuni_subsp_jejuni_cg8486
+6475	Escherichia coli KTE111
+6475	escherichia_coli_kte111
+6476	Escherichia coli 2845650
+6476	escherichia_coli_2845650
+6478	Escherichia coli MP020980.1
+6478	escherichia_coli_mp020980_1
+6492	Escherichia coli HVH 7 (4-7315031)
+6492	escherichia_coli_hvh_7_4_7315031_
+6499	Escherichia coli DEC13D
+6499	Escherichia coli DEC13D serotype O128:H7
+6499	escherichia_coli_dec13d
+6502	Escherichia coli P0305260.2
+6502	escherichia_coli_p0305260_2
+6505	Escherichia coli HVH 37 (4-2773848)
+6505	escherichia_coli_hvh_37_4_2773848_
+6506	Escherichia coli O26:H11 str. CFSAN001629
+6506	escherichia_coli_o26_h11_str_cfsan001629
+6514	Escherichia coli O111:H8 str. CFSAN001632
+6514	escherichia_coli_o111_h8_str_cfsan001632
+6515	Escherichia coli p0305293.6
+6515	escherichia_coli_p0305293_6
+6520	Escherichia coli 908585
+6520	escherichia_coli_908585
+6527	Escherichia coli 93-001
+6527	Escherichia coli 93-001 serotype O157:H7
+6527	escherichia_coli_93_001
+6529	Escherichia coli B7-1
+6529	escherichia_coli_b7_1
+6534	Escherichia coli B85
+6534	Escherichia coli B85 serotype O157:H7
+6534	escherichia_coli_b85
+6535	Campylobacter jejuni subsp. jejuni 86605
+6535	campylobacter_jejuni_subsp_jejuni_86605
+6537	Escherichia coli P0304816.10
+6537	escherichia_coli_p0304816_10
+6543	Escherichia coli 2850750
+6543	escherichia_coli_2850750
+6547	Escherichia coli KTE145
+6547	escherichia_coli_kte145
+6562	Campylobacter jejuni subsp. jejuni S3
+6562	Campylobacter jejuni subsp. jejuni str. S3
+6562	Campylobacter jejuni subsp. jejuni strain S3
+6562	Campylobacter jejuni subsp. jeuni S3
+6562	campylobacter_jejuni_subsp_jejuni_s3
+6573	Escherichia coli HVH 91 (4-4638751)
+6573	escherichia_coli_hvh_91_4_4638751_
+6577	Escherichia coli EC4439
+6577	Escherichia coli EC4439 serotype O157:H7
+6577	escherichia_coli_ec4439
+6587	Escherichia coli DH1 (ASM27010v1)
+6587	escherichia_coli_dh1_asm27010v1
+6590	Escherichia coli P0305260.12
+6590	escherichia_coli_p0305260_12
+6591	Escherichia coli MP021017.9
+6591	escherichia_coli_mp021017_9
+6593	Escherichia coli HVH 227 (4-2277670)
+6593	escherichia_coli_hvh_227_4_2277670_
+6605	Escherichia coli KTE84
+6605	escherichia_coli_kte84
+6641	Escherichia coli HVH 73 (4-2393174)
+6641	escherichia_coli_hvh_73_4_2393174_
+6642	Escherichia coli DEC15D
+6642	Escherichia coli DEC15D serotype O111:H21
+6642	escherichia_coli_dec15d
+6644	Escherichia coli 2788150
+6644	escherichia_coli_2788150
+6646	Escherichia coli SECEC SMS-3-5
+6646	Escherichia coli SMS-3-5
+6646	Escherichia coli str. SMS-3-5
+6646	Escherichia coli strain SMS-3-5
+6646	escherichia_coli_sms_3_5
+6650	Escherichia coli HVH 159 (4-5818141)
+6650	escherichia_coli_hvh_159_4_5818141_
+6651	Escherichia coli B114
+6651	Escherichia coli B114 serotype O157:H7
+6651	escherichia_coli_b114
+6653	Escherichia coli STEC_EH250
+6653	escherichia_coli_stec_eh250
+6658	Escherichia coli P0299438.4
+6658	escherichia_coli_p0299438_4
+6665	Escherichia coli UMEA 3122-1
+6665	escherichia_coli_umea_3122_1
+6676	Escherichia coli UMEA 3052-1
+6676	escherichia_coli_umea_3052_1
+6677	Escherichia coli 908541
+6677	escherichia_coli_908541
+6680	Escherichia coli HVH 155 (4-4509048)
+6680	escherichia_coli_hvh_155_4_4509048_
+6686	Escherichia coli KTE107
+6686	escherichia_coli_kte107
+6702	Bacteroides ureolyticus ACS-301-V-Sch3b
+6702	Campylobacter ureolyticus ACS-301-V-Sch3b
+6702	campylobacter_ureolyticus_acs_301_v_sch3b
+6707	Escherichia coli PA3
+6707	Escherichia coli PA3 serotype O157:H7
+6707	escherichia_coli_pa3
+6717	Escherichia coli KTE202
+6717	escherichia_coli_kte202
+6718	Escherichia coli UMEA 3161-1
+6718	escherichia_coli_umea_3161_1
+6728	Escherichia coli TW07945
+6728	Escherichia coli TW07945 serotype O157:H7
+6728	escherichia_coli_tw07945
+6739	Escherichia coli SWW33
+6739	escherichia_coli_sww33
+6749	Escherichia coli 2860650
+6749	escherichia_coli_2860650
+6769	Escherichia coli UMEA 3088-1
+6769	escherichia_coli_umea_3088_1
+6776	Escherichia coli P0304777.15
+6776	escherichia_coli_p0304777_15
+6778	Escherichia coli 907357
+6778	escherichia_coli_907357
+6779	Escherichia coli HVH 205 (4-3094677)
+6779	escherichia_coli_hvh_205_4_3094677_
+6780	Escherichia coli UMEA 3341-1
+6780	escherichia_coli_umea_3341_1
+6789	Campylobacter coli 80352
+6789	campylobacter_coli_80352
+6791	Escherichia coli KTE54
+6791	escherichia_coli_kte54
+6794	Escherichia coli EC1738
+6794	Escherichia coli EC1738 serotype O157:H7
+6794	escherichia_coli_ec1738
+6806	Escherichia coli HVH 69 (4-2837072)
+6806	escherichia_coli_hvh_69_4_2837072_
+6809	Escherichia coli KOEGE 56 (169a)
+6809	escherichia_coli_koege_56_169a_
+6810	Escherichia coli HVH 9 (4-6942539)
+6810	escherichia_coli_hvh_9_4_6942539_
+6812	Escherichia coli UMEA 3298-1
+6812	escherichia_coli_umea_3298_1
+6816	Escherichia coli 908616
+6816	escherichia_coli_908616
+6828	Escherichia coli P0304777.8
+6828	escherichia_coli_p0304777_8
+6847	Campylobacter jejuni subsp. jejuni 00-2426
+6847	campylobacter_jejuni_subsp_jejuni_00_2426
+6849	Escherichia coli H120
+6849	escherichia_coli_h120
+6853	Escherichia coli KTE17
+6853	escherichia_coli_kte17
+6872	Campylobacter coli JV20
+6872	Campylobacter coli str. JV20
+6872	Campylobacter coli strain JV20
+6872	campylobacter_coli_jv20
+6877	944551
+6877	Escherichia coli O157:H7 str. #1212
+6877	Escherichia coli O157:H7 str. 1212
+6877	Escherichia coli O157:H7 str. EC1212
+6877	Escherichia coli O157:H7 strain EC1212
+6877	escherichia_coli_o157_h7_str_ec1212
+6879	Escherichia coli KTE216
+6879	escherichia_coli_kte216
+6883	Escherichia coli O111 str. CVM9455
+6883	Escherichia coli O111:H11 str. CVM9455
+6883	Escherichia coli O111:H11 strain CVM9455
+6883	escherichia_coli_o111_h11_str_cvm9455
+6885	Escherichia coli HVH 6 (3-8296502)
+6885	escherichia_coli_hvh_6_3_8296502_
+6887	Escherichia coli EC1864
+6887	Escherichia coli EC1864 serotype O157:H7
+6887	escherichia_coli_ec1864
+6894	Escherichia coli DEC5B
+6894	Escherichia coli DEC5B serotype O55:H7
+6894	escherichia_coli_dec5b
+6897	Escherichia coli BCE032_MS-12
+6897	escherichia_coli_bce032_ms_12
+6919	Escherichia coli BCE008_MS-01
+6919	escherichia_coli_bce008_ms_01
+6920	Escherichia coli LAU-EC9
+6920	escherichia_coli_lau_ec9
+6922	Escherichia coli DEC9B
+6922	Escherichia coli DEC9B serotype O26:NM
+6922	escherichia_coli_dec9b
+6934	Escherichia coli KTE77
+6934	escherichia_coli_kte77
+6936	Escherichia coli 113303
+6936	escherichia_coli_113303
+6937	Campylobacter jejuni subsp. jejuni ICDCCJ07004
+6937	campylobacter_jejuni_subsp_jejuni_icdccj07004
+6947	Escherichia coli KTE10
+6947	escherichia_coli_kte10
+6956	Escherichia coli STEC_94C
+6956	escherichia_coli_stec_94c
+6977	Campylobacter coli 59-2
+6977	campylobacter_coli_59_2
+6978	Escherichia coli P0299917.1
+6978	escherichia_coli_p0299917_1
+6980	Escherichia coli KTE70
+6980	escherichia_coli_kte70
+6986	Escherichia coli P0299483.3
+6986	escherichia_coli_p0299483_3
+6992	1128595
+6992	Escherichia coli Ec11-4984
+6992	Escherichia coli O104:H4 str. Ec11-4984
+6992	escherichia_coli_o104_h4_str_ec11_4984
+7006	Escherichia coli KTE38
+7006	escherichia_coli_kte38
+7010	Escherichia coli HVH 202 (4-3163997)
+7010	escherichia_coli_hvh_202_4_3163997_
+7019	Escherichia coli KTE122
+7019	escherichia_coli_kte122
+7026	Escherichia coli 2.4168
+7026	escherichia_coli_2_4168
+7030	Escherichia coli P0302293.7
+7030	escherichia_coli_p0302293_7
+7052	Escherichia coli EC4448
+7052	Escherichia coli EC4448 serotype O157:H7
+7052	escherichia_coli_ec4448
+7058	Escherichia coli T1282_01
+7058	Escherichia coli T1282_01 serotype O157:H7
+7058	Escherichia coli str. T1282_01
+7058	Escherichia coli strain T1282_01
+7058	escherichia_coli_t1282_01
+7073	Campylobacter showae RM3277
+7073	Campylobacter showae str. RM3277
+7073	Campylobacter showae strain RM3277
+7073	campylobacter_showae_rm3277
+7077	Escherichia coli UMEA 3705-1
+7077	escherichia_coli_umea_3705_1
+7080	Escherichia coli KTE102
+7080	escherichia_coli_kte102
+7090	Escherichia coli MS 117-3
+7090	escherichia_coli_ms_117_3
+7107	Escherichia coli TX1999
+7107	escherichia_coli_tx1999
+7112	Escherichia coli PA23
+7112	Escherichia coli PA23 serotype O157:H7
+7112	escherichia_coli_pa23
+7115	Escherichia coli PA5
+7115	Escherichia coli PA5 serotype O157:H7
+7115	escherichia_coli_pa5
+7117	Escherichia coli FRIK1996
+7117	Escherichia coli FRIK1996 serotype O157:H7
+7117	escherichia_coli_frik1996
+7118	Escherichia coli P4-96
+7118	Escherichia coli str. P4-96
+7118	Escherichia coli strain P4-96
+7118	escherichia_coli_p4_96
+7121	Escherichia coli DEC2B
+7121	Escherichia coli DEC2B serotype O55:NM
+7121	escherichia_coli_dec2b
+7123	Campylobacter coli 84-2
+7123	campylobacter_coli_84_2
+7127	Escherichia coli KTE153
+7127	escherichia_coli_kte153
+7132	Escherichia coli O104:H4 str. 11-4632 C3
+7132	Escherichia coli O104:H4 strain 11-4632 C3
+7132	escherichia_coli_o104_h4_str_11_4632_c3
+7137	Escherichia coli P0304816.3
+7137	escherichia_coli_p0304816_3
+7139	Escherichia coli KTE171
+7139	escherichia_coli_kte171
+7162	Escherichia coli B104
+7162	Escherichia coli B104 serotype O157:H7
+7162	escherichia_coli_b104
+7177	Escherichia coli PA28
+7177	Escherichia coli PA28 serotype O157:H7
+7177	escherichia_coli_pa28
+7183	Escherichia coli 96.0107
+7183	Escherichia coli 96.0107 serotype O157:H7
+7183	escherichia_coli_96_0107
+7184	Escherichia coli KTE183
+7184	escherichia_coli_kte183
+7191	Escherichia coli UMEA 3199-1
+7191	escherichia_coli_umea_3199_1
+7201	Campylobacter coli 67-8
+7201	campylobacter_coli_67_8
+7212	Campylobacter coli CVM N29710
+7212	campylobacter_coli_cvm_n29710
+7214	Escherichia coli MDS42
+7214	Escherichia coli str. K-12 substr. MDS42
+7214	Escherichia coli strain K-12 substrain MDS42
+7214	escherichia_coli_str_k_12_substr_mds42
+7217	Escherichia coli KTE160
+7217	escherichia_coli_kte160
+7240	Escherichia coli O111:H11 str. CVM9553
+7240	Escherichia coli O111:H11 strain CVM9553
+7240	escherichia_coli_o111_h11_str_cvm9553
+7242	Escherichia coli O157:H7 str. EC4113
+7242	escherichia_coli_o157_h7_str_ec4113
+7248	Escherichia coli p0305293.15
+7248	escherichia_coli_p0305293_15
+7251	Escherichia coli O111:H11 str. CFSAN001630
+7251	escherichia_coli_o111_h11_str_cfsan001630
+7254	Escherichia coli KOEGE 33 (68a)
+7254	escherichia_coli_koege_33_68a_
+7257	Escherichia coli UMEA 3271-1
+7257	escherichia_coli_umea_3271_1
+7265	Escherichia coli KTE132
+7265	escherichia_coli_kte132
+7279	Escherichia coli PA40
+7279	Escherichia coli PA40 serotype O157:H7
+7279	escherichia_coli_pa40
+7296	Escherichia coli HVH 2 (4-6943160)
+7296	escherichia_coli_hvh_2_4_6943160_
+7300	Escherichia coli STEC_S1191
+7300	escherichia_coli_stec_s1191
+7302	Escherichia coli HVH 65 (4-2262045)
+7302	escherichia_coli_hvh_65_4_2262045_
+7307	Escherichia coli MS 16-3
+7307	escherichia_coli_ms_16_3
+7312	Escherichia coli KTE169
+7312	escherichia_coli_kte169
+7320	Escherichia coli KTE98
+7320	escherichia_coli_kte98
+7330	Escherichia coli DEC4B
+7330	Escherichia coli DEC4B serotype O157:H7
+7330	escherichia_coli_dec4b
+7332	Escherichia coli KTE179
+7332	escherichia_coli_kte179
+7336	Escherichia coli HVH 35 (4-2962667)
+7336	escherichia_coli_hvh_35_4_2962667_
+7337	Escherichia coli PA39
+7337	Escherichia coli PA39 serotype O157:H7
+7337	escherichia_coli_pa39
+7348	Escherichia coli DEC15C
+7348	Escherichia coli DEC15C serotype O111:H21
+7348	escherichia_coli_dec15c
+7351	Escherichia coli TW10509
+7351	escherichia_coli_tw10509
+7361	Escherichia coli HVH 41 (4-2677849)
+7361	escherichia_coli_hvh_41_4_2677849_
+7379	Escherichia coli P0302308.1
+7379	escherichia_coli_p0302308_1
+7386	Escherichia coli BCE002_MS12
+7386	escherichia_coli_bce002_ms12
+7403	Escherichia coli P0301867.5
+7403	escherichia_coli_p0301867_5
+7404	Escherichia coli MS 79-10
+7404	Escherichia coli str. MS 79-10
+7404	Escherichia coli strain MS 79-10
+7404	escherichia_coli_ms_79_10
+7415	Escherichia coli 55989
+7415	escherichia_coli_55989
+7419	Campylobacter coli 1957
+7419	campylobacter_coli_1957
+7425	Escherichia coli 99.0713
+7425	Escherichia coli 99.0713 serotype O157:H7
+7425	escherichia_coli_99_0713
+7438	Escherichia coli ECA-0157
+7438	Escherichia coli str. ECA-0157
+7438	Escherichia coli strain ECA-0157
+7438	escherichia_coli_eca_0157
+7440	Campylobacter jejuni subsp. jejuni 87330
+7440	campylobacter_jejuni_subsp_jejuni_87330
+7453	Escherichia coli UMNK88
+7453	Escherichia coli str. UMNK88
+7453	Escherichia coli strain UMNK88
+7453	escherichia_coli_umnk88
+7463	Escherichia coli 2756500
+7463	escherichia_coli_2756500
+7478	Escherichia coli P0305260.6
+7478	escherichia_coli_p0305260_6
+7481	Escherichia coli 96.0428
+7481	Escherichia coli 96.0428 serotype O157:H7
+7481	escherichia_coli_96_0428
+7484	Campylobacter jejuni subsp. jejuni 1997-10
+7484	campylobacter_jejuni_subsp_jejuni_1997_10
+7505	Escherichia coli EC4422
+7505	Escherichia coli EC4422 serotype O157:H7
+7505	escherichia_coli_ec4422
+7513	Escherichia coli 1.2741
+7513	escherichia_coli_1_2741
+7522	Escherichia coli 99.1753
+7522	Escherichia coli 99.1753 serotype O157:H7
+7522	escherichia_coli_99_1753
+7527	Escherichia coli 88.1467
+7527	Escherichia coli 88.1467 serotype O157:H7
+7527	escherichia_coli_88_1467
+7535	Escherichia coli KTE46
+7535	escherichia_coli_kte46
+7551	Escherichia coli HVH 56 (4-2153033)
+7551	escherichia_coli_hvh_56_4_2153033_
+7562	Escherichia coli O26:H11 str. CVM10224
+7562	Escherichia coli O26:H11 strain CVM10224
+7562	escherichia_coli_o26_h11_str_cvm10224
+7579	1157340
+7579	Escherichia coli Ec12-0465
+7579	Escherichia coli O104:H4 str. Ec12-0465
+7579	escherichia_coli_o104_h4_str_ec12_0465
+7587	Escherichia coli EPEC C342-62
+7587	Escherichia coli str. EPEC C342-62
+7587	Escherichia coli strain EPEC C342-62
+7587	escherichia_coli_epec_c342_62
+7601	Campylobacter coli 37/05
+7601	campylobacter_coli_37_05
+7634	Escherichia coli KTE80
+7634	escherichia_coli_kte80
+7638	Escherichia coli KTE140
+7638	escherichia_coli_kte140
+7641	Campylobacter jejuni subsp. jejuni LMG 9872
+7641	campylobacter_jejuni_subsp_jejuni_lmg_9872
+7657	Escherichia coli 907672
+7657	escherichia_coli_907672
+7670	Escherichia coli KTE126
+7670	escherichia_coli_kte126
+7673	Escherichia coli O104:H4 str. 2011C-3493
+7673	Escherichia coli O104:H4 strain 2011C-3493
+7673	escherichia_coli_o104_h4_str_2011c_3493
+7686	Campylobacter coli RM2228
+7686	Campylobacter coli str. RM2228
+7686	Campylobacter coli strain RM2228
+7686	campylobacter_coli_rm2228
+7687	1228010
+7687	Escherichia coli 11-04080
+7687	Escherichia coli O104:H4 str. 11-04080
+7687	escherichia_coli_o104_h4_str_11_04080
+7698	Escherichia coli O127:B8 str. C43/90
+7698	Escherichia coli O127:H27 str. C43/90
+7698	Escherichia coli O127:H27 strain C43/90
+7698	escherichia_coli_o127_h27_str_c43_90
+7708	Escherichia coli KTE228
+7708	escherichia_coli_kte228
+7717	Escherichia coli KTE6
+7717	escherichia_coli_kte6
+7724	Escherichia coli 8.0569
+7724	Escherichia coli 8.0569 serotype O157:H7
+7724	escherichia_coli_8_0569
+7725	Escherichia coli KTE24
+7725	escherichia_coli_kte24
+7733	Escherichia coli EC1846
+7733	Escherichia coli EC1846 serotype O157:H7
+7733	escherichia_coli_ec1846
+7734	Escherichia coli DEC3C
+7734	Escherichia coli DEC3C serotype O157:H7
+7734	escherichia_coli_dec3c
+7738	Escherichia coli O157:H7 str. EC4042
+7738	escherichia_coli_o157_h7_str_ec4042
+7742	Escherichia coli KTE89
+7742	escherichia_coli_kte89
+7753	Campylobacter jejuni 4031
+7753	campylobacter_jejuni_4031
+7759	Escherichia coli KOEGE 10 (25a)
+7759	escherichia_coli_koege_10_25a_
+7763	Escherichia coli MS 57-2
+7763	escherichia_coli_ms_57_2
+7771	Escherichia coli P0305260.10
+7771	escherichia_coli_p0305260_10
+7777	Escherichia coli MS 185-1
+7777	escherichia_coli_ms_185_1
+7779	Escherichia coli P0298942.9
+7779	escherichia_coli_p0298942_9
+7790	Escherichia coli HVH 58 (4-2839709)
+7790	escherichia_coli_hvh_58_4_2839709_
+7814	Escherichia coli BW2952
+7814	Escherichia coli BW2952 str. K-12
+7814	Escherichia coli str. BW2952
+7814	Escherichia coli strain BW2952
+7814	escherichia_coli_bw2952
+7818	Escherichia coli O157:H43 str. T22
+7818	Escherichia coli O157:H43 strain T22
+7818	escherichia_coli_o157_h43_str_t22
+7820	Escherichia coli HVH 187 (4-4471660)
+7820	escherichia_coli_hvh_187_4_4471660_
+7832	Escherichia coli UMEA 3121-1
+7832	escherichia_coli_umea_3121_1
+7834	Escherichia coli B49-2
+7834	Escherichia coli B49-2 serotype O157:H7
+7834	escherichia_coli_b49_2
+7841	Escherichia coli HVH 182 (4-0985554)
+7841	escherichia_coli_hvh_182_4_0985554_
+7843	Escherichia coli P0298942.2
+7843	escherichia_coli_p0298942_2
+7853	Escherichia coli O157:H7 str. EC4486
+7853	escherichia_coli_o157_h7_str_ec4486
+7866	Escherichia coli KTE207
+7866	escherichia_coli_kte207
+7879	Escherichia coli 95.0183
+7879	Escherichia coli 95.0183 serotype O157:H7
+7879	escherichia_coli_95_0183
+7882	Escherichia coli 541-1
+7882	Escherichia coli str. 541-1
+7882	Escherichia coli strain 541-1
+7882	escherichia_coli_541_1
+7883	Escherichia coli 0.1304
+7883	Escherichia coli 0.1304 serotype O157:H7
+7883	escherichia_coli_0_1304
+7884	Escherichia coli 2741950
+7884	escherichia_coli_2741950
+7886	Escherichia coli HVH 74 (4-1034782)
+7886	escherichia_coli_hvh_74_4_1034782_
+7894	Escherichia coli EC1849
+7894	Escherichia coli EC1849 serotype O157:H7
+7894	escherichia_coli_ec1849
+7898	Escherichia fergusonii B253
+7898	escherichia_fergusonii_b253
+7904	Escherichia coli MS 85-1
+7904	Escherichia coli str. MS 85-1
+7904	Escherichia coli strain MS 85-1
+7904	escherichia_coli_ms_85_1
+7920	Escherichia coli DEC1E
+7920	Escherichia coli DEC1E serotype O55:H6
+7920	escherichia_coli_dec1e
+7922	Escherichia coli MS 45-1
+7922	escherichia_coli_ms_45_1
+7923	1228003
+7923	Escherichia coli 11-02033-1
+7923	Escherichia coli O104:H4 str. 11-02033-1
+7923	escherichia_coli_o104_h4_str_11_02033_1
+7925	Escherichia coli HVH 188 (4-2356988)
+7925	escherichia_coli_hvh_188_4_2356988_
+7932	Escherichia coli KTE163
+7932	escherichia_coli_kte163
+7941	Escherichia coli P0299917.6
+7941	escherichia_coli_p0299917_6
+7942	Escherichia coli DEC10A
+7942	Escherichia coli DEC10A serotype O26:H11
+7942	escherichia_coli_dec10a
+7947	Escherichia coli HVH 216 (4-3042952)
+7947	escherichia_coli_hvh_216_4_3042952_
+7950	Escherichia coli P0302293.3
+7950	escherichia_coli_p0302293_3
+7951	Escherichia coli 4.0967
+7951	escherichia_coli_4_0967
+7953	Escherichia coli H489
+7953	escherichia_coli_h489
+7954	Escherichia coli DEC13C
+7954	Escherichia coli DEC13C serotype O128:H7
+7954	escherichia_coli_dec13c
+7967	Campylobacter coli 151-9
+7967	campylobacter_coli_151_9
+7974	Escherichia coli HVH 115 (4-4465997)
+7974	escherichia_coli_hvh_115_4_4465997_
+7995	Escherichia coli p0305293.4
+7995	escherichia_coli_p0305293_4
+7996	Escherichia coli 99.0678
+7996	Escherichia coli 99.0678 serotype O157:H7
+7996	escherichia_coli_99_0678
+7998	Escherichia coli ECC-1470
+7998	Escherichia coli str. ECC-1470
+7998	Escherichia coli strain ECC-1470
+7998	escherichia_coli_ecc_1470
+8008	Escherichia coli STEC_MHI813
+8008	escherichia_coli_stec_mhi813
+8022	Escherichia coli clone D i14
+8022	Escherichia coli str. 'clone D i14'
+8022	Escherichia coli strain 'clone D i14'
+8022	escherichia_coli_str_clone_d_i14_
+8023	Escherichia coli KTE190
+8023	escherichia_coli_kte190
+8028	Escherichia coli MS 200-1
+8028	escherichia_coli_ms_200_1
+8036	Escherichia coli B90
+8036	Escherichia coli B90 serotype O157:H7
+8036	escherichia_coli_b90
+8041	Escherichia coli HVH 147 (4-5893887)
+8041	escherichia_coli_hvh_147_4_5893887_
+8055	Escherichia coli p0305293.1
+8055	escherichia_coli_p0305293_1
+8064	Escherichia coli EC1869
+8064	Escherichia coli EC1869 serotype O157:H7
+8064	escherichia_coli_ec1869
+8066	Escherichia coli 2865200
+8066	escherichia_coli_2865200
+8070	Escherichia coli KTE75
+8070	escherichia_coli_kte75
+8074	Escherichia coli 97.0007
+8074	Escherichia coli 97.0007 serotype O157:H7
+8074	escherichia_coli_97_0007
+8078	Escherichia coli F11
+8078	Escherichia coli str. F11
+8078	Escherichia coli strain F11
+8078	escherichia_coli_f11
+8089	Campylobacter sp. FOBRC14
+8089	campylobacter_sp_fobrc14
+8099	Escherichia coli 110957
+8099	escherichia_coli_110957
+8101	Escherichia coli 2762100
+8101	escherichia_coli_2762100
+8110	Escherichia coli FRIK1999
+8110	Escherichia coli FRIK1999 serotype O157:H7
+8110	escherichia_coli_frik1999
+8113	Escherichia coli P0299917.3
+8113	escherichia_coli_p0299917_3
+8125	Escherichia coli 8.0416
+8125	Escherichia coli 8.0416 serotype O157:H7
+8125	escherichia_coli_8_0416
+8129	Escherichia coli 96.154
+8129	escherichia_coli_96_154
+8130	Escherichia coli B17
+8130	Escherichia coli B17 serotype O157:H7
+8130	escherichia_coli_b17
+8143	Escherichia coli KTE15
+8143	escherichia_coli_kte15
+8144	Escherichia coli B171
+8144	Escherichia coli str. B171
+8144	Escherichia coli strain B171
+8144	escherichia_coli_b171
+8155	Escherichia coli P0301904.3
+8155	escherichia_coli_p0301904_3
+8178	Escherichia coli UMEA 3609-1
+8178	escherichia_coli_umea_3609_1
+8204	Escherichia coli HVH 150 (4-3258106)
+8204	escherichia_coli_hvh_150_4_3258106_
+8205	Escherichia coli E1520
+8205	escherichia_coli_e1520
+8206	Campylobacter coli 1148
+8206	campylobacter_coli_1148
+8229	Campylobacter jejuni subsp. jejuni BH-01-0142
+8229	Campylobacter jejuni subsp. jejuni BH0142
+8229	Campylobacter jejuni subsp. jejuni str. BH-01-0142
+8229	Campylobacter jejuni subsp. jejuni strain BH-01-0142
+8229	campylobacter_jejuni_subsp_jejuni_bh_01_0142
+8232	Escherichia coli W26
+8232	Escherichia coli str. W26
+8232	Escherichia coli strain W26
+8232	escherichia_coli_w26
+8236	Escherichia coli PA14
+8236	Escherichia coli PA14 serotype O157:H7
+8236	escherichia_coli_pa14
+8247	Escherichia coli HVH 157 (4-3406229)
+8247	escherichia_coli_hvh_157_4_3406229_
+8249	Escherichia coli P0302293.9
+8249	escherichia_coli_p0302293_9
+8263	Escherichia coli DEC7A
+8263	Escherichia coli DEC7A serotype O157:H43
+8263	escherichia_coli_dec7a
+8265	Escherichia coli B28-2
+8265	Escherichia coli B28-2 serotype O157:H7
+8265	escherichia_coli_b28_2
+8275	Escherichia coli KTE56
+8275	escherichia_coli_kte56
+8287	Escherichia coli P0299438.10
+8287	escherichia_coli_p0299438_10
+8290	Campylobacter coli 1961
+8290	campylobacter_coli_1961
+8311	Escherichia coli 101-1
+8311	Escherichia coli str. 101-1
+8311	Escherichia coli strain 101-1
+8311	escherichia_coli_101_1
+8312	Escherichia coli O104:H4 str. 01-09591
+8312	Escherichia coli O104:H4 str. HUSEC041
+8312	Escherichia coli O104:H4 strain 01-09591
+8312	escherichia_coli_o104_h4_str_01_09591
+8316	Escherichia coli KTE66
+8316	escherichia_coli_kte66
+8326	Escherichia coli HVH 104 (4-6977960)
+8326	escherichia_coli_hvh_104_4_6977960_
+8335	Campylobacter jejuni subsp. jejuni CG8421
+8335	Campylobacter jejuni subsp. jejuni str. CG8421
+8335	Campylobacter jejuni subsp. jejuni strain CG8421
+8335	campylobacter_jejuni_subsp_jejuni_cg8421
+8345	Escherichia coli KTE211
+8345	escherichia_coli_kte211
+8349	Escherichia coli UMEA 3144-1
+8349	escherichia_coli_umea_3144_1
+8360	Escherichia coli HVH 183 (4-3205932)
+8360	escherichia_coli_hvh_183_4_3205932_
+8366	Escherichia coli 0.1288
+8366	Escherichia coli 0.1288 serotype O157:H7
+8366	escherichia_coli_0_1288
+8375	Escherichia coli EC1862
+8375	Escherichia coli EC1862 serotype O157:H7
+8375	escherichia_coli_ec1862
+8383	Escherichia coli HVH 156 (4-3206505)
+8383	escherichia_coli_hvh_156_4_3206505_
+8392	Escherichia coli KTE118
+8392	escherichia_coli_kte118
+8394	Escherichia coli HVH 39 (4-2679949)
+8394	escherichia_coli_hvh_39_4_2679949_
+8395	Escherichia coli 2726800
+8395	escherichia_coli_2726800
+8404	Escherichia coli SE15
+8404	Escherichia coli str. SE15
+8404	Escherichia coli strain SE15
+8404	escherichia_coli_se15
+8407	Escherichia coli 2875000
+8407	escherichia_coli_2875000
+8408	Escherichia coli HVH 51 (4-2172526)
+8408	escherichia_coli_hvh_51_4_2172526_
+8433	Escherichia coli O103:H2 str. 12009
+8433	Escherichia coli O103:H2 strain 12009
+8433	escherichia_coli_o103_h2_str_12009
+8454	Escherichia coli TA143
+8454	escherichia_coli_ta143
+8461	Escherichia coli UMEA 3264-1
+8461	escherichia_coli_umea_3264_1
+8465	Escherichia coli KTE40
+8465	escherichia_coli_kte40
+8474	Escherichia coli KTE226
+8474	escherichia_coli_kte226
+8477	Escherichia coli HVH 38 (4-2774682)
+8477	escherichia_coli_hvh_38_4_2774682_
+8479	Escherichia coli KTE9
+8479	escherichia_coli_kte9
+8481	Escherichia coli UMEA 4075-1
+8481	escherichia_coli_umea_4075_1
+8489	Escherichia coli HVH 116 (4-6879942)
+8489	escherichia_coli_hvh_116_4_6879942_
+8491	Escherichia coli IHE3034
+8491	Escherichia coli str. IHE3034
+8491	Escherichia coli strain IHE3034
+8491	escherichia_coli_ihe3034
+8495	Escherichia coli HVH 206 (4-3128229)
+8495	escherichia_coli_hvh_206_4_3128229_
+8501	Escherichia coli 908522
+8501	escherichia_coli_908522
+8502	Escherichia coli MS 84-1
+8502	escherichia_coli_ms_84_1
+8519	Campylobacter jejuni subsp. jejuni 1854
+8519	campylobacter_jejuni_subsp_jejuni_1854
+8526	Escherichia coli HVH 20 (4-5865042)
+8526	escherichia_coli_hvh_20_4_5865042_
+8530	Escherichia coli DEC12A
+8530	Escherichia coli DEC12A serotype O111:H2
+8530	escherichia_coli_dec12a
+8546	Escherichia coli p0305293.10
+8546	escherichia_coli_p0305293_10
+8548	Escherichia coli E101
+8548	escherichia_coli_e101
+8550	Escherichia coli UMEA 3342-1
+8550	escherichia_coli_umea_3342_1
+8553	Campylobacter showae CSUNSWCD
+8553	campylobacter_showae_csunswcd
+8554	Escherichia coli O104:H4 str. 11-4522
+8554	Escherichia coli O104:H4 strain 11-4522
+8554	escherichia_coli_o104_h4_str_11_4522
+8558	Escherichia coli 908524
+8558	escherichia_coli_908524
+8569	Escherichia coli MP021017.5
+8569	escherichia_coli_mp021017_5
+8570	Escherichia coli P0301867.8
+8570	escherichia_coli_p0301867_8
+8571	Escherichia coli P0299438.2
+8571	escherichia_coli_p0299438_2
+8575	Escherichia coli HVH 77 (4-2605759)
+8575	escherichia_coli_hvh_77_4_2605759_
+8576	Escherichia coli DEC3F
+8576	Escherichia coli DEC3F serotype O157:H7
+8576	escherichia_coli_dec3f
+8579	Escherichia coli 7.1982
+8579	Escherichia coli 7.1982 serotype O157:H7
+8579	Escherichia coli str. 7.1982
+8579	Escherichia coli strain 7.1982
+8579	escherichia_coli_7_1982
+8580	Escherichia coli STEC_O31
+8580	escherichia_coli_stec_o31
+8584	Escherichia coli UMEA 3152-1
+8584	escherichia_coli_umea_3152_1
+8589	Escherichia coli KTE21
+8589	escherichia_coli_kte21
+8594	Escherichia coli Xuzhou21
+8594	Escherichia coli str. Xuzhou21
+8594	Escherichia coli strain Xuzhou21
+8594	escherichia_coli_xuzhou21
+8599	Escherichia coli TT12B
+8599	Escherichia coli TT12B serotype O157:H7
+8599	escherichia_coli_tt12b
+8601	Escherichia coli KTE205
+8601	escherichia_coli_kte205
+8602	Escherichia coli P0301867.11
+8602	escherichia_coli_p0301867_11
+8603	Campylobacter jejuni subsp. jejuni 60004
+8603	campylobacter_jejuni_subsp_jejuni_60004
+8610	Campylobacter jejuni subsp. jejuni 2008-894
+8610	campylobacter_jejuni_subsp_jejuni_2008_894
+8623	Escherichia coli Envira 10/1
+8623	escherichia_coli_envira_10_1
+8625	Campylobacter coli 15-537360
+8625	campylobacter_coli_15_537360
+8642	Escherichia coli KTE45
+8642	escherichia_coli_kte45
+8648	Escherichia coli UM146
+8648	Escherichia coli str. UM146
+8648	Escherichia coli strain UM146
+8648	escherichia_coli_um146
+8650	Escherichia coli 907713
+8650	escherichia_coli_907713
+8653	Escherichia coli 88.1042
+8653	Escherichia coli 88.1042 serotype O157:H7
+8653	escherichia_coli_88_1042
+8656	Escherichia coli UMEA 3955-1
+8656	escherichia_coli_umea_3955_1
+8658	Escherichia coli UMEA 3162-1
+8658	escherichia_coli_umea_3162_1
+8671	Escherichia sp. 1_1_43
+8671	escherichia_sp_1_1_43
+8676	1078022
+8676	1078026
+8676	1078027
+8676	Escherichia coli O157:H- str. 493-89
+8676	Escherichia coli O157:H- str. 493/89
+8676	Escherichia coli O157:H- strain 493-89
+8676	escherichia_coli_o157_h_str_493_89
+8678	Escherichia coli O104:H4 str. Ec11-9450
+8678	Escherichia coli O104:H4 str. Ec11-9450 str. Ec 11-9450
+8678	escherichia_coli_o104_h4_str_ec11_9450
+8680	Escherichia coli KTE155
+8680	escherichia_coli_kte155
+8683	Escherichia coli UMEA 3834-1
+8683	escherichia_coli_umea_3834_1
+8689	Escherichia coli FRIK1990
+8689	Escherichia coli FRIK1990 serotype O157:H7
+8689	escherichia_coli_frik1990
+8693	Campylobacter jejuni subsp. jejuni LMG 23263
+8693	campylobacter_jejuni_subsp_jejuni_lmg_23263
+8721	Escherichia coli BCE019_MS-13
+8721	escherichia_coli_bce019_ms_13
+8724	Escherichia coli HVH 83 (4-2051087)
+8724	escherichia_coli_hvh_83_4_2051087_
+8726	Escherichia coli UMEA 3221-1
+8726	escherichia_coli_umea_3221_1
+8735	Escherichia coli RN587/1
+8735	escherichia_coli_rn587_1
+8737	Escherichia coli 5.0959
+8737	escherichia_coli_5_0959
+8756	Escherichia coli P0299438.9
+8756	escherichia_coli_p0299438_9
+8760	Escherichia coli KTE67
+8760	escherichia_coli_kte67
+8765	Escherichia coli KTE162
+8765	escherichia_coli_kte162
+8767	Escherichia coli O26:H11 str. CVM9952
+8767	Escherichia coli O26:H11 strain CVM9952
+8767	escherichia_coli_o26_h11_str_cvm9952
+8772	Escherichia coli DEC14A
+8772	Escherichia coli DEC14A serotype O128:H21
+8772	escherichia_coli_dec14a
+8782	Escherichia coli P0301867.1
+8782	escherichia_coli_p0301867_1
+8796	Campylobacter jejuni subsp. jejuni 53161
+8796	campylobacter_jejuni_subsp_jejuni_53161
+8805	Escherichia coli UMEA 3337-1
+8805	escherichia_coli_umea_3337_1
+8808	Escherichia coli UMEA 3178-1
+8808	escherichia_coli_umea_3178_1
+8812	Escherichia coli 3.4870
+8812	Escherichia coli 3.4870 serotype O157:H7
+8812	escherichia_coli_3_4870
+8813	Escherichia coli 1357
+8813	Escherichia coli OK1357
+8813	Escherichia coli str. OK1357
+8813	Escherichia coli strain OK1357
+8813	escherichia_coli_ok1357
+8815	Escherichia coli DEC5D
+8815	Escherichia coli DEC5D serotype O55:H7
+8815	escherichia_coli_dec5d
+8818	Escherichia coli O157:H7 str. G5101
+8818	Escherichia coli O157:H7 strain G5101
+8818	escherichia_coli_o157_h7_str_g5101
+8819	Escherichia coli P0305260.7
+8819	escherichia_coli_p0305260_7
+8832	Escherichia coli STEC_H.1.8
+8832	escherichia_coli_stec_h_1_8
+8838	Escherichia coli B354
+8838	escherichia_coli_b354
+8846	Escherichia coli PA48
+8846	Escherichia coli PA48 serotype O157:H7
+8846	escherichia_coli_pa48
+8847	Escherichia coli KTE138
+8847	escherichia_coli_kte138
+8852	Escherichia coli BIDMC 38
+8852	escherichia_coli_bidmc_38
+8899	Escherichia coli KTE96
+8899	escherichia_coli_kte96
+8911	Escherichia coli DEC7D
+8911	Escherichia coli DEC7D serotype O157:H43
+8911	escherichia_coli_dec7d
+8914	Escherichia coli HVH 185 (4-2876639)
+8914	escherichia_coli_hvh_185_4_2876639_
+8917	Escherichia coli 2846750
+8917	escherichia_coli_2846750
+8923	Escherichia coli HVH 200 (4-4449924)
+8923	escherichia_coli_hvh_200_4_4449924_
+8925	Escherichia coli KTE86
+8925	escherichia_coli_kte86
+8930	Escherichia coli MS 175-1
+8930	escherichia_coli_ms_175_1
+8935	Escherichia coli P0304816.5
+8935	escherichia_coli_p0304816_5
+8946	Escherichia coli UMEA 3222-1
+8946	escherichia_coli_umea_3222_1
+8954	Escherichia coli 3.2303
+8954	escherichia_coli_3_2303
+8958	Escherichia coli 4_1_47FAA
+8958	Escherichia coli str. 4_1_47FAA
+8958	Escherichia coli strain 4_1_47FAA
+8958	escherichia_coli_4_1_47faa
+8961	Escherichia coli O104:H4 str. 11-4632 C5
+8961	Escherichia coli O104:H4 strain 11-4632 C5
+8961	escherichia_coli_o104_h4_str_11_4632_c5
+8967	Escherichia coli DEC6A
+8967	Escherichia coli DEC6A serotype O111:H21
+8967	escherichia_coli_dec6a
+8977	Escherichia coli DEC11C
+8977	Escherichia coli DEC11C serotype O45:H2
+8977	escherichia_coli_dec11c
+8979	Escherichia coli KTE235
+8979	escherichia_coli_kte235
+8980	Escherichia coli KOEGE 58 (171a)
+8980	escherichia_coli_koege_58_171a_
+8999	Escherichia coli KTE199
+8999	escherichia_coli_kte199
+9002	Escherichia coli HVH 212 (3-9305343)
+9002	escherichia_coli_hvh_212_3_9305343_
+9004	Escherichia coli HVH 87 (4-5977630)
+9004	escherichia_coli_hvh_87_4_5977630_
+9005	Escherichia coli DEC15A
+9005	Escherichia coli DEC15A serotype O111:H21
+9005	escherichia_coli_dec15a
+9008	Campylobacter coli LMG 9854
+9008	campylobacter_coli_lmg_9854
+9019	Escherichia coli UMEA 3632-1
+9019	escherichia_coli_umea_3632_1
+9034	Escherichia coli KTE173
+9034	escherichia_coli_kte173
+9036	Escherichia coli LY180
+9036	escherichia_coli_ly180
+9048	1228007
+9048	Escherichia coli 11-02318
+9048	Escherichia coli O104:H4 str. 11-02318
+9048	escherichia_coli_o104_h4_str_11_02318
+9053	Escherichia coli B7A
+9053	Escherichia coli str. B7A
+9053	Escherichia coli strain B7A
+9053	escherichia_coli_b7a
+9055	Escherichia coli 2860050
+9055	escherichia_coli_2860050
+9060	Escherichia coli E2265
+9060	escherichia_coli_e2265
+9063	Escherichia coli B5-2
+9063	Escherichia coli B5-2 serotype O157:H7
+9063	escherichia_coli_b5_2
+9074	Escherichia coli O103:H2 str. CVM9450
+9074	Escherichia coli O103:H2 strain CVM9450
+9074	escherichia_coli_o103_h2_str_cvm9450
+9078	Escherichia coli PA8
+9078	Escherichia coli PA8 serotype O157:H7
+9078	escherichia_coli_pa8
+9085	Escherichia coli P0299917.8
+9085	escherichia_coli_p0299917_8
+9089	Escherichia coli P0298942.1
+9089	escherichia_coli_p0298942_1
+9090	Campylobacter coli 2688
+9090	campylobacter_coli_2688
+9092	Escherichia coli 179550
+9092	escherichia_coli_179550
+9093	Escherichia coli HVH 160 (4-5695937)
+9093	escherichia_coli_hvh_160_4_5695937_
+9096	Escherichia coli P0298942.8
+9096	escherichia_coli_p0298942_8
+9102	Escherichia coli 908691
+9102	escherichia_coli_908691
+9131	Escherichia coli KTE88
+9131	escherichia_coli_kte88
+9140	Escherichia coli HVH 50 (4-2593475)
+9140	escherichia_coli_hvh_50_4_2593475_
+9146	Escherichia coli 90.2281
+9146	Escherichia coli 90.2281 serotype O157:H7
+9146	escherichia_coli_90_2281
+9161	Escherichia coli UMEA 3656-1
+9161	escherichia_coli_umea_3656_1
+9167	Escherichia coli 4.0522
+9167	escherichia_coli_4_0522
+9177	Escherichia coli KTE121
+9177	escherichia_coli_kte121
+9178	Escherichia coli P0305260.15
+9178	escherichia_coli_p0305260_15
+9197	Campylobacter fetus subsp. fetus 82-40
+9197	Campylobacter fetus subsp. fetus str. 82-40
+9197	Campylobacter fetus subsp. fetus strain 82-40
+9197	campylobacter_fetus_subsp_fetus_82_40
+9200	Escherichia coli ATCC 700728
+9200	Escherichia coli ATCC 700728 serotype O157:H7
+9200	Escherichia coli str. ATCC 700728
+9200	Escherichia coli strain ATCC 700728
+9200	escherichia_coli_atcc_700728
+9201	Escherichia coli 2866450
+9201	escherichia_coli_2866450
+9205	Escherichia coli MS 110-3
+9205	escherichia_coli_ms_110_3
+9211	Escherichia coli 99.0670
+9211	Escherichia coli 99.0670 serotype O157:H7
+9211	escherichia_coli_99_0670
+9219	Escherichia coli UMEA 3014-1
+9219	escherichia_coli_umea_3014_1
+9220	Escherichia coli KTE94
+9220	escherichia_coli_kte94
+9224	Escherichia coli P0298942.14
+9224	escherichia_coli_p0298942_14
+9225	Escherichia coli P0304777.5
+9225	escherichia_coli_p0304777_5
+9232	1344575
+9232	Escherichia coli 0157:H7 EDL933
+9232	Escherichia coli O157:H7 EDL933
+9232	Escherichia coli O157:H7 str. EDL 933
+9232	Escherichia coli O157:H7 str. EDL933
+9232	Escherichia coli O157:H7 strain EDL933
+9232	escherichia_coli_o157_h7_str_edl933
+9238	Escherichia coli S17
+9238	escherichia_coli_s17
+9243	Escherichia coli UMEA 3190-1
+9243	escherichia_coli_umea_3190_1
+9249	Escherichia coli KTE58
+9249	escherichia_coli_kte58
+9257	Escherichia coli O157:H7 str. EC4076
+9257	escherichia_coli_o157_h7_str_ec4076
+9264	Campylobacter coli 2553
+9264	campylobacter_coli_2553
+9266	Escherichia coli TW14313
+9266	Escherichia coli TW14313 serotype O157:H7
+9266	escherichia_coli_tw14313
+9292	Escherichia coli P0304777.1
+9292	escherichia_coli_p0304777_1
+9293	Escherichia coli EC1734
+9293	Escherichia coli EC1734 serotype O157:H7
+9293	escherichia_coli_ec1734
+9296	Escherichia coli HVH 128 (4-7030436)
+9296	escherichia_coli_hvh_128_4_7030436_
+9303	Escherichia coli KOEGE 77 (202a)
+9303	escherichia_coli_koege_77_202a_
+9321	Campylobacter showae CC57C
+9321	Campylobacter sp. CC57C
+9321	campylobacter_showae_cc57c
+9326	Escherichia coli M863
+9326	escherichia_coli_m863
+9333	Escherichia coli KTE34
+9333	escherichia_coli_kte34
+9339	Escherichia coli KTE156
+9339	escherichia_coli_kte156
+9350	Escherichia coli O104:H4 str. E112/10
+9350	Escherichia coli O104:H4 strain E112/10
+9350	escherichia_coli_o104_h4_str_e112_10
+9357	Escherichia coli KTE73
+9357	escherichia_coli_kte73
+9360	Escherichia coli 5.2239
+9360	Escherichia coli 5.2239 serotype O157:H7
+9360	escherichia_coli_5_2239
+9373	Escherichia coli KTE217
+9373	escherichia_coli_kte217
+9375	Escherichia coli HVH 171 (4-3191958)
+9375	escherichia_coli_hvh_171_4_3191958_
+9376	Escherichia coli KTE16
+9376	escherichia_coli_kte16
+9382	1128601
+9382	Escherichia coli Ec11-6006
+9382	Escherichia coli O104:H4 str. Ec11-6006
+9382	escherichia_coli_o104_h4_str_ec11_6006
+9401	Campylobacter fetus subsp. venerealis ATCC 19438
+9401	Campylobacter fetus subsp. venerealis NCTC 10354
+9401	Campylobacter fetus subsp. venerealis str. NCTC 10354
+9401	Campylobacter fetus subsp. venerealis strain NCTC 10354
+9401	campylobacter_fetus_subsp_venerealis_nctc_10354
+9404	Escherichia coli KTE146
+9404	escherichia_coli_kte146
+9409	Escherichia coli TW11039
+9409	Escherichia coli TW11039 serotype O157:H7
+9409	escherichia_coli_tw11039
+9412	Escherichia coli HVH 17 (4-7473087)
+9412	escherichia_coli_hvh_17_4_7473087_
+9415	Escherichia coli 907446
+9415	escherichia_coli_907446
+9416	Escherichia coli O104:H21 str. CFSAN002237
+9416	escherichia_coli_o104_h21_str_cfsan002237
+9422	Escherichia coli UMEA 3703-1
+9422	escherichia_coli_umea_3703_1
+9424	Escherichia coli HVH 88 (4-5854636)
+9424	escherichia_coli_hvh_88_4_5854636_
+9435	Escherichia coli KTE28
+9435	escherichia_coli_kte28
+9454	Escherichia coli 93.0056
+9454	Escherichia coli 93.0056 serotype O157:H7
+9454	escherichia_coli_93_0056
+9461	Escherichia coli UMEA 3174-1
+9461	escherichia_coli_umea_3174_1
+9465	Escherichia coli B29-2
+9465	Escherichia coli B29-2 serotype O157:H7
+9465	escherichia_coli_b29_2
+9471	Escherichia coli DEC8E
+9471	Escherichia coli DEC8E serotype O111:H8
+9471	escherichia_coli_dec8e
+9472	Escherichia coli KOEGE 73 (195a)
+9472	escherichia_coli_koege_73_195a_
+9473	Campylobacter jejuni subsp. jejuni LMG 23210
+9473	campylobacter_jejuni_subsp_jejuni_lmg_23210
+9476	Escherichia coli 2749250
+9476	escherichia_coli_2749250
+9485	Escherichia coli DEC13A
+9485	Escherichia coli DEC13A serotype O128:H7
+9485	escherichia_coli_dec13a
+9499	Escherichia coli 8.0586
+9499	Escherichia coli 8.0586 serotype O157:H7
+9499	escherichia_coli_8_0586
+9522	Escherichia coli UMEA 3206-1
+9522	escherichia_coli_umea_3206_1
+9525	Escherichia coli p0305293.2
+9525	escherichia_coli_p0305293_2
+9527	Escherichia coli HVH 204 (4-3112802)
+9527	escherichia_coli_hvh_204_4_3112802_
+9529	Escherichia coli DEC6C
+9529	Escherichia coli DEC6C serotype O111:H12
+9529	escherichia_coli_dec6c
+9534	Escherichia coli B40-1
+9534	Escherichia coli B40-1 serotype O157:H7
+9534	escherichia_coli_b40_1
+9536	Escherichia coli 908632
+9536	escherichia_coli_908632
+9537	Escherichia coli 174900
+9537	escherichia_coli_174900
+9538	Escherichia coli B088
+9538	escherichia_coli_b088
+9542	Escherichia coli LAU-EC6
+9542	escherichia_coli_lau_ec6
+9543	Escherichia coli 2780750
+9543	escherichia_coli_2780750
+9545	Campylobacter jejuni subsp. jejuni 2008-831
+9545	campylobacter_jejuni_subsp_jejuni_2008_831
+9546	Escherichia coli MS 124-1
+9546	Escherichia coli str. MS 124-1
+9546	Escherichia coli strain MS 124-1
+9546	escherichia_coli_ms_124_1
+9553	Escherichia coli P0304816.14
+9553	escherichia_coli_p0304816_14
+9567	Escherichia coli 3006
+9567	Escherichia coli 3006 serotype O157:H16
+9567	escherichia_coli_3006
+9570	Escherichia coli HVH 4 (4-7276109)
+9570	escherichia_coli_hvh_4_4_7276109_
+9573	Escherichia coli HVH 153 (3-9344314)
+9573	escherichia_coli_hvh_153_3_9344314_
+9578	1228008
+9578	Escherichia coli 11-02913
+9578	Escherichia coli O104:H4 str. 11-02913
+9578	escherichia_coli_o104_h4_str_11_02913
+9580	Escherichia coli KTE141
+9580	escherichia_coli_kte141
+9588	Escherichia coli A35218R
+9588	escherichia_coli_a35218r
+9592	Escherichia coli UMEA 4076-1
+9592	escherichia_coli_umea_4076_1
+9603	Escherichia coli DEC1B
+9603	Escherichia coli DEC1B serotype O55:H6
+9603	escherichia_coli_dec1b
+9616	Escherichia coli FVEC1412
+9616	escherichia_coli_fvec1412
+9617	Escherichia coli P0305260.5
+9617	escherichia_coli_p0305260_5
+9618	Escherichia coli 93.0624
+9618	escherichia_coli_93_0624
+9625	Escherichia coli 908555
+9625	escherichia_coli_908555
+9635	Campylobacter jejuni subsp. jejuni 1997-4
+9635	campylobacter_jejuni_subsp_jejuni_1997_4
+9639	Escherichia coli E22
+9639	Escherichia coli str. E22
+9639	Escherichia coli strain E22
+9639	escherichia_coli_e22
+9646	Campylobacter jejuni subsp. jejuni LMG 23218
+9646	campylobacter_jejuni_subsp_jejuni_lmg_23218
+9650	Escherichia coli ABU 83972
+9650	Escherichia coli str. ABU 83972
+9650	Escherichia coli strain ABU 83972
+9650	escherichia_coli_abu_83972
+9653	Escherichia coli NE1487
+9653	Escherichia coli NE1487 serotype O157:H7
+9653	escherichia_coli_ne1487
+9663	Escherichia coli UMEA 3220-1
+9663	escherichia_coli_umea_3220_1
+9675	Escherichia coli FRIK920
+9675	Escherichia coli FRIK920 serotype O157:H7
+9675	escherichia_coli_frik920
+9683	Escherichia coli HVH 163 (4-4697553)
+9683	escherichia_coli_hvh_163_4_4697553_
+9685	Escherichia coli P0298942.7
+9685	escherichia_coli_p0298942_7
+9687	1128596
+9687	Escherichia coli Ec11-5604
+9687	Escherichia coli O104:H4 str. Ec11-5604
+9687	escherichia_coli_o104_h4_str_ec11_5604
+9688	Escherichia coli 14A
+9688	Escherichia coli 14A serotype O157:H7
+9688	escherichia_coli_14a
+9702	Escherichia coli O111:H11 str. CVM9545
+9702	Escherichia coli O111:H11 strain CVM9545
+9702	escherichia_coli_o111_h11_str_cvm9545
+9707	Escherichia coli HVH 173 (3-9175482)
+9707	escherichia_coli_hvh_173_3_9175482_
+9732	Escherichia coli p0305293.9
+9732	escherichia_coli_p0305293_9
+9740	Escherichia coli 3003
+9740	escherichia_coli_3003
+9742	Escherichia coli HVH 70 (4-2963531)
+9742	escherichia_coli_hvh_70_4_2963531_
+9754	Escherichia coli P0304816.11
+9754	escherichia_coli_p0304816_11
+9768	Escherichia coli 07798
+9768	Escherichia coli 07798 serotype O157:H39
+9768	escherichia_coli_07798
+9781	Escherichia coli 2362-75
+9781	escherichia_coli_2362_75
+9794	Escherichia coli LT-68
+9794	escherichia_coli_lt_68
+9801	Escherichia coli KTE203
+9801	escherichia_coli_kte203
+9827	Escherichia coli WV_060327
+9827	Escherichia coli str. WV_060327
+9827	Escherichia coli strain WV_060327
+9827	escherichia_coli_wv_060327
+9831	Escherichia coli MS 187-1
+9831	escherichia_coli_ms_187_1
+9835	Campylobacter coli 1909
+9835	campylobacter_coli_1909
+9841	Escherichia coli O104:H4 str. Ec11-4986
+9841	escherichia_coli_o104_h4_str_ec11_4986
+9846	Escherichia coli TA271
+9846	escherichia_coli_ta271
+9856	Escherichia coli HVH 198 (4-3206106)
+9856	escherichia_coli_hvh_198_4_3206106_
+9858	Escherichia coli DEC12C
+9858	Escherichia coli DEC12C serotype O111:NM
+9858	escherichia_coli_dec12c
+9870	Escherichia coli 536
+9870	Escherichia coli str. 536
+9870	Escherichia coli strain 536
+9870	escherichia_coli_536
+9872	Campylobacter coli H9
+9872	campylobacter_coli_h9
+9875	Escherichia coli PA35
+9875	Escherichia coli PA35 serotype O157:H7
+9875	Escherichia coli str. PA35
+9875	Escherichia coli strain PA35
+9875	escherichia_coli_pa35
+9887	Escherichia coli HVH 199 (4-5670322)
+9887	escherichia_coli_hvh_199_4_5670322_
+9891	Escherichia coli O157:H7 str. TW14359
+9891	Escherichia coli O157:H7 strain TW14359
+9891	escherichia_coli_o157_h7_str_tw14359
+9895	Escherichia coli UMEA 3203-1
+9895	escherichia_coli_umea_3203_1
+9897	Escherichia coli KTE47
+9897	escherichia_coli_kte47
+9901	Escherichia coli EPECa14
+9901	escherichia_coli_epeca14
+9909	Escherichia coli KOEGE 70 (185a)
+9909	escherichia_coli_koege_70_185a_
+9919	Escherichia coli HVH 27 (4-7449267)
+9919	escherichia_coli_hvh_27_4_7449267_
+9922	Escherichia coli HVH 106 (4-6881831)
+9922	escherichia_coli_hvh_106_4_6881831_
+9929	Escherichia coli W (ASM25814v1)
+9929	escherichia_coli_w_asm25814v1
+9931	Escherichia coli P0299438.7
+9931	escherichia_coli_p0299438_7
+9933	Escherichia coli P0298942.12
+9933	escherichia_coli_p0298942_12
+9938	Escherichia coli 5412
+9938	Escherichia coli 5412 serotype SFO157
+9938	escherichia_coli_5412
+9954	Campylobacter jejuni subsp. jejuni 1997-14
+9954	campylobacter_jejuni_subsp_jejuni_1997_14
+9965	Escherichia coli HVH 48 (4-2658593)
+9965	escherichia_coli_hvh_48_4_2658593_
+9968	Escherichia coli NC101
+9968	escherichia_coli_nc101
+9977	Escherichia coli TA206
+9977	escherichia_coli_ta206
+9980	Escherichia coli 2871950
+9980	escherichia_coli_2871950
+9991	Escherichia coli UMEA 3490-1
+9991	escherichia_coli_umea_3490_1
+9994	Escherichia coli FRIK1985
+9994	Escherichia coli FRIK1985 serotype O157:H7
+9994	escherichia_coli_frik1985
+10000	Escherichia coli UMEA 3304-1
+10000	escherichia_coli_umea_3304_1
+10001	Escherichia coli 83972
+10001	Escherichia coli str. 83972
+10001	Escherichia coli strain 83972
+10001	escherichia_coli_83972
+10003	Escherichia coli KTE224
+10003	escherichia_coli_kte224
+10025	Escherichia coli 201600.1
+10025	escherichia_coli_201600_1
+10026	1228004
+10026	Escherichia coli 11-02092
+10026	Escherichia coli O104:H4 str. 11-02092
+10026	escherichia_coli_o104_h4_str_11_02092
+10051	Escherichia coli B109
+10051	Escherichia coli B109 serotype O157:H7
+10051	escherichia_coli_b109
+10054	Escherichia coli KTE42
+10054	escherichia_coli_kte42
+10055	Escherichia coli KTE63
+10055	escherichia_coli_kte63
+10059	Escherichia coli NE037
+10059	Escherichia coli NE037 serotype O157:H7
+10059	escherichia_coli_ne037
+10074	Escherichia coli 3030-1
+10074	escherichia_coli_3030_1
+10081	Escherichia coli P0299438.11
+10081	escherichia_coli_p0299438_11
+10093	Escherichia coli 2886-75
+10093	Escherichia coli 2886-75 serotype O157:H7
+10093	escherichia_coli_2886_75
+10098	Escherichia coli KTE114
+10098	escherichia_coli_kte114
+10105	Escherichia coli UMEA 3215-1
+10105	escherichia_coli_umea_3215_1
+10114	Escherichia coli HVH 164 (4-5953081)
+10114	escherichia_coli_hvh_164_4_5953081_
+10117	Escherichia coli O104:H4 str. Ec11-9941
+10117	Escherichia coli O104:H4 str. Ec11-9941 str. Ec 11-9941
+10117	escherichia_coli_o104_h4_str_ec11_9941
+10118	Escherichia coli HVH 31 (4-2602156)
+10118	escherichia_coli_hvh_31_4_2602156_
+10126	Escherichia coli KTE187
+10126	escherichia_coli_kte187
+10131	Escherichia coli HVH 190 (4-3255514)
+10131	escherichia_coli_hvh_190_4_3255514_
+10142	Escherichia coli KTE158
+10142	escherichia_coli_kte158
+10143	Escherichia coli KTE233
+10143	escherichia_coli_kte233
+10146	Escherichia coli KOEGE 118 (317a)
+10146	escherichia_coli_koege_118_317a_
+10162	Escherichia coli 2862600
+10162	escherichia_coli_2862600
+10166	Escherichia coli HVH 222 (4-2977443)
+10166	escherichia_coli_hvh_222_4_2977443_
+10169	Escherichia coli KTE101
+10169	escherichia_coli_kte101
+10171	Escherichia coli HVH 26 (4-5703913)
+10171	escherichia_coli_hvh_26_4_5703913_
+10174	Escherichia coli KTE108
+10174	escherichia_coli_kte108
+10175	Escherichia coli O157:H7 str. LSU-61
+10175	Escherichia coli O157:H7 strain LSU-61
+10175	escherichia_coli_o157_h7_str_lsu_61
+10177	Escherichia coli O111:H8 str. CVM9634
+10177	Escherichia coli O111:H8 strain CVM9634
+10177	escherichia_coli_o111_h8_str_cvm9634
+10185	Escherichia coli UMEA 3707-1
+10185	escherichia_coli_umea_3707_1
+10205	Escherichia coli KTE197
+10205	escherichia_coli_kte197
+10211	Escherichia coli B113
+10211	Escherichia coli B113 serotype O157:H7
+10211	escherichia_coli_b113
+10212	Escherichia coli 2848050
+10212	escherichia_coli_2848050
+10220	Escherichia coli AD30
+10220	Escherichia coli str. AD30
+10220	Escherichia coli strain AD30
+10220	escherichia_coli_ad30
+10223	Escherichia coli HVH 223 (4-2976528)
+10223	escherichia_coli_hvh_223_4_2976528_
+10229	Escherichia coli H736
+10229	escherichia_coli_h736
+10240	Campylobacter coli Z163
+10240	campylobacter_coli_z163
+10246	Escherichia coli IAI1
+10246	Escherichia coli str. IAI1
+10246	Escherichia coli strain IAI1
+10246	escherichia_coli_iai1
+10247	Escherichia coli UMNF18
+10247	Escherichia coli str. UMNF18
+10247	Escherichia coli strain UMNF18
+10247	escherichia_coli_umnf18
+10265	Escherichia coli LAU-EC7
+10265	escherichia_coli_lau_ec7
+10275	Campylobacter jejuni subsp. jejuni 110-21
+10275	campylobacter_jejuni_subsp_jejuni_110_21
+10284	Escherichia coli MS 145-7
+10284	Escherichia coli str. MS 145-7
+10284	Escherichia coli strain MS 145-7
+10284	escherichia_coli_ms_145_7
+10291	Escherichia coli p0305293.11
+10291	escherichia_coli_p0305293_11
+10293	Escherichia coli BCE007_MS-11
+10293	escherichia_coli_bce007_ms_11
+10314	Escherichia coli 908624
+10314	escherichia_coli_908624
+10315	Escherichia coli KTE175
+10315	escherichia_coli_kte175
+10317	Escherichia coli DEC11D
+10317	Escherichia coli DEC11D serotype O128:H2
+10317	escherichia_coli_dec11d
+10319	Escherichia coli DEC10E
+10319	Escherichia coli DEC10E serotype O26:H11
+10319	escherichia_coli_dec10e
+10322	Escherichia coli DEC4F
+10322	Escherichia coli DEC4F serotype O157:H7
+10322	escherichia_coli_dec4f
+10335	Escherichia coli C-34666
+10335	escherichia_coli_c_34666
+10341	Escherichia coli MS 153-1
+10341	escherichia_coli_ms_153_1
+10342	Campylobacter jejuni subsp. jejuni 81-176
+10342	Campylobacter jejuni subsp. jejuni str. 81-176
+10342	Campylobacter jejuni subsp. jejuni strain 81-176
+10342	campylobacter_jejuni_subsp_jejuni_81_176
+10346	Escherichia coli DEC14C
+10346	Escherichia coli DEC14C serotype O128:H21
+10346	escherichia_coli_dec14c
+10357	Escherichia coli KTE117
+10357	escherichia_coli_kte117
+10360	Campylobacter coli LMG 23342
+10360	campylobacter_coli_lmg_23342
+10361	Escherichia coli MP021017.3
+10361	escherichia_coli_mp021017_3
+10364	Escherichia coli P0305260.9
+10364	escherichia_coli_p0305260_9
+10368	Escherichia coli HVH 161 (4-3119890)
+10368	escherichia_coli_hvh_161_4_3119890_
+10378	Escherichia coli KO11FL (ASM14785v3)
+10378	escherichia_coli_ko11fl_asm14785v3
+10380	Escherichia coli B84
+10380	Escherichia coli B84 serotype O157:H7
+10380	escherichia_coli_b84
+10397	Campylobacter sp. 10_1_50
+10397	campylobacter_sp_10_1_50
+10409	Escherichia coli P0302308.5
+10409	escherichia_coli_p0302308_5
+10412	Escherichia coli KTE131
+10412	escherichia_coli_kte131
+10442	Escherichia coli P0304816.7
+10442	escherichia_coli_p0304816_7
+10443	Campylobacter coli H56
+10443	campylobacter_coli_h56
+10450	Escherichia coli MP021561.2
+10450	escherichia_coli_mp021561_2
+10456	Campylobacter jejuni X
+10456	campylobacter_jejuni_x
+10467	Escherichia coli KTE136
+10467	escherichia_coli_kte136
+10480	Escherichia coli HVH 209 (4-3062651)
+10480	escherichia_coli_hvh_209_4_3062651_
+10486	Escherichia coli UMEA 3217-1
+10486	escherichia_coli_umea_3217_1
+10489	Escherichia coli EC4203
+10489	Escherichia coli EC4203 serotype O157:H7
+10489	escherichia_coli_ec4203
+10499	Escherichia coli P0299917.2
+10499	escherichia_coli_p0299917_2
+10500	Escherichia coli KTE36
+10500	escherichia_coli_kte36
+10503	Escherichia coli O5:K4(L):H4 str. ATCC 23502
+10503	escherichia_coli_o5_k4_l_h4_str_atcc_23502
+10507	Campylobacter sp. 03-427
+10507	campylobacter_sp_03_427
+10509	Escherichia coli O111:H8 str. CVM9570
+10509	Escherichia coli O111:H8 strain CVM9570
+10509	escherichia_coli_o111_h8_str_cvm9570
+10513	Escherichia coli P0304816.9
+10513	escherichia_coli_p0304816_9
+10514	Campylobacter upsaliensis JV21
+10514	Campylobacter upsaliensis str. JV21
+10514	Campylobacter upsaliensis strain JV21
+10514	campylobacter_upsaliensis_jv21
+10520	Escherichia coli HVH 61 (4-2736020)
+10520	escherichia_coli_hvh_61_4_2736020_
+10526	Campylobacter jejuni subsp. jejuni 2008-1025
+10526	campylobacter_jejuni_subsp_jejuni_2008_1025
+10546	Escherichia coli 6.0172
+10546	Escherichia coli 6.0172 serotype O157:H7
+10546	escherichia_coli_6_0172
+10550	Escherichia coli KTE14
+10550	escherichia_coli_kte14
+10553	Escherichia coli c7122
+10553	Escherichia coli chi7122
+10553	Escherichia coli str. chi7122
+10553	Escherichia coli strain chi7122
+10553	escherichia_coli_chi7122
+10556	Escherichia coli KTE12
+10556	escherichia_coli_kte12
+10559	Escherichia coli UMEA 3244-1
+10559	escherichia_coli_umea_3244_1
+10565	Escherichia coli KTE19
+10565	escherichia_coli_kte19
+10567	Escherichia coli HVH 172 (4-3248542)
+10567	escherichia_coli_hvh_172_4_3248542_
+10570	Escherichia coli KTE219
+10570	escherichia_coli_kte219
+10580	Escherichia coli KD1
+10580	Escherichia coli str. KD1
+10580	Escherichia coli strain KD1
+10580	escherichia_coli_kd1
+10582	Escherichia coli HVH 144 (4-4451937)
+10582	escherichia_coli_hvh_144_4_4451937_
+10625	Escherichia coli HVH 110 (4-6978754)
+10625	escherichia_coli_hvh_110_4_6978754_
+10626	Escherichia coli UMEA 3113-1
+10626	escherichia_coli_umea_3113_1
+10627	1228002
+10627	Escherichia coli 11-02030
+10627	Escherichia coli O104:H4 str. 11-02030
+10627	escherichia_coli_o104_h4_str_11_02030
+10629	Escherichia coli UMEA 3150-1
+10629	escherichia_coli_umea_3150_1
+10635	Escherichia coli KTE78
+10635	escherichia_coli_kte78
+10636	Escherichia coli KTE71
+10636	escherichia_coli_kte71
+10648	Escherichia coli HVH 151 (4-5755573)
+10648	escherichia_coli_hvh_151_4_5755573_
+10649	Escherichia coli EC4436
+10649	Escherichia coli EC4436 serotype O157:H7
+10649	escherichia_coli_ec4436
+10655	Escherichia coli TW09098
+10655	Escherichia coli TW09098 serotype O157:H7
+10655	escherichia_coli_tw09098
+10674	Escherichia coli HVH 207 (4-3113221)
+10674	escherichia_coli_hvh_207_4_3113221_
+10685	Escherichia coli 88.0221
+10685	Escherichia coli 88.0221 serotype O157:H7
+10685	escherichia_coli_88_0221
+10687	Escherichia coli UMEA 3148-1
+10687	escherichia_coli_umea_3148_1
+10692	Escherichia coli MP021552.8
+10692	escherichia_coli_mp021552_8
+10698	Escherichia coli P0304777.13
+10698	escherichia_coli_p0304777_13
+10708	Escherichia coli P0304777.7
+10708	escherichia_coli_p0304777_7
+10723	Campylobacter jejuni subsp. jejuni ICDCCJ07001
+10723	Campylobacter jejuni subsp. jejuni str. ICDCCJ07001
+10723	Campylobacter jejuni subsp. jejuni strain ICDCCJ07001
+10723	campylobacter_jejuni_subsp_jejuni_icdccj07001
+10729	Escherichia coli MP021017.10
+10729	escherichia_coli_mp021017_10
+10742	Escherichia coli 95.1288
+10742	Escherichia coli 95.1288 serotype O157:H7
+10742	escherichia_coli_95_1288
+10752	Campylobacter coli 202/04
+10752	campylobacter_coli_202_04
+10755	Campylobacter coli 317/04
+10755	campylobacter_coli_317_04
+10759	Escherichia coli DEC2A
+10759	Escherichia coli DEC2A serotype O55:H6
+10759	escherichia_coli_dec2a
+10763	Escherichia coli PA10
+10763	Escherichia coli PA10 serotype O157:H7
+10763	escherichia_coli_pa10
+10806	Escherichia coli P0304777.3
+10806	escherichia_coli_p0304777_3
+10812	Escherichia coli UMEA 3108-1
+10812	escherichia_coli_umea_3108_1
+10819	Escherichia coli MP021552.11
+10819	escherichia_coli_mp021552_11
+10831	Escherichia hermannii NBRC 105704
+10831	Escherichia hermannii str. NBRC 105704
+10831	Escherichia hermannii strain NBRC 105704
+10831	escherichia_hermannii_nbrc_105704
+10833	Escherichia coli MS 146-1
+10833	escherichia_coli_ms_146_1
+10839	Escherichia coli O157:H7 str. EC4501
+10839	escherichia_coli_o157_h7_str_ec4501
+10849	Escherichia coli 2731150
+10849	escherichia_coli_2731150
+10861	Escherichia coli P0302308.13
+10861	escherichia_coli_p0302308_13
+10865	Escherichia coli DEC9D
+10865	Escherichia coli DEC9D serotype O26:H11
+10865	escherichia_coli_dec9d
+10870	Escherichia coli KTE61
+10870	escherichia_coli_kte61
+10878	Campylobacter coli 1098
+10878	campylobacter_coli_1098
+10904	Escherichia coli 97.0259
+10904	escherichia_coli_97_0259
+10917	1228009
+10917	Escherichia coli 11-03439
+10917	Escherichia coli O104:H4 str. 11-03439
+10917	escherichia_coli_o104_h4_str_11_03439
+10931	Escherichia coli UMEA 3290-1
+10931	escherichia_coli_umea_3290_1
+10933	Escherichia coli HVH 40 (4-1219782)
+10933	escherichia_coli_hvh_40_4_1219782_
+10940	Escherichia coli p0305293.7
+10940	escherichia_coli_p0305293_7
+10942	Escherichia coli B093
+10942	escherichia_coli_b093
+10957	Escherichia coli DEC4D
+10957	Escherichia coli DEC4D serotype O157:H7
+10957	escherichia_coli_dec4d
+10962	Escherichia coli KTE51
+10962	escherichia_coli_kte51
+10968	Campylobacter coli 1091
+10968	campylobacter_coli_1091
+10972	Campylobacter jejuni subsp. jejuni 1213
+10972	campylobacter_jejuni_subsp_jejuni_1213
+10974	Campylobacter jejuni subsp. jejuni IA3902
+10974	Campylobacter jejuni subsp. jejuni str. IA3902
+10974	Campylobacter jejuni subsp. jejuni strain IA3902
+10974	campylobacter_jejuni_subsp_jejuni_ia3902
+10988	Escherichia coli 90.0039
+10988	Escherichia coli 90.0039 serotype O157:H7
+10988	escherichia_coli_90_0039
+10989	Escherichia coli KTE200
+10989	escherichia_coli_kte200
+10998	Escherichia coli P02997067.6
+10998	escherichia_coli_p02997067_6
+11003	Escherichia coli PA19
+11003	Escherichia coli PA19 serotype O157:H7
+11003	Escherichia coli str. PA19
+11003	Escherichia coli strain PA19
+11003	escherichia_coli_pa19
+11008	Escherichia coli P0299438.5
+11008	escherichia_coli_p0299438_5
+11012	Escherichia coli HVH 109 (4-6977162)
+11012	escherichia_coli_hvh_109_4_6977162_
+11016	Escherichia coli KTE214
+11016	escherichia_coli_kte214
+11018	Escherichia coli DEC8C
+11018	Escherichia coli DEC8C serotype O111:NM
+11018	escherichia_coli_dec8c
+11022	Escherichia coli FVEC1302
+11022	escherichia_coli_fvec1302
+11026	Escherichia coli B94
+11026	escherichia_coli_b94
+11032	Campylobacter jejuni 32488
+11032	campylobacter_jejuni_32488
+11034	Escherichia coli DH10B
+11034	Escherichia coli str. K-12 substr. DH10B
+11034	Escherichia coli str. K12 substr. DH10B
+11034	Escherichia coli strain K12 substrain DH10B
+11034	escherichia_coli_str_k_12_substr_dh10b
+11037	Escherichia coli EC1736
+11037	Escherichia coli EC1736 serotype O157:H7
+11037	escherichia_coli_ec1736
+11039	Escherichia coli UMEA 3426-1
+11039	escherichia_coli_umea_3426_1
+11043	Escherichia coli B41
+11043	escherichia_coli_b41
+11048	Escherichia coli P0305260.13
+11048	escherichia_coli_p0305260_13
+11053	Escherichia coli 97.0003
+11053	Escherichia coli 97.0003 serotype O157:H7
+11053	escherichia_coli_97_0003
+11075	Escherichia coli P0304777.10
+11075	escherichia_coli_p0304777_10
+11076	Escherichia coli 95.0083
+11076	Escherichia coli 95.0083 serotype O157:H7
+11076	Escherichia coli str. 95.0083
+11076	Escherichia coli strain 95.0083
+11076	escherichia_coli_95_0083
+11079	Escherichia coli DEC14D
+11079	Escherichia coli DEC14D serotype O128:NM
+11079	escherichia_coli_dec14d
+11084	Escherichia coli KTE167
+11084	escherichia_coli_kte167
+11086	Escherichia coli 99.0672
+11086	Escherichia coli 99.0672 serotype O157:H7
+11086	escherichia_coli_99_0672
+11095	Escherichia coli UMEA 3336-1
+11095	escherichia_coli_umea_3336_1
+11103	Escherichia coli 907715
+11103	escherichia_coli_907715
+11109	Escherichia coli KTE25
+11109	escherichia_coli_kte25
+11117	Escherichia coli HVH 100 (4-2850729)
+11117	escherichia_coli_hvh_100_4_2850729_
+11132	Escherichia coli DEC2D
+11132	Escherichia coli DEC2D serotype O55:H6
+11132	escherichia_coli_dec2d
+11139	Escherichia coli W (ASM14775v1)
+11139	escherichia_coli_w_asm14775v1
+11148	Escherichia coli UMEA 3033-1
+11148	escherichia_coli_umea_3033_1
+11155	Campylobacter jejuni 414
+11155	Campylobacter jejuni subsp. jejuni 414
+11155	Campylobacter jejuni subsp. jejuni str. 414
+11155	Campylobacter jejuni subsp. jejuni strain 414
+11155	campylobacter_jejuni_subsp_jejuni_414
+11166	Escherichia coli 08BKT055439
+11166	Escherichia coli 08BKT055439 serotype O157:H7
+11166	Escherichia coli str. 08BKT055439
+11166	Escherichia coli strain 08BKT055439
+11166	escherichia_coli_08bkt055439
+11167	Escherichia coli 178200
+11167	escherichia_coli_178200
+11170	Escherichia coli EC1865
+11170	Escherichia coli EC1865 serotype non-O157
+11170	escherichia_coli_ec1865
+11176	Escherichia coli O104:H4 str. 04-8351
+11176	Escherichia coli O104:H4 strain 04-8351
+11176	escherichia_coli_o104_h4_str_04_8351
