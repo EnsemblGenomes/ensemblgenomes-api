@@ -20,7 +20,7 @@ use Test::More;
 use Bio::EnsEMBL::TaxonomyNode;
 use Bio::EnsEMBL::DBSQL::TaxonomyDBAdaptor;
 use Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor;
-use Bio::EnsEMBL::LookUp;
+use Bio::EnsEMBL::LookUp::LocalLookUp;
 
 my $conf_file = 'db.conf';
 
@@ -45,10 +45,10 @@ ok( defined $node_adaptor, "Taxonomy Node Adaptor exists" );
 
 my $econf = $conf->{ena};
 
-Bio::EnsEMBL::LookUp->register_all_dbs(
+Bio::EnsEMBL::LookUp::LocalLookUp->register_all_dbs(
 								 $econf->{host}, $econf->{port}, $econf->{user},
 								 $econf->{pass}, $econf->{db} );
-my $helper = Bio::EnsEMBL::LookUp->new(-CLEAR_CACHE => 1);
+my $helper = Bio::EnsEMBL::LookUp::LocalLookUp->new(-CLEAR_CACHE => 1, -SKIP_CONTIGS=>1);
 ok( defined $helper, "Helper object exists" );
 
 # build array of dbas
@@ -56,8 +56,8 @@ my $dbas = $helper->get_all();
 diag( "Found " . scalar @$dbas . " dbas" );
 
 my @leaf_nodes;
-for my $dba (@$dbas) {
-    my $node = $node_adaptor->fetch_by_coredbadaptor($dba);
+for my $node (@{$node_adaptor->fetch_by_coredbadaptors($dbas)}) {
+
     if ( defined $node ) {
         push @leaf_nodes, $node;
     } else {
