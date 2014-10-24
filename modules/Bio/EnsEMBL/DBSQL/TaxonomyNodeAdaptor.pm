@@ -236,6 +236,7 @@ sub fetch_by_coredbadaptors {
 	if (defined $node) {
 	  push @{$node->dba()}, $core_dba;
 	}
+	$core_dba->disconnect_if_idle();
   }
   return [values(%$nodes_by_taxa)];
 } ## end sub fetch_by_coredbadaptors
