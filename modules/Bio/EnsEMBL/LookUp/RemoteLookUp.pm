@@ -74,6 +74,7 @@ package Bio::EnsEMBL::LookUp::RemoteLookUp;
 use warnings;
 use strict;
 use Bio::EnsEMBL::DBSQL::DBAdaptor;
+use Bio::EnsEMBL::Compara::DBSQL::DBAdaptor;
 use Bio::EnsEMBL::Utils::Argument qw(rearrange);
 use Bio::EnsEMBL::Utils::Exception qw(throw warning);
 use Bio::EnsEMBL::Utils::Scalar qw(assert_ref check_ref);
@@ -189,8 +190,10 @@ sub compara_to_dba {
   my ($self, $genome_info) = @_;
   assert_ref($genome_info,
 			 'Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo');
-  my $dba = $self->_cache($genome_info->dbname());
+			 print $genome_info->dbname()."\n";
+  my $dba = $self->_cache()->{$genome_info};
   if (!defined $dba) {
+  	print "Building\n";
 	$dba =
 	  Bio::EnsEMBL::Compara::DBSQL::DBAdaptor->new(
 								   -USER    => $self->{user},
