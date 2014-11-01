@@ -190,10 +190,8 @@ sub compara_to_dba {
   my ($self, $genome_info) = @_;
   assert_ref($genome_info,
 			 'Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo');
-			 print $genome_info->dbname()."\n";
   my $dba = $self->_cache()->{$genome_info};
   if (!defined $dba) {
-  	print "Building\n";
 	$dba =
 	  Bio::EnsEMBL::Compara::DBSQL::DBAdaptor->new(
 								   -USER    => $self->{user},
