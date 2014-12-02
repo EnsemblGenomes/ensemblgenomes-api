@@ -62,23 +62,20 @@ Once a lookup has been created, there are various methods to retreive DBAdaptors
 
 	$dbas = $lookup->get_all_by_taxon_id(388919);
 	
-4. In coordination with a taxonomy node adaptor to get DBAs for all descendants of a node:
+4. To find DBAs for all descendants of a node:
 
-	my $node = $node_adaptor->fetch_by_taxon_id(511145);
-	for my $child (@{$node_adaptor->fetch_descendants($node)}) {
-		my $dbas = $lookup->get_all_by_taxon_id($node->taxon_id())
-		if(defined $dbas) {
-			for my $dba (@{$dbas}) {
-				# do something with the $dba
-			}
-		}
-	}
+	$dbas = $lookup->get_all_by_taxon_branch(511145);
 
 The retrieved DBAdaptors can then be used as normal e.g.
 
 	for my $gene (@{$dba->get_GeneAdaptor()->fetch_all_by_biotype('protein_coding')}) {
 		print $gene->external_name."\n";
 	}
+
+If a DBAdaptor is not likely to be used again, it should be disconnected to avoid running out of connections 
+(a disconnected DBAdaptor can be used again without having to be explicitly reconnected):
+    
+    $dba->dbc()->disconnect_if_idle();
 
 Once retrieved, the arguments needed for constructing a DBAdaptor directly can be dumped for later use e.g.
 
