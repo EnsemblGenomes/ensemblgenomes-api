@@ -322,7 +322,7 @@ sub update_compara {
 		 -PARAMS => [ $compara->dbID() ] );
   for my $genome ( @{ $compara->genomes() } ) {
 	if ( defined $genome->dbID() ) {
-	  $self->update($genome);
+	  $self->_update_genome_compara($genome);
 	}
 	else {
 	  $self->store($genome);
@@ -335,6 +335,31 @@ q/insert into genome_compara_analysis(genome_id,compara_analysis_id)
   }
   return;
 } ## end sub update_compara
+
+=head2 _update_genome_compara
+  Arg	     : Bio::EnsEMBL::Utils::MetaData::GenomeInfo
+  Description: Updates compara booleans for the supplied object
+  Returntype : None
+  Exceptions : none
+  Caller     : internal
+  Status     : Stable
+=cut
+sub _update_genome_compara {
+  	my ( $self, $genome ) = @_;
+  	  if ( !defined $genome->dbID() ) {
+	croak "Cannot update an object that has not already been stored";
+  }
+  $self->{dbc}->sql_helper()->execute_update(
+	-SQL =>
+q/update genome set has_pan_compara=?,has_peptide_compara=?,
+has_genome_alignments=?,has_synteny=? where genome_id=?/,
+	-PARAMS => [ $genome->has_pan_compara(),
+				 $genome->has_peptide_compara(),
+				 $genome->has_genome_alignments(),
+				 $genome->has_synteny(),
+				 $genome->dbID() ] );
+	return;
+}
 
 =head2 store_compara
   Arg	     : Bio::EnsEMBL::Utils::MetaData::GenomeComparaInfo
