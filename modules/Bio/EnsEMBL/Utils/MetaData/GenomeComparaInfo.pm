@@ -201,8 +201,9 @@ sub is_peptide_compara {
 sub is_dna_compara {
   my ($self) = @_;
   return ( $self->{method} eq 'TRANSLATED_BLAT_NET' ||
-		   $self->{method} eq 'LASTZ_NET' ||
-		   $self->{method} eq 'TBLAT'     ||
+		   $self->{method} eq 'LASTZ_NET'   ||
+		   $self->{method} eq 'TBLAT'       ||
+		   $self->{method} eq 'ATAC'        ||
 		   $self->{method} eq 'BLASTZ_NET' ) ? 1 : 0;
 }
 
