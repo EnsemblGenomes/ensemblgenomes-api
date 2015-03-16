@@ -1234,7 +1234,7 @@ sub _fetch_comparas {
 		-SQL =>
 		  q/select distinct compara_analysis_id from compara_analysis 
   join genome_compara_analysis using (compara_analysis_id)
-  where genome_id=? and method in ('BLASTZ_NET','LASTZ_NET','TRANSLATED_BLAT_NET', 'PROTEIN_TREES')/,
+  where genome_id=? and method in ('BLASTZ_NET','LASTZ_NET','TRANSLATED_BLAT_NET', 'PROTEIN_TREES', 'ATAC')/,
 		-PARAMS => [ $genome->dbID() ] ) } )
   {
 	push @$comparas, $self->fetch_compara_by_dbID($id);
