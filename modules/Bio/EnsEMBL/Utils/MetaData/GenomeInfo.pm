@@ -73,6 +73,8 @@ use warnings;
        int - identifier of the species within the core database for this genome
   Arg [-TAXONOMY_ID] :
         string - NCBI taxonomy identifier
+  Arg [-SPECIES_TAXONOMY_ID] :
+        string - NCBI taxonomy identifier of species to which this genome belongs
   Arg [-ASSEMBLY_NAME] :
         string - name of the assembly
   Arg [-ASSEMBLY_ID] :
@@ -87,6 +89,8 @@ use warnings;
         string - name of strain to which genome belongs
   Arg [-SEROTYPE]:
         string - name of serotype to which genome belongs
+  Arg [-IS_REFERENCE]:
+        bool - 1 if this genome is the reference for its species
 
   Example    : $info = Bio::EnsEMBL::Utils::MetaData::GenomeInfo->new(...);
   Description: Creates a new info object
@@ -102,18 +106,19 @@ sub new {
   my $class = ref($proto) || $proto;
   my $self = bless( {}, $class );
   ( $self->{name},       $self->{species},     $self->{dbname},
-	$self->{species_id}, $self->{taxonomy_id}, $self->{assembly_name},
+	$self->{species_id}, $self->{taxonomy_id}, $self->{species_taxonomy_id}, $self->{assembly_name},
 	$self->{assembly_id}, $self->{assembly_level}, $self->{genebuild},
-	$self->{division},    $self->{strain},         $self->{serotype}
-
+	$self->{division},    $self->{strain},         $self->{serotype},
+        $self->{is_reference}
 	) =
 	rearrange(
 			   [ 'NAME',        'SPECIES',
 				 'DBNAME',      'SPECIES_ID',
-				 'TAXONOMY_ID', 'ASSEMBLY_NAME',
+				 'TAXONOMY_ID', 'SPECIES_TAXONOMY_ID',
+                                 'ASSEMBLY_NAME',
 				 'ASSEMBLY_ID', 'ASSEMBLY_LEVEL',
 				 'GENEBUILD',   'DIVISION',
-				 'STRAIN',      'SEROTYPE' ],
+				 'STRAIN',      'SEROTYPE', 'IS_REFERENCE' ],
 			   @args );
   return $self;
 }
@@ -223,6 +228,20 @@ sub taxonomy_id {
   $self->{taxonomy_id} = $taxonomy_id if ( defined $taxonomy_id );
   return $self->{taxonomy_id};
 }
+=head2 species_taxonomy_id
+  Arg        : (optional) taxonomy_id to set
+  Description: Gets/sets NCBI taxonomy ID of species to which this belongs
+  Returntype : string
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub species_taxonomy_id {
+  my ( $self, $taxonomy_id ) = @_;
+  $self->{species_taxonomy_id} = $taxonomy_id if ( defined $taxonomy_id );
+  return $self->{species_taxonomy_id};
+}
 
 =head2 assembly_name
   Arg        : (optional) assembly_name to set
@@ -298,6 +317,21 @@ sub division {
   my ( $self, $division ) = @_;
   $self->{division} = $division if ( defined $division );
   return $self->{division};
+}
+
+=head2 is_reference
+  Arg        : (optional) value of is_reference
+  Description: Gets/sets whether this is a reference for the species
+  Returntype : bool
+  Exceptions : none
+  Caller     : general
+  Status     : Stable
+=cut
+
+sub is_reference {
+  my ( $self, $is_ref ) = @_;
+  $self->{is_reference} = $is_ref if ( defined $is_ref );
+  return $self->{is_reference};
 }
 
 =head2 db_size

@@ -207,16 +207,17 @@ sub store {
   $self->{dbc}->sql_helper()->execute_update(
 	-SQL =>
 q/insert into genome(name,species,strain,serotype,division,taxonomy_id,
-assembly_id,assembly_name,assembly_level,base_count,
-genebuild,dbname,species_id,has_pan_compara,has_variations,has_peptide_compara,
+species_taxonomy_id,assembly_id,assembly_name,assembly_level,base_count,
+genebuild,dbname,species_id,is_reference,has_pan_compara,has_variations,has_peptide_compara,
 has_genome_alignments,has_synteny,has_other_alignments)
-		values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)/,
+		values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)/,
 	-PARAMS => [ $genome->name(),
 				 $genome->species(),
 				 $genome->strain(),
 				 $genome->serotype(),
 				 $genome->division(),
 				 $genome->taxonomy_id(),
+				 $genome->species_taxonomy_id(),
 				 $genome->assembly_id(),
 				 $genome->assembly_name(),
 				 $genome->assembly_level(),
@@ -224,6 +225,7 @@ has_genome_alignments,has_synteny,has_other_alignments)
 				 $genome->genebuild(),
 				 $genome->dbname(),
 				 $genome->species_id(),
+				 $genome->is_reference(),
 				 $genome->has_pan_compara(),
 				 $genome->has_variations(),
 				 $genome->has_peptide_compara(),
@@ -260,9 +262,9 @@ sub update {
   }
   $self->{dbc}->sql_helper()->execute_update(
 	-SQL =>
-q/update genome set name=?,species=?,strain=?,serotype=?,division=?,taxonomy_id=?,
+q/update genome set name=?,species=?,strain=?,serotype=?,division=?,taxonomy_id=?,species_taxonomy_id=?,
 assembly_id=?,assembly_name=?,assembly_level=?,base_count=?,
-genebuild=?,dbname=?,species_id=?,has_pan_compara=?,has_variations=?,has_peptide_compara=?,
+genebuild=?,dbname=?,species_id=?,is_reference=?,has_pan_compara=?,has_variations=?,has_peptide_compara=?,
 has_genome_alignments=?,has_synteny=?,has_other_alignments=? where genome_id=?/,
 	-PARAMS => [ $genome->name(),
 				 $genome->species(),
@@ -270,6 +272,7 @@ has_genome_alignments=?,has_synteny=?,has_other_alignments=? where genome_id=?/,
 				 $genome->serotype(),
 				 $genome->division(),
 				 $genome->taxonomy_id(),
+				 $genome->species_taxonomy_id(),
 				 $genome->assembly_id(),
 				 $genome->assembly_name(),
 				 $genome->assembly_level(),
@@ -277,6 +280,7 @@ has_genome_alignments=?,has_synteny=?,has_other_alignments=? where genome_id=?/,
 				 $genome->genebuild(),
 				 $genome->dbname(),
 				 $genome->species_id(),
+				 $genome->is_reference(),
 				 $genome->has_pan_compara(),
 				 $genome->has_variations(),
 				 $genome->has_peptide_compara(),
@@ -567,8 +571,8 @@ sub list_divisions {
 my $base_fetch_sql = q/
 select 
 genome_id as dbID,species,name,strain,serotype,division,taxonomy_id,
-assembly_id,assembly_name,assembly_level,base_count,
-genebuild,dbname,species_id,
+species_taxonomy_id,assembly_id,assembly_name,assembly_level,base_count,
+genebuild,dbname,species_id,is_reference,
 has_pan_compara,has_variations,has_peptide_compara,
 has_genome_alignments,has_other_alignments
 from genome

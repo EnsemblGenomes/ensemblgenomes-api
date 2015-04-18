@@ -22,7 +22,6 @@ my $multi = Bio::EnsEMBL::Test::MultiTestDB->new('eg');
 my $gdba  = $multi->get_DBAdaptor('info');
 my $tax   = $multi->get_DBAdaptor('tax');
 $gdba->taxonomy_adaptor($tax);
-
 ok( defined $gdba, "GenomeInfoAdaptor exists" );
 
 diag("Fetching all genome info");
@@ -75,9 +74,11 @@ my $genome =
   -species    => $dba->species(),
   -species_id => $dba->species_id(),
   -taxonomy_id => $dba->get_MetaContainer()->get_taxonomy_id(),
+  -species_taxonomy_id => $dba->get_MetaContainer()->get_taxonomy_id(),
   -division   => $dba->get_MetaContainer()->get_division() || 'Ensembl',
   -assembly_name   => $dba->get_MetaContainer()->single_value_by_key('assembly.name'),
   -assembly_level   => 'spirit',
+  -is_reference => 1,
   -genebuild => $dba->get_MetaContainer()->single_value_by_key('genebuild.version'),
   -dbname     => $dba->dbc()->dbname() );
   $genome->base_count(1664);
