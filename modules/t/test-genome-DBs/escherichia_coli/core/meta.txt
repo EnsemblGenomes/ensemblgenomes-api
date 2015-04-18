@@ -57,4 +57,4 @@
 122	1	simple_featurebuild.level	toplevel
 123	1	schema.load_complete	2013-10-01 20:20:07
 124	1	schema.copy_src	bacteria_22_collection_core_21_74_1/131
-125	\N	schema_version	74
+125	\N	schema_version	80
