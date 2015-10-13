@@ -71,6 +71,7 @@ use warnings;
 
 use base qw ( Bio::EnsEMBL::DBSQL::DBAdaptor );
 use Bio::EnsEMBL::Utils::EGPublicMySQLServer;
+use Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor;
 
 =head1 SUBROUTINES/METHODS
 
@@ -99,6 +100,11 @@ sub new_public {
 											 -host   => eg_host(),
 											 -port   => eg_port()
 	);
+}
+
+sub get_TaxonomyNodeAdaptor {
+	my ($self) = @_;
+	return Bio::EnsEMBL::DBSQL::TaxonomyNodeAdaptor->new($self); 
 }
 
 1;
