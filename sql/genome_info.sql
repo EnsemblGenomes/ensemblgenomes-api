@@ -34,7 +34,7 @@ CREATE TABLE `compara_analysis` (
   `compara_analysis_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `division` varchar(64) NOT NULL,
   `method` varchar(50) NOT NULL,
-  `set_name` varchar(64) DEFAULT NULL,
+  `set_name` varchar(128) DEFAULT NULL,
   `dbname` varchar(64) NOT NULL,
   PRIMARY KEY (`compara_analysis_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
