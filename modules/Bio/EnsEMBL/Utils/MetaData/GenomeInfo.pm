@@ -738,6 +738,9 @@ sub count_alignments {
 
 sub get_uniprot_coverage {
 	my ($self) = @_;
+        if(!defined $self->annotations()->{nProteinCoding} || $self->annotations()->{nProteinCoding} == 0) {
+          die "No protein coding genes found for ".$self->name();
+        }
 	return 100.0 *
 	  ( $self->annotations()->{nProteinCodingUniProtKB} ) /
 	  $self->annotations()->{nProteinCoding};
